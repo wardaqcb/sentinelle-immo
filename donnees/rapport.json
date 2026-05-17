@@ -1,5 +1,5 @@
 {
-  "date_collecte": "17/05/2026 à 19:18",
+  "date_collecte": "17/05/2026 à 20:17",
   "communes": [
     "Reims",
     "Tinqueux",
@@ -11,7 +11,7 @@
     "Pouillon"
   ],
   "stats": {
-    "transactions_dvf": 2707,
+    "transactions_dvf": 2843,
     "annonces_bodacc": 50
   },
   "marche": {
@@ -25,31 +25,31 @@
       "prix_m2_apparts": 3346.0
     },
     "Tinqueux": {
-      "nb_transactions": 1,
-      "nb_maisons": 1,
-      "nb_appartements": 0,
-      "prix_m2_moyen": 1333.0,
-      "prix_median": 1333.0,
-      "prix_m2_maisons": 1333.0,
-      "prix_m2_apparts": 0
+      "nb_transactions": 103,
+      "nb_maisons": 60,
+      "nb_appartements": 43,
+      "prix_m2_moyen": 2452.0,
+      "prix_median": 2360.0,
+      "prix_m2_maisons": 2500.0,
+      "prix_m2_apparts": 2386.0
     },
     "Gueux": {
-      "nb_transactions": 8,
-      "nb_maisons": 8,
+      "nb_transactions": 19,
+      "nb_maisons": 19,
       "nb_appartements": 0,
-      "prix_m2_moyen": 3488.0,
-      "prix_median": 3154.0,
-      "prix_m2_maisons": 3488.0,
+      "prix_m2_moyen": 3777.0,
+      "prix_median": 3275.0,
+      "prix_m2_maisons": 3777.0,
       "prix_m2_apparts": 0
     },
     "Muizon": {
-      "nb_transactions": 4,
-      "nb_maisons": 4,
-      "nb_appartements": 0,
-      "prix_m2_moyen": 2466.0,
-      "prix_median": 2475.0,
-      "prix_m2_maisons": 2466.0,
-      "prix_m2_apparts": 0
+      "nb_transactions": 17,
+      "nb_maisons": 16,
+      "nb_appartements": 1,
+      "prix_m2_moyen": 2521.0,
+      "prix_median": 2557.0,
+      "prix_m2_maisons": 2559.0,
+      "prix_m2_apparts": 1909.0
     },
     "Hermonville": {
       "nb_transactions": 8,
@@ -61,21 +61,21 @@
       "prix_m2_apparts": 0
     },
     "Courcy": {
-      "nb_transactions": 1,
-      "nb_maisons": 1,
+      "nb_transactions": 11,
+      "nb_maisons": 11,
       "nb_appartements": 0,
-      "prix_m2_moyen": 915.0,
-      "prix_median": 915.0,
-      "prix_m2_maisons": 915.0,
+      "prix_m2_moyen": 2388.0,
+      "prix_median": 2442.0,
+      "prix_m2_maisons": 2388.0,
       "prix_m2_apparts": 0
     },
     "Saint-Thierry": {
       "nb_transactions": 4,
       "nb_maisons": 4,
       "nb_appartements": 0,
-      "prix_m2_moyen": 1338.0,
-      "prix_median": 1430.0,
-      "prix_m2_maisons": 1338.0,
+      "prix_m2_moyen": 3032.0,
+      "prix_median": 4007.0,
+      "prix_m2_maisons": 3032.0,
       "prix_m2_apparts": 0
     },
     "Pouillon": {

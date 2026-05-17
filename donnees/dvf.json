@@ -240,6 +240,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "31/07/2025",
+    "valeur_fonciere": 467000.0,
+    "surface_bati": 116.0,
+    "prix_m2": 4026.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "67 DU 29 AOUT 1944",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "31/07/2025",
@@ -624,6 +636,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "31/01/2025",
+    "valeur_fonciere": 196000.0,
+    "surface_bati": 84.0,
+    "prix_m2": 2333.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "1 ALBERT COLLET",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "31/01/2025",
@@ -681,6 +705,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "5",
     "adresse": "4 HOUZEAU MUIRON",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/10/2025",
+    "valeur_fonciere": 340000.0,
+    "surface_bati": 97.0,
+    "prix_m2": 3505.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "56 ROGER MARTIN DU GARD",
     "nature_mutation": "Vente"
   },
   {
@@ -1356,6 +1392,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/06/2025",
+    "valeur_fonciere": 96476.0,
+    "surface_bati": 57.0,
+    "prix_m2": 1693.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "5 DE LA PAIX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/06/2025",
+    "valeur_fonciere": 120000.0,
+    "surface_bati": 88.0,
+    "prix_m2": 1364.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "22 P VAILLANT COUTURIER",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "30/06/2025",
@@ -1644,6 +1704,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/04/2025",
+    "valeur_fonciere": 430470.0,
+    "surface_bati": 175.0,
+    "prix_m2": 2460.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "17 GUTENBERG",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "30/04/2025",
@@ -1860,6 +1932,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "30/04/2025",
+    "valeur_fonciere": 230000.0,
+    "surface_bati": 89.0,
+    "prix_m2": 2584.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "59 LAMARTINE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/04/2025",
+    "valeur_fonciere": 124950.0,
+    "surface_bati": 43.0,
+    "prix_m2": 2906.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "16 DE CHAMPIGNY",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "30/04/2025",
@@ -1929,6 +2025,18 @@
     "type_local": "Maison",
     "nombre_pieces": "4",
     "adresse": "89 DU VIEUX COLOMBIER",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/04/2025",
+    "valeur_fonciere": 290000.0,
+    "surface_bati": 92.0,
+    "prix_m2": 3152.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "14 HENRI VIDAL",
     "nature_mutation": "Vente"
   },
   {
@@ -2112,6 +2220,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "30/01/2025",
+    "valeur_fonciere": 163500.0,
+    "surface_bati": 88.0,
+    "prix_m2": 1858.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "9001 AUGUSTE HUART",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "30/01/2025",
@@ -2133,6 +2253,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "1 BRULEE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "30/01/2025",
+    "valeur_fonciere": 439500.0,
+    "surface_bati": 132.0,
+    "prix_m2": 3330.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "12 DES FLEURS",
     "nature_mutation": "Vente"
   },
   {
@@ -2289,6 +2421,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "55 PIERRE BROSSOLETTE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/10/2025",
+    "valeur_fonciere": 296500.0,
+    "surface_bati": 110.0,
+    "prix_m2": 2695.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "16 VICTOR COUSIN",
     "nature_mutation": "Vente"
   },
   {
@@ -2952,6 +3096,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "29/08/2025",
+    "valeur_fonciere": 180000.0,
+    "surface_bati": 59.0,
+    "prix_m2": 3051.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "7 DE LA GARE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "29/08/2025",
@@ -2997,6 +3153,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "36 PERSEVAL",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "29/07/2025",
+    "valeur_fonciere": 190000.0,
+    "surface_bati": 85.0,
+    "prix_m2": 2235.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "1 ALBERT CAMUS",
     "nature_mutation": "Vente"
   },
   {
@@ -3048,6 +3216,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/07/2025",
+    "valeur_fonciere": 242000.0,
+    "surface_bati": 110.0,
+    "prix_m2": 2200.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "10 OCTAVE MIRBEAU",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "29/07/2025",
@@ -3093,6 +3273,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "15 JEAN DE LA BRUYERE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "29/07/2025",
+    "valeur_fonciere": 105000.0,
+    "surface_bati": 55.0,
+    "prix_m2": 1909.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "3 DU COMMERCE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "29/07/2025",
+    "valeur_fonciere": 222000.0,
+    "surface_bati": 110.0,
+    "prix_m2": 2018.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "24 DU CIRCUIT",
     "nature_mutation": "Vente"
   },
   {
@@ -3240,18 +3444,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Tinqueux",
-    "code_insee": "51572",
-    "date_mutation": "29/04/2025",
-    "valeur_fonciere": 80000.0,
-    "surface_bati": 60.0,
-    "prix_m2": 1333.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "5080 DE COURTISOLS",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "29/04/2025",
@@ -3261,6 +3453,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "5 VIELLART",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/04/2025",
+    "valeur_fonciere": 236000.0,
+    "surface_bati": 100.0,
+    "prix_m2": 2360.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "9003 DU VAL D OR",
     "nature_mutation": "Vente"
   },
   {
@@ -3285,6 +3489,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "133 DE COURLANCY",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/04/2025",
+    "valeur_fonciere": 240000.0,
+    "surface_bati": 104.0,
+    "prix_m2": 2308.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "13 ROGER SALENGRO",
     "nature_mutation": "Vente"
   },
   {
@@ -3336,6 +3552,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/04/2025",
+    "valeur_fonciere": 157000.0,
+    "surface_bati": 76.0,
+    "prix_m2": 2066.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "50 DU MONT SAINT PIERRE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/04/2025",
+    "valeur_fonciere": 184000.0,
+    "surface_bati": 110.0,
+    "prix_m2": 1673.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "10 DE LORRAINE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "29/04/2025",
@@ -3345,6 +3585,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "2 DU RUISSELET",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "29/04/2025",
+    "valeur_fonciere": 169000.0,
+    "surface_bati": 65.0,
+    "prix_m2": 2600.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "11 DE REIMS",
     "nature_mutation": "Vente"
   },
   {
@@ -3492,6 +3744,18 @@
     "nature_mutation": "Vente en l'état futur d'achèvement"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/01/2025",
+    "valeur_fonciere": 137000.0,
+    "surface_bati": 69.0,
+    "prix_m2": 1986.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "11 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "29/01/2025",
@@ -3501,6 +3765,18 @@
     "type_local": "Maison",
     "nombre_pieces": "5",
     "adresse": "33 MICHEL ANGE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "29/01/2025",
+    "valeur_fonciere": 288000.0,
+    "surface_bati": 120.0,
+    "prix_m2": 2400.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "8 HELENE BOUCHER",
     "nature_mutation": "Vente"
   },
   {
@@ -3588,15 +3864,27 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Muizon",
-    "code_insee": "51392",
+    "commune": "Tinqueux",
+    "code_insee": "51573",
     "date_mutation": "28/11/2025",
-    "valeur_fonciere": 349000.0,
-    "surface_bati": 141.0,
-    "prix_m2": 2475.0,
+    "valeur_fonciere": 189000.0,
+    "surface_bati": 89.0,
+    "prix_m2": 2124.0,
     "type_local": "Maison",
-    "nombre_pieces": "5",
-    "adresse": "1 DES CHARMIERES",
+    "nombre_pieces": "4",
+    "adresse": "4 MARIE CURIE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/11/2025",
+    "valeur_fonciere": 287500.0,
+    "surface_bati": 106.0,
+    "prix_m2": 2712.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "3 GRANDE RUE",
     "nature_mutation": "Vente"
   },
   {
@@ -3792,6 +4080,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/08/2025",
+    "valeur_fonciere": 140000.0,
+    "surface_bati": 92.0,
+    "prix_m2": 1522.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "3 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "28/08/2025",
@@ -3972,6 +4272,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/07/2025",
+    "valeur_fonciere": 114650.0,
+    "surface_bati": 33.0,
+    "prix_m2": 3474.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "6 GABRIEL PERI",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "28/07/2025",
@@ -4017,6 +4329,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "69 DE LOUVOIS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/07/2025",
+    "valeur_fonciere": 98000.0,
+    "surface_bati": 39.0,
+    "prix_m2": 2513.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "13 ARISTIDE BRIAND",
     "nature_mutation": "Vente"
   },
   {
@@ -4164,6 +4488,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "28/05/2025",
+    "valeur_fonciere": 316800.0,
+    "surface_bati": 110.0,
+    "prix_m2": 2880.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "2 DES DETOURS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Pouillon",
     "code_insee": "51444",
     "date_mutation": "28/05/2025",
@@ -4233,6 +4569,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "5 BRESSY",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/05/2025",
+    "valeur_fonciere": 350000.0,
+    "surface_bati": 136.0,
+    "prix_m2": 2574.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "57 BONAPARTE PROL",
     "nature_mutation": "Vente"
   },
   {
@@ -4389,6 +4737,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "64 COQUEBERT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/04/2025",
+    "valeur_fonciere": 210800.0,
+    "surface_bati": 68.0,
+    "prix_m2": 3100.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "11 ROGER SALENGRO",
     "nature_mutation": "Vente"
   },
   {
@@ -4749,6 +5109,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "14 DE LA BONNE FEMME",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "28/03/2025",
+    "valeur_fonciere": 466250.0,
+    "surface_bati": 149.0,
+    "prix_m2": 3129.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "10 DES TERRES BRULEES",
     "nature_mutation": "Vente"
   },
   {
@@ -5148,6 +5520,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "28/02/2025",
+    "valeur_fonciere": 780000.0,
+    "surface_bati": 160.0,
+    "prix_m2": 4875.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "10 GABRIEL PERI",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "28/02/2025",
@@ -5508,6 +5892,54 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "27/11/2025",
+    "valeur_fonciere": 403000.0,
+    "surface_bati": 165.0,
+    "prix_m2": 2442.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "26 CHRISTIAN DESGRIPPES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "27/11/2025",
+    "valeur_fonciere": 315790.0,
+    "surface_bati": 105.0,
+    "prix_m2": 3008.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "1 DU MOULIN A VENT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "27/11/2025",
+    "valeur_fonciere": 1530000.0,
+    "surface_bati": 250.0,
+    "prix_m2": 6120.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "43 DES SABLONS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "27/11/2025",
+    "valeur_fonciere": 1530000.0,
+    "surface_bati": 250.0,
+    "prix_m2": 6120.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "43 DES SABLONS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "27/11/2025",
@@ -5613,6 +6045,30 @@
     "type_local": "Maison",
     "nombre_pieces": "3",
     "adresse": "17 FIRMIN CHARBONNEAUX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "27/10/2025",
+    "valeur_fonciere": 375000.0,
+    "surface_bati": 100.0,
+    "prix_m2": 3750.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "16 GABRIELLE DORZIAT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "27/10/2025",
+    "valeur_fonciere": 130000.0,
+    "surface_bati": 68.0,
+    "prix_m2": 1912.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "86 ROGER SALENGRO",
     "nature_mutation": "Vente"
   },
   {
@@ -5865,6 +6321,18 @@
     "type_local": "Maison",
     "nombre_pieces": "5",
     "adresse": "19 JULES GUICHARD",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "27/06/2025",
+    "valeur_fonciere": 153000.0,
+    "surface_bati": 80.0,
+    "prix_m2": 1912.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "30 P VAILLANT COUTURIER",
     "nature_mutation": "Vente"
   },
   {
@@ -6264,6 +6732,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "27/03/2025",
+    "valeur_fonciere": 337250.0,
+    "surface_bati": 60.0,
+    "prix_m2": 5621.0,
+    "type_local": "Maison",
+    "nombre_pieces": "2",
+    "adresse": "5 DE LA GARE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "27/03/2025",
@@ -6429,6 +6909,18 @@
     "type_local": "Maison",
     "nombre_pieces": "4",
     "adresse": "6 ALEXANDRE NOLL",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Saint-Thierry",
+    "code_insee": "51518",
+    "date_mutation": "27/02/2025",
+    "valeur_fonciere": 145400.0,
+    "surface_bati": 76.0,
+    "prix_m2": 1913.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "3 DES PLANTIERES",
     "nature_mutation": "Vente"
   },
   {
@@ -6876,6 +7368,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "26/09/2025",
+    "valeur_fonciere": 200000.0,
+    "surface_bati": 93.0,
+    "prix_m2": 2151.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "2 JEAN MERMOZ",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "26/09/2025",
@@ -7032,6 +7536,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "26/08/2025",
+    "valeur_fonciere": 308000.0,
+    "surface_bati": 91.0,
+    "prix_m2": 3385.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "40 DES VIGNES",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "26/08/2025",
@@ -7068,6 +7584,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "26/08/2025",
+    "valeur_fonciere": 437500.0,
+    "surface_bati": 165.0,
+    "prix_m2": 2652.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "2 CARNOT",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "26/08/2025",
@@ -7077,6 +7605,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "20 DES MOISSONS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "26/08/2025",
+    "valeur_fonciere": 162500.0,
+    "surface_bati": 75.0,
+    "prix_m2": 2167.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "56 DU MONT SAINT PIERRE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "26/08/2025",
+    "valeur_fonciere": 221500.0,
+    "surface_bati": 75.0,
+    "prix_m2": 2953.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "10 P VAILLANT COUTURIER",
     "nature_mutation": "Vente"
   },
   {
@@ -7197,18 +7749,6 @@
     "type_local": "Maison",
     "nombre_pieces": "6",
     "adresse": "19 DE ROUEN",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Saint-Thierry",
-    "code_insee": "51513",
-    "date_mutation": "26/06/2025",
-    "valeur_fonciere": 147000.0,
-    "surface_bati": 132.0,
-    "prix_m2": 1114.0,
-    "type_local": "Maison",
-    "nombre_pieces": "6",
-    "adresse": "4 GRANDE RUE",
     "nature_mutation": "Vente"
   },
   {
@@ -7344,6 +7884,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "26/05/2025",
+    "valeur_fonciere": 241000.0,
+    "surface_bati": 93.0,
+    "prix_m2": 2591.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "10 LEON LEFORT",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "26/05/2025",
@@ -7401,6 +7953,18 @@
     "type_local": "Maison",
     "nombre_pieces": "4",
     "adresse": "11 FLIN DES OLIVIERS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "26/05/2025",
+    "valeur_fonciere": 370000.0,
+    "surface_bati": 154.0,
+    "prix_m2": 2403.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "15 HENRI VIDAL",
     "nature_mutation": "Vente"
   },
   {
@@ -7524,6 +8088,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "26/03/2025",
+    "valeur_fonciere": 216300.0,
+    "surface_bati": 103.0,
+    "prix_m2": 2100.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "44 DES BOUTREAUX",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "26/03/2025",
@@ -7557,6 +8133,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "32 DE STRASBOURG",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "26/02/2025",
+    "valeur_fonciere": 177800.0,
+    "surface_bati": 82.0,
+    "prix_m2": 2168.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "55 DE LA LIBERTE",
     "nature_mutation": "Vente"
   },
   {
@@ -7617,6 +8205,18 @@
     "type_local": "Maison",
     "nombre_pieces": "2",
     "adresse": "17 DU CHEMIN VERT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "26/02/2025",
+    "valeur_fonciere": 240000.0,
+    "surface_bati": 70.0,
+    "prix_m2": 3429.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "5 DE LORRAINE",
     "nature_mutation": "Vente"
   },
   {
@@ -8592,18 +9192,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "25/04/2025",
-    "valeur_fonciere": 195000.0,
-    "surface_bati": 90.0,
-    "prix_m2": 2167.0,
-    "type_local": "Maison",
-    "nombre_pieces": "4",
-    "adresse": "45 DE BACCHUS",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "25/04/2025",
@@ -9144,18 +9732,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "24/10/2025",
-    "valeur_fonciere": 890000.0,
-    "surface_bati": 130.0,
-    "prix_m2": 6846.0,
-    "type_local": "Maison",
-    "nombre_pieces": "5",
-    "adresse": "105 HENRI MARTIN",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "24/10/2025",
@@ -9225,6 +9801,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "124 EMILE ZOLA",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "24/09/2025",
+    "valeur_fonciere": 120000.0,
+    "surface_bati": 72.0,
+    "prix_m2": 1667.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "5 CARNOT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "24/09/2025",
+    "valeur_fonciere": 120000.0,
+    "surface_bati": 70.0,
+    "prix_m2": 1714.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "9 CARNOT",
     "nature_mutation": "Vente"
   },
   {
@@ -9540,6 +10140,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "24/06/2025",
+    "valeur_fonciere": 190000.0,
+    "surface_bati": 82.0,
+    "prix_m2": 2317.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "1 HENRI BECQUEREL",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "24/06/2025",
@@ -9780,6 +10392,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "24/04/2025",
+    "valeur_fonciere": 286250.0,
+    "surface_bati": 66.0,
+    "prix_m2": 4337.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "36 GUY MOCQUET",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "24/04/2025",
@@ -9801,6 +10425,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "212 DE LAON",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "24/04/2025",
+    "valeur_fonciere": 241600.0,
+    "surface_bati": 70.0,
+    "prix_m2": 3451.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "14 DE LA GRAVELLE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "24/04/2025",
+    "valeur_fonciere": 241600.0,
+    "surface_bati": 70.0,
+    "prix_m2": 3451.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "14 DE LA GRAVELLE",
     "nature_mutation": "Vente"
   },
   {
@@ -10068,6 +10716,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "24/02/2025",
+    "valeur_fonciere": 189075.0,
+    "surface_bati": 78.0,
+    "prix_m2": 2424.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "55 ALBERT COLLET",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "24/02/2025",
@@ -10101,6 +10761,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "46 DE VERDUN",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "24/02/2025",
+    "valeur_fonciere": 174354.14,
+    "surface_bati": 61.0,
+    "prix_m2": 2858.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "23 GABRIEL PERI",
     "nature_mutation": "Vente"
   },
   {
@@ -10560,6 +11232,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "23/09/2025",
+    "valeur_fonciere": 417000.0,
+    "surface_bati": 117.0,
+    "prix_m2": 3564.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "1 DE LA MOUFLE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "23/07/2025",
@@ -10680,6 +11364,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "23/07/2025",
+    "valeur_fonciere": 554000.0,
+    "surface_bati": 175.0,
+    "prix_m2": 3166.0,
+    "type_local": "Maison",
+    "nombre_pieces": "8",
+    "adresse": "12 DE LA PETITE MONTAGNE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "23/07/2025",
@@ -10725,6 +11421,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "245 JEAN JAURES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "23/06/2025",
+    "valeur_fonciere": 271000.0,
+    "surface_bati": 85.0,
+    "prix_m2": 3188.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "23 GABRIEL PERI",
     "nature_mutation": "Vente"
   },
   {
@@ -11280,6 +11988,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "23/04/2025",
+    "valeur_fonciere": 130800.0,
+    "surface_bati": 103.0,
+    "prix_m2": 1270.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "8 LOUISE DE BETTIGNIES",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "23/04/2025",
@@ -11397,6 +12117,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "52 JULES LAURENT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "22/12/2025",
+    "valeur_fonciere": 194000.0,
+    "surface_bati": 91.0,
+    "prix_m2": 2132.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "22 JEAN ROSTAND",
     "nature_mutation": "Vente"
   },
   {
@@ -11781,6 +12513,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "19 MARTIN PELLER",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "22/09/2025",
+    "valeur_fonciere": 245000.0,
+    "surface_bati": 115.0,
+    "prix_m2": 2130.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "10 DES CERISIERS",
     "nature_mutation": "Vente"
   },
   {
@@ -12612,6 +13356,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "21/10/2025",
+    "valeur_fonciere": 252000.0,
+    "surface_bati": 74.0,
+    "prix_m2": 3405.0,
+    "type_local": "Maison",
+    "nombre_pieces": "2",
+    "adresse": "26 GUY MOCQUET",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "21/10/2025",
@@ -12969,6 +13725,18 @@
     "type_local": "Maison",
     "nombre_pieces": "8",
     "adresse": "15 16E ET 22E DRAGONS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "21/07/2025",
+    "valeur_fonciere": 139000.0,
+    "surface_bati": 64.0,
+    "prix_m2": 2172.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "3 ALEXANDRE DUMAS",
     "nature_mutation": "Vente"
   },
   {
@@ -13488,6 +14256,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "21/01/2025",
+    "valeur_fonciere": 210000.0,
+    "surface_bati": 69.0,
+    "prix_m2": 3043.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "34 MARIN LA MESLEE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "20/11/2025",
@@ -13776,6 +14556,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "20/06/2025",
+    "valeur_fonciere": 650000.0,
+    "surface_bati": 250.0,
+    "prix_m2": 2600.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "1 DES LACS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "20/06/2025",
@@ -13809,18 +14601,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "134 DES CAPUCINS",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Muizon",
-    "code_insee": "51392",
-    "date_mutation": "20/06/2025",
-    "valeur_fonciere": 266460.0,
-    "surface_bati": 145.0,
-    "prix_m2": 1838.0,
-    "type_local": "Maison",
-    "nombre_pieces": "7",
-    "adresse": "3 DES CHARMIERES",
     "nature_mutation": "Vente"
   },
   {
@@ -14148,6 +14928,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "20/02/2025",
+    "valeur_fonciere": 220000.0,
+    "surface_bati": 108.0,
+    "prix_m2": 2037.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "2 PAUL GAUGUIN",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "20/02/2025",
@@ -14181,18 +14973,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "46 DE VERDUN",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "20/01/2025",
-    "valeur_fonciere": 304000.0,
-    "surface_bati": 98.0,
-    "prix_m2": 3102.0,
-    "type_local": "Maison",
-    "nombre_pieces": "7",
-    "adresse": "21 DE L ABBAYE",
     "nature_mutation": "Vente"
   },
   {
@@ -14277,18 +15057,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "9",
     "adresse": "47 DE CHATIVESLE",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Muizon",
-    "code_insee": "51392",
-    "date_mutation": "19/12/2025",
-    "valeur_fonciere": 390000.0,
-    "surface_bati": 118.0,
-    "prix_m2": 3305.0,
-    "type_local": "Maison",
-    "nombre_pieces": "4",
-    "adresse": "21 DE MONTFLAMBERT",
     "nature_mutation": "Vente"
   },
   {
@@ -14796,6 +15564,18 @@
     "nature_mutation": "Vente en l'état futur d'achèvement"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "19/06/2025",
+    "valeur_fonciere": 204200.0,
+    "surface_bati": 74.0,
+    "prix_m2": 2759.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "18 DU MONT SAINT PIERRE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "19/06/2025",
@@ -15204,6 +15984,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "19/03/2025",
+    "valeur_fonciere": 161000.0,
+    "surface_bati": 54.0,
+    "prix_m2": 2981.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "3 JEAN BAPTISTE MOTTE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "19/03/2025",
@@ -15516,6 +16308,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "18/10/2025",
+    "valeur_fonciere": 347700.0,
+    "surface_bati": 102.0,
+    "prix_m2": 3409.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "11 ROGER SALENGRO",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "18/09/2025",
@@ -15684,15 +16488,39 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Saint-Thierry",
-    "code_insee": "51513",
+    "commune": "Gueux",
+    "code_insee": "51282",
     "date_mutation": "18/08/2025",
-    "valeur_fonciere": 183000.0,
-    "surface_bati": 128.0,
-    "prix_m2": 1430.0,
+    "valeur_fonciere": 600000.0,
+    "surface_bati": 137.0,
+    "prix_m2": 4380.0,
     "type_local": "Maison",
     "nombre_pieces": "4",
-    "adresse": "18 DE DROSNAY",
+    "adresse": "25 DE LA PETITE MONTAGNE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "18/08/2025",
+    "valeur_fonciere": 600000.0,
+    "surface_bati": 137.0,
+    "prix_m2": 4380.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "25 DE LA PETITE MONTAGNE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "18/08/2025",
+    "valeur_fonciere": 617000.0,
+    "surface_bati": 105.0,
+    "prix_m2": 5876.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "11 DU DOCTEUR ERNEST LABBEE",
     "nature_mutation": "Vente"
   },
   {
@@ -16440,6 +17268,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "17/12/2025",
+    "valeur_fonciere": 178200.0,
+    "surface_bati": 79.0,
+    "prix_m2": 2256.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "5",
+    "adresse": "86 ROGER SALENGRO",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "17/11/2025",
@@ -16509,6 +17349,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "11 GUILLAUME APOLLINAIRE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "17/11/2025",
+    "valeur_fonciere": 410000.0,
+    "surface_bati": 178.0,
+    "prix_m2": 2303.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "25 DE REIMS",
     "nature_mutation": "Vente"
   },
   {
@@ -16749,6 +17601,18 @@
     "type_local": "Maison",
     "nombre_pieces": "4",
     "adresse": "14 ANDRE AMPERE NEUV",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "17/09/2025",
+    "valeur_fonciere": 435950.0,
+    "surface_bati": 141.0,
+    "prix_m2": 3092.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "21 PAUL CAMPION",
     "nature_mutation": "Vente"
   },
   {
@@ -17112,6 +17976,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "17/06/2025",
+    "valeur_fonciere": 120880.0,
+    "surface_bati": 58.0,
+    "prix_m2": 2084.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "26 AUGUSTE HUMBERT",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "17/06/2025",
@@ -17340,6 +18216,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "17/04/2025",
+    "valeur_fonciere": 133550.0,
+    "surface_bati": 64.0,
+    "prix_m2": 2087.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "3 JEAN NICOLAS SUREAU",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "17/04/2025",
@@ -17481,6 +18369,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "10 EDOUARD DEKETELAERE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "17/02/2025",
+    "valeur_fonciere": 411450.0,
+    "surface_bati": 202.0,
+    "prix_m2": 2037.0,
+    "type_local": "Maison",
+    "nombre_pieces": "9",
+    "adresse": "7 DES BOYERS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "17/02/2025",
+    "valeur_fonciere": 220000.0,
+    "surface_bati": 70.0,
+    "prix_m2": 3143.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "2 DU PRESBYTERE",
     "nature_mutation": "Vente"
   },
   {
@@ -17928,6 +18840,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "16/09/2025",
+    "valeur_fonciere": 174600.0,
+    "surface_bati": 49.0,
+    "prix_m2": 3563.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "23 GABRIEL PERI",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "16/07/2025",
@@ -18228,6 +19152,18 @@
     "nature_mutation": "Vente en l'état futur d'achèvement"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "16/06/2025",
+    "valeur_fonciere": 131000.0,
+    "surface_bati": 54.0,
+    "prix_m2": 2426.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "12 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "16/05/2025",
@@ -18285,6 +19221,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "24 ANDRIEUX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "16/04/2025",
+    "valeur_fonciere": 141000.0,
+    "surface_bati": 78.0,
+    "prix_m2": 1808.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "5",
+    "adresse": "5 JEAN BAPTISTE MOTTE",
     "nature_mutation": "Vente"
   },
   {
@@ -18501,6 +19449,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "5 ANQUETIL",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Saint-Thierry",
+    "code_insee": "51518",
+    "date_mutation": "16/01/2025",
+    "valeur_fonciere": 277500.0,
+    "surface_bati": 126.0,
+    "prix_m2": 2202.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "19 DU GENERAL LECLERC",
     "nature_mutation": "Vente"
   },
   {
@@ -19260,6 +20220,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "15/05/2025",
+    "valeur_fonciere": 459000.0,
+    "surface_bati": 150.0,
+    "prix_m2": 3060.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "20 DE LA SAULE COQUETTE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "15/05/2025",
@@ -19944,6 +20916,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "14/05/2025",
+    "valeur_fonciere": 708900.0,
+    "surface_bati": 197.0,
+    "prix_m2": 3598.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "11 DES TERRES LES VIVANTES",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "14/05/2025",
@@ -20037,18 +21021,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "11 LESAGE",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "14/04/2025",
-    "valeur_fonciere": 450000.0,
-    "surface_bati": 92.0,
-    "prix_m2": 4891.0,
-    "type_local": "Maison",
-    "nombre_pieces": "5",
-    "adresse": "3 DE LA REPUBLIQUE",
     "nature_mutation": "Vente"
   },
   {
@@ -20496,18 +21468,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "13/10/2025",
-    "valeur_fonciere": 500000.0,
-    "surface_bati": 120.0,
-    "prix_m2": 4167.0,
-    "type_local": "Maison",
-    "nombre_pieces": "6",
-    "adresse": "11 DE LA PORTE D EN BAS",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "13/10/2025",
@@ -20541,6 +21501,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "45 HOUZEAU MUIRON",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "13/10/2025",
+    "valeur_fonciere": 155000.0,
+    "surface_bati": 105.0,
+    "prix_m2": 1476.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "15 JOSEPH CUGNOT",
     "nature_mutation": "Vente"
   },
   {
@@ -20868,6 +21840,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "13/03/2025",
+    "valeur_fonciere": 270000.0,
+    "surface_bati": 87.0,
+    "prix_m2": 3103.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "13 DE LA HAUTE BORNE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "13/03/2025",
@@ -21105,6 +22089,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "27 DE LA GOULETTE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "13/02/2025",
+    "valeur_fonciere": 388000.0,
+    "surface_bati": 112.0,
+    "prix_m2": 3464.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "7 MARC ALLEGRET",
     "nature_mutation": "Vente"
   },
   {
@@ -21384,6 +22380,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "12/09/2025",
+    "valeur_fonciere": 156025.0,
+    "surface_bati": 63.0,
+    "prix_m2": 2477.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "29 DIDEROT",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "12/09/2025",
@@ -21561,6 +22569,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "31 NICOLAS HENRIOT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "12/08/2025",
+    "valeur_fonciere": 195000.0,
+    "surface_bati": 114.0,
+    "prix_m2": 1711.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "2 DE LORRAINE",
     "nature_mutation": "Vente"
   },
   {
@@ -22056,18 +23076,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Saint-Thierry",
-    "code_insee": "51513",
-    "date_mutation": "11/09/2025",
-    "valeur_fonciere": 148200.0,
-    "surface_bati": 96.0,
-    "prix_m2": 1544.0,
-    "type_local": "Maison",
-    "nombre_pieces": "4",
-    "adresse": "14 DE LA FORMERIE",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "11/09/2025",
@@ -22173,6 +23181,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "11 DE TINQUEUX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "11/09/2025",
+    "valeur_fonciere": 118400.0,
+    "surface_bati": 98.0,
+    "prix_m2": 1208.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "20 DES VIGNES",
     "nature_mutation": "Vente"
   },
   {
@@ -22461,6 +23481,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "17 PIERRE LAPLACE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "11/06/2025",
+    "valeur_fonciere": 193700.0,
+    "surface_bati": 114.0,
+    "prix_m2": 1699.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "5",
+    "adresse": "3 GRANDE RUE",
     "nature_mutation": "Vente"
   },
   {
@@ -22968,6 +24000,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "11/03/2025",
+    "valeur_fonciere": 219000.0,
+    "surface_bati": 68.0,
+    "prix_m2": 3221.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "3 LAMARTINE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "11/03/2025",
@@ -23076,6 +24120,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/12/2025",
+    "valeur_fonciere": 245000.0,
+    "surface_bati": 110.0,
+    "prix_m2": 2227.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "64 BONAPARTE PROL",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/12/2025",
@@ -23133,6 +24189,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "33 LANDOUZY",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/12/2025",
+    "valeur_fonciere": 268100.0,
+    "surface_bati": 120.0,
+    "prix_m2": 2234.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "3 DE SEVIGNE",
     "nature_mutation": "Vente"
   },
   {
@@ -23472,6 +24540,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/09/2025",
+    "valeur_fonciere": 258000.0,
+    "surface_bati": 135.0,
+    "prix_m2": 1911.0,
+    "type_local": "Maison",
+    "nombre_pieces": "8",
+    "adresse": "50 DES BOUTREAUX",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/09/2025",
@@ -23577,6 +24657,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "15 DE L UNION FONCIERE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/09/2025",
+    "valeur_fonciere": 67000.0,
+    "surface_bati": 32.0,
+    "prix_m2": 2094.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "1",
+    "adresse": "10 ANATOLE FRANCE",
     "nature_mutation": "Vente"
   },
   {
@@ -23868,6 +24960,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51183",
+    "date_mutation": "10/07/2025",
+    "valeur_fonciere": 389620.0,
+    "surface_bati": 188.0,
+    "prix_m2": 2072.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "21 PASTEUR",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/07/2025",
@@ -23988,6 +25092,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/06/2025",
+    "valeur_fonciere": 235000.0,
+    "surface_bati": 76.0,
+    "prix_m2": 3092.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "15 DES TAMARIS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/04/2025",
@@ -24021,18 +25137,6 @@
     "type_local": "Maison",
     "nombre_pieces": "5",
     "adresse": "3 MARC WAWRZYNIAK",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "10/04/2025",
-    "valeur_fonciere": 233370.0,
-    "surface_bati": 74.0,
-    "prix_m2": 3154.0,
-    "type_local": "Maison",
-    "nombre_pieces": "2",
-    "adresse": "73 DE LA HUBARDE",
     "nature_mutation": "Vente"
   },
   {
@@ -24132,6 +25236,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/04/2025",
+    "valeur_fonciere": 104500.0,
+    "surface_bati": 87.0,
+    "prix_m2": 1201.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "36 HELENE BOUCHER",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/04/2025",
@@ -24180,6 +25296,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "10/03/2025",
+    "valeur_fonciere": 225000.0,
+    "surface_bati": 88.0,
+    "prix_m2": 2557.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "4 DES BOYERS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/03/2025",
@@ -24201,6 +25329,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "24 DE LA MAISON BLANCHE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/03/2025",
+    "valeur_fonciere": 137000.0,
+    "surface_bati": 64.0,
+    "prix_m2": 2141.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "5 JEAN NICOLAS SUREAU",
     "nature_mutation": "Vente"
   },
   {
@@ -24309,6 +25449,18 @@
     "type_local": "Maison",
     "nombre_pieces": "6",
     "adresse": "30 PEPERSACK",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "10/02/2025",
+    "valeur_fonciere": 194000.0,
+    "surface_bati": 91.0,
+    "prix_m2": 2132.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "9 GRANDE RUE",
     "nature_mutation": "Vente"
   },
   {
@@ -24540,6 +25692,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "09/12/2025",
+    "valeur_fonciere": 168000.0,
+    "surface_bati": 77.0,
+    "prix_m2": 2182.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "3 LAMARTINE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "09/12/2025",
@@ -24612,6 +25776,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "09/10/2025",
+    "valeur_fonciere": 357000.0,
+    "surface_bati": 109.0,
+    "prix_m2": 3275.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "19 DES TERRES BRULEES",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Hermonville",
     "code_insee": "51291",
     "date_mutation": "09/10/2025",
@@ -24621,6 +25797,18 @@
     "type_local": "Maison",
     "nombre_pieces": "2",
     "adresse": "47 DE FISMES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "09/10/2025",
+    "valeur_fonciere": 419000.0,
+    "surface_bati": 162.0,
+    "prix_m2": 2586.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "26 DANIELE CASANOVA",
     "nature_mutation": "Vente"
   },
   {
@@ -24900,6 +26088,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "09/08/2025",
+    "valeur_fonciere": 152000.0,
+    "surface_bati": 77.0,
+    "prix_m2": 1974.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "12 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "09/07/2025",
@@ -24957,6 +26157,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "29 FRANCOIS DOR",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "09/07/2025",
+    "valeur_fonciere": 418000.0,
+    "surface_bati": 131.0,
+    "prix_m2": 3191.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "24 PIERRE DESTOUCHES",
     "nature_mutation": "Vente"
   },
   {
@@ -25029,6 +26241,18 @@
     "type_local": "Maison",
     "nombre_pieces": "6",
     "adresse": "8 DE LA POMPELLE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "09/07/2025",
+    "valeur_fonciere": 238100.0,
+    "surface_bati": 90.0,
+    "prix_m2": 2646.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "3 DE CHAMPIGNY",
     "nature_mutation": "Vente"
   },
   {
@@ -25212,6 +26436,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "09/04/2025",
+    "valeur_fonciere": 130000.0,
+    "surface_bati": 48.0,
+    "prix_m2": 2708.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "6 JEAN JAURES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "09/01/2025",
+    "valeur_fonciere": 166750.0,
+    "surface_bati": 59.0,
+    "prix_m2": 2826.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "2",
+    "adresse": "41 GABRIEL PERI",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "09/01/2025",
@@ -25356,6 +26604,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "08/12/2025",
+    "valeur_fonciere": 90000.0,
+    "surface_bati": 63.0,
+    "prix_m2": 1429.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "12 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "08/12/2025",
@@ -25437,6 +26697,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "68 DU MONT D ARENE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "08/10/2025",
+    "valeur_fonciere": 357880.0,
+    "surface_bati": 117.0,
+    "prix_m2": 3059.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "15 MICHEL ANGE",
     "nature_mutation": "Vente"
   },
   {
@@ -25545,6 +26817,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "89 DE LAON",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "08/09/2025",
+    "valeur_fonciere": 320000.0,
+    "surface_bati": 97.0,
+    "prix_m2": 3299.0,
+    "type_local": "Maison",
+    "nombre_pieces": "2",
+    "adresse": "15 ROGER SALENGRO",
     "nature_mutation": "Vente"
   },
   {
@@ -25689,6 +26973,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "5",
     "adresse": "13 DESBUREAUX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "08/08/2025",
+    "valeur_fonciere": 94873.0,
+    "surface_bati": 55.0,
+    "prix_m2": 1725.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "5 DE LA PAIX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "08/08/2025",
+    "valeur_fonciere": 166000.0,
+    "surface_bati": 80.0,
+    "prix_m2": 2075.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "30 P VAILLANT COUTURIER",
     "nature_mutation": "Vente"
   },
   {
@@ -25872,6 +27180,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "08/04/2025",
+    "valeur_fonciere": 116000.0,
+    "surface_bati": 58.0,
+    "prix_m2": 2000.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "30 P VAILLANT COUTURIER",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "08/04/2025",
@@ -25977,6 +27297,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "1 ARLETTE REMIA",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "08/01/2025",
+    "valeur_fonciere": 372250.0,
+    "surface_bati": 241.0,
+    "prix_m2": 1545.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "15 ROGER SALENGRO",
     "nature_mutation": "Vente"
   },
   {
@@ -26928,18 +28260,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Gueux",
-    "code_insee": "51287",
-    "date_mutation": "07/03/2025",
-    "valeur_fonciere": 195500.0,
-    "surface_bati": 104.0,
-    "prix_m2": 1880.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "1 DE LA FONTAINE",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "07/03/2025",
@@ -27156,6 +28476,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "07/02/2025",
+    "valeur_fonciere": 285000.0,
+    "surface_bati": 88.0,
+    "prix_m2": 3239.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "3 ROGER NOISIEZ",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "07/02/2025",
+    "valeur_fonciere": 190000.0,
+    "surface_bati": 74.0,
+    "prix_m2": 2568.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "23 GABRIEL PERI",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "07/02/2025",
@@ -27216,6 +28560,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "07/02/2025",
+    "valeur_fonciere": 120000.0,
+    "surface_bati": 67.0,
+    "prix_m2": 1791.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "28 ROGER SALENGRO",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "07/02/2025",
@@ -27225,6 +28581,30 @@
     "type_local": "Maison",
     "nombre_pieces": "5",
     "adresse": "7 DOCTEUR ROGER FESNEAU",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "07/01/2025",
+    "valeur_fonciere": 257000.0,
+    "surface_bati": 95.0,
+    "prix_m2": 2705.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "9 DES PEUPLIERS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "07/01/2025",
+    "valeur_fonciere": 195000.0,
+    "surface_bati": 116.0,
+    "prix_m2": 1681.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "35 SARAH BERNHARDT",
     "nature_mutation": "Vente"
   },
   {
@@ -27696,6 +29076,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "06/06/2025",
+    "valeur_fonciere": 224000.0,
+    "surface_bati": 72.0,
+    "prix_m2": 3111.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "11 ROGER SALENGRO",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "06/06/2025",
@@ -27717,6 +29109,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "36 DES COUTURES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "06/05/2025",
+    "valeur_fonciere": 149000.0,
+    "surface_bati": 63.0,
+    "prix_m2": 2365.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "12 GRANDE RUE",
     "nature_mutation": "Vente"
   },
   {
@@ -27900,6 +29304,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "06/02/2025",
+    "valeur_fonciere": 215500.0,
+    "surface_bati": 81.0,
+    "prix_m2": 2660.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "10 BLAISE PASCAL",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "06/02/2025",
@@ -28029,18 +29445,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "14 RICHARD WAGNER",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Courcy",
-    "code_insee": "51169",
-    "date_mutation": "05/12/2025",
-    "valeur_fonciere": 65000.0,
-    "surface_bati": 71.0,
-    "prix_m2": 915.0,
-    "type_local": "Maison",
-    "nombre_pieces": "5",
-    "adresse": "6 DE LA CRUCHIERE",
     "nature_mutation": "Vente"
   },
   {
@@ -28524,18 +29928,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Saint-Thierry",
-    "code_insee": "51513",
-    "date_mutation": "05/06/2025",
-    "valeur_fonciere": 127500.0,
-    "surface_bati": 101.0,
-    "prix_m2": 1262.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "36 DES LANDRES",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "05/06/2025",
@@ -28656,15 +30048,27 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Gueux",
-    "code_insee": "51287",
+    "commune": "Tinqueux",
+    "code_insee": "51573",
     "date_mutation": "05/03/2025",
-    "valeur_fonciere": 170000.0,
-    "surface_bati": 100.0,
-    "prix_m2": 1700.0,
+    "valeur_fonciere": 189000.0,
+    "surface_bati": 97.0,
+    "prix_m2": 1948.0,
     "type_local": "Maison",
-    "nombre_pieces": "4",
-    "adresse": "15 DOM PERIGNON",
+    "nombre_pieces": "6",
+    "adresse": "47 DE LA LIBERTE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "05/03/2025",
+    "valeur_fonciere": 280000.0,
+    "surface_bati": 137.0,
+    "prix_m2": 2044.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "30 DES BOUTREAUX",
     "nature_mutation": "Vente"
   },
   {
@@ -29232,6 +30636,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "04/08/2025",
+    "valeur_fonciere": 230000.0,
+    "surface_bati": 124.0,
+    "prix_m2": 1855.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "74 BONAPARTE PROL",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "04/08/2025",
@@ -29532,6 +30948,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "04/06/2025",
+    "valeur_fonciere": 107250.0,
+    "surface_bati": 100.0,
+    "prix_m2": 1072.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "9012 DES MARAIS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "04/06/2025",
+    "valeur_fonciere": 107250.0,
+    "surface_bati": 100.0,
+    "prix_m2": 1072.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "9012 DES MARAIS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "04/06/2025",
@@ -29577,6 +31017,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "13 ALPHONSE DAUDET",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "04/04/2025",
+    "valeur_fonciere": 270000.0,
+    "surface_bati": 127.0,
+    "prix_m2": 2126.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "7 DU VAL D OR",
     "nature_mutation": "Vente"
   },
   {
@@ -29772,18 +31224,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Muizon",
-    "code_insee": "51392",
-    "date_mutation": "04/02/2025",
-    "valeur_fonciere": 220000.0,
-    "surface_bati": 98.0,
-    "prix_m2": 2245.0,
-    "type_local": "Maison",
-    "nombre_pieces": "5",
-    "adresse": "21 D'AVENAY",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "04/02/2025",
@@ -29805,6 +31245,18 @@
     "type_local": "Maison",
     "nombre_pieces": "6",
     "adresse": "34 DU BEL AIR",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "04/02/2025",
+    "valeur_fonciere": 267500.0,
+    "surface_bati": 105.0,
+    "prix_m2": 2548.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "47 DU MONT SAINT PIERRE",
     "nature_mutation": "Vente"
   },
   {
@@ -30000,6 +31452,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "03/11/2025",
+    "valeur_fonciere": 300400.0,
+    "surface_bati": 89.0,
+    "prix_m2": 3375.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "33 DES TAMARIS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "03/11/2025",
@@ -30129,6 +31593,30 @@
     "type_local": "Maison",
     "nombre_pieces": "3",
     "adresse": "33 CHARLIER",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "03/10/2025",
+    "valeur_fonciere": 105000.0,
+    "surface_bati": 64.0,
+    "prix_m2": 1641.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "4",
+    "adresse": "7 JEAN NICOLAS SUREAU",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "03/10/2025",
+    "valeur_fonciere": 105000.0,
+    "surface_bati": 54.0,
+    "prix_m2": 1944.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "7 JEAN NICOLAS SUREAU",
     "nature_mutation": "Vente"
   },
   {
@@ -30384,6 +31872,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "03/07/2025",
+    "valeur_fonciere": 360000.0,
+    "surface_bati": 126.0,
+    "prix_m2": 2857.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "17 DES OISEAUX",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "03/07/2025",
@@ -30540,6 +32040,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Gueux",
+    "code_insee": "51282",
+    "date_mutation": "03/06/2025",
+    "valeur_fonciere": 430420.0,
+    "surface_bati": 155.0,
+    "prix_m2": 2777.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "27 D IGNY",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "03/06/2025",
@@ -30564,6 +32076,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "03/04/2025",
+    "valeur_fonciere": 268004.94,
+    "surface_bati": 112.0,
+    "prix_m2": 2393.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "6 JEAN ROSTAND",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "03/04/2025",
@@ -30585,6 +32109,18 @@
     "type_local": "Maison",
     "nombre_pieces": "7",
     "adresse": "78 LIBERGIER",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "03/04/2025",
+    "valeur_fonciere": 157550.0,
+    "surface_bati": 78.0,
+    "prix_m2": 2020.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "5",
+    "adresse": "1 JEAN NICOLAS SUREAU",
     "nature_mutation": "Vente"
   },
   {
@@ -31404,6 +32940,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Muizon",
+    "code_insee": "51391",
+    "date_mutation": "02/06/2025",
+    "valeur_fonciere": 228000.0,
+    "surface_bati": 88.0,
+    "prix_m2": 2591.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "6 DE REIMS",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "02/06/2025",
@@ -31485,6 +33033,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "144 DES CAPUCINS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "02/06/2025",
+    "valeur_fonciere": 95534.0,
+    "surface_bati": 57.0,
+    "prix_m2": 1676.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "5 DE LA PAIX",
     "nature_mutation": "Vente"
   },
   {
@@ -31704,6 +33264,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "01/12/2025",
+    "valeur_fonciere": 220760.0,
+    "surface_bati": 76.0,
+    "prix_m2": 2905.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "18 HENRI BARBUSSE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "01/12/2025",
@@ -31809,6 +33381,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "5",
     "adresse": "11 ALEXANDRE DE SERBIE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "01/12/2025",
+    "valeur_fonciere": 136000.0,
+    "surface_bati": 54.0,
+    "prix_m2": 2519.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "13 JEAN BAPTISTE MOTTE",
     "nature_mutation": "Vente"
   },
   {
@@ -32076,6 +33660,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "01/09/2025",
+    "valeur_fonciere": 241000.0,
+    "surface_bati": 60.0,
+    "prix_m2": 4017.0,
+    "type_local": "Appartement",
+    "nombre_pieces": "3",
+    "adresse": "2 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "01/09/2025",
@@ -32109,6 +33705,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "1",
     "adresse": "1 DOCTEUR BIENFAIT",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Saint-Thierry",
+    "code_insee": "51518",
+    "date_mutation": "01/08/2025",
+    "valeur_fonciere": 597050.0,
+    "surface_bati": 149.0,
+    "prix_m2": 4007.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "15 DES WARDES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Saint-Thierry",
+    "code_insee": "51518",
+    "date_mutation": "01/08/2025",
+    "valeur_fonciere": 597050.0,
+    "surface_bati": 149.0,
+    "prix_m2": 4007.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "15 DES WARDES",
     "nature_mutation": "Vente"
   },
   {
@@ -32445,6 +34065,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "16 COMMANDANT ARNAUD",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "date_mutation": "01/04/2025",
+    "valeur_fonciere": 455000.0,
+    "surface_bati": 164.0,
+    "prix_m2": 2774.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "4 LINO VENTURA",
     "nature_mutation": "Vente"
   },
   {
