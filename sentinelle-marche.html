@@ -432,7 +432,7 @@ function chargerStats() {
   document.getElementById("kpi-total-sub").textContent =
     `${maisons.length.toLocaleString("fr-FR")} maisons · ${apparts.length.toLocaleString("fr-FR")} appartements`;
   document.getElementById("kpi-communes").textContent = [...new Set(DVF_DATA.map(t => t.commune))].length;
-  document.getElementById("kpi-communes-sub").textContent = "Hors Fismes";
+  document.getElementById("kpi-communes-sub").textContent = "Zone Active";
 
   const reimsAll = DVF_DATA.filter(t => t.commune === "Reims");
   const prix = reimsAll.map(t => t.prix_m2).filter(p => p > 500);
