@@ -9,11 +9,14 @@ import io
 # ============================================
 
 COMMUNES = {
-    "Reims":    "51454",
-    "Tinqueux": "51572",
-    "Gueux":    "51287",
-    "Muizon":   "51392",
-    "Fismes":   "51249",
+    "Reims":         "51454",
+    "Tinqueux":      "51572",
+    "Gueux":         "51287",
+    "Muizon":        "51392",
+    "Hermonville":   "51291",
+    "Courcy":        "51169",
+    "Saint-Thierry": "51513",
+    "Pouillon":      "51444",
 }
 
 OUTPUT_DIR = "donnees"
