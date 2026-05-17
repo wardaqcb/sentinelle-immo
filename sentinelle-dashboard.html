@@ -13,13 +13,11 @@
     --vacant: #a78bfa; --vacant-bg: rgba(167,139,250,0.12);
     --succession: #f87171; --succession-bg: rgba(248,113,113,0.12);
     --enchere: #fbbf24; --enchere-bg: rgba(251,191,36,0.12);
-    --judiciaire: #f97316; --judiciaire-bg: rgba(249,115,22,0.12);
     --marche: #34d399; --marche-bg: rgba(52,211,153,0.12);
     --blue: #60a5fa; --sidebar: 260px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: #fff; display: flex; min-height: 100vh; overflow-x: hidden; }
 
-  /* SIDEBAR */
   .sidebar { width: var(--sidebar); flex-shrink: 0; background: var(--navy3); border-right: 1px solid rgba(201,169,110,0.1); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; }
   .sidebar-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(201,169,110,0.1); }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
@@ -29,7 +27,6 @@
   .nav-item:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
   .nav-item.active { background: var(--gold3); color: var(--gold2); }
   .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
-  .nav-badge { margin-left: auto; background: var(--succession); color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
   .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
   .sidebar-filters { padding: 12px 16px; flex: 1; overflow-y: auto; }
   .filter-title { font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; margin-top: 16px; }
@@ -43,44 +40,37 @@
   .user-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
   .user-plan { font-size: 0.7rem; color: var(--gold); }
 
-  /* MAIN */
   .main { margin-left: var(--sidebar); flex: 1; display: flex; flex-direction: column; }
   .topbar { background: var(--navy3); border-bottom: 1px solid rgba(201,169,110,0.1); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
   .topbar-left h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
   .topbar-left p { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
-  .topbar-right { display: flex; align-items: center; gap: 12px; }
   .pulse-live { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--marche); }
   .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--marche); animation: pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
   .content { padding: 28px 32px; flex: 1; }
 
-  /* STATS MINI */
   .stats-mini { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
   .stat-mini { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
   .stat-mini-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; }
   .stat-mini-label { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
 
-  /* SECTIONS PRIORITAIRES */
   .priority-section { margin-bottom: 32px; }
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; }
   .section-badge { font-size: 0.68rem; padding: 3px 10px; border-radius: 10px; font-weight: 600; text-transform: uppercase; }
   .badge-exclusif { background: rgba(167,139,250,0.15); color: var(--vacant); }
-  .badge-urgent { background: rgba(248,113,113,0.15); color: var(--succession); }
+  .badge-live { background: rgba(251,191,36,0.15); color: var(--enchere); }
 
-  /* SIGNAL CARDS */
   .signal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
   .signal-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
   .signal-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
   .signal-card.vacant::before { background: var(--vacant); }
-  .signal-card.succession::before { background: var(--succession); }
   .signal-card.bodacc::before { background: var(--enchere); }
   .signal-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
   .signal-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
   .signal-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; padding: 3px 9px; border-radius: 4px; }
   .type-vacant { background: var(--vacant-bg); color: var(--vacant); }
-  .type-succession { background: var(--succession-bg); color: var(--succession); }
   .type-bodacc { background: var(--enchere-bg); color: var(--enchere); }
   .signal-new { font-size: 0.65rem; background: var(--gold3); color: var(--gold2); padding: 3px 8px; border-radius: 4px; font-weight: 600; }
   .signal-title { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.92); margin-bottom: 6px; line-height: 1.3; }
@@ -95,32 +85,29 @@
   .signal-btn-primary:hover { background: var(--gold2); }
   .signal-btn-secondary { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1); }
 
-  /* FIL D'ALERTES */
   .alert-feed { display: flex; flex-direction: column; gap: 8px; }
   .alert-item { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px 20px; cursor: pointer; transition: all 0.15s; display: flex; gap: 14px; align-items: flex-start; position: relative; overflow: hidden; }
-  .alert-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
-  .alert-item.bodacc::before { background: var(--enchere); }
+  .alert-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--enchere); }
   .alert-item:hover { background: rgba(255,255,255,0.05); transform: translateX(2px); }
   .alert-icon { flex-shrink: 0; width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; background: var(--enchere-bg); }
   .alert-content { flex: 1; min-width: 0; }
   .alert-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
-  .alert-type-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding: 2px 7px; border-radius: 3px; background: var(--enchere-bg); color: var(--enchere); }
+  .alert-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding: 2px 7px; border-radius: 3px; background: var(--enchere-bg); color: var(--enchere); }
   .alert-title { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .alert-detail { font-size: 0.75rem; color: rgba(255,255,255,0.35); line-height: 1.4; }
   .alert-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-  .alert-time { font-size: 0.68rem; color: rgba(255,255,255,0.2); }
+  .alert-date { font-size: 0.68rem; color: rgba(255,255,255,0.2); }
   .alert-status { font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; background: var(--gold3); color: var(--gold2); }
 
-  /* DETAIL PANEL */
   .detail-panel { position: fixed; top: 0; right: -480px; bottom: 0; width: 460px; background: var(--navy3); border-left: 1px solid rgba(201,169,110,0.15); z-index: 100; transition: right 0.3s ease; overflow-y: auto; display: flex; flex-direction: column; }
   .detail-panel.open { right: 0; }
   .detail-header { padding: 22px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
-  .detail-close { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .detail-close { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 1rem; }
   .detail-close:hover { background: rgba(255,255,255,0.1); color: white; }
   .detail-body { padding: 24px; flex: 1; }
   .detail-badge { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding: 4px 12px; border-radius: 4px; display: inline-block; margin-bottom: 14px; }
   .detail-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: white; line-height: 1.2; margin-bottom: 6px; }
-  .detail-commune-label { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-bottom: 22px; }
+  .detail-sub { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-bottom: 22px; }
   .detail-section-title { font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; margin-top: 18px; }
   .detail-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
   .detail-row:last-child { border-bottom: none; }
@@ -130,14 +117,13 @@
   .detail-actions { padding: 18px 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 10px; }
   .detail-btn { padding: 13px; border-radius: 8px; font-size: 0.88rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; text-align: center; }
   .detail-btn-primary { background: var(--gold); color: var(--navy); }
-  .detail-btn-primary:hover { background: var(--gold2); }
   .detail-btn-secondary { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1); }
 
   .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; }
   .overlay.show { display: block; }
   .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 28px 0; }
   .loading-msg { text-align: center; padding: 40px; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
-  .error-box { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); border-radius: 8px; padding: 14px 18px; color: var(--succession); font-size: 0.82rem; margin-bottom: 20px; }
+  .error-box { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); border-radius: 8px; padding: 14px 18px; color: var(--succession,#f87171); font-size: 0.82rem; margin-bottom: 20px; }
 </style>
 </head>
 <body>
@@ -149,7 +135,7 @@
   </div>
   <div style="padding: 8px 0;">
     <div class="sidebar-section">Navigation</div>
-    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes <span class="nav-badge" id="nav-badge">—</span></a>
+    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes</a>
     <a class="nav-item" href="sentinelle-marche.html"><span class="icon">📊</span> Marché local</a>
     <a class="nav-item" href="sentinelle-dossiers.html"><span class="icon">🗂️</span> Mes dossiers</a>
     <a class="nav-item" href="sentinelle-zones.html"><span class="icon">⚙️</span> Mes zones</a>
@@ -157,10 +143,11 @@
   <div class="sidebar-filters">
     <div class="filter-title">Filtrer par signal</div>
     <div class="filter-chip active" onclick="filterSignal('all',this)"><div class="filter-dot" style="background:var(--gold)"></div>Tous<span class="filter-count" id="fc-all">—</span></div>
-    <div class="filter-chip" onclick="filterSignal('succession',this)"><div class="filter-dot" style="background:var(--succession)"></div>Successions<span class="filter-count" id="fc-succession">—</span></div>
+    <div class="filter-chip" onclick="filterSignal('vacant',this)"><div class="filter-dot" style="background:var(--vacant)"></div>Biens vacants<span class="filter-count" id="fc-vacant">—</span></div>
     <div class="filter-chip" onclick="filterSignal('bodacc',this)"><div class="filter-dot" style="background:var(--enchere)"></div>BODACC<span class="filter-count" id="fc-bodacc">—</span></div>
     <div class="filter-title">Commune</div>
-    <div class="filter-chip active" onclick="filterCommune('all',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>Toutes<span class="filter-count" id="fc-commune-all">—</span></div>
+    <div class="filter-chip active" onclick="filterCommune('all',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>Toutes<span class="filter-count" id="fc-comm-all">—</span></div>
+    <div id="commune-filters"></div>
   </div>
   <div class="sidebar-user">
     <div class="avatar">JD</div>
@@ -177,46 +164,42 @@
       <h1>Alertes</h1>
       <p id="top-sub">Chargement des données...</p>
     </div>
-    <div class="topbar-right">
-      <div class="pulse-live"><div class="pulse-dot"></div>Données en temps réel</div>
-    </div>
+    <div class="pulse-live"><div class="pulse-dot"></div>Données réelles</div>
   </div>
 
   <div class="content">
     <div id="error-box" class="error-box" style="display:none"></div>
 
-    <!-- STATS MINI -->
     <div class="stats-mini">
-      <div class="stat-mini"><div class="stat-mini-num" id="s-deces" style="color:var(--succession)">—</div><div class="stat-mini-label">Décès 2026 · Zone</div></div>
+      <div class="stat-mini"><div class="stat-mini-num" id="s-vacant" style="color:var(--vacant)">—</div><div class="stat-mini-label">Biens vacants · Zone</div></div>
+      <div class="stat-mini"><div class="stat-mini-num" id="s-vacant2ans" style="color:var(--vacant)">—</div><div class="stat-mini-label">Vacants +2 ans · Reims</div></div>
       <div class="stat-mini"><div class="stat-mini-num" id="s-bodacc" style="color:var(--enchere)">—</div><div class="stat-mini-label">Annonces BODACC</div></div>
       <div class="stat-mini"><div class="stat-mini-num" id="s-dvf" style="color:var(--gold2)">—</div><div class="stat-mini-label">Transactions DVF 2025</div></div>
-      <div class="stat-mini"><div class="stat-mini-num" id="s-communes" style="color:var(--marche)">—</div><div class="stat-mini-label">Communes surveillées</div></div>
     </div>
 
-    <!-- SUCCESSIONS — données réelles INSEE décès -->
-    <div class="priority-section" id="section-succession">
+    <!-- BIENS VACANTS LOVAC -->
+    <div class="priority-section" id="section-vacant">
       <div class="section-header">
-        <div class="section-title">⚰️ Successions probables <span class="section-badge badge-urgent">Données réelles</span></div>
-        <span style="font-size:0.78rem;color:rgba(255,255,255,0.3)" id="deces-count">Chargement...</span>
+        <div class="section-title">🏚️ Biens vacants <span class="section-badge badge-exclusif">Exclusif · LOVAC</span></div>
+        <span style="font-size:0.78rem;color:rgba(255,255,255,0.3)" id="vacant-sub">Chargement...</span>
       </div>
-      <div class="signal-grid" id="deces-grid">
-        <div class="loading-msg">⏳ Chargement des décès INSEE...</div>
+      <div class="signal-grid" id="vacant-grid">
+        <div class="loading-msg">⏳ Chargement LOVAC...</div>
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- BODACC — données réelles -->
+    <!-- BODACC -->
     <div class="priority-section" id="section-bodacc">
       <div class="section-header">
-        <div class="section-title">⚖️ Annonces BODACC <span class="section-badge" style="background:rgba(251,191,36,0.15);color:var(--enchere)">Données réelles</span></div>
-        <span style="font-size:0.78rem;color:rgba(255,255,255,0.3)" id="bodacc-count">Chargement...</span>
+        <div class="section-title">⚖️ Annonces BODACC <span class="section-badge badge-live">Données réelles</span></div>
+        <span style="font-size:0.78rem;color:rgba(255,255,255,0.3)" id="bodacc-sub">Chargement...</span>
       </div>
       <div class="alert-feed" id="bodacc-feed">
         <div class="loading-msg">⏳ Chargement BODACC...</div>
       </div>
     </div>
-
   </div>
 </main>
 
@@ -234,7 +217,7 @@
 </div>
 
 <script>
-let DECES_DATA = [];
+let LOVAC_DATA = [];
 let BODACC_DATA = [];
 let currentFilter = 'all';
 let currentCommune = 'all';
@@ -243,46 +226,45 @@ async function chargerDonnees() {
   try {
     const [r1, r2, r3] = await Promise.all([
       fetch("donnees/rapport.json"),
-      fetch("donnees/deces.json"),
+      fetch("donnees/lovac.json"),
       fetch("donnees/bodacc.json"),
     ]);
-
     if (!r1.ok) throw new Error("Fichier rapport.json introuvable. Lance d'abord collecteur.py");
 
     const rapport = await r1.json();
-    DECES_DATA = r2.ok ? await r2.json() : [];
+    LOVAC_DATA = r2.ok ? await r2.json() : [];
     BODACC_DATA = r3.ok ? await r3.json() : [];
 
-    const dateCollecte = rapport.date_collecte || "—";
     document.getElementById("top-sub").textContent =
-      `Données collectées le ${dateCollecte} · ${DECES_DATA.length} décès · ${BODACC_DATA.length} annonces BODACC`;
+      `Données collectées le ${rapport.date_collecte} · ${LOVAC_DATA.length} communes LOVAC · ${BODACC_DATA.length} annonces BODACC`;
 
-    // Stats mini
-    document.getElementById("s-deces").textContent = DECES_DATA.length.toLocaleString("fr-FR");
-    document.getElementById("s-bodacc").textContent = BODACC_DATA.length.toLocaleString("fr-FR");
+    // Stats LOVAC
+    const totalVacants = LOVAC_DATA.reduce((sum, c) => sum + (parseInt(c.vacants_2025) || 0), 0);
+    const reimsData = LOVAC_DATA.find(c => c.commune === "Reims");
+    const vacants2ans = reimsData ? (parseInt(reimsData.vacants_plus_2ans_2025) || parseInt(reimsData.vacants_plus_2ans_2024) || 0) : 0;
+
+    document.getElementById("s-vacant").textContent = totalVacants.toLocaleString("fr-FR");
+    document.getElementById("s-vacant2ans").textContent = vacants2ans.toLocaleString("fr-FR");
+    document.getElementById("s-bodacc").textContent = BODACC_DATA.length;
     document.getElementById("s-dvf").textContent = (rapport.stats?.transactions_dvf || 0).toLocaleString("fr-FR");
-    document.getElementById("s-communes").textContent = (rapport.communes || []).length;
 
-    // Compteurs sidebar
-    document.getElementById("nav-badge").textContent = DECES_DATA.length + BODACC_DATA.length;
-    document.getElementById("fc-all").textContent = DECES_DATA.length + BODACC_DATA.length;
-    document.getElementById("fc-succession").textContent = DECES_DATA.length;
+    // Compteurs filtres
+    document.getElementById("fc-all").textContent = LOVAC_DATA.length + BODACC_DATA.length;
+    document.getElementById("fc-vacant").textContent = LOVAC_DATA.length;
     document.getElementById("fc-bodacc").textContent = BODACC_DATA.length;
-    document.getElementById("fc-commune-all").textContent = DECES_DATA.length + BODACC_DATA.length;
+    document.getElementById("fc-comm-all").textContent = LOVAC_DATA.length + BODACC_DATA.length;
 
-    // Filtres communes
-    const communes = [...new Set(DECES_DATA.map(d => d.commune))].sort();
-    const filtersDiv = document.querySelector(".sidebar-filters");
-    communes.forEach(c => {
-      const nb = DECES_DATA.filter(d => d.commune === c).length;
+    // Filtres communes depuis LOVAC
+    const commFilters = document.getElementById("commune-filters");
+    LOVAC_DATA.forEach(c => {
       const chip = document.createElement("div");
       chip.className = "filter-chip";
-      chip.innerHTML = `<div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>${c}<span class="filter-count">${nb}</span>`;
-      chip.onclick = function() { filterCommune(c, this); };
-      filtersDiv.appendChild(chip);
+      chip.innerHTML = `<div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>${c.commune}<span class="filter-count">${c.vacants_2025 || "s"}</span>`;
+      chip.onclick = function() { filterCommune(c.commune, this); };
+      commFilters.appendChild(chip);
     });
 
-    afficherDeces();
+    afficherVacants();
     afficherBodacc();
 
   } catch(err) {
@@ -292,148 +274,121 @@ async function chargerDonnees() {
   }
 }
 
-function afficherDeces() {
-  let data = [...DECES_DATA];
-  if (currentCommune !== 'all') data = data.filter(d => d.commune === currentCommune);
+function afficherVacants() {
+  let data = currentCommune === 'all' ? LOVAC_DATA : LOVAC_DATA.filter(c => c.commune === currentCommune);
+  document.getElementById("vacant-sub").textContent = `${data.length} communes · Source LOVAC 2025`;
 
-  document.getElementById("deces-count").textContent = `${data.length} décès sur la période`;
-
-  const grid = document.getElementById("deces-grid");
+  const grid = document.getElementById("vacant-grid");
   if (data.length === 0) {
-    grid.innerHTML = '<div class="loading-msg">Aucun décès trouvé pour ces critères</div>';
+    grid.innerHTML = '<div class="loading-msg">Aucune donnée LOVAC pour ces critères</div>';
     return;
   }
 
-  // Affiche les 6 plus récents en cards
-  grid.innerHTML = data.slice(0, 6).map((d, i) => {
-    const age = d.age_deces ? ` · ${d.age_deces} ans` : "";
-    const sexe = d.sexe === "M" ? "Homme" : d.sexe === "F" ? "Femme" : "—";
+  grid.innerHTML = data.map((c, i) => {
+    const nb = c.vacants_2025 === "s" ? "Confidentiel" : (c.vacants_2025 || "—");
+    const nb2ans = c.vacants_plus_2ans_2025 === "s" ? "Confidentiel" : (c.vacants_plus_2ans_2025 || "—");
+    const nb2024 = c.vacants_2024 === "s" ? "—" : (c.vacants_2024 || "—");
+    const hasData = c.vacants_2025 && c.vacants_2025 !== "s";
+
     return `
-      <div class="signal-card succession" onclick="openDetailDeces(${DECES_DATA.indexOf(d)})">
+      <div class="signal-card vacant" onclick="openDetailVacant(${i})">
         <div class="signal-card-top">
-          <span class="signal-type type-succession">⚰️ Succession probable</span>
-          <span class="signal-new">Récent</span>
+          <span class="signal-type type-vacant">🏚️ Biens vacants</span>
+          <span class="signal-new">LOVAC 2025</span>
         </div>
-        <div class="signal-title">${d.nom} ${d.prenom}</div>
-        <div class="signal-commune">📍 ${d.commune} · Décédé le ${d.date_deces}</div>
+        <div class="signal-title">${c.commune}</div>
+        <div class="signal-commune">📍 ${c.departement || "Marne"} · ${c.epci || ""}</div>
         <div class="signal-details">
-          <div class="signal-detail-row"><span class="signal-detail-label">Âge au décès</span><span class="signal-detail-value">${d.age_deces || "—"} ans</span></div>
-          <div class="signal-detail-row"><span class="signal-detail-label">Sexe</span><span class="signal-detail-value">${sexe}</span></div>
-          <div class="signal-detail-row"><span class="signal-detail-label">Né(e) le</span><span class="signal-detail-value">${d.date_naissance || "—"}</span></div>
-          <div class="signal-detail-row"><span class="signal-detail-label">Annonce en ligne</span><span class="signal-detail-value" style="color:var(--marche)">Aucune</span></div>
+          <div class="signal-detail-row"><span class="signal-detail-label">Vacants 2025</span><span class="signal-detail-value" style="color:var(--vacant)">${nb}</span></div>
+          <div class="signal-detail-row"><span class="signal-detail-label">Vacants +2 ans</span><span class="signal-detail-value" style="color:${nb2ans !== "Confidentiel" ? "var(--succession)" : "rgba(255,255,255,0.4)"}">${nb2ans}</span></div>
+          <div class="signal-detail-row"><span class="signal-detail-label">Vacants 2024</span><span class="signal-detail-value">${nb2024}</span></div>
+          <div class="signal-detail-row"><span class="signal-detail-label">Opportunité</span><span class="signal-detail-value" style="color:var(--marche)">${hasData ? "Propriétaires à contacter" : "Données protégées"}</span></div>
         </div>
         <div class="signal-actions">
-          <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">📞 Contacter notaire</button>
-          <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">🗂️ Dossier</button>
+          <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">🗂️ Voir les dossiers</button>
+          <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">📊 Marché local</button>
         </div>
       </div>`;
   }).join("");
-
-  // Affiche le reste en liste si plus de 6
-  if (data.length > 6) {
-    const feed = document.createElement("div");
-    feed.className = "alert-feed";
-    feed.style.marginTop = "14px";
-    feed.innerHTML = data.slice(6, 30).map((d, i) => {
-      const age = d.age_deces ? ` · ${d.age_deces} ans` : "";
-      return `
-        <div class="alert-item bodacc" onclick="openDetailDeces(${DECES_DATA.indexOf(d)})">
-          <div class="alert-icon" style="background:var(--succession-bg)">⚰️</div>
-          <div class="alert-content">
-            <div class="alert-meta"><span class="alert-type-tag" style="background:var(--succession-bg);color:var(--succession)">Succession</span><span style="font-size:0.7rem;color:rgba(255,255,255,0.3)">&nbsp;📍 ${d.commune}</span></div>
-            <div class="alert-title">${d.nom} ${d.prenom}${age}</div>
-            <div class="alert-detail">Décédé(e) le ${d.date_deces} · Né(e) en ${d.date_naissance?.split("/")[2] || "—"}</div>
-          </div>
-          <div class="alert-right"><span class="alert-time">${d.fichier_source?.replace("deces-","").replace(".txt","") || ""}</span></div>
-        </div>`;
-    }).join("");
-    grid.appendChild(feed);
-
-    if (data.length > 30) {
-      const more = document.createElement("div");
-      more.style.cssText = "text-align:center;padding:16px;color:rgba(255,255,255,0.3);font-size:0.82rem;";
-      more.textContent = `+ ${data.length - 30} autres décès disponibles dans les données`;
-      grid.appendChild(more);
-    }
-  }
 }
 
 function afficherBodacc() {
   let data = [...BODACC_DATA];
-  document.getElementById("bodacc-count").textContent = `${data.length} annonces · Tribunal de Reims`;
+  document.getElementById("bodacc-sub").textContent = `${data.length} annonces · Tribunal de Reims`;
 
   const feed = document.getElementById("bodacc-feed");
   if (data.length === 0) {
-    feed.innerHTML = '<div class="loading-msg">Aucune annonce BODACC trouvée</div>';
+    feed.innerHTML = '<div class="loading-msg">Aucune annonce BODACC</div>';
     return;
   }
 
   feed.innerHTML = data.slice(0, 15).map((a, i) => `
-    <div class="alert-item bodacc" onclick="openDetailBodacc(${i})">
+    <div class="alert-item" onclick="openDetailBodacc(${i})">
       <div class="alert-icon">⚖️</div>
       <div class="alert-content">
-        <div class="alert-meta"><span class="alert-type-tag">${a.type || "Annonce légale"}</span></div>
+        <div class="alert-meta"><span class="alert-tag">${a.type || "Annonce légale"}</span></div>
         <div class="alert-title">${a.description || "—"}</div>
-        <div class="alert-detail">Tribunal : ${a.tribunal || "—"} · N° ${a.numero || "—"} · ${a.jugement || ""}</div>
+        <div class="alert-detail">Tribunal : ${a.tribunal || "—"} · N° ${a.numero || "—"}${a.jugement ? " · " + a.jugement : ""}</div>
       </div>
-      <div class="alert-right"><span class="alert-time">${a.date || ""}</span><span class="alert-status">BODACC</span></div>
+      <div class="alert-right"><span class="alert-date">${a.date || ""}</span><span class="alert-status">BODACC</span></div>
     </div>`).join("");
 }
 
-function openDetailDeces(idx) {
-  const d = DECES_DATA[idx];
-  if (!d) return;
-  const badge = document.getElementById("dp-badge");
-  badge.textContent = "⚰️ Succession probable";
-  badge.style.cssText = "background:rgba(248,113,113,0.12);color:#f87171;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:14px;";
-
+function openDetailVacant(idx) {
+  const c = LOVAC_DATA[idx];
+  if (!c) return;
+  setBadge("🏚️ Bien vacant", "rgba(167,139,250,0.12)", "var(--vacant)");
   document.getElementById("dp-body").innerHTML = `
-    <div class="detail-title">${d.nom} ${d.prenom}</div>
-    <div class="detail-commune-label">📍 ${d.commune} · Décédé(e) le ${d.date_deces}</div>
-    <div class="detail-section-title">Informations du défunt</div>
-    <div class="detail-row"><span class="detail-row-label">Nom</span><span class="detail-row-value">${d.nom}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Prénom</span><span class="detail-row-value">${d.prenom}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Sexe</span><span class="detail-row-value">${d.sexe === "M" ? "Homme" : d.sexe === "F" ? "Femme" : "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Date de naissance</span><span class="detail-row-value">${d.date_naissance || "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Âge au décès</span><span class="detail-row-value">${d.age_deces ? d.age_deces + " ans" : "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Date du décès</span><span class="detail-row-value" style="color:var(--succession);font-weight:700">${d.date_deces || "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Commune du décès</span><span class="detail-row-value">${d.commune}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Source</span><span class="detail-row-value">INSEE · ${d.fichier_source || "—"}</span></div>
-    <div class="detail-section-title">Analyse</div>
+    <div class="detail-title">Biens vacants — ${c.commune}</div>
+    <div class="detail-sub">📍 ${c.departement || "Marne"} · Source LOVAC officielle</div>
+    <div class="detail-section-title">Données de vacance</div>
+    <div class="detail-row"><span class="detail-row-label">Logements vacants 2025</span><span class="detail-row-value" style="color:var(--vacant);font-weight:700">${c.vacants_2025 === "s" ? "Confidentiel" : c.vacants_2025 || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Vacants depuis +2 ans</span><span class="detail-row-value" style="color:var(--succession)">${c.vacants_plus_2ans_2025 === "s" ? "Confidentiel" : c.vacants_plus_2ans_2025 || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Total logements 2024</span><span class="detail-row-value">${c.total_logements_2024 || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Vacants 2024</span><span class="detail-row-value">${c.vacants_2024 === "s" ? "Confidentiel" : c.vacants_2024 || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Vacants 2023</span><span class="detail-row-value">${c.vacants_2023 === "s" ? "Confidentiel" : c.vacants_2023 || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">EPCI</span><span class="detail-row-value">${c.epci || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Source</span><span class="detail-row-value">LOVAC · data.gouv.fr</span></div>
+    <div class="detail-section-title">Comment exploiter ce signal</div>
     <div class="detail-note">
-      Décès enregistré à ${d.commune}. Ce signal indique une succession potentiellement ouverte.
-      Contactez rapidement le notaire en charge pour proposer vos services avant la mise en vente du bien.
-      Aucune annonce immobilière détectée à ce jour.
+      Les logements vacants depuis plus de 2 ans sont soumis à la taxe sur les logements vacants (TLV).
+      Les propriétaires sont souvent des personnes âgées, des héritiers ou des propriétaires expatriés —
+      majoritairement ouverts à une vente. Contactez la mairie pour obtenir des informations complémentaires
+      sur les propriétaires concernés.
     </div>`;
-
-  document.getElementById("detail-panel").classList.add("open");
-  document.getElementById("overlay").classList.add("show");
+  openPanel();
 }
 
 function openDetailBodacc(idx) {
   const a = BODACC_DATA[idx];
   if (!a) return;
-  const badge = document.getElementById("dp-badge");
-  badge.textContent = "⚖️ BODACC";
-  badge.style.cssText = "background:rgba(251,191,36,0.12);color:#fbbf24;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:14px;";
-
+  setBadge("⚖️ BODACC", "rgba(251,191,36,0.12)", "var(--enchere)");
   document.getElementById("dp-body").innerHTML = `
     <div class="detail-title">${a.description || "Annonce légale"}</div>
-    <div class="detail-commune-label">📍 Tribunal de ${a.tribunal || "Reims"} · ${a.date || "—"}</div>
+    <div class="detail-sub">📍 Tribunal de ${a.tribunal || "Reims"} · ${a.date || "—"}</div>
     <div class="detail-section-title">Détails de l'annonce</div>
-    <div class="detail-row"><span class="detail-row-label">Type d'annonce</span><span class="detail-row-value">${a.type || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Type</span><span class="detail-row-value">${a.type || "—"}</span></div>
     <div class="detail-row"><span class="detail-row-label">Jugement</span><span class="detail-row-value">${a.jugement || "—"}</span></div>
     <div class="detail-row"><span class="detail-row-label">Entité</span><span class="detail-row-value">${a.description || "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Date de publication</span><span class="detail-row-value">${a.date || "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Numéro d'annonce</span><span class="detail-row-value">${a.numero || "—"}</span></div>
-    <div class="detail-row"><span class="detail-row-label">Tribunal</span><span class="detail-row-value">${a.tribunal || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">Date</span><span class="detail-row-value">${a.date || "—"}</span></div>
+    <div class="detail-row"><span class="detail-row-label">N° annonce</span><span class="detail-row-value">${a.numero || "—"}</span></div>
     <div class="detail-row"><span class="detail-row-label">Source</span><span class="detail-row-value">BODACC officiel</span></div>
     <div class="detail-section-title">Analyse</div>
     <div class="detail-note">
-      Une annonce BODACC de type "${a.type || "liquidation"}" peut indiquer la présence d'un bien immobilier
-      géré par un mandataire judiciaire. Contactez le tribunal ou le mandataire pour identifier les actifs immobiliers.
+      Une annonce BODACC de type liquidation ou redressement peut indiquer un bien immobilier géré
+      par un mandataire judiciaire. Contactez rapidement le tribunal ou le mandataire pour identifier
+      les actifs immobiliers disponibles.
     </div>`;
+  openPanel();
+}
 
+function setBadge(text, bg, color) {
+  const b = document.getElementById("dp-badge");
+  b.textContent = text;
+  b.style.cssText = `background:${bg};color:${color};font-size:0.72rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:14px;`;
+}
+
+function openPanel() {
   document.getElementById("detail-panel").classList.add("open");
   document.getElementById("overlay").classList.add("show");
 }
@@ -444,22 +399,18 @@ function closeDetail() {
 }
 
 function filterSignal(type, el) {
-  document.querySelectorAll(".filter-chip").forEach(c => {
-    if (c.getAttribute("onclick")?.includes("filterSignal")) c.classList.remove("active");
-  });
+  document.querySelectorAll(".filter-chip").forEach(c => { if (c.getAttribute("onclick")?.includes("filterSignal")) c.classList.remove("active"); });
   el.classList.add("active");
   currentFilter = type;
-  document.getElementById("section-succession").style.display = (type === "all" || type === "succession") ? "" : "none";
+  document.getElementById("section-vacant").style.display = (type === "all" || type === "vacant") ? "" : "none";
   document.getElementById("section-bodacc").style.display = (type === "all" || type === "bodacc") ? "" : "none";
 }
 
 function filterCommune(commune, el) {
-  document.querySelectorAll(".filter-chip").forEach(c => {
-    if (c.getAttribute("onclick")?.includes("filterCommune")) c.classList.remove("active");
-  });
+  document.querySelectorAll(".filter-chip").forEach(c => { if (c.getAttribute("onclick")?.includes("filterCommune")) c.classList.remove("active"); });
   el.classList.add("active");
   currentCommune = commune;
-  afficherDeces();
+  afficherVacants();
 }
 
 chargerDonnees();
