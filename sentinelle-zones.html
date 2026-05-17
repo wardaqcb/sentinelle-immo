@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinelle Immo — Mes Zones</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0B1628; --navy2: #112040; --navy3: #0d1c36;
+    --gold: #C9A96E; --gold2: #E8C98A; --gold3: rgba(201,169,110,0.12);
+    --vacant: #a78bfa; --succession: #f87171; --enchere: #fbbf24;
+    --judiciaire: #f97316; --marche: #34d399; --blue: #60a5fa;
+    --white: #ffffff; --sidebar: 260px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); display: flex; min-height: 100vh; overflow-x: hidden; }
+
+  /* SIDEBAR */
+  .sidebar { width: var(--sidebar); flex-shrink: 0; background: var(--navy3); border-right: 1px solid rgba(201,169,110,0.1); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; }
+  .sidebar-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(201,169,110,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
+  .logo span { color: rgba(255,255,255,0.5); font-weight: 300; }
+  .logo-sub { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 16px; margin: 2px 8px; border-radius: 6px; cursor: pointer; font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: all 0.15s; text-decoration: none; }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
+  .nav-item.active { background: var(--gold3); color: var(--gold2); }
+  .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
+  .nav-badge { margin-left: auto; background: var(--succession); color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
+  .sidebar-bottom { margin-top: auto; padding: 16px; border-top: 1px solid rgba(201,169,110,0.1); display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold3); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--gold2); font-weight: 600; }
+  .user-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
+  .user-plan { font-size: 0.7rem; color: var(--gold); }
+
+  /* MAIN */
+  .main { margin-left: var(--sidebar); flex: 1; display: flex; flex-direction: column; }
+  .topbar { background: var(--navy3); border-bottom: 1px solid rgba(201,169,110,0.1); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
+  .topbar-left h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
+  .topbar-left p { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+  .btn { padding: 9px 18px; border-radius: 6px; font-size: 0.82rem; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.15s; }
+  .btn-ghost { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); color: white; }
+  .btn-gold { background: var(--gold); color: var(--navy); font-weight: 600; }
+  .btn-gold:hover { background: var(--gold2); }
+
+  .content { padding: 28px 32px; flex: 1; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+
+  /* CARDS */
+  .card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 24px; }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; color: rgba(255,255,255,0.9); }
+  .card-sub { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+
+  /* COMMUNES */
+  .commune-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .commune-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; transition: all 0.15s; }
+  .commune-row:hover { background: rgba(255,255,255,0.06); }
+  .commune-row.active { border-color: rgba(201,169,110,0.3); background: var(--gold3); }
+  .commune-check { width: 20px; height: 20px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; font-size: 0.7rem; transition: all 0.15s; }
+  .commune-check.checked { background: var(--gold); border-color: var(--gold); }
+  .commune-info { flex: 1; }
+  .commune-name { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+  .commune-code { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+  .commune-count { font-size: 0.75rem; color: var(--gold); background: var(--gold3); padding: 3px 10px; border-radius: 10px; flex-shrink: 0; }
+  .commune-remove { font-size: 0.75rem; color: rgba(255,255,255,0.2); cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: all 0.15s; }
+  .commune-remove:hover { color: var(--succession); background: rgba(248,113,113,0.1); }
+
+  .add-commune-row { display: flex; gap: 10px; }
+  .add-commune-input { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 9px 14px; border-radius: 8px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.15s; }
+  .add-commune-input:focus { border-color: rgba(201,169,110,0.4); }
+  .add-commune-input::placeholder { color: rgba(255,255,255,0.2); }
+
+  /* SIGNAL TOGGLES */
+  .signal-list { display: flex; flex-direction: column; gap: 10px; }
+  .signal-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; }
+  .signal-icon { font-size: 1.2rem; width: 28px; text-align: center; flex-shrink: 0; }
+  .signal-info { flex: 1; }
+  .signal-name { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+  .signal-desc { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 2px; }
+  .toggle { width: 40px; height: 22px; border-radius: 11px; background: rgba(255,255,255,0.1); cursor: pointer; position: relative; transition: background 0.2s; flex-shrink: 0; border: none; }
+  .toggle.on { background: var(--gold); }
+  .toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: white; transition: transform 0.2s; }
+  .toggle.on::after { transform: translateX(18px); }
+
+  /* FRÉQUENCE */
+  .freq-options { display: flex; flex-direction: column; gap: 10px; }
+  .freq-opt { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+  .freq-opt:hover { background: rgba(255,255,255,0.05); }
+  .freq-opt.selected { border-color: rgba(201,169,110,0.35); background: var(--gold3); }
+  .freq-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
+  .freq-opt.selected .freq-radio { border-color: var(--gold); }
+  .freq-radio-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); display: none; }
+  .freq-opt.selected .freq-radio-dot { display: block; }
+  .freq-info { flex: 1; }
+  .freq-name { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+  .freq-desc { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 2px; }
+  .freq-badge { font-size: 0.68rem; padding: 3px 10px; border-radius: 10px; flex-shrink: 0; }
+  .badge-recommande { background: rgba(52,211,153,0.12); color: var(--marche); }
+  .badge-pro { background: var(--gold3); color: var(--gold2); }
+
+  /* CANAUX */
+  .canal-list { display: flex; flex-direction: column; gap: 10px; }
+  .canal-row { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; }
+  .canal-icon { font-size: 1.1rem; width: 28px; text-align: center; flex-shrink: 0; }
+  .canal-info { flex: 1; }
+  .canal-name { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+  .canal-value { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-top: 2px; }
+  .canal-edit { font-size: 0.75rem; color: rgba(255,255,255,0.2); cursor: pointer; padding: 4px 10px; border-radius: 4px; background: rgba(255,255,255,0.05); transition: all 0.15s; }
+  .canal-edit:hover { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+
+  /* QUOTA */
+  .quota-bar-wrap { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin: 12px 0 8px; overflow: hidden; }
+  .quota-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+  .quota-labels { display: flex; justify-content: space-between; font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+
+  /* SAVE BAR */
+  .save-bar { position: fixed; bottom: 0; left: var(--sidebar); right: 0; background: var(--navy3); border-top: 1px solid rgba(201,169,110,0.15); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; z-index: 40; }
+  .save-bar p { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  .save-bar p span { color: var(--gold2); }
+  .save-actions { display: flex; gap: 10px; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo">Sentinelle<span>Immo</span></div>
+    <div class="logo-sub">Marne · 51</div>
+  </div>
+  <div style="padding: 8px 0;">
+    <div class="sidebar-section">Navigation</div>
+    <a class="nav-item" href="#"><span class="icon">📡</span> Alertes du jour <span class="nav-badge">5</span></a>
+    <a class="nav-item" href="#"><span class="icon">📊</span> Marché local</a>
+    <a class="nav-item" href="#"><span class="icon">🗂️</span> Mes dossiers</a>
+    <a class="nav-item active" href="#"><span class="icon">⚙️</span> Mes zones</a>
+  </div>
+  <div class="sidebar-bottom">
+    <div class="avatar">JD</div>
+    <div>
+      <div class="user-name">Jean Dupont</div>
+      <div class="user-plan">✦ Abonnement Pro</div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Mes zones</h1>
+      <p>Configurez vos communes, vos signaux et vos alertes</p>
+    </div>
+  </div>
+
+  <div class="content" style="padding-bottom: 100px;">
+
+    <div class="grid-2">
+
+      <!-- COMMUNES -->
+      <div class="card">
+        <div class="card-title">Communes surveillées</div>
+        <div class="card-sub">Les signaux seront filtrés sur ces communes uniquement</div>
+
+        <div class="commune-list" id="commune-list">
+          <div class="commune-row active">
+            <div class="commune-check checked" onclick="toggleCheck(this)">✓</div>
+            <div class="commune-info"><div class="commune-name">Reims</div><div class="commune-code">51100</div></div>
+            <span class="commune-count">+23 signaux</span>
+            <span class="commune-remove" onclick="removeCommune(this)">✕</span>
+          </div>
+          <div class="commune-row active">
+            <div class="commune-check checked" onclick="toggleCheck(this)">✓</div>
+            <div class="commune-info"><div class="commune-name">Tinqueux</div><div class="commune-code">51430</div></div>
+            <span class="commune-count">+4 signaux</span>
+            <span class="commune-remove" onclick="removeCommune(this)">✕</span>
+          </div>
+          <div class="commune-row active">
+            <div class="commune-check checked" onclick="toggleCheck(this)">✓</div>
+            <div class="commune-info"><div class="commune-name">Gueux</div><div class="commune-code">51390</div></div>
+            <span class="commune-count">+2 signaux</span>
+            <span class="commune-remove" onclick="removeCommune(this)">✕</span>
+          </div>
+          <div class="commune-row active">
+            <div class="commune-check checked" onclick="toggleCheck(this)">✓</div>
+            <div class="commune-info"><div class="commune-name">Muizon</div><div class="commune-code">51140</div></div>
+            <span class="commune-count">+3 signaux</span>
+            <span class="commune-remove" onclick="removeCommune(this)">✕</span>
+          </div>
+          <div class="commune-row active">
+            <div class="commune-check checked" onclick="toggleCheck(this)">✓</div>
+            <div class="commune-info"><div class="commune-name">Villages 51220</div><div class="commune-code">Fismes & environs</div></div>
+            <span class="commune-count">+6 signaux</span>
+            <span class="commune-remove" onclick="removeCommune(this)">✕</span>
+          </div>
+        </div>
+
+        <div class="add-commune-row">
+          <input class="add-commune-input" type="text" placeholder="Ajouter une commune ou un code postal..." id="commune-input">
+          <button class="btn btn-gold" onclick="addCommune()">Ajouter</button>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <div class="quota-bar-wrap"><div class="quota-bar" style="width: 50%"></div></div>
+          <div class="quota-labels"><span>5 communes actives</span><span>10 max (offre Pro)</span></div>
+        </div>
+      </div>
+
+      <!-- SIGNAUX -->
+      <div class="card">
+        <div class="card-title">Types de signaux</div>
+        <div class="card-sub">Choisissez quels signaux vous souhaitez recevoir</div>
+
+        <div class="signal-list">
+          <div class="signal-row">
+            <span class="signal-icon">🏚️</span>
+            <div class="signal-info">
+              <div class="signal-name">Biens vacants</div>
+              <div class="signal-desc">Logements inoccupés depuis +12 mois sur votre zone</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="signal-row">
+            <span class="signal-icon">⚰️</span>
+            <div class="signal-info">
+              <div class="signal-name">Successions probables</div>
+              <div class="signal-desc">Détection de décès croisée avec le cadastre</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="signal-row">
+            <span class="signal-icon">🏛️</span>
+            <div class="signal-info">
+              <div class="signal-name">Enchères notariales</div>
+              <div class="signal-desc">Ventes aux enchères du réseau notarial</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="signal-row">
+            <span class="signal-icon">⚖️</span>
+            <div class="signal-info">
+              <div class="signal-name">Ventes judiciaires</div>
+              <div class="signal-desc">Saisies immobilières et adjudications tribunal</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="signal-row">
+            <span class="signal-icon">📊</span>
+            <div class="signal-info">
+              <div class="signal-name">Analyse de marché</div>
+              <div class="signal-desc">Résumé hebdomadaire des transactions DVF</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="signal-row">
+            <span class="signal-icon">📉</span>
+            <div class="signal-info">
+              <div class="signal-name">Baisses de prix</div>
+              <div class="signal-desc">Biens avec une réduction de prix récente</div>
+            </div>
+            <button class="toggle" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="grid-2">
+
+      <!-- FRÉQUENCE -->
+      <div class="card">
+        <div class="card-title">Fréquence des alertes</div>
+        <div class="card-sub">À quelle cadence voulez-vous être notifié ?</div>
+
+        <div class="freq-options">
+          <div class="freq-opt" onclick="selectFreq(this)">
+            <div class="freq-radio"><div class="freq-radio-dot"></div></div>
+            <div class="freq-info">
+              <div class="freq-name">Immédiat</div>
+              <div class="freq-desc">Dès qu'un signal est détecté, vous êtes alerté en temps réel</div>
+            </div>
+            <span class="freq-badge badge-pro">Pro</span>
+          </div>
+          <div class="freq-opt selected" onclick="selectFreq(this)">
+            <div class="freq-radio"><div class="freq-radio-dot"></div></div>
+            <div class="freq-info">
+              <div class="freq-name">Digest quotidien — 8h00</div>
+              <div class="freq-desc">Tous les signaux de la nuit regroupés en un email chaque matin</div>
+            </div>
+            <span class="freq-badge badge-recommande">Recommandé</span>
+          </div>
+          <div class="freq-opt" onclick="selectFreq(this)">
+            <div class="freq-radio"><div class="freq-radio-dot"></div></div>
+            <div class="freq-info">
+              <div class="freq-name">Hebdomadaire — Lundi 8h00</div>
+              <div class="freq-desc">Un résumé de la semaine chaque lundi matin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CANAUX -->
+      <div class="card">
+        <div class="card-title">Canaux de notification</div>
+        <div class="card-sub">Comment souhaitez-vous recevoir vos alertes ?</div>
+
+        <div class="canal-list">
+          <div class="canal-row">
+            <span class="canal-icon">📧</span>
+            <div class="canal-info">
+              <div class="canal-name">Email</div>
+              <div class="canal-value">jean.dupont@agence-reims.fr</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+            <span class="canal-edit">Modifier</span>
+          </div>
+          <div class="canal-row">
+            <span class="canal-icon">📱</span>
+            <div class="canal-info">
+              <div class="canal-name">SMS</div>
+              <div class="canal-value">+33 6 12 34 56 78</div>
+            </div>
+            <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+            <span class="canal-edit">Modifier</span>
+          </div>
+          <div class="canal-row">
+            <span class="canal-icon">🔔</span>
+            <div class="canal-info">
+              <div class="canal-name">Notification navigateur</div>
+              <div class="canal-value">Activée sur ce navigateur</div>
+            </div>
+            <button class="toggle" onclick="this.classList.toggle('on')"></button>
+            <span class="canal-edit">Configurer</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px; padding: 14px; background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.15); border-radius: 8px;">
+          <div style="font-size: 0.78rem; color: var(--gold2); font-weight: 500; margin-bottom: 4px;">✦ Conseil</div>
+          <div style="font-size: 0.75rem; color: rgba(255,255,255,0.35); line-height: 1.6;">Activez le SMS pour les signaux urgents (successions, enchères) afin d'être le premier à réagir.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FILTRES AVANCÉS -->
+    <div class="card" style="margin-bottom: 24px;">
+      <div class="card-title">Filtres avancés</div>
+      <div class="card-sub">Affinez les signaux selon vos critères métier</div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 4px;">
+
+        <div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Surface minimum (m²)</div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="number" value="40" style="width: 80px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; outline: none;">
+            <span style="color: rgba(255,255,255,0.3); font-size: 0.82rem;">m²</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Prix maximum estimé</div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="number" value="300000" style="width: 120px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; outline: none;">
+            <span style="color: rgba(255,255,255,0.3); font-size: 0.82rem;">€</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Vacance minimum</div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <input type="number" value="12" style="width: 80px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; outline: none;">
+            <span style="color: rgba(255,255,255,0.3); font-size: 0.82rem;">mois</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Type de bien</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="filter-tag active" onclick="this.classList.toggle('active')">Maison</button>
+            <button class="filter-tag active" onclick="this.classList.toggle('active')">Appartement</button>
+            <button class="filter-tag" onclick="this.classList.toggle('active')">Terrain</button>
+            <button class="filter-tag" onclick="this.classList.toggle('active')">Local</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Nombre de pièces min.</div>
+          <div style="display: flex; gap: 6px;">
+            <button class="filter-tag" onclick="selectPieces(this)">1+</button>
+            <button class="filter-tag" onclick="selectPieces(this)">2+</button>
+            <button class="filter-tag active" onclick="selectPieces(this)">3+</button>
+            <button class="filter-tag" onclick="selectPieces(this)">4+</button>
+            <button class="filter-tag" onclick="selectPieces(this)">5+</button>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px;">Avec terrain uniquement</div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px;">
+            <button class="toggle" onclick="this.classList.toggle('on')" style="margin: 0;"></button>
+            <span style="font-size: 0.82rem; color: rgba(255,255,255,0.4);">Filtrer les biens sans terrain</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SAVE BAR -->
+  <div class="save-bar">
+    <p>Modifications non sauvegardées · <span>5 communes · 5 signaux actifs</span></p>
+    <div class="save-actions">
+      <button class="btn btn-ghost">Annuler</button>
+      <button class="btn btn-gold">💾 Sauvegarder la configuration</button>
+    </div>
+  </div>
+</main>
+
+<style>
+  .filter-tag { padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); background: transparent; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .filter-tag:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+  .filter-tag.active { background: var(--gold3); border-color: rgba(201,169,110,0.35); color: var(--gold2); }
+</style>
+
+<script>
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✓' : '';
+  el.closest('.commune-row').classList.toggle('active');
+}
+
+function removeCommune(el) {
+  el.closest('.commune-row').style.opacity = '0';
+  setTimeout(() => el.closest('.commune-row').remove(), 200);
+}
+
+function addCommune() {
+  const input = document.getElementById('commune-input');
+  const val = input.value.trim();
+  if (!val) return;
+  const list = document.getElementById('commune-list');
+  const row = document.createElement('div');
+  row.className = 'commune-row active';
+  row.innerHTML = `
+    <div class="commune-check checked" onclick="toggleCheck(this)">✓</div>
+    <div class="commune-info"><div class="commune-name">${val}</div><div class="commune-code">En cours de vérification</div></div>
+    <span class="commune-count">Nouveau</span>
+    <span class="commune-remove" onclick="removeCommune(this)">✕</span>`;
+  list.appendChild(row);
+  input.value = '';
+}
+
+function selectFreq(el) {
+  document.querySelectorAll('.freq-opt').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function selectPieces(el) {
+  document.querySelectorAll('.filter-tag').forEach(t => { if (t.textContent.includes('+')) t.classList.remove('active'); });
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>

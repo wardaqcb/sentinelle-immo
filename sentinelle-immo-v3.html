@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinelle Immo — Veille immobilière Reims & Marne</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0B1628; --navy2: #112040; --gold: #C9A96E; --gold2: #E8C98A;
+    --cream: #F5F0E8; --cream2: #EDE6D6; --text: #1a2e4a; --muted: #6b7a8d; --white: #ffffff;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(11,22,40,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,169,110,0.15); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
+  .logo span { color: var(--white); font-weight: 300; }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  nav ul li a:hover { color: var(--gold2); }
+  .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 10px 22px; border-radius: 4px; font-weight: 500 !important; }
+
+  .hero { min-height: 100vh; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 60%, rgba(201,169,110,0.08) 0%, transparent 70%); }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.25); color: var(--gold2); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 18px; border-radius: 2px; margin-bottom: 36px; }
+  .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6rem); font-weight: 300; color: var(--white); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .hero h1 strong { font-weight: 700; color: var(--gold2); display: block; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.25rem); color: rgba(255,255,255,0.5); font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; }
+  .hero-desc { max-width: 560px; color: rgba(255,255,255,0.65); font-size: 1.05rem; line-height: 1.75; margin-bottom: 52px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 16px 36px; border-radius: 4px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-secondary { background: transparent; color: rgba(255,255,255,0.7); padding: 16px 36px; border-radius: 4px; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .hero-line { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 80px; background: linear-gradient(to bottom, transparent, var(--gold)); opacity: 0.5; }
+
+  .stats { background: var(--navy2); border-top: 1px solid rgba(201,169,110,0.15); border-bottom: 1px solid rgba(201,169,110,0.15); padding: 32px 48px; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 700; color: var(--gold2); display: block; }
+  .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .section-label { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 14px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.15; margin-bottom: 60px; }
+
+  .features-wrap { background: var(--cream); padding: 100px 48px; }
+  .features-inner { max-width: 1100px; margin: 0 auto; }
+  .features-inner .section-title { color: var(--text); }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: var(--cream2); border: 1px solid var(--cream2); }
+  .feature-card { background: var(--white); padding: 40px 36px; transition: background 0.2s; }
+  .feature-card:hover { background: var(--cream); }
+  .feature-icon { font-size: 1.6rem; margin-bottom: 20px; display: block; }
+  .feature-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
+  .feature-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .feature-tag { display: inline-block; margin-top: 16px; background: rgba(201,169,110,0.1); color: var(--gold); font-size: 0.72rem; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .feature-tag-hot { display: inline-block; margin-top: 16px; background: rgba(220,80,60,0.12); color: #e07060; font-size: 0.72rem; padding: 4px 12px; border-radius: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .alertes-section { background: var(--navy); padding: 100px 48px; }
+  .alertes-inner { max-width: 1100px; margin: 0 auto; }
+  .alertes-inner .section-title { color: var(--white); }
+  .alertes-subtitle { color: rgba(255,255,255,0.45); font-size: 0.95rem; margin-bottom: 52px; max-width: 520px; line-height: 1.7; }
+
+  .digest-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,169,110,0.2); border-radius: 6px; overflow: hidden; max-width: 680px; margin: 0 auto; }
+  .digest-header { background: rgba(201,169,110,0.08); border-bottom: 1px solid rgba(201,169,110,0.15); padding: 18px 28px; display: flex; align-items: center; justify-content: space-between; }
+  .digest-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); animation: pulse 2s infinite; display: inline-block; margin-right: 12px; }
+  .digest-title { color: var(--gold2); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .digest-date { color: rgba(255,255,255,0.3); font-size: 0.75rem; }
+  .alerte-item { padding: 22px 28px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 18px; align-items: flex-start; transition: background 0.2s; }
+  .alerte-item:hover { background: rgba(201,169,110,0.04); }
+  .alerte-item:last-child { border-bottom: none; }
+  .alerte-emoji { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .alerte-body { flex: 1; }
+  .alerte-type { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+  .alerte-titre { color: var(--white); font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
+  .alerte-detail { color: rgba(255,255,255,0.4); font-size: 0.82rem; line-height: 1.5; }
+  .alerte-badge { flex-shrink: 0; align-self: center; font-size: 0.7rem; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 500; }
+  .badge-new { background: rgba(201,169,110,0.15); color: var(--gold2); }
+  .badge-urgent { background: rgba(220,80,60,0.15); color: #f08070; }
+  .badge-info { background: rgba(80,140,220,0.15); color: #90b8f0; }
+  .badge-hidden { background: rgba(120,80,200,0.15); color: #c0a0f0; }
+  .digest-footer { background: rgba(201,169,110,0.05); border-top: 1px solid rgba(201,169,110,0.1); padding: 14px 28px; text-align: center; color: rgba(255,255,255,0.3); font-size: 0.78rem; }
+  .digest-footer strong { color: var(--gold); }
+
+  .targets-section { padding: 100px 48px; background: var(--cream2); }
+  .targets-inner { max-width: 1100px; margin: 0 auto; }
+  .targets-inner .section-title { color: var(--text); }
+  .targets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .target-card { background: var(--white); border-bottom: 3px solid var(--gold); padding: 36px 28px; transition: transform 0.2s; }
+  .target-card:hover { transform: translateY(-4px); }
+  .target-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+  .target-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  .cta-section { background: var(--navy); padding: 100px 48px; text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(201,169,110,0.1) 0%, transparent 70%); }
+  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; color: var(--white); margin-bottom: 20px; position: relative; }
+  .cta-section h2 strong { color: var(--gold2); font-weight: 700; }
+  .cta-section p { color: rgba(255,255,255,0.5); font-size: 1rem; max-width: 480px; margin: 0 auto 40px; line-height: 1.7; position: relative; }
+  .cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .cta-form input { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2); color: var(--white); padding: 14px 22px; border-radius: 4px; font-size: 0.9rem; width: 280px; outline: none; font-family: 'DM Sans', sans-serif; transition: border-color 0.2s; }
+  .cta-form input::placeholder { color: rgba(255,255,255,0.3); }
+  .cta-form input:focus { border-color: var(--gold); }
+  .cta-form button { background: var(--gold); color: var(--navy); padding: 14px 32px; border-radius: 4px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+  footer { background: #060e1a; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.25); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sentinelle<span>Immo</span></div>
+  <ul>
+    <li><a href="#">Fonctionnalités</a></li>
+    <li><a href="#">Alertes</a></li>
+    <li><a href="#">Tarifs</a></li>
+    <li><a href="#" class="nav-cta">Demander une démo</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Veille immobilière · Marne (51)</div>
+  <p class="hero-sub">Intelligence de marché en temps réel</p>
+  <h1>Captez les <strong>opportunités</strong> avant tout le monde</h1>
+  <p class="hero-desc">Sentinelle Immo détecte automatiquement les signaux cachés du marché immobilier — biens vacants, successions, enchères, transactions — et vous alerte en premier sur votre zone.</p>
+  <div class="hero-actions">
+    <button class="btn-primary">Demander une démo</button>
+    <button class="btn-secondary">Voir les fonctionnalités</button>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<div class="stats">
+  <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Sources de données</span></div>
+  <div class="stat"><span class="stat-num">24h</span><span class="stat-label">Collecte automatique</span></div>
+  <div class="stat"><span class="stat-num">51</span><span class="stat-label">Département Marne</span></div>
+  <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Données légales</span></div>
+</div>
+
+<div class="features-wrap">
+  <div class="features-inner">
+    <p class="section-label">Ce que vous obtenez</p>
+    <h2 class="section-title">Un outil conçu pour<br>les professionnels du terrain</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🔍</span>
+        <h3>Veille automatique</h3>
+        <p>Collecte quotidienne sur toutes vos communes cibles. Vous recevez uniquement ce qui est pertinent pour votre zone.</p>
+        <span class="feature-tag">Temps réel</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏚️</span>
+        <h3>Biens vacants détectés</h3>
+        <p>Logements inoccupés depuis plus d'un an sur votre secteur. Des propriétaires à contacter avant que le bien n'arrive jamais sur le marché.</p>
+        <span class="feature-tag-hot">Exclusif</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⚰️</span>
+        <h3>Signaux de succession</h3>
+        <p>Détection automatique des biens susceptibles d'être mis en vente suite à un décès. Un signal que personne d'autre ne vous donne.</p>
+        <span class="feature-tag-hot">Avant le marché</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🏛️</span>
+        <h3>Enchères & ventes judiciaires</h3>
+        <p>Toutes les ventes aux enchères du département, centralisées et filtrables. Ne ratez plus aucune opportunité à prix décoté.</p>
+        <span class="feature-tag">Marne 51</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h3>Analyse de marché</h3>
+        <p>Prix au m², évolution des transactions, volumes de vente par commune. Les données rendues lisibles en un coup d'œil.</p>
+        <span class="feature-tag">Mis à jour quotidien</span>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔔</span>
+        <h3>Alertes personnalisées</h3>
+        <p>Choisissez vos communes et vos types de signaux. Recevez un email ou SMS dès qu'une opportunité correspond à vos critères.</p>
+        <span class="feature-tag">Email + SMS</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="alertes-section">
+  <div class="alertes-inner">
+    <p class="section-label">En pratique</p>
+    <h2 class="section-title">Ce que vous recevez<br>chaque matin</h2>
+    <p class="alertes-subtitle">Chaque jour à 8h, Sentinelle Immo analyse le marché sur votre zone et vous envoie uniquement ce qui compte vraiment.</p>
+    <div class="digest-card">
+      <div class="digest-header">
+        <div><span class="digest-dot"></span><span class="digest-title">Digest du jour — Reims & environs</span></div>
+        <span class="digest-date">Aujourd'hui · 08:00</span>
+      </div>
+
+      <div class="alerte-item">
+        <span class="alerte-emoji">🏚️</span>
+        <div class="alerte-body">
+          <div class="alerte-type">Bien vacant détecté</div>
+          <div class="alerte-titre">Pavillon 5 pièces — Gueux</div>
+          <div class="alerte-detail">Inoccupé depuis 26 mois · Propriétaire identifié · Surface 135m² · Aucune annonce en ligne</div>
+        </div>
+        <span class="alerte-badge badge-hidden">Caché</span>
+      </div>
+
+      <div class="alerte-item">
+        <span class="alerte-emoji">⚰️</span>
+        <div class="alerte-body">
+          <div class="alerte-type">Succession probable</div>
+          <div class="alerte-titre">Maison 4 pièces — secteur Tinqueux</div>
+          <div class="alerte-detail">Propriétaire décédé le 12/05 · Bien non encore mis en vente · Surface estimée 110m²</div>
+        </div>
+        <span class="alerte-badge badge-urgent">Urgent</span>
+      </div>
+
+      <div class="alerte-item">
+        <span class="alerte-emoji">🏛️</span>
+        <div class="alerte-body">
+          <div class="alerte-type">Enchère notariale</div>
+          <div class="alerte-titre">Appartement T3 — Reims centre</div>
+          <div class="alerte-detail">Mise à prix 85 000 € · Adjudication le 28/05 · Étude notariale, Reims</div>
+        </div>
+        <span class="alerte-badge badge-new">Nouveau</span>
+      </div>
+
+      <div class="alerte-item">
+        <span class="alerte-emoji">⚖️</span>
+        <div class="alerte-body">
+          <div class="alerte-type">Vente judiciaire</div>
+          <div class="alerte-titre">Maison individuelle — Muizon</div>
+          <div class="alerte-detail">Saisie immobilière · 5 pièces · Mise à prix 120 000 € · Audience le 03/06</div>
+        </div>
+        <span class="alerte-badge badge-urgent">Urgent</span>
+      </div>
+
+      <div class="alerte-item">
+        <span class="alerte-emoji">📊</span>
+        <div class="alerte-body">
+          <div class="alerte-type">Marché local</div>
+          <div class="alerte-titre">+3 transactions cette semaine — Reims Nord</div>
+          <div class="alerte-detail">Prix moyen : 2 340 €/m² · En hausse de 4% sur 3 mois · 12 biens vendus ce mois</div>
+        </div>
+        <span class="alerte-badge badge-info">Analyse</span>
+      </div>
+
+      <div class="digest-footer"><strong>5 signaux détectés</strong> sur votre zone ce matin · Reims, Tinqueux, Gueux, Muizon</div>
+    </div>
+  </div>
+</div>
+
+<div class="targets-section">
+  <div class="targets-inner">
+    <p class="section-label">Pour qui ?</p>
+    <h2 class="section-title">Fait pour les professionnels<br>qui veulent avoir une longueur d'avance</h2>
+    <div class="targets-grid">
+      <div class="target-card"><h3>Agents immobiliers</h3><p>Contactez les propriétaires de biens vacants ou en succession avant que le bien soit mis en vente. Développez votre portefeuille de mandats exclusifs.</p></div>
+      <div class="target-card"><h3>Marchands de biens</h3><p>Identifiez les biens vacants, les successions et les ventes judiciaires à fort potentiel sur votre secteur avant tout le monde.</p></div>
+      <div class="target-card"><h3>Investisseurs locatifs</h3><p>Accédez aux opportunités cachées — biens inoccupés, prix décotés, enchères — avant qu'elles n'arrivent sur le marché classique.</p></div>
+      <div class="target-card"><h3>Notaires</h3><p>Vue consolidée du marché local, successions en cours et ventes aux enchères du département de la Marne.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Prêt à voir le marché<br><strong>différemment ?</strong></h2>
+  <p>Rejoignez les premiers professionnels à tester Sentinelle Immo sur la région de Reims.</p>
+  <div class="cta-form">
+    <input type="email" placeholder="Votre email professionnel">
+    <button>Demander l'accès</button>
+  </div>
+</div>
+
+<footer>
+  <div class="logo">Sentinelle<span>Immo</span></div>
+  <p>© 2025 Sentinelle Immo · Reims, Marne (51) · Données 100% officielles</p>
+</footer>
+
+</body>
+</html>

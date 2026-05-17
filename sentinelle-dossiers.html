@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinelle Immo — Mes Dossiers</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0B1628; --navy2: #112040; --navy3: #0d1c36;
+    --gold: #C9A96E; --gold2: #E8C98A; --gold3: rgba(201,169,110,0.12);
+    --vacant: #a78bfa; --succession: #f87171; --enchere: #fbbf24;
+    --judiciaire: #f97316; --marche: #34d399; --blue: #60a5fa;
+    --white: #ffffff; --sidebar: 260px;
+    --s-contact: #60a5fa;
+    --s-negocia: #fbbf24;
+    --s-mandat: #34d399;
+    --s-perdu: #6b7a8d;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); display: flex; min-height: 100vh; overflow-x: hidden; }
+
+  /* SIDEBAR */
+  .sidebar { width: var(--sidebar); flex-shrink: 0; background: var(--navy3); border-right: 1px solid rgba(201,169,110,0.1); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; }
+  .sidebar-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(201,169,110,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
+  .logo span { color: rgba(255,255,255,0.5); font-weight: 300; }
+  .logo-sub { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 16px; margin: 2px 8px; border-radius: 6px; cursor: pointer; font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: all 0.15s; text-decoration: none; }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
+  .nav-item.active { background: var(--gold3); color: var(--gold2); }
+  .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
+  .nav-badge { margin-left: auto; background: var(--succession); color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
+  .sidebar-bottom { margin-top: auto; padding: 16px; border-top: 1px solid rgba(201,169,110,0.1); display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold3); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--gold2); font-weight: 600; }
+  .user-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
+  .user-plan { font-size: 0.7rem; color: var(--gold); }
+
+  /* MAIN */
+  .main { margin-left: var(--sidebar); flex: 1; display: flex; flex-direction: column; }
+  .topbar { background: var(--navy3); border-bottom: 1px solid rgba(201,169,110,0.1); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
+  .topbar-left h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
+  .topbar-left p { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+  .topbar-right { display: flex; align-items: center; gap: 10px; }
+  .btn { padding: 8px 18px; border-radius: 6px; font-size: 0.82rem; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.15s; }
+  .btn-ghost { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.08); color: white; }
+  .btn-gold { background: var(--gold); color: var(--navy); font-weight: 600; }
+  .btn-gold:hover { background: var(--gold2); }
+
+  .content { padding: 28px 32px; flex: 1; }
+
+  /* KANBAN */
+  .kanban-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 28px; }
+  .kstat { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 16px 18px; }
+  .kstat-label { font-size: 0.68rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .kstat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 700; }
+  .kstat-sub { font-size: 0.72rem; color: rgba(255,255,255,0.25); margin-top: 4px; }
+
+  /* SEARCH + FILTERS */
+  .toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .search-wrap { position: relative; flex: 1; min-width: 200px; }
+  .search-wrap input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 9px 14px 9px 36px; border-radius: 8px; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.15s; }
+  .search-wrap input:focus { border-color: rgba(201,169,110,0.4); }
+  .search-wrap input::placeholder { color: rgba(255,255,255,0.25); }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; opacity: 0.4; }
+  .filter-btn { padding: 9px 14px; border-radius: 8px; font-size: 0.8rem; cursor: pointer; font-family: 'DM Sans', sans-serif; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.5); transition: all 0.15s; white-space: nowrap; }
+  .filter-btn.active { background: var(--gold3); border-color: rgba(201,169,110,0.3); color: var(--gold2); }
+
+  /* KANBAN BOARD */
+  .kanban { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start; }
+  .kanban-col { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 14px; min-height: 400px; }
+  .col-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .col-title { display: flex; align-items: center; gap: 8px; }
+  .col-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .col-name { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+  .col-count { font-size: 0.72rem; color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 10px; }
+
+  /* DOSSIER CARD */
+  .dossier-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 14px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
+  .dossier-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+  .dossier-card.type-vacant::before { background: var(--vacant); }
+  .dossier-card.type-succession::before { background: var(--succession); }
+  .dossier-card.type-enchere::before { background: var(--enchere); }
+  .dossier-card.type-judiciaire::before { background: var(--judiciaire); }
+  .dossier-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+  .dossier-type { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; padding: 2px 7px; border-radius: 3px; display: inline-block; margin-bottom: 8px; }
+  .dtype-vacant { background: rgba(167,139,250,0.12); color: var(--vacant); }
+  .dtype-succession { background: rgba(248,113,113,0.12); color: var(--succession); }
+  .dtype-enchere { background: rgba(251,191,36,0.12); color: var(--enchere); }
+  .dtype-judiciaire { background: rgba(249,115,22,0.12); color: var(--judiciaire); }
+  .dossier-title { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 4px; line-height: 1.3; }
+  .dossier-commune { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+  .dossier-footer { display: flex; align-items: center; justify-content: space-between; }
+  .dossier-date { font-size: 0.7rem; color: rgba(255,255,255,0.2); }
+  .dossier-price { font-size: 0.8rem; font-weight: 600; color: var(--gold2); }
+  .dossier-note { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); line-height: 1.4; font-style: italic; }
+  .add-card { border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px; padding: 12px; text-align: center; cursor: pointer; color: rgba(255,255,255,0.2); font-size: 0.8rem; transition: all 0.15s; }
+  .add-card:hover { border-color: rgba(201,169,110,0.3); color: rgba(201,169,110,0.6); background: var(--gold3); }
+
+  /* DETAIL PANEL */
+  .detail-panel { position: fixed; top: 0; right: -500px; bottom: 0; width: 460px; background: var(--navy3); border-left: 1px solid rgba(201,169,110,0.15); z-index: 100; transition: right 0.3s ease; overflow-y: auto; display: flex; flex-direction: column; }
+  .detail-panel.open { right: 0; }
+  .detail-header { padding: 22px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+  .detail-close { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+  .detail-close:hover { background: rgba(255,255,255,0.1); color: white; }
+  .detail-body { padding: 24px; flex: 1; }
+  .detail-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: white; margin: 12px 0 4px; line-height: 1.2; }
+  .detail-commune { font-size: 0.82rem; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+
+  /* STATUS SELECTOR */
+  .status-selector { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
+  .status-opt { padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); background: transparent; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .status-opt:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); }
+  .status-opt.active-contact { background: rgba(96,165,250,0.15); border-color: rgba(96,165,250,0.4); color: var(--s-contact); }
+  .status-opt.active-nego { background: rgba(251,191,36,0.15); border-color: rgba(251,191,36,0.4); color: var(--s-negocia); }
+  .status-opt.active-mandat { background: rgba(52,211,153,0.15); border-color: rgba(52,211,153,0.4); color: var(--s-mandat); }
+  .status-opt.active-perdu { background: rgba(107,122,141,0.15); border-color: rgba(107,122,141,0.4); color: var(--s-perdu); }
+
+  .detail-section { margin-bottom: 22px; }
+  .detail-section-title { font-size: 0.68rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
+  .detail-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .detail-row:last-child { border-bottom: none; }
+  .detail-row-label { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  .detail-row-value { font-size: 0.85rem; color: rgba(255,255,255,0.8); font-weight: 500; }
+
+  /* NOTES */
+  .notes-area { width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; color: rgba(255,255,255,0.75); font-size: 0.85rem; font-family: 'DM Sans', sans-serif; resize: vertical; min-height: 100px; outline: none; line-height: 1.6; transition: border-color 0.15s; }
+  .notes-area:focus { border-color: rgba(201,169,110,0.4); }
+
+  /* TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: flex; gap: 14px; padding: 10px 0; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: 15px; top: 28px; bottom: -10px; width: 1px; background: rgba(255,255,255,0.06); }
+  .timeline-item:last-child::before { display: none; }
+  .timeline-dot { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
+  .timeline-content { flex: 1; padding-top: 4px; }
+  .timeline-action { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+  .timeline-date { font-size: 0.72rem; color: rgba(255,255,255,0.25); margin-top: 2px; }
+
+  .detail-actions { padding: 18px 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 10px; }
+  .detail-btn { flex: 1; padding: 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; text-align: center; transition: all 0.15s; }
+  .detail-btn-primary { background: var(--gold); color: var(--navy); }
+  .detail-btn-primary:hover { background: var(--gold2); }
+  .detail-btn-danger { background: rgba(248,113,113,0.1); color: var(--succession); border: 1px solid rgba(248,113,113,0.2); }
+  .detail-btn-danger:hover { background: rgba(248,113,113,0.15); }
+
+  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; }
+  .overlay.show { display: block; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo">Sentinelle<span>Immo</span></div>
+    <div class="logo-sub">Marne · 51</div>
+  </div>
+  <div style="padding: 8px 0;">
+    <div class="sidebar-section">Navigation</div>
+    <a class="nav-item" href="#"><span class="icon">📡</span> Alertes du jour <span class="nav-badge">5</span></a>
+    <a class="nav-item" href="#"><span class="icon">📊</span> Marché local</a>
+    <a class="nav-item active" href="#"><span class="icon">🗂️</span> Mes dossiers</a>
+    <a class="nav-item" href="#"><span class="icon">⚙️</span> Mes zones</a>
+  </div>
+  <div class="sidebar-bottom">
+    <div class="avatar">JD</div>
+    <div>
+      <div class="user-name">Jean Dupont</div>
+      <div class="user-plan">✦ Abonnement Pro</div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Mes dossiers</h1>
+      <p>Suivez chaque opportunité de l'alerte au mandat signé</p>
+    </div>
+    <div class="topbar-right">
+      <button class="btn btn-ghost">📥 Exporter</button>
+      <button class="btn btn-gold">+ Nouveau dossier</button>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- STATS -->
+    <div class="kanban-stats">
+      <div class="kstat"><div class="kstat-label">Total dossiers</div><div class="kstat-num" style="color:var(--gold2)">9</div><div class="kstat-sub">Actifs ce mois</div></div>
+      <div class="kstat"><div class="kstat-label">À contacter</div><div class="kstat-num" style="color:var(--s-contact)">3</div><div class="kstat-sub">En attente</div></div>
+      <div class="kstat"><div class="kstat-label">En négociation</div><div class="kstat-num" style="color:var(--s-negocia)">3</div><div class="kstat-sub">En cours</div></div>
+      <div class="kstat"><div class="kstat-label">Mandats signés</div><div class="kstat-num" style="color:var(--s-mandat)">2</div><div class="kstat-sub">Ce mois</div></div>
+      <div class="kstat"><div class="kstat-label">Valeur pipeline</div><div class="kstat-num" style="color:var(--vacant)">1,2 M€</div><div class="kstat-sub">Estimation cumulée</div></div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Rechercher un dossier, une adresse, une commune...">
+      </div>
+      <button class="filter-btn active">Tous</button>
+      <button class="filter-btn">🏚️ Vacants</button>
+      <button class="filter-btn">⚰️ Successions</button>
+      <button class="filter-btn">🏛️ Enchères</button>
+      <button class="filter-btn">⚖️ Judiciaires</button>
+    </div>
+
+    <!-- KANBAN -->
+    <div class="kanban">
+
+      <!-- À CONTACTER -->
+      <div class="kanban-col">
+        <div class="col-header">
+          <div class="col-title"><div class="col-dot" style="background:var(--s-contact)"></div><span class="col-name" style="color:var(--s-contact)">À contacter</span></div>
+          <span class="col-count">3</span>
+        </div>
+
+        <div class="dossier-card type-vacant" onclick="openDossier('vacant1')">
+          <div class="dossier-type dtype-vacant">🏚️ Bien vacant</div>
+          <div class="dossier-title">Pavillon 5 pièces — Gueux</div>
+          <div class="dossier-commune">📍 Gueux · Inoccupé 26 mois</div>
+          <div class="dossier-footer"><span class="dossier-date">Ajouté le 16/05</span><span class="dossier-price">~187 k€</span></div>
+          <div class="dossier-note">Propriétaire identifié. Pas encore contacté.</div>
+        </div>
+
+        <div class="dossier-card type-succession" onclick="openDossier('succession1')">
+          <div class="dossier-type dtype-succession">⚰️ Succession</div>
+          <div class="dossier-title">Maison 4 pièces — Tinqueux</div>
+          <div class="dossier-commune">📍 Tinqueux · Décès 12/05</div>
+          <div class="dossier-footer"><span class="dossier-date">Ajouté le 16/05</span><span class="dossier-price">~200 k€</span></div>
+        </div>
+
+        <div class="dossier-card type-judiciaire" onclick="openDossier('judiciaire1')">
+          <div class="dossier-type dtype-judiciaire">⚖️ Vente judiciaire</div>
+          <div class="dossier-title">Maison 5 pièces — Muizon</div>
+          <div class="dossier-commune">📍 Muizon · Audience 03/06</div>
+          <div class="dossier-footer"><span class="dossier-date">Ajouté le 16/05</span><span class="dossier-price">120 k€</span></div>
+        </div>
+
+        <div class="add-card">+ Ajouter un dossier</div>
+      </div>
+
+      <!-- CONTACTÉ -->
+      <div class="kanban-col">
+        <div class="col-header">
+          <div class="col-title"><div class="col-dot" style="background:#94a3b8"></div><span class="col-name" style="color:#94a3b8">Contacté</span></div>
+          <span class="col-count">1</span>
+        </div>
+
+        <div class="dossier-card type-vacant" onclick="openDossier('vacant2')">
+          <div class="dossier-type dtype-vacant">🏚️ Bien vacant</div>
+          <div class="dossier-title">Appartement T2 — Reims Nord</div>
+          <div class="dossier-commune">📍 Reims · Inoccupé 14 mois</div>
+          <div class="dossier-footer"><span class="dossier-date">Contacté le 10/05</span><span class="dossier-price">~95 k€</span></div>
+          <div class="dossier-note">Propriétaire intéressé, rappel prévu lundi.</div>
+        </div>
+
+        <div class="add-card">+ Ajouter un dossier</div>
+      </div>
+
+      <!-- EN NÉGOCIATION -->
+      <div class="kanban-col">
+        <div class="col-header">
+          <div class="col-title"><div class="col-dot" style="background:var(--s-negocia)"></div><span class="col-name" style="color:var(--s-negocia)">En négociation</span></div>
+          <span class="col-count">3</span>
+        </div>
+
+        <div class="dossier-card type-succession" onclick="openDossier('succession2')">
+          <div class="dossier-type dtype-succession">⚰️ Succession</div>
+          <div class="dossier-title">Maison 6 pièces — Reims Est</div>
+          <div class="dossier-commune">📍 Reims · Héritiers contactés</div>
+          <div class="dossier-footer"><span class="dossier-date">Depuis le 02/05</span><span class="dossier-price">~265 k€</span></div>
+          <div class="dossier-note">RDV avec notaire le 22/05. Héritiers favorables.</div>
+        </div>
+
+        <div class="dossier-card type-enchere" onclick="openDossier('enchere1')">
+          <div class="dossier-type dtype-enchere">🏛️ Enchère</div>
+          <div class="dossier-title">Appartement T3 — Reims centre</div>
+          <div class="dossier-commune">📍 Reims · Adjudication 28/05</div>
+          <div class="dossier-footer"><span class="dossier-date">Depuis le 12/05</span><span class="dossier-price">85 k€</span></div>
+          <div class="dossier-note">Cahier des charges reçu. Budget OK.</div>
+        </div>
+
+        <div class="dossier-card type-vacant" onclick="openDossier('vacant3')">
+          <div class="dossier-type dtype-vacant">🏚️ Bien vacant</div>
+          <div class="dossier-title">Fermette — Vrigny</div>
+          <div class="dossier-commune">📍 Vrigny · Inoccupé 38 mois</div>
+          <div class="dossier-footer"><span class="dossier-date">Depuis le 08/05</span><span class="dossier-price">~148 k€</span></div>
+        </div>
+
+        <div class="add-card">+ Ajouter un dossier</div>
+      </div>
+
+      <!-- MANDAT SIGNÉ -->
+      <div class="kanban-col">
+        <div class="col-header">
+          <div class="col-title"><div class="col-dot" style="background:var(--s-mandat)"></div><span class="col-name" style="color:var(--s-mandat)">Mandat signé</span></div>
+          <span class="col-count">2</span>
+        </div>
+
+        <div class="dossier-card type-succession" onclick="openDossier('succes_gagne')">
+          <div class="dossier-type dtype-succession">⚰️ Succession</div>
+          <div class="dossier-title">Pavillon 4 pièces — Tinqueux</div>
+          <div class="dossier-commune">📍 Tinqueux · Mandat exclusif</div>
+          <div class="dossier-footer"><span class="dossier-date">Signé le 08/05</span><span class="dossier-price">178 k€</span></div>
+          <div class="dossier-note">Mise en vente prévue semaine du 20/05. 🎉</div>
+        </div>
+
+        <div class="dossier-card type-vacant" onclick="openDossier('vacant_gagne')">
+          <div class="dossier-type dtype-vacant">🏚️ Bien vacant</div>
+          <div class="dossier-title">Maison de village — Muizon</div>
+          <div class="dossier-commune">📍 Muizon · Mandat simple</div>
+          <div class="dossier-footer"><span class="dossier-date">Signé le 03/05</span><span class="dossier-price">142 k€</span></div>
+        </div>
+
+        <div class="add-card">+ Ajouter un dossier</div>
+      </div>
+
+      <!-- PERDU / ARCHIVÉ -->
+      <div class="kanban-col">
+        <div class="col-header">
+          <div class="col-title"><div class="col-dot" style="background:var(--s-perdu)"></div><span class="col-name" style="color:var(--s-perdu)">Archivé</span></div>
+          <span class="col-count">1</span>
+        </div>
+
+        <div class="dossier-card type-enchere" style="opacity:0.5" onclick="openDossier('perdu1')">
+          <div class="dossier-type dtype-enchere">🏛️ Enchère</div>
+          <div class="dossier-title">Appartement T2 — Reims</div>
+          <div class="dossier-commune">📍 Reims · Surenchéri</div>
+          <div class="dossier-footer"><span class="dossier-date">Clôturé le 30/04</span><span class="dossier-price">—</span></div>
+          <div class="dossier-note">Adjugé à un autre acheteur. Budget dépassé.</div>
+        </div>
+
+        <div class="add-card">+ Ajouter un dossier</div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="overlay" id="overlay" onclick="closeDetail()"></div>
+
+<!-- DETAIL PANEL -->
+<div class="detail-panel" id="detail-panel">
+  <div class="detail-header">
+    <div id="dp-badge" style="font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border-radius:4px;"></div>
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+  </div>
+  <div class="detail-body">
+    <div id="dp-title" class="detail-title"></div>
+    <div id="dp-commune" class="detail-commune"></div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Statut du dossier</div>
+      <div class="status-selector">
+        <button class="status-opt" onclick="setStatus('contact',this)">📞 À contacter</button>
+        <button class="status-opt" onclick="setStatus('contacte',this)">✉️ Contacté</button>
+        <button class="status-opt" onclick="setStatus('nego',this)">🤝 Négociation</button>
+        <button class="status-opt" onclick="setStatus('mandat',this)">✅ Mandat signé</button>
+        <button class="status-opt" onclick="setStatus('perdu',this)">❌ Archivé</button>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Informations du bien</div>
+      <div id="dp-rows"></div>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Mes notes</div>
+      <textarea class="notes-area" id="dp-notes" placeholder="Ajoutez vos notes, observations, contacts..."></textarea>
+    </div>
+
+    <div class="detail-section">
+      <div class="detail-section-title">Historique</div>
+      <div class="timeline" id="dp-timeline"></div>
+    </div>
+  </div>
+  <div class="detail-actions">
+    <button class="detail-btn detail-btn-primary">💾 Sauvegarder</button>
+    <button class="detail-btn detail-btn-danger">🗑️ Archiver</button>
+  </div>
+</div>
+
+<script>
+const dossiers = {
+  vacant1: {
+    badge:'🏚️ Bien vacant', badgeClass:'dtype-vacant', title:'Pavillon 5 pièces — Gueux', commune:'📍 Gueux (51390) · Inoccupé depuis 26 mois',
+    status:'contact', notes:'Propriétaire identifié. Pas encore contacté.',
+    rows:[['Surface estimée','135 m²'],['Inoccupé depuis','26 mois'],['Taxe vacance','Active'],['Propriétaire','Personne physique identifiée'],['Estimation valeur','~187 000 €'],['Annonce en ligne','Aucune']],
+    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal détecté par Sentinelle Immo',date:'Aujourd\'hui · 08h02'},{icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier créé',date:'Aujourd\'hui · 09h15'}]
+  },
+  succession1: {
+    badge:'⚰️ Succession', badgeClass:'dtype-succession', title:'Maison 4 pièces — Tinqueux', commune:'📍 Tinqueux (51430) · Décès le 12/05/2025',
+    status:'contact', notes:'',
+    rows:[['Surface estimée','110 m²'],['Date du décès','12 mai 2025'],['Notaire saisi','Oui'],['Héritiers','En cours d\'identification'],['Estimation valeur','185 000 – 210 000 €'],['Annonce en ligne','Aucune']],
+    timeline:[{icon:'🔔',bg:'rgba(248,113,113,0.15)',action:'Signal succession détecté',date:'Aujourd\'hui · 08h02'},{icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier créé',date:'Aujourd\'hui · 09h30'}]
+  },
+  succession2: {
+    badge:'⚰️ Succession', badgeClass:'dtype-succession', title:'Maison 6 pièces — Reims Est', commune:'📍 Reims (51100) · Héritiers contactés',
+    status:'nego', notes:'RDV avec notaire le 22/05. Les 3 héritiers sont favorables à une vente rapide. Prix souhaité ~260k.',
+    rows:[['Surface','148 m²'],['Terrain','380 m²'],['Notaire en charge','Maître Martin, Reims'],['Héritiers','3 — tous contactés'],['Estimation valeur','~265 000 €'],['Délai souhaité','Avant fin juin']],
+    timeline:[{icon:'🔔',bg:'rgba(248,113,113,0.15)',action:'Signal succession détecté',date:'02/05 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Premier contact avec héritier principal',date:'04/05 · 14h30'},{icon:'🤝',bg:'rgba(251,191,36,0.15)',action:'RDV famille organisé',date:'10/05 · 11h00'},{icon:'⚖️',bg:'rgba(52,211,153,0.15)',action:'Notaire contacté — RDV le 22/05',date:'15/05 · 09h00'}]
+  },
+  enchere1: {
+    badge:'🏛️ Enchère notariale', badgeClass:'dtype-enchere', title:'Appartement T3 — Reims centre', commune:'📍 Reims (51100) · Adjudication le 28/05/2025',
+    status:'nego', notes:'Cahier des charges reçu et analysé. Budget client : 95k max frais inclus. OK pour enchérir.',
+    rows:[['Surface','67 m²'],['Mise à prix','85 000 €'],['Adjudication','28 mai 2025'],['Étude notariale','Reims'],['Estimation marché','~130 000 €'],['DPE','D']],
+    timeline:[{icon:'🔔',bg:'rgba(251,191,36,0.15)',action:'Enchère détectée par Sentinelle Immo',date:'12/05 · 08h02'},{icon:'📋',bg:'rgba(201,169,110,0.12)',action:'Cahier des charges téléchargé',date:'13/05 · 10h00'},{icon:'✅',bg:'rgba(52,211,153,0.15)',action:'Budget validé avec le client',date:'14/05 · 16h30'}]
+  },
+  succes_gagne: {
+    badge:'✅ Mandat signé', badgeClass:'dtype-succession', title:'Pavillon 4 pièces — Tinqueux', commune:'📍 Tinqueux (51430) · Mandat exclusif signé',
+    status:'mandat', notes:'Mise en vente semaine du 20/05. Prix affiché : 178 000 €. Photos prévues le 19/05.',
+    rows:[['Surface','98 m²'],['Terrain','250 m²'],['Type de mandat','Exclusif — 3 mois'],['Prix de vente','178 000 €'],['Photos','19 mai 2025'],['Publication','Semaine du 20/05']],
+    timeline:[{icon:'🔔',bg:'rgba(248,113,113,0.15)',action:'Signal succession détecté',date:'25/04 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Contact héritière principale',date:'26/04 · 15h00'},{icon:'🤝',bg:'rgba(251,191,36,0.15)',action:'Visite du bien réalisée',date:'02/05 · 10h30'},{icon:'✅',bg:'rgba(52,211,153,0.15)',action:'Mandat exclusif signé 🎉',date:'08/05 · 14h00'}]
+  },
+  judiciaire1: {
+    badge:'⚖️ Vente judiciaire', badgeClass:'dtype-judiciaire', title:'Maison 5 pièces — Muizon', commune:'📍 Muizon (51140) · Audience le 03/06/2025',
+    status:'contact', notes:'',
+    rows:[['Surface','~120 m²'],['Terrain','~600 m²'],['Mise à prix','120 000 €'],['Date audience','3 juin 2025'],['Juridiction','Tribunal judiciaire Reims'],['Estimation marché','~195 000 €']],
+    timeline:[{icon:'🔔',bg:'rgba(249,115,22,0.15)',action:'Vente judiciaire détectée',date:'Aujourd\'hui · 08h02'},{icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier créé',date:'Aujourd\'hui · 09h45'}]
+  },
+  vacant2: {
+    badge:'🏚️ Bien vacant', badgeClass:'dtype-vacant', title:'Appartement T2 — Reims Nord', commune:'📍 Reims (51100) · Inoccupé depuis 14 mois',
+    status:'contacte', notes:'Propriétaire intéressé par une mise en vente. Rappel prévu lundi 19/05.',
+    rows:[['Surface estimée','48 m²'],['Inoccupé depuis','14 mois'],['Propriétaire','Contacté le 10/05'],['Intérêt','Oui — à confirmer'],['Estimation valeur','~95 000 €'],['Prochain contact','Lundi 19/05']],
+    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal vacant détecté',date:'08/05 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Premier appel — propriétaire intéressé',date:'10/05 · 11h30'}]
+  },
+  vacant3: {
+    badge:'🏚️ Bien vacant', badgeClass:'dtype-vacant', title:'Fermette — Vrigny', commune:'📍 Vrigny (51390) · Inoccupée depuis 38 mois',
+    status:'nego', notes:'Propriétaire âgé en maison de retraite. Famille souhaite vendre. Estimation à faire.',
+    rows:[['Surface habitable','~80 m²'],['Terrain','~1 200 m²'],['Inoccupé depuis','38 mois'],['Situation','Propriétaire en EHPAD'],['Estimation valeur','~148 000 €'],['Décideurs','2 enfants mandataires']],
+    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal vacant détecté',date:'06/05 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Contact avec le fils du propriétaire',date:'08/05 · 14h00'},{icon:'🤝',bg:'rgba(251,191,36,0.15)',action:'Visite de la fermette avec la famille',date:'12/05 · 10h00'}]
+  },
+  vacant_gagne: {
+    badge:'✅ Mandat signé', badgeClass:'dtype-vacant', title:'Maison de village — Muizon', commune:'📍 Muizon (51140) · Mandat simple signé',
+    status:'mandat', notes:'Bien en cours de mise en marché. Prix : 142 000 €.',
+    rows:[['Surface','76 m²'],['Terrain','180 m²'],['Type de mandat','Simple — 3 mois'],['Prix de vente','142 000 €'],['Inoccupé depuis','19 mois'],['Publication','En cours']],
+    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal vacant détecté',date:'25/04 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Contact propriétaire',date:'27/04 · 10h00'},{icon:'✅',bg:'rgba(52,211,153,0.15)',action:'Mandat simple signé',date:'03/05 · 15h30'}]
+  },
+  perdu1: {
+    badge:'❌ Archivé', badgeClass:'dtype-enchere', title:'Appartement T2 — Reims', commune:'📍 Reims (51100) · Surenchéri le 30/04',
+    status:'perdu', notes:'Adjugé à un autre acheteur. Budget dépassé de 12 000 €. À surveiller en cas de désistement.',
+    rows:[['Surface','41 m²'],['Mise à prix','58 000 €'],['Prix final','~74 000 €'],['Notre plafond','62 000 €'],['Résultat','Surenchéri'],['Date','30 avril 2025']],
+    timeline:[{icon:'🔔',bg:'rgba(251,191,36,0.15)',action:'Enchère détectée',date:'15/04 · 08h00'},{icon:'📋',bg:'rgba(201,169,110,0.12)',action:'Dossier analysé',date:'16/04 · 09h00'},{icon:'❌',bg:'rgba(248,113,113,0.15)',action:'Surenchéri lors de l\'adjudication',date:'30/04 · 14h30'}]
+  }
+};
+
+function openDossier(id) {
+  const d = dossiers[id];
+  if (!d) return;
+  const badge = document.getElementById('dp-badge');
+  badge.textContent = d.badge;
+  badge.className = d.badgeClass;
+  badge.style.display = 'inline-block';
+  badge.style.padding = '5px 12px';
+  badge.style.borderRadius = '4px';
+  document.getElementById('dp-title').textContent = d.title;
+  document.getElementById('dp-commune').textContent = d.commune;
+  document.getElementById('dp-notes').value = d.notes;
+
+  // Status
+  document.querySelectorAll('.status-opt').forEach(b => b.className = 'status-opt');
+  const statusMap = { contact: [0,'active-contact'], contacte:[1,'active-contact'], nego:[2,'active-nego'], mandat:[3,'active-mandat'], perdu:[4,'active-perdu'] };
+  if (statusMap[d.status]) {
+    const [idx, cls] = statusMap[d.status];
+    document.querySelectorAll('.status-opt')[idx].classList.add(cls);
+  }
+
+  // Rows
+  let html = '';
+  d.rows.forEach(([l,v]) => { html += `<div class="detail-row"><span class="detail-row-label">${l}</span><span class="detail-row-value">${v}</span></div>`; });
+  document.getElementById('dp-rows').innerHTML = html;
+
+  // Timeline
+  let thtml = '';
+  d.timeline.forEach(t => { thtml += `<div class="timeline-item"><div class="timeline-dot" style="background:${t.bg}">${t.icon}</div><div class="timeline-content"><div class="timeline-action">${t.action}</div><div class="timeline-date">${t.date}</div></div></div>`; });
+  document.getElementById('dp-timeline').innerHTML = thtml;
+
+  document.getElementById('detail-panel').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+function setStatus(s, el) {
+  document.querySelectorAll('.status-opt').forEach(b => b.className = 'status-opt');
+  const cls = { contact:'active-contact', contacte:'active-contact', nego:'active-nego', mandat:'active-mandat', perdu:'active-perdu' };
+  el.classList.add(cls[s] || '');
+}
+</script>
+</body>
+</html>
