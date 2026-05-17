@@ -1,14 +1,17 @@
 {
-  "date_collecte": "17/05/2026 à 15:20",
+  "date_collecte": "17/05/2026 à 19:15",
   "communes": [
     "Reims",
     "Tinqueux",
     "Gueux",
     "Muizon",
-    "Fismes"
+    "Hermonville",
+    "Courcy",
+    "Saint-Thierry",
+    "Pouillon"
   ],
   "stats": {
-    "transactions_dvf": 2695,
+    "transactions_dvf": 2707,
     "annonces_bodacc": 50
   },
   "marche": {
@@ -48,13 +51,40 @@
       "prix_m2_maisons": 2466.0,
       "prix_m2_apparts": 0
     },
-    "Fismes": {
+    "Hermonville": {
       "nb_transactions": 8,
       "nb_maisons": 8,
       "nb_appartements": 0,
-      "prix_m2_moyen": 3075.0,
-      "prix_median": 1530.0,
-      "prix_m2_maisons": 3075.0,
+      "prix_m2_moyen": 2600.0,
+      "prix_median": 2558.0,
+      "prix_m2_maisons": 2600.0,
+      "prix_m2_apparts": 0
+    },
+    "Courcy": {
+      "nb_transactions": 1,
+      "nb_maisons": 1,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 915.0,
+      "prix_median": 915.0,
+      "prix_m2_maisons": 915.0,
+      "prix_m2_apparts": 0
+    },
+    "Saint-Thierry": {
+      "nb_transactions": 4,
+      "nb_maisons": 4,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 1338.0,
+      "prix_median": 1430.0,
+      "prix_m2_maisons": 1338.0,
+      "prix_m2_apparts": 0
+    },
+    "Pouillon": {
+      "nb_transactions": 7,
+      "nb_maisons": 7,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 2569.0,
+      "prix_median": 2418.0,
+      "prix_m2_maisons": 2569.0,
       "prix_m2_apparts": 0
     }
   },

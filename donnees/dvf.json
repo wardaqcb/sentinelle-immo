@@ -384,6 +384,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "31/03/2025",
+    "valeur_fonciere": 755250.0,
+    "surface_bati": 265.0,
+    "prix_m2": 2850.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "76 DU PARC",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "31/03/2025",
@@ -1125,6 +1137,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "9 GUILLAUME APOLLINAIRE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "30/06/2025",
+    "valeur_fonciere": 506500.0,
+    "surface_bati": 163.0,
+    "prix_m2": 3107.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "1 DE LA MONTAGNE",
     "nature_mutation": "Vente"
   },
   {
@@ -4137,6 +4161,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "40 DES CAPUCINS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "28/05/2025",
+    "valeur_fonciere": 340000.0,
+    "surface_bati": 115.0,
+    "prix_m2": 2957.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "18 DU FORT",
     "nature_mutation": "Vente"
   },
   {
@@ -7164,6 +7200,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Saint-Thierry",
+    "code_insee": "51513",
+    "date_mutation": "26/06/2025",
+    "valeur_fonciere": 147000.0,
+    "surface_bati": 132.0,
+    "prix_m2": 1114.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "4 GRANDE RUE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "26/06/2025",
@@ -9297,18 +9345,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "9 DR LUCIEN BETTINGER",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "24/07/2025",
-    "valeur_fonciere": 149710.0,
-    "surface_bati": 82.0,
-    "prix_m2": 1826.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "5 HENRI IV",
     "nature_mutation": "Vente"
   },
   {
@@ -12672,6 +12708,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "21/08/2025",
+    "valeur_fonciere": 331550.0,
+    "surface_bati": 144.0,
+    "prix_m2": 2302.0,
+    "type_local": "Maison",
+    "nombre_pieces": "8",
+    "adresse": "1 DES SORANGES",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "21/08/2025",
@@ -15636,6 +15684,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Saint-Thierry",
+    "code_insee": "51513",
+    "date_mutation": "18/08/2025",
+    "valeur_fonciere": 183000.0,
+    "surface_bati": 128.0,
+    "prix_m2": 1430.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "18 DE DROSNAY",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "18/08/2025",
@@ -16257,18 +16317,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "159 JEAN JAURES",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "18/04/2025",
-    "valeur_fonciere": 128500.0,
-    "surface_bati": 84.0,
-    "prix_m2": 1530.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "15 DE LA REPUBLIQUE",
     "nature_mutation": "Vente"
   },
   {
@@ -18840,6 +18888,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "15/09/2025",
+    "valeur_fonciere": 299800.0,
+    "surface_bati": 124.0,
+    "prix_m2": 2418.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "2 DU PARC",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "15/09/2025",
+    "valeur_fonciere": 299800.0,
+    "surface_bati": 124.0,
+    "prix_m2": 2418.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "2 DU PARC",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "15/09/2025",
@@ -19668,18 +19740,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "14/10/2025",
-    "valeur_fonciere": 83000.0,
-    "surface_bati": 60.0,
-    "prix_m2": 1383.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "3 DU PONT",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "14/10/2025",
@@ -20229,6 +20289,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "5 DES AUGUSTINS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "14/02/2025",
+    "valeur_fonciere": 215000.0,
+    "surface_bati": 90.0,
+    "prix_m2": 2389.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "10 DE REIMS",
     "nature_mutation": "Vente"
   },
   {
@@ -21672,18 +21744,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "12/05/2025",
-    "valeur_fonciere": 110600.0,
-    "surface_bati": 85.0,
-    "prix_m2": 1301.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "10 DU MESNIL",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "12/03/2025",
@@ -21993,6 +22053,18 @@
     "type_local": "Maison",
     "nombre_pieces": "5",
     "adresse": "2 DESBUREAUX",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Saint-Thierry",
+    "code_insee": "51513",
+    "date_mutation": "11/09/2025",
+    "valeur_fonciere": 148200.0,
+    "surface_bati": 96.0,
+    "prix_m2": 1544.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "14 DE LA FORMERIE",
     "nature_mutation": "Vente"
   },
   {
@@ -24408,18 +24480,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "10/01/2025",
-    "valeur_fonciere": 36000.0,
-    "surface_bati": 64.0,
-    "prix_m2": 562.0,
-    "type_local": "Maison",
-    "nombre_pieces": "4",
-    "adresse": "3 DE L'ILE",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "10/01/2025",
@@ -24549,6 +24609,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "5",
     "adresse": "61 CARTERET",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "09/10/2025",
+    "valeur_fonciere": 110000.0,
+    "surface_bati": 43.0,
+    "prix_m2": 2558.0,
+    "type_local": "Maison",
+    "nombre_pieces": "2",
+    "adresse": "47 DE FISMES",
     "nature_mutation": "Vente"
   },
   {
@@ -24741,30 +24813,6 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "3 GERUZEZ",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "09/09/2025",
-    "valeur_fonciere": 752240.0,
-    "surface_bati": 87.0,
-    "prix_m2": 8646.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "3 DE BEL AIR",
-    "nature_mutation": "Vente"
-  },
-  {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "09/09/2025",
-    "valeur_fonciere": 752240.0,
-    "surface_bati": 87.0,
-    "prix_m2": 8646.0,
-    "type_local": "Maison",
-    "nombre_pieces": "3",
-    "adresse": "3 DE BEL AIR",
     "nature_mutation": "Vente"
   },
   {
@@ -25668,6 +25716,30 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "08/08/2025",
+    "valeur_fonciere": 400000.0,
+    "surface_bati": 135.0,
+    "prix_m2": 2963.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "1 DES GRATTIERES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "08/08/2025",
+    "valeur_fonciere": 400000.0,
+    "surface_bati": 135.0,
+    "prix_m2": 2963.0,
+    "type_local": "Maison",
+    "nombre_pieces": "6",
+    "adresse": "1 DES GRATTIERES",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "08/07/2025",
@@ -26337,6 +26409,18 @@
     "type_local": "Maison",
     "nombre_pieces": "5",
     "adresse": "8 DU PROGRES",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "07/08/2025",
+    "valeur_fonciere": 338800.0,
+    "surface_bati": 107.0,
+    "prix_m2": 3166.0,
+    "type_local": "Maison",
+    "nombre_pieces": "4",
+    "adresse": "36 DE REIMS",
     "nature_mutation": "Vente"
   },
   {
@@ -27948,6 +28032,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Courcy",
+    "code_insee": "51169",
+    "date_mutation": "05/12/2025",
+    "valeur_fonciere": 65000.0,
+    "surface_bati": 71.0,
+    "prix_m2": 915.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "6 DE LA CRUCHIERE",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "05/11/2025",
@@ -28053,6 +28149,30 @@
     "type_local": "Appartement",
     "nombre_pieces": "4",
     "adresse": "43 DES TELLIERS",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "05/11/2025",
+    "valeur_fonciere": 305000.0,
+    "surface_bati": 144.0,
+    "prix_m2": 2118.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "4 DE TRIGNY",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Pouillon",
+    "code_insee": "51444",
+    "date_mutation": "05/11/2025",
+    "valeur_fonciere": 305000.0,
+    "surface_bati": 144.0,
+    "prix_m2": 2118.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "4 DE TRIGNY",
     "nature_mutation": "Vente"
   },
   {
@@ -28401,6 +28521,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "3",
     "adresse": "31 DE LA GOULETTE",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Saint-Thierry",
+    "code_insee": "51513",
+    "date_mutation": "05/06/2025",
+    "valeur_fonciere": 127500.0,
+    "surface_bati": 101.0,
+    "prix_m2": 1262.0,
+    "type_local": "Maison",
+    "nombre_pieces": "3",
+    "adresse": "36 DES LANDRES",
     "nature_mutation": "Vente"
   },
   {
@@ -29856,18 +29988,6 @@
     "nature_mutation": "Vente"
   },
   {
-    "commune": "Fismes",
-    "code_insee": "51249",
-    "date_mutation": "03/11/2025",
-    "valeur_fonciere": 120000.0,
-    "surface_bati": 170.0,
-    "prix_m2": 706.0,
-    "type_local": "Maison",
-    "nombre_pieces": "5",
-    "adresse": "4 LA BOULONNERIE",
-    "nature_mutation": "Vente"
-  },
-  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "03/11/2025",
@@ -31272,6 +31392,18 @@
     "nature_mutation": "Vente"
   },
   {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "02/06/2025",
+    "valeur_fonciere": 439000.0,
+    "surface_bati": 225.0,
+    "prix_m2": 1951.0,
+    "type_local": "Maison",
+    "nombre_pieces": "7",
+    "adresse": "17 DE PROUILLY",
+    "nature_mutation": "Vente"
+  },
+  {
     "commune": "Reims",
     "code_insee": "51454",
     "date_mutation": "02/06/2025",
@@ -32025,6 +32157,18 @@
     "type_local": "Appartement",
     "nombre_pieces": "2",
     "adresse": "7 P VAILLANT COUTURIER",
+    "nature_mutation": "Vente"
+  },
+  {
+    "commune": "Hermonville",
+    "code_insee": "51291",
+    "date_mutation": "01/08/2025",
+    "valeur_fonciere": 324000.0,
+    "surface_bati": 129.0,
+    "prix_m2": 2512.0,
+    "type_local": "Maison",
+    "nombre_pieces": "5",
+    "adresse": "14 DES BURIES",
     "nature_mutation": "Vente"
   },
   {
