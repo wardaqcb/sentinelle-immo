@@ -197,6 +197,7 @@
     <div class="page-tabs">
       <button class="page-tab active" onclick="switchTab('stats',this)">📊 Statistiques</button>
       <button class="page-tab" onclick="switchTab('search',this)">🔍 Recherche DVF</button>
+      <button class="page-tab" onclick="switchTab('lovac',this)">🏚️ Biens vacants</button>
     </div>
 
     <!-- STATS -->
@@ -250,7 +251,7 @@
       <!-- CHART PRIX PAR COMMUNE -->
       <div class="chart-card">
         <div class="chart-title">Prix au m² par commune</div>
-        <div class="chart-sub">Moyenne des transactions 2025 · Source DVF officielle · </div>
+        <div class="chart-sub">Moyenne des transactions 2025 · Source DVF officielle · Hors Fismes</div>
         <canvas id="prixChart" height="140"></canvas>
       </div>
 
@@ -263,6 +264,15 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- LOVAC -->
+    <div class="search-section" id="lovac-section">
+      <div class="dvf-header">
+        <div class="dvf-title">Biens vacants par commune <span class="dvf-count" id="lovac-count">—</span></div>
+        <div class="dvf-sub">Source LOVAC officielle · data.gouv.fr · Logements vacants du parc privé 2025</div>
+      </div>
+      <div id="lovac-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px;"></div>
     </div>
 
     <!-- RECHERCHE DVF -->
@@ -432,7 +442,7 @@ function chargerStats() {
   document.getElementById("kpi-total-sub").textContent =
     `${maisons.length.toLocaleString("fr-FR")} maisons · ${apparts.length.toLocaleString("fr-FR")} appartements`;
   document.getElementById("kpi-communes").textContent = [...new Set(DVF_DATA.map(t => t.commune))].length;
-  document.getElementById("kpi-communes-sub").textContent = "Zone Active";
+  document.getElementById("kpi-communes-sub").textContent = "Hors Fismes";
 
   const reimsAll = DVF_DATA.filter(t => t.commune === "Reims");
   const prix = reimsAll.map(t => t.prix_m2).filter(p => p > 500);
@@ -665,6 +675,49 @@ function switchTab(tab, el) {
   el.classList.add("active");
   document.getElementById("stats-section").classList.toggle("hidden", tab !== "stats");
   document.getElementById("search-section").classList.toggle("visible", tab === "search");
+  document.getElementById("lovac-section").classList.toggle("visible", tab === "lovac");
+  if (tab === "lovac") chargerLovac();
+}
+
+async function chargerLovac() {
+  const grid = document.getElementById("lovac-grid");
+  if (grid.children.length > 0 && !grid.querySelector(".loading-msg")) return; // déjà chargé
+  grid.innerHTML = '<div class="loading-msg">⏳ Chargement LOVAC...</div>';
+  try {
+    const r = await fetch("donnees/lovac.json");
+    if (!r.ok) throw new Error("lovac.json introuvable");
+    const data = await r.json();
+    // Filtre Fismes
+    const filtered = data.filter(c => c.commune !== "Fismes");
+    document.getElementById("lovac-count").textContent = filtered.length + " communes";
+    grid.innerHTML = filtered.map(c => {
+      const nb = c.vacants_2025 === "s" ? "Confidentiel" : (c.vacants_2025 || "—");
+      const nb2ans = c.vacants_plus_2ans_2025 === "s" ? "Confidentiel" : (c.vacants_plus_2ans_2025 || "—");
+      const color = nb !== "Confidentiel" && parseInt(nb) > 20 ? "var(--succession)" : "var(--vacant)";
+      return `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px;border-left:3px solid var(--vacant);">
+          <div style="font-size:0.68rem;color:var(--vacant);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;">🏚️ Biens vacants</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:4px;">${c.commune}</div>
+          <div style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:14px;">${c.departement || "Marne"}</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="color:rgba(255,255,255,0.35)">Vacants 2025</span>
+              <span style="color:${color};font-weight:600">${nb}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+              <span style="color:rgba(255,255,255,0.35)">Vacants +2 ans</span>
+              <span style="color:rgba(255,255,255,0.75);font-weight:500">${nb2ans}</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 0;">
+              <span style="color:rgba(255,255,255,0.35)">Vacants 2024</span>
+              <span style="color:rgba(255,255,255,0.5)">${c.vacants_2024 === "s" ? "—" : (c.vacants_2024 || "—")}</span>
+            </div>
+          </div>
+        </div>`;
+    }).join("");
+  } catch(e) {
+    grid.innerHTML = `<div class="loading-msg">⚠️ ${e.message}</div>`;
+  }
 }
 
 chargerDonnees();
