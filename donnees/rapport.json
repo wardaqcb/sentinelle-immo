@@ -1,0 +1,445 @@
+{
+  "date_collecte": "17/05/2026 à 15:20",
+  "communes": [
+    "Reims",
+    "Tinqueux",
+    "Gueux",
+    "Muizon",
+    "Fismes"
+  ],
+  "stats": {
+    "transactions_dvf": 2695,
+    "annonces_bodacc": 50
+  },
+  "marche": {
+    "Reims": {
+      "nb_transactions": 2674,
+      "nb_maisons": 517,
+      "nb_appartements": 2157,
+      "prix_m2_moyen": 3284.0,
+      "prix_median": 2769.0,
+      "prix_m2_maisons": 3023.0,
+      "prix_m2_apparts": 3346.0
+    },
+    "Tinqueux": {
+      "nb_transactions": 1,
+      "nb_maisons": 1,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 1333.0,
+      "prix_median": 1333.0,
+      "prix_m2_maisons": 1333.0,
+      "prix_m2_apparts": 0
+    },
+    "Gueux": {
+      "nb_transactions": 8,
+      "nb_maisons": 8,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 3488.0,
+      "prix_median": 3154.0,
+      "prix_m2_maisons": 3488.0,
+      "prix_m2_apparts": 0
+    },
+    "Muizon": {
+      "nb_transactions": 4,
+      "nb_maisons": 4,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 2466.0,
+      "prix_median": 2475.0,
+      "prix_m2_maisons": 2466.0,
+      "prix_m2_apparts": 0
+    },
+    "Fismes": {
+      "nb_transactions": 8,
+      "nb_maisons": 8,
+      "nb_appartements": 0,
+      "prix_m2_moyen": 3075.0,
+      "prix_median": 1530.0,
+      "prix_m2_maisons": 3075.0,
+      "prix_m2_apparts": 0
+    }
+  },
+  "transactions_recentes": [
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/12/2025",
+      "valeur_fonciere": 138000.0,
+      "surface_bati": 49.0,
+      "prix_m2": 2816.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "2",
+      "adresse": "32 GERUZEZ",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 58000.0,
+      "surface_bati": 18.0,
+      "prix_m2": 3222.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "1",
+      "adresse": "25 VICTOR ROGELET",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 90000.0,
+      "surface_bati": 40.0,
+      "prix_m2": 2250.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "2",
+      "adresse": "16 DES CARMES",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 208000.0,
+      "surface_bati": 74.0,
+      "prix_m2": 2811.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "3",
+      "adresse": "52 DERODE",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 62000.0,
+      "surface_bati": 18.0,
+      "prix_m2": 3444.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "1",
+      "adresse": "39 HENRI FARMAN",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 605000.0,
+      "surface_bati": 52.0,
+      "prix_m2": 11635.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "2",
+      "adresse": "6 DU GENERAL BARATIER",
+      "nature_mutation": "Vente en l'état futur d'achèvement"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 605000.0,
+      "surface_bati": 80.0,
+      "prix_m2": 7562.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "3",
+      "adresse": "6 DU GENERAL BARATIER",
+      "nature_mutation": "Vente en l'état futur d'achèvement"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 110000.0,
+      "surface_bati": 60.0,
+      "prix_m2": 1833.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "3",
+      "adresse": "20 DE BRIMONTEL",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 111000.0,
+      "surface_bati": 86.0,
+      "prix_m2": 1291.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "3",
+      "adresse": "22 DUMONT D URVILLE",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 162500.0,
+      "surface_bati": 67.0,
+      "prix_m2": 2425.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "3",
+      "adresse": "9 DE COURLANCY",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 289000.0,
+      "surface_bati": 98.0,
+      "prix_m2": 2949.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "6",
+      "adresse": "58 D EPERNAY",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 108900.0,
+      "surface_bati": 23.0,
+      "prix_m2": 4735.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "1",
+      "adresse": "136 DE LA MAISON BLANCHE",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 185000.0,
+      "surface_bati": 81.0,
+      "prix_m2": 2284.0,
+      "type_local": "Maison",
+      "nombre_pieces": "4",
+      "adresse": "39 DU COMMANDANT LAMY",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/10/2025",
+      "valeur_fonciere": 300000.0,
+      "surface_bati": 120.0,
+      "prix_m2": 2500.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "4",
+      "adresse": "8 SAINT SYMPHORIEN",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/07/2025",
+      "valeur_fonciere": 126000.0,
+      "surface_bati": 59.0,
+      "prix_m2": 2136.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "2",
+      "adresse": "24 DE L ISLE",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/07/2025",
+      "valeur_fonciere": 230000.0,
+      "surface_bati": 89.0,
+      "prix_m2": 2584.0,
+      "type_local": "Maison",
+      "nombre_pieces": "4",
+      "adresse": "41 MARIE OGNOIS",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/07/2025",
+      "valeur_fonciere": 114000.0,
+      "surface_bati": 43.0,
+      "prix_m2": 2651.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "2",
+      "adresse": "15 DES SALINES",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/07/2025",
+      "valeur_fonciere": 148000.0,
+      "surface_bati": 61.0,
+      "prix_m2": 2426.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "3",
+      "adresse": "11 HENRI DELACROIX",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/07/2025",
+      "valeur_fonciere": 255000.0,
+      "surface_bati": 89.0,
+      "prix_m2": 2865.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "5",
+      "adresse": "37 VOLTAIRE",
+      "nature_mutation": "Vente"
+    },
+    {
+      "commune": "Reims",
+      "code_insee": "51454",
+      "date_mutation": "31/07/2025",
+      "valeur_fonciere": 130000.0,
+      "surface_bati": 47.0,
+      "prix_m2": 2766.0,
+      "type_local": "Appartement",
+      "nombre_pieces": "2",
+      "adresse": "81 DE VENISE",
+      "nature_mutation": "Vente"
+    }
+  ],
+  "annonces_recentes": [
+    {
+      "type": "Ventes et cessions",
+      "date": "2026-05-17",
+      "description": "KLEIN, Gaetan, AU FOURNIL D'OR",
+      "tribunal": "Greffe du Tribunal de Commerce de Reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "APACRI",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "FLOWHAIR",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "LEI CADE",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "MOBILITE AGGLOMERATION REMOISE SAS",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "S.B.L.",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "E&C EXPERTISE ET CONSEIL",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "GVSE HOLDING",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "M-Conseil",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "DP DANSE",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "PM TRAITEUR",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "L-T CONCEPT",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "STARDEC",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "FRANCE ECO",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "L.I.D.",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "PARMENTINE",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "AR",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "PIOM",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "SARL GUERAULT",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    },
+    {
+      "type": "Dépôts des comptes",
+      "date": "2026-05-15",
+      "description": "PASCAL VONIE ARCHITECTE",
+      "tribunal": "Greffe du Tribunal de Commerce de reims",
+      "numero": ""
+    }
+  ]
+}

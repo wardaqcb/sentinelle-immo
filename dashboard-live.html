@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentinelle Immo — Dashboard Live</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --navy: #0B1628; --navy2: #112040; --navy3: #0d1c36;
+    --gold: #C9A96E; --gold2: #E8C98A; --gold3: rgba(201,169,110,0.12);
+    --vacant: #a78bfa; --succession: #f87171; --enchere: #fbbf24;
+    --judiciaire: #f97316; --marche: #34d399; --blue: #60a5fa;
+    --white: #ffffff; --sidebar: 260px;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); display: flex; min-height: 100vh; }
+
+  .sidebar { width: var(--sidebar); flex-shrink: 0; background: var(--navy3); border-right: 1px solid rgba(201,169,110,0.1); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; }
+  .sidebar-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(201,169,110,0.1); }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
+  .logo span { color: rgba(255,255,255,0.5); font-weight: 300; }
+  .logo-sub { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+  .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 16px; margin: 2px 8px; border-radius: 6px; cursor: pointer; font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: all 0.15s; text-decoration: none; }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
+  .nav-item.active { background: var(--gold3); color: var(--gold2); }
+  .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
+  .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
+  .sidebar-bottom { margin-top: auto; padding: 16px; border-top: 1px solid rgba(201,169,110,0.1); display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold3); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--gold2); font-weight: 600; }
+  .user-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
+  .user-plan { font-size: 0.7rem; color: var(--gold); }
+
+  .main { margin-left: var(--sidebar); flex: 1; display: flex; flex-direction: column; }
+  .topbar { background: var(--navy3); border-bottom: 1px solid rgba(201,169,110,0.1); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
+  .topbar-left h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
+  .topbar-left p { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .pulse-live { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--marche); }
+  .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--marche); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .content { padding: 28px 32px; flex: 1; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+  .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 20px; transition: border-color 0.2s; }
+  .stat-card:hover { border-color: rgba(201,169,110,0.2); }
+  .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 700; line-height: 1; }
+  .stat-sub { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 6px; }
+  .stat-sub span { color: var(--marche); }
+
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+
+  /* BODACC */
+  .alert-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 22px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; display: flex; gap: 16px; align-items: flex-start; position: relative; overflow: hidden; }
+  .alert-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--succession); }
+  .alert-card:hover { background: rgba(255,255,255,0.05); transform: translateX(2px); }
+  .alert-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px; background: rgba(248,113,113,0.12); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .alert-body { flex: 1; }
+  .alert-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--succession); margin-bottom: 4px; }
+  .alert-title { font-size: 0.92rem; font-weight: 500; color: rgba(255,255,255,0.9); margin-bottom: 3px; }
+  .alert-detail { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+  .alert-date { font-size: 0.7rem; color: rgba(255,255,255,0.2); flex-shrink: 0; }
+
+  /* TRANSACTIONS TABLE */
+  .table-wrap { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; overflow: hidden; margin-bottom: 28px; }
+  .table-header { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr; gap: 12px; padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .table-header span { font-size: 0.68rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; }
+  .table-row { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr; gap: 12px; padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; align-items: center; }
+  .table-row:hover { background: rgba(255,255,255,0.03); }
+  .table-row:last-child { border-bottom: none; }
+  .table-row span { font-size: 0.83rem; color: rgba(255,255,255,0.65); }
+  .table-row .addr { color: rgba(255,255,255,0.85); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .type-tag { font-size: 0.68rem; padding: 2px 8px; border-radius: 3px; display: inline-block; }
+  .tag-maison { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .tag-appart { background: rgba(52,211,153,0.12); color: var(--marche); }
+  .price-tag { color: var(--gold2) !important; font-weight: 600 !important; }
+
+  /* STATS COMMUNES */
+  .communes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .commune-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px; }
+  .commune-name { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.7); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .commune-prix { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--gold2); }
+  .commune-unit { font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+  .commune-detail { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 8px; line-height: 1.5; }
+
+  /* LOADING */
+  .loading { text-align: center; padding: 60px; color: rgba(255,255,255,0.3); font-size: 0.9rem; }
+  .loading-spinner { font-size: 2rem; animation: spin 1s linear infinite; display: block; margin-bottom: 12px; }
+  @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+  .error-msg { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); border-radius: 8px; padding: 16px; color: var(--succession); font-size: 0.85rem; margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo">Sentinelle<span>Immo</span></div>
+    <div class="logo-sub">Marne · 51 · Live</div>
+  </div>
+  <div style="padding: 8px 0;">
+    <div class="sidebar-section">Navigation</div>
+    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes du jour</a>
+    <a class="nav-item" href="#"><span class="icon">📊</span> Marché local</a>
+    <a class="nav-item" href="#"><span class="icon">🗂️</span> Mes dossiers</a>
+    <a class="nav-item" href="#"><span class="icon">⚙️</span> Mes zones</a>
+  </div>
+  <div class="sidebar-bottom">
+    <div class="avatar">JD</div>
+    <div>
+      <div class="user-name">Jean Dupont</div>
+      <div class="user-plan">✦ Abonnement Pro</div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-left">
+      <h1>Dashboard — Données réelles</h1>
+      <p id="date-collecte">Chargement des données...</p>
+    </div>
+    <div class="topbar-right">
+      <div class="pulse-live"><div class="pulse-dot"></div> Données DVF + BODACC</div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Transactions DVF</div>
+        <div class="stat-num" style="color:var(--gold2)" id="stat-dvf">—</div>
+        <div class="stat-sub">Sur ta zone · 2025</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Annonces BODACC</div>
+        <div class="stat-num" style="color:var(--succession)" id="stat-bodacc">—</div>
+        <div class="stat-sub">Tribunal de Reims</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Prix moyen Reims</div>
+        <div class="stat-num" style="color:var(--blue)" id="stat-prix">—</div>
+        <div class="stat-sub">€/m² · Maisons & apparts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Communes surveillées</div>
+        <div class="stat-num" style="color:var(--marche)" id="stat-communes">—</div>
+        <div class="stat-sub">Zone active</div>
+      </div>
+    </div>
+
+    <!-- STATS PAR COMMUNE -->
+    <div class="section-title">📍 Marché par commune</div>
+    <div class="communes-grid" id="communes-grid">
+      <div class="loading"><span class="loading-spinner">⏳</span>Chargement...</div>
+    </div>
+
+    <!-- TRANSACTIONS RÉCENTES -->
+    <div class="section-title">📊 Dernières transactions DVF</div>
+    <div class="table-wrap">
+      <div class="table-header">
+        <span>Adresse</span>
+        <span>Commune</span>
+        <span>Type</span>
+        <span>Surface</span>
+        <span>Prix</span>
+      </div>
+      <div id="transactions-list">
+        <div class="loading"><span class="loading-spinner">⏳</span>Chargement...</div>
+      </div>
+    </div>
+
+    <!-- BODACC -->
+    <div class="section-title">⚰️ Dernières annonces BODACC</div>
+    <div id="bodacc-list">
+      <div class="loading"><span class="loading-spinner">⏳</span>Chargement...</div>
+    </div>
+
+  </div>
+</main>
+
+<script>
+async function chargerDonnees() {
+  try {
+    // Charge le rapport JSON généré par collecteur.py
+    const r = await fetch("donnees/rapport.json");
+    if (!r.ok) throw new Error("Fichier rapport.json introuvable. Lance d'abord collecteur.py");
+    const data = await r.json();
+
+    // Date collecte
+    document.getElementById("date-collecte").textContent = "Données collectées le " + data.date_collecte;
+
+    // Stats globales
+    document.getElementById("stat-dvf").textContent = data.stats.transactions_dvf.toLocaleString("fr-FR");
+    document.getElementById("stat-bodacc").textContent = data.stats.annonces_bodacc;
+    document.getElementById("stat-communes").textContent = data.communes.length;
+
+    // Prix moyen Reims
+    if (data.marche && data.marche["Reims"]) {
+      document.getElementById("stat-prix").textContent = data.marche["Reims"].prix_m2_moyen.toLocaleString("fr-FR") + " €";
+    }
+
+    // Stats par commune
+    const communesGrid = document.getElementById("communes-grid");
+    communesGrid.innerHTML = "";
+    if (data.marche) {
+      for (const [nom, stats] of Object.entries(data.marche)) {
+        if (stats.nb_transactions === 0) continue;
+        communesGrid.innerHTML += `
+          <div class="commune-card">
+            <div class="commune-name">${nom}</div>
+            <div class="commune-prix">${stats.prix_m2_moyen.toLocaleString("fr-FR")} <span class="commune-unit">€/m²</span></div>
+            <div class="commune-detail">
+              ${stats.nb_transactions} transactions<br>
+              🏠 ${stats.nb_maisons} maisons · 🏢 ${stats.nb_appartements} apparts
+            </div>
+          </div>`;
+      }
+    }
+
+    // Transactions récentes
+    const txList = document.getElementById("transactions-list");
+    txList.innerHTML = "";
+    if (data.transactions_recentes && data.transactions_recentes.length > 0) {
+      data.transactions_recentes.slice(0, 15).forEach(t => {
+        const typeClass = t.type_local === "Maison" ? "tag-maison" : "tag-appart";
+        const typeLabel = t.type_local === "Maison" ? "🏠 Maison" : "🏢 Appart.";
+        const prix = t.valeur_fonciere ? t.valeur_fonciere.toLocaleString("fr-FR") + " €" : "—";
+        const surface = t.surface_bati ? t.surface_bati + " m²" : "—";
+        const adresse = t.adresse?.trim() || "Adresse non précisée";
+        txList.innerHTML += `
+          <div class="table-row">
+            <span class="addr">${adresse}</span>
+            <span>${t.commune}</span>
+            <span><div class="type-tag ${typeClass}">${typeLabel}</div></span>
+            <span>${surface}</span>
+            <span class="price-tag">${prix}</span>
+          </div>`;
+      });
+    } else {
+      txList.innerHTML = '<div class="loading">Aucune transaction trouvée</div>';
+    }
+
+    // BODACC
+    const bodaccList = document.getElementById("bodacc-list");
+    bodaccList.innerHTML = "";
+    if (data.annonces_recentes && data.annonces_recentes.length > 0) {
+      data.annonces_recentes.slice(0, 8).forEach(a => {
+        bodaccList.innerHTML += `
+          <div class="alert-card">
+            <div class="alert-icon">⚰️</div>
+            <div class="alert-body">
+              <div class="alert-type">${a.type || "Annonce légale"}</div>
+              <div class="alert-title">${a.description || "—"}</div>
+              <div class="alert-detail">Tribunal : ${a.tribunal || "—"} · N° ${a.numero || "—"}</div>
+            </div>
+            <div class="alert-date">${a.date || ""}</div>
+          </div>`;
+      });
+    } else {
+      bodaccList.innerHTML = '<div class="loading">Aucune annonce BODACC trouvée</div>';
+    }
+
+  } catch (err) {
+    document.querySelector(".content").insertAdjacentHTML("afterbegin",
+      `<div class="error-msg">⚠️ ${err.message}</div>`);
+  }
+}
+
+chargerDonnees();
+</script>
+</body>
+</html>

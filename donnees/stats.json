@@ -1,0 +1,47 @@
+{
+  "Reims": {
+    "nb_transactions": 2674,
+    "nb_maisons": 517,
+    "nb_appartements": 2157,
+    "prix_m2_moyen": 3284.0,
+    "prix_median": 2769.0,
+    "prix_m2_maisons": 3023.0,
+    "prix_m2_apparts": 3346.0
+  },
+  "Tinqueux": {
+    "nb_transactions": 1,
+    "nb_maisons": 1,
+    "nb_appartements": 0,
+    "prix_m2_moyen": 1333.0,
+    "prix_median": 1333.0,
+    "prix_m2_maisons": 1333.0,
+    "prix_m2_apparts": 0
+  },
+  "Gueux": {
+    "nb_transactions": 8,
+    "nb_maisons": 8,
+    "nb_appartements": 0,
+    "prix_m2_moyen": 3488.0,
+    "prix_median": 3154.0,
+    "prix_m2_maisons": 3488.0,
+    "prix_m2_apparts": 0
+  },
+  "Muizon": {
+    "nb_transactions": 4,
+    "nb_maisons": 4,
+    "nb_appartements": 0,
+    "prix_m2_moyen": 2466.0,
+    "prix_median": 2475.0,
+    "prix_m2_maisons": 2466.0,
+    "prix_m2_apparts": 0
+  },
+  "Fismes": {
+    "nb_transactions": 8,
+    "nb_maisons": 8,
+    "nb_appartements": 0,
+    "prix_m2_moyen": 3075.0,
+    "prix_median": 1530.0,
+    "prix_m2_maisons": 3075.0,
+    "prix_m2_apparts": 0
+  }
+}
