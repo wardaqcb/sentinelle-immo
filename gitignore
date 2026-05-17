@@ -1,0 +1,11 @@
+# Données sensibles — ne jamais uploader
+.env
+historique/
+cache/
+
+# Fichiers Python
+__pycache__/
+*.pyc
+
+# Fichiers temporaires
+*.tmp

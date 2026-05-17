@@ -1,5 +1,5 @@
 {
-  "date_collecte": "17/05/2026 à 20:17",
+  "date_collecte": "17/05/2026 à 21:14",
   "communes": [
     "Reims",
     "Tinqueux",
@@ -12,7 +12,14 @@
   ],
   "stats": {
     "transactions_dvf": 2843,
-    "annonces_bodacc": 50
+    "annonces_bodacc": 100,
+    "deces_insee": 1297
+  },
+  "nouveautes": {
+    "dvf": 0,
+    "bodacc": 0,
+    "deces": 0,
+    "total": 0
   },
   "marche": {
     "Reims": {
@@ -332,144 +339,469 @@
   ],
   "annonces_recentes": [
     {
+      "id": "",
       "type": "Ventes et cessions",
       "date": "2026-05-17",
       "description": "KLEIN, Gaetan, AU FOURNIL D'OR",
       "tribunal": "Greffe du Tribunal de Commerce de Reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "APACRI",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "FLOWHAIR",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "LEI CADE",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "MOBILITE AGGLOMERATION REMOISE SAS",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "S.B.L.",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "E&C EXPERTISE ET CONSEIL",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "GVSE HOLDING",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "M-Conseil",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "DP DANSE",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "PM TRAITEUR",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "L-T CONCEPT",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "STARDEC",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "FRANCE ECO",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "L.I.D.",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "PARMENTINE",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "AR",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "PIOM",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "SARL GUERAULT",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     },
     {
+      "id": "",
       "type": "Dépôts des comptes",
       "date": "2026-05-15",
       "description": "PASCAL VONIE ARCHITECTE",
       "tribunal": "Greffe du Tribunal de Commerce de reims",
-      "numero": ""
+      "numero": "",
+      "jugement": "Avis initial"
     }
-  ]
+  ],
+  "deces_recents": [
+    {
+      "nom": "PIERRET",
+      "prenom": "SERGE EUGENE ROBERT",
+      "sexe": "M",
+      "date_naissance": "22/12/1938",
+      "naiss_raw": "19381222",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 88,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "CAMET",
+      "prenom": "YOHAN ALBERT EDOUARD",
+      "sexe": "M",
+      "date_naissance": "20/09/1976",
+      "naiss_raw": "19760920",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 50,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "TRIPETTE",
+      "prenom": "GERARD ANDRE",
+      "sexe": "M",
+      "date_naissance": "15/05/1950",
+      "naiss_raw": "19500515",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 76,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "SABDE",
+      "prenom": "COLETTE ANDREE",
+      "sexe": "F",
+      "date_naissance": "19/06/1939",
+      "naiss_raw": "19390619",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 87,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "TAILLARDANT",
+      "prenom": "PIERRE JOSEPH MARCEL",
+      "sexe": "M",
+      "date_naissance": "19/05/1931",
+      "naiss_raw": "19310519",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 95,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "LIVOIR",
+      "prenom": "PASCALE JOSETTE",
+      "sexe": "F",
+      "date_naissance": "26/10/1954",
+      "naiss_raw": "19541026",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 72,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "BOISSAC",
+      "prenom": "CLAUDETTE RAYMONDE",
+      "sexe": "F",
+      "date_naissance": "27/07/1938",
+      "naiss_raw": "19380727",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 88,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "MAJET",
+      "prenom": "MICHELINE RAYMONDE HUBERTE",
+      "sexe": "F",
+      "date_naissance": "09/06/1932",
+      "naiss_raw": "19320609",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 94,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "FERON",
+      "prenom": "MARCELLE ANNE MARIE SUZANNE",
+      "sexe": "F",
+      "date_naissance": "08/03/1934",
+      "naiss_raw": "19340308",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 92,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "COLBEAUX",
+      "prenom": "CATHERINE ALINE ANGELE",
+      "sexe": "F",
+      "date_naissance": "28/11/1955",
+      "naiss_raw": "19551128",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 71,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "THERON",
+      "prenom": "JORDAN JEAN-MARC",
+      "sexe": "M",
+      "date_naissance": "10/02/1987",
+      "naiss_raw": "19870210",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 39,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "JOLLAIN",
+      "prenom": "JACQUELINE PAULETTE",
+      "sexe": "F",
+      "date_naissance": "23/05/1935",
+      "naiss_raw": "19350523",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 91,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "ROTH",
+      "prenom": "THALIA CYNTHIA FLORIDE",
+      "sexe": "F",
+      "date_naissance": "02/02/2026",
+      "naiss_raw": "20260202",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 0,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "NIZET",
+      "prenom": "GUY CAMILLE ANDRE",
+      "sexe": "M",
+      "date_naissance": "23/05/1939",
+      "naiss_raw": "19390523",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 87,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "OURTAU",
+      "prenom": "SIMONE",
+      "sexe": "F",
+      "date_naissance": "08/08/1924",
+      "naiss_raw": "19240808",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 102,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "RION",
+      "prenom": "VERONIQUE CHRISTIANE",
+      "sexe": "F",
+      "date_naissance": "07/03/1964",
+      "naiss_raw": "19640307",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 62,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "KESY",
+      "prenom": "JEAN-MARIE PAUL",
+      "sexe": "M",
+      "date_naissance": "09/05/1945",
+      "naiss_raw": "19450509",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 81,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "PRECHEY",
+      "prenom": "GISELE MARTHE",
+      "sexe": "F",
+      "date_naissance": "23/02/1948",
+      "naiss_raw": "19480223",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 78,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "MOUTHUY",
+      "prenom": "JULIEN JULES BERNARD",
+      "sexe": "M",
+      "date_naissance": "10/04/1985",
+      "naiss_raw": "19850410",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 41,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    },
+    {
+      "nom": "NICOLAS",
+      "prenom": "JACQUELINE MARGUERITE LEONIE",
+      "sexe": "F",
+      "date_naissance": "04/01/1940",
+      "naiss_raw": "19400104",
+      "date_deces": "202604",
+      "date_deces_raw": "202604",
+      "code_commune_deces": "51454",
+      "commune_deces_lib": "REIMS",
+      "age_deces": 86,
+      "commune": "Reims",
+      "fichier_source": "deces-2026-m04.txt"
+    }
+  ],
+  "nouvelles_dvf": [],
+  "nouveaux_bodacc": [],
+  "nouveaux_deces": []
 }
