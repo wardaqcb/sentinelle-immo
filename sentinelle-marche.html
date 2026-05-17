@@ -12,95 +12,117 @@
     --navy: #0B1628; --navy2: #112040; --navy3: #0d1c36;
     --gold: #C9A96E; --gold2: #E8C98A; --gold3: rgba(201,169,110,0.12);
     --vacant: #a78bfa; --succession: #f87171; --enchere: #fbbf24;
-    --marche: #34d399; --blue: #60a5fa;
-    --white: #ffffff; --sidebar: 260px;
+    --marche: #34d399; --blue: #60a5fa; --white: #ffffff; --sidebar: 260px;
   }
   body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: var(--white); display: flex; min-height: 100vh; overflow-x: hidden; }
 
-  /* SIDEBAR */
   .sidebar { width: var(--sidebar); flex-shrink: 0; background: var(--navy3); border-right: 1px solid rgba(201,169,110,0.1); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; }
   .sidebar-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(201,169,110,0.1); }
   .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
   .logo span { color: rgba(255,255,255,0.5); font-weight: 300; }
   .logo-sub { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
-  .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
   .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 16px; margin: 2px 8px; border-radius: 6px; cursor: pointer; font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: all 0.15s; text-decoration: none; }
   .nav-item:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
   .nav-item.active { background: var(--gold3); color: var(--gold2); }
   .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
   .nav-badge { margin-left: auto; background: var(--succession); color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
   .sidebar-bottom { margin-top: auto; padding: 16px; border-top: 1px solid rgba(201,169,110,0.1); display: flex; align-items: center; gap: 10px; }
   .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold3); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--gold2); font-weight: 600; }
   .user-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
   .user-plan { font-size: 0.7rem; color: var(--gold); }
 
-  /* MAIN */
   .main { margin-left: var(--sidebar); flex: 1; display: flex; flex-direction: column; }
   .topbar { background: var(--navy3); border-bottom: 1px solid rgba(201,169,110,0.1); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
   .topbar-left h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
   .topbar-left p { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
-  .topbar-right { display: flex; align-items: center; gap: 10px; }
-
-  /* PERIOD TABS */
-  .period-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.05); padding: 4px; border-radius: 8px; }
-  .period-tab { padding: 6px 14px; border-radius: 5px; font-size: 0.78rem; cursor: pointer; color: rgba(255,255,255,0.4); border: none; background: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .period-tab.active { background: var(--gold3); color: var(--gold2); }
-
   .content { padding: 28px 32px; flex: 1; }
 
-  /* COMMUNE TABS */
-  .commune-tabs { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap; }
-  .commune-tab { padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); background: transparent; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .commune-tab:hover { border-color: rgba(201,169,110,0.3); color: rgba(255,255,255,0.8); }
-  .commune-tab.active { background: var(--gold3); border-color: rgba(201,169,110,0.4); color: var(--gold2); }
+  /* TABS */
+  .page-tabs { display: flex; gap: 4px; background: rgba(255,255,255,0.04); padding: 4px; border-radius: 10px; margin-bottom: 28px; width: fit-content; }
+  .page-tab { padding: 8px 20px; border-radius: 7px; font-size: 0.82rem; cursor: pointer; color: rgba(255,255,255,0.4); border: none; background: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .page-tab.active { background: var(--gold3); color: var(--gold2); font-weight: 500; }
 
-  /* KPI ROW */
+  /* KPIs */
   .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 28px; }
-  .kpi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 20px; transition: border-color 0.2s; }
-  .kpi-card:hover { border-color: rgba(201,169,110,0.2); }
+  .kpi-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 18px 20px; }
   .kpi-label { font-size: 0.68rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
   .kpi-value { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; line-height: 1; }
   .kpi-change { font-size: 0.72rem; margin-top: 6px; }
-  .up { color: var(--marche); }
-  .down { color: var(--succession); }
-  .neutral { color: rgba(255,255,255,0.3); }
+  .up { color: var(--marche); } .down { color: var(--succession); } .neutral { color: rgba(255,255,255,0.3); }
 
-  /* GRID */
+  /* CHARTS */
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-  .grid-full { margin-bottom: 20px; }
-
-  /* CHART CARDS */
   .chart-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 24px; }
-  .chart-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
-  .chart-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: rgba(255,255,255,0.9); }
-  .chart-card-sub { font-size: 0.75rem; color: rgba(255,255,255,0.3); margin-top: 3px; }
-  .chart-legend { display: flex; gap: 16px; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: rgba(255,255,255,0.4); }
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .chart-wrap { position: relative; }
-
-  /* TRANSACTIONS TABLE */
-  .table-header { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 12px; padding: 10px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .table-header span { font-size: 0.68rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; }
-  .table-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 12px; padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; cursor: default; align-items: center; }
-  .table-row:hover { background: rgba(255,255,255,0.03); }
-  .table-row:last-child { border-bottom: none; }
-  .table-row span { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-  .table-row .addr { color: rgba(255,255,255,0.85); font-weight: 500; }
-  .type-tag { font-size: 0.68rem; padding: 2px 8px; border-radius: 3px; display: inline-block; }
-  .tag-maison { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .tag-appart { background: rgba(52,211,153,0.12); color: var(--marche); }
-  .price-tag { color: var(--gold2) !important; font-weight: 600 !important; }
+  .chart-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; margin-bottom: 4px; }
+  .chart-sub { font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-bottom: 18px; }
 
   /* COMPARATIF */
-  .compare-row { display: flex; align-items: center; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .compare-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
   .compare-row:last-child { border-bottom: none; }
-  .compare-commune { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); width: 90px; flex-shrink: 0; }
+  .compare-commune { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.8); width: 110px; flex-shrink: 0; }
   .compare-bar-wrap { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
-  .compare-bar { height: 100%; border-radius: 3px; transition: width 0.8s ease; }
-  .compare-price { font-size: 0.85rem; color: var(--gold2); font-weight: 600; width: 80px; text-align: right; flex-shrink: 0; }
-  .compare-change { font-size: 0.72rem; width: 50px; text-align: right; flex-shrink: 0; }
+  .compare-bar { height: 100%; border-radius: 3px; }
+  .compare-price { font-size: 0.82rem; color: var(--gold2); font-weight: 600; width: 75px; text-align: right; flex-shrink: 0; }
+  .compare-nb { font-size: 0.72rem; color: rgba(255,255,255,0.3); width: 80px; text-align: right; flex-shrink: 0; }
+
+  /* ========================================
+     SECTION RECHERCHE DVF
+  ======================================== */
+  .search-section { display: none; }
+  .search-section.visible { display: block; }
+  .stats-section { display: block; }
+  .stats-section.hidden { display: none; }
+
+  .dvf-header { margin-bottom: 24px; }
+  .dvf-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 6px; }
+  .dvf-sub { font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+  .dvf-count { display: inline-block; background: var(--gold3); color: var(--gold2); font-size: 0.75rem; padding: 3px 10px; border-radius: 10px; margin-left: 8px; font-weight: 600; }
+
+  /* FILTRES RECHERCHE */
+  .search-filters { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; }
+  .filters-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: end; }
+  .filter-group { display: flex; flex-direction: column; gap: 6px; }
+  .filter-label { font-size: 0.68rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .filter-select, .filter-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 9px 12px; border-radius: 7px; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.15s; width: 100%; }
+  .filter-select:focus, .filter-input:focus { border-color: rgba(201,169,110,0.4); }
+  .filter-select option { background: #0d1c36; }
+  .filter-input::placeholder { color: rgba(255,255,255,0.2); }
+  .filter-range { display: flex; gap: 6px; align-items: center; }
+  .filter-range span { color: rgba(255,255,255,0.2); font-size: 0.75rem; flex-shrink: 0; }
+  .btn-search { background: var(--gold); color: var(--navy); padding: 9px 20px; border-radius: 7px; font-size: 0.82rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; transition: all 0.15s; width: 100%; }
+  .btn-search:hover { background: var(--gold2); }
+  .btn-reset { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); padding: 9px 16px; border-radius: 7px; font-size: 0.82rem; cursor: pointer; font-family: 'DM Sans', sans-serif; border: 1px solid rgba(255,255,255,0.1); transition: all 0.15s; width: 100%; margin-top: 6px; }
+  .btn-reset:hover { background: rgba(255,255,255,0.08); color: white; }
+
+  /* RÉSULTATS */
+  .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .results-count { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+  .results-count strong { color: var(--gold2); }
+  .sort-select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); padding: 6px 12px; border-radius: 6px; font-size: 0.78rem; font-family: 'DM Sans', sans-serif; outline: none; }
+
+  .table-wrap { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; }
+  .table-header { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr; gap: 12px; padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+  .table-header span { font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; }
+  .table-header span:hover { color: rgba(255,255,255,0.5); }
+  .table-row { display: grid; grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr; gap: 12px; padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.15s; align-items: center; cursor: pointer; }
+  .table-row:hover { background: rgba(255,255,255,0.03); }
+  .table-row:last-child { border-bottom: none; }
+  .table-row span { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+  .addr { color: rgba(255,255,255,0.85) !important; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .price-val { color: var(--gold2) !important; font-weight: 600 !important; }
+  .type-tag { font-size: 0.65rem; padding: 2px 8px; border-radius: 3px; display: inline-block; }
+  .tag-maison { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .tag-appart { background: rgba(52,211,153,0.12); color: var(--marche); }
+
+  .pagination { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 20px; }
+  .page-btn { padding: 7px 13px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); background: transparent; color: rgba(255,255,255,0.5); font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
+  .page-btn:hover { background: rgba(255,255,255,0.06); color: white; }
+  .page-btn.active { background: var(--gold3); border-color: rgba(201,169,110,0.3); color: var(--gold2); }
+
+  .no-results { text-align: center; padding: 60px 20px; color: rgba(255,255,255,0.2); }
+  .loading-msg { text-align: center; padding: 40px; color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+  .error-box { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.2); border-radius: 8px; padding: 14px 18px; color: var(--succession); font-size: 0.82rem; margin-bottom: 20px; }
 </style>
 </head>
 <body>
@@ -108,14 +130,14 @@
 <aside class="sidebar">
   <div class="sidebar-logo">
     <div class="logo">Sentinelle<span>Immo</span></div>
-    <div class="logo-sub">Marne · 51</div>
+    <div class="logo-sub">Veille · Temps réel</div>
   </div>
   <div style="padding: 8px 0;">
     <div class="sidebar-section">Navigation</div>
-    <a class="nav-item" href="#"><span class="icon">📡</span> Alertes du jour <span class="nav-badge">5</span></a>
+    <a class="nav-item" href="sentinelle-dashboard.html"><span class="icon">📡</span> Alertes <span class="nav-badge">7</span></a>
     <a class="nav-item active" href="#"><span class="icon">📊</span> Marché local</a>
-    <a class="nav-item" href="#"><span class="icon">🗂️</span> Mes dossiers</a>
-    <a class="nav-item" href="#"><span class="icon">⚙️</span> Mes zones</a>
+    <a class="nav-item" href="sentinelle-dossiers.html"><span class="icon">🗂️</span> Mes dossiers</a>
+    <a class="nav-item" href="sentinelle-zones.html"><span class="icon">⚙️</span> Mes zones</a>
   </div>
   <div class="sidebar-bottom">
     <div class="avatar">JD</div>
@@ -130,233 +152,377 @@
   <div class="topbar">
     <div class="topbar-left">
       <h1>Marché local</h1>
-      <p>Données DVF officielles · Mises à jour en continu</p>
+      <p id="top-sub">Données DVF officielles · Chargement...</p>
     </div>
-    <div class="topbar-right">
-      <div class="period-tabs">
-        <button class="period-tab" onclick="setPeriod(6,this)">6 mois</button>
-        <button class="period-tab active" onclick="setPeriod(12,this)">12 mois</button>
-        <button class="period-tab" onclick="setPeriod(24,this)">24 mois</button>
-      </div>
+    <div style="display:flex;gap:10px;align-items:center;">
       <button style="background:var(--gold3);border:1px solid rgba(201,169,110,0.3);color:var(--gold2);padding:8px 16px;border-radius:6px;font-size:0.8rem;cursor:pointer;font-family:'DM Sans',sans-serif;">📥 Exporter</button>
     </div>
   </div>
 
   <div class="content">
 
-    <!-- COMMUNE TABS -->
-    <div class="commune-tabs">
-      <button class="commune-tab active" onclick="setCommune('Toute la zone',this)">Toute la zone</button>
-      <button class="commune-tab" onclick="setCommune('Reims',this)">Reims</button>
-      <button class="commune-tab" onclick="setCommune('Tinqueux',this)">Tinqueux</button>
-      <button class="commune-tab" onclick="setCommune('Gueux',this)">Gueux</button>
-      <button class="commune-tab" onclick="setCommune('Muizon',this)">Muizon</button>
-      <button class="commune-tab" onclick="setCommune('Villages 51220',this)">Villages 51220</button>
+    <!-- TABS -->
+    <div class="page-tabs">
+      <button class="page-tab active" onclick="switchTab('stats',this)">📊 Statistiques</button>
+      <button class="page-tab" onclick="switchTab('search',this)">🔍 Recherche DVF</button>
     </div>
 
-    <!-- KPIs -->
-    <div class="kpi-row">
-      <div class="kpi-card">
-        <div class="kpi-label">Prix moyen m²</div>
-        <div class="kpi-value" style="color:var(--gold2)">2 340 €</div>
-        <div class="kpi-change up">↑ +4,2% sur 12 mois</div>
+    <!-- ========================
+         SECTION STATISTIQUES
+    ========================= -->
+    <div class="stats-section" id="stats-section">
+
+      <div class="kpi-row" id="kpi-row">
+        <div class="kpi-card"><div class="kpi-label">Transactions 2025</div><div class="kpi-value" id="kpi-total" style="color:var(--gold2)">—</div><div class="kpi-change neutral">Chargement...</div></div>
+        <div class="kpi-card"><div class="kpi-label">Prix moyen m²</div><div class="kpi-value" id="kpi-prix" style="color:var(--blue)">—</div><div class="kpi-change neutral">Reims</div></div>
+        <div class="kpi-card"><div class="kpi-label">Maisons vendues</div><div class="kpi-value" id="kpi-maisons" style="color:var(--vacant)">—</div><div class="kpi-change neutral">Sur ta zone</div></div>
+        <div class="kpi-card"><div class="kpi-label">Appartements vendus</div><div class="kpi-value" id="kpi-apparts" style="color:var(--marche)">—</div><div class="kpi-change neutral">Sur ta zone</div></div>
+        <div class="kpi-card"><div class="kpi-label">Prix médian</div><div class="kpi-value" id="kpi-median" style="color:var(--enchere)">—</div><div class="kpi-change neutral">Reims</div></div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Transactions</div>
-        <div class="kpi-value" style="color:var(--blue)">148</div>
-        <div class="kpi-change up">↑ +12 vs période préc.</div>
+
+      <div class="grid-2">
+        <div class="chart-card">
+          <div class="chart-title">Transactions par type</div>
+          <div class="chart-sub">Maisons vs Appartements · Toute la zone</div>
+          <canvas id="typeChart" height="220"></canvas>
+        </div>
+        <div class="chart-card">
+          <div class="chart-title">Prix au m² par commune</div>
+          <div class="chart-sub">Moyenne des transactions 2025 · Données DVF officielles</div>
+          <canvas id="prixChart" height="220"></canvas>
+        </div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Prix médian maison</div>
-        <div class="kpi-value" style="color:var(--vacant)">198 k€</div>
-        <div class="kpi-change up">↑ +3,1%</div>
+
+      <div class="chart-card" style="margin-bottom:20px">
+        <div class="chart-title">Comparatif communes</div>
+        <div class="chart-sub">Prix au m² moyen · Nombre de transactions · Source DVF 2025</div>
+        <div id="compare-list" style="margin-top:16px">
+          <div class="loading-msg">⏳ Chargement des données...</div>
+        </div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Prix médian appart.</div>
-        <div class="kpi-value" style="color:var(--marche)">142 k€</div>
-        <div class="kpi-change neutral">→ stable</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Délai moyen vente</div>
-        <div class="kpi-value" style="color:var(--enchere)">47 j</div>
-        <div class="kpi-change down">↓ -5j vs an dernier</div>
-      </div>
+
     </div>
 
-    <!-- GRAPH PRIX + VOLUME -->
-    <div class="grid-2">
-      <div class="chart-card">
-        <div class="chart-card-header">
-          <div>
-            <div class="chart-card-title">Évolution du prix au m²</div>
-            <div class="chart-card-sub">Moyenne mensuelle — toute la zone</div>
-          </div>
-          <div class="chart-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Prix m²</div>
-          </div>
-        </div>
-        <div class="chart-wrap"><canvas id="prixChart" height="200"></canvas></div>
+    <!-- ========================
+         SECTION RECHERCHE DVF
+    ========================= -->
+    <div class="search-section" id="search-section">
+
+      <div class="dvf-header">
+        <div class="dvf-title">Recherche dans les transactions DVF <span class="dvf-count" id="dvf-total-count">—</span></div>
+        <div class="dvf-sub">Base de données officielle · Toutes les ventes de maisons et appartements sur ta zone · 2025</div>
       </div>
 
-      <div class="chart-card">
-        <div class="chart-card-header">
-          <div>
-            <div class="chart-card-title">Volume de transactions</div>
-            <div class="chart-card-sub">Nombre de ventes par mois</div>
+      <div id="error-box" class="error-box" style="display:none"></div>
+
+      <div class="search-filters">
+        <div class="filters-grid">
+          <div class="filter-group">
+            <label class="filter-label">Commune</label>
+            <select class="filter-select" id="f-commune">
+              <option value="">Toutes</option>
+            </select>
           </div>
-          <div class="chart-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Maisons</div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--marche)"></div>Appartements</div>
+          <div class="filter-group">
+            <label class="filter-label">Type de bien</label>
+            <select class="filter-select" id="f-type">
+              <option value="">Tous</option>
+              <option value="Maison">🏠 Maison</option>
+              <option value="Appartement">🏢 Appartement</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Surface (m²)</label>
+            <div class="filter-range">
+              <input type="number" class="filter-input" id="f-surf-min" placeholder="Min">
+              <span>–</span>
+              <input type="number" class="filter-input" id="f-surf-max" placeholder="Max">
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Prix (€)</label>
+            <div class="filter-range">
+              <input type="number" class="filter-input" id="f-prix-min" placeholder="Min">
+              <span>–</span>
+              <input type="number" class="filter-input" id="f-prix-max" placeholder="Max">
+            </div>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Pièces min.</label>
+            <select class="filter-select" id="f-pieces">
+              <option value="">Toutes</option>
+              <option value="1">1+</option>
+              <option value="2">2+</option>
+              <option value="3">3+</option>
+              <option value="4">4+</option>
+              <option value="5">5+</option>
+            </select>
           </div>
         </div>
-        <div class="chart-wrap"><canvas id="volumeChart" height="200"></canvas></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+          <button class="btn-search" onclick="rechercher()">🔍 Rechercher</button>
+          <button class="btn-reset" onclick="resetFiltres()">✕ Réinitialiser</button>
+        </div>
       </div>
+
+      <div class="results-header">
+        <div class="results-count" id="results-count">Entrez vos critères et lancez la recherche</div>
+        <select class="sort-select" id="sort-select" onchange="trier()">
+          <option value="date">Plus récentes</option>
+          <option value="prix-desc">Prix décroissant</option>
+          <option value="prix-asc">Prix croissant</option>
+          <option value="surface-desc">Surface décroissante</option>
+          <option value="m2-asc">Prix/m² croissant</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <div class="table-header">
+          <span>Adresse</span>
+          <span>Commune</span>
+          <span>Type</span>
+          <span>Surface</span>
+          <span>Prix/m²</span>
+          <span>Prix total</span>
+        </div>
+        <div id="results-body">
+          <div class="loading-msg">⏳ Chargement de la base DVF...</div>
+        </div>
+      </div>
+
+      <div class="pagination" id="pagination"></div>
+
     </div>
-
-    <!-- COMPARATIF COMMUNES + DÉLAI -->
-    <div class="grid-2">
-      <div class="chart-card">
-        <div class="chart-card-header">
-          <div>
-            <div class="chart-card-title">Comparatif communes</div>
-            <div class="chart-card-sub">Prix au m² et évolution</div>
-          </div>
-        </div>
-        <div id="compare-list">
-          <div class="compare-row">
-            <span class="compare-commune">Reims</span>
-            <div class="compare-bar-wrap"><div class="compare-bar" style="width:100%;background:var(--gold)"></div></div>
-            <span class="compare-price">2 480 €</span>
-            <span class="compare-change up">+4,5%</span>
-          </div>
-          <div class="compare-row">
-            <span class="compare-commune">Tinqueux</span>
-            <div class="compare-bar-wrap"><div class="compare-bar" style="width:78%;background:var(--blue)"></div></div>
-            <span class="compare-price">1 940 €</span>
-            <span class="compare-change up">+3,2%</span>
-          </div>
-          <div class="compare-row">
-            <span class="compare-commune">Gueux</span>
-            <div class="compare-bar-wrap"><div class="compare-bar" style="width:68%;background:var(--vacant)"></div></div>
-            <span class="compare-price">1 690 €</span>
-            <span class="compare-change neutral">→ 0%</span>
-          </div>
-          <div class="compare-row">
-            <span class="compare-commune">Muizon</span>
-            <div class="compare-bar-wrap"><div class="compare-bar" style="width:58%;background:var(--marche)"></div></div>
-            <span class="compare-price">1 440 €</span>
-            <span class="compare-change up">+2,1%</span>
-          </div>
-          <div class="compare-row">
-            <span class="compare-commune">Vill. 51220</span>
-            <div class="compare-bar-wrap"><div class="compare-bar" style="width:50%;background:var(--enchere)"></div></div>
-            <span class="compare-price">1 240 €</span>
-            <span class="compare-change down">-1,2%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="chart-card">
-        <div class="chart-card-header">
-          <div>
-            <div class="chart-card-title">Délai moyen de vente</div>
-            <div class="chart-card-sub">En jours — par type de bien</div>
-          </div>
-        </div>
-        <div class="chart-wrap"><canvas id="delaiChart" height="220"></canvas></div>
-      </div>
-    </div>
-
-    <!-- TRANSACTIONS RÉCENTES -->
-    <div class="chart-card grid-full">
-      <div class="chart-card-header">
-        <div>
-          <div class="chart-card-title">Transactions récentes</div>
-          <div class="chart-card-sub">Dernières ventes enregistrées sur ta zone · Source DVF</div>
-        </div>
-      </div>
-      <div class="table-header">
-        <span>Adresse</span>
-        <span>Type</span>
-        <span>Surface</span>
-        <span>Prix</span>
-        <span>Date</span>
-      </div>
-      <div class="table-row"><span class="addr">12 rue du Général Leclerc, Reims</span><span><div class="type-tag tag-appart">Appart.</div></span><span>67 m²</span><span class="price-tag">158 000 €</span><span>10/05/2025</span></div>
-      <div class="table-row"><span class="addr">Allée des Chênes, Tinqueux</span><span><div class="type-tag tag-maison">Maison</div></span><span>112 m²</span><span class="price-tag">224 000 €</span><span>08/05/2025</span></div>
-      <div class="table-row"><span class="addr">4 rue des Vignes, Gueux</span><span><div class="type-tag tag-maison">Maison</div></span><span>95 m²</span><span class="price-tag">161 000 €</span><span>05/05/2025</span></div>
-      <div class="table-row"><span class="addr">7 avenue de Champagne, Reims</span><span><div class="type-tag tag-appart">Appart.</div></span><span>48 m²</span><span class="price-tag">112 000 €</span><span>03/05/2025</span></div>
-      <div class="table-row"><span class="addr">Route de Fismes, Muizon</span><span><div class="type-tag tag-maison">Maison</div></span><span>135 m²</span><span class="price-tag">195 000 €</span><span>28/04/2025</span></div>
-      <div class="table-row"><span class="addr">Rue de la Paix, Reims</span><span><div class="type-tag tag-appart">Appart.</div></span><span>82 m²</span><span class="price-tag">197 000 €</span><span>25/04/2025</span></div>
-      <div class="table-row"><span class="addr">Chemin des Moulins, Vrigny</span><span><div class="type-tag tag-maison">Maison</div></span><span>88 m²</span><span class="price-tag">109 000 €</span><span>22/04/2025</span></div>
-    </div>
-
   </div>
 </main>
 
 <script>
-const chartDefaults = {
-  responsive: true,
-  plugins: { legend: { display: false }, tooltip: { backgroundColor: '#0d1c36', borderColor: 'rgba(201,169,110,0.3)', borderWidth: 1, titleColor: 'rgba(255,255,255,0.7)', bodyColor: '#E8C98A', padding: 12, cornerRadius: 8 } },
-  scales: {
-    x: { grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false }, ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 11 } } },
-    y: { grid: { color: 'rgba(255,255,255,0.04)', drawBorder: false }, ticks: { color: 'rgba(255,255,255,0.3)', font: { size: 11 } } }
+let DVF_DATA = [];
+let STATS_DATA = {};
+let filteredData = [];
+let currentPage = 1;
+const PER_PAGE = 20;
+
+// Chargement des données
+async function chargerDonnees() {
+  try {
+    const r = await fetch("donnees/rapport.json");
+    if (!r.ok) throw new Error("Fichier rapport.json introuvable. Lance d'abord collecteur.py");
+    const rapport = await r.json();
+
+    // Charge le DVF complet
+    const r2 = await fetch("donnees/dvf.json");
+    if (!r2.ok) throw new Error("Fichier dvf.json introuvable");
+    DVF_DATA = await r2.json();
+    STATS_DATA = rapport.marche || {};
+
+    document.getElementById("top-sub").textContent =
+      `Données DVF officielles · ${DVF_DATA.length.toLocaleString("fr-FR")} transactions · Collectées le ${rapport.date_collecte}`;
+
+    document.getElementById("dvf-total-count").textContent =
+      DVF_DATA.length.toLocaleString("fr-FR") + " transactions";
+
+    // Rempli le select communes
+    const communes = [...new Set(DVF_DATA.map(t => t.commune))].sort();
+    const sel = document.getElementById("f-commune");
+    communes.forEach(c => { const o = document.createElement("option"); o.value = c; o.textContent = c; sel.appendChild(o); });
+
+    chargerStats();
+    afficherTout();
+
+  } catch(err) {
+    document.getElementById("error-box").textContent = "⚠️ " + err.message;
+    document.getElementById("error-box").style.display = "block";
   }
-};
-
-const months12 = ['Juin','Juil','Août','Sep','Oct','Nov','Déc','Jan','Fév','Mar','Avr','Mai'];
-
-// Prix m²
-const prixCtx = document.getElementById('prixChart').getContext('2d');
-const gradPrix = prixCtx.createLinearGradient(0, 0, 0, 200);
-gradPrix.addColorStop(0, 'rgba(201,169,110,0.25)');
-gradPrix.addColorStop(1, 'rgba(201,169,110,0)');
-new Chart(prixCtx, {
-  type: 'line',
-  data: {
-    labels: months12,
-    datasets: [{ data: [2180,2200,2190,2220,2250,2270,2240,2280,2300,2310,2330,2340], borderColor: '#C9A96E', backgroundColor: gradPrix, borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#C9A96E', fill: true, tension: 0.4 }]
-  },
-  options: { ...chartDefaults, plugins: { ...chartDefaults.plugins }, scales: { ...chartDefaults.scales, y: { ...chartDefaults.scales.y, ticks: { ...chartDefaults.scales.y.ticks, callback: v => v + ' €' } } } }
-});
-
-// Volume
-const volCtx = document.getElementById('volumeChart').getContext('2d');
-new Chart(volCtx, {
-  type: 'bar',
-  data: {
-    labels: months12,
-    datasets: [
-      { label: 'Maisons', data: [5,7,4,6,8,5,3,7,9,6,8,7], backgroundColor: 'rgba(96,165,250,0.6)', borderRadius: 4, borderSkipped: false },
-      { label: 'Appartements', data: [4,5,3,5,6,4,2,5,7,5,6,5], backgroundColor: 'rgba(52,211,153,0.5)', borderRadius: 4, borderSkipped: false }
-    ]
-  },
-  options: { ...chartDefaults, plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { ...chartDefaults.scales } }
-});
-
-// Délai
-const delaiCtx = document.getElementById('delaiChart').getContext('2d');
-new Chart(delaiCtx, {
-  type: 'bar',
-  data: {
-    labels: ['Reims', 'Tinqueux', 'Gueux', 'Muizon', 'Vill. 51220'],
-    datasets: [
-      { label: 'Maisons', data: [42, 51, 38, 35, 62], backgroundColor: 'rgba(96,165,250,0.6)', borderRadius: 4, borderSkipped: false },
-      { label: 'Appartements', data: [38, 45, 0, 0, 0], backgroundColor: 'rgba(52,211,153,0.5)', borderRadius: 4, borderSkipped: false }
-    ]
-  },
-  options: { ...chartDefaults, indexAxis: 'y', plugins: { ...chartDefaults.plugins, legend: { display: false } }, scales: { x: { ...chartDefaults.scales.x, ticks: { ...chartDefaults.scales.x.ticks, callback: v => v + 'j' } }, y: { ...chartDefaults.scales.y } } }
-});
-
-function setCommune(name, el) {
-  document.querySelectorAll('.commune-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
 }
 
-function setPeriod(months, el) {
-  document.querySelectorAll('.period-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
+function chargerStats() {
+  // KPIs
+  const total = DVF_DATA.length;
+  const maisons = DVF_DATA.filter(t => t.type_local === "Maison").length;
+  const apparts = DVF_DATA.filter(t => t.type_local === "Appartement").length;
+  const reims = DVF_DATA.filter(t => t.commune === "Reims");
+  const prixReims = reims.map(t => t.prix_m2).filter(p => p > 500);
+  const moyReims = prixReims.length ? Math.round(prixReims.reduce((a,b)=>a+b,0)/prixReims.length) : 0;
+  const medianReims = prixReims.length ? prixReims.sort((a,b)=>a-b)[Math.floor(prixReims.length/2)] : 0;
+
+  document.getElementById("kpi-total").textContent = total.toLocaleString("fr-FR");
+  document.getElementById("kpi-prix").textContent = moyReims.toLocaleString("fr-FR") + " €";
+  document.getElementById("kpi-maisons").textContent = maisons.toLocaleString("fr-FR");
+  document.getElementById("kpi-apparts").textContent = apparts.toLocaleString("fr-FR");
+  document.getElementById("kpi-median").textContent = medianReims.toLocaleString("fr-FR") + " €";
+
+  // Comparatif communes
+  const communes = [...new Set(DVF_DATA.map(t => t.commune))];
+  const colors = ["var(--gold)","var(--blue)","var(--vacant)","var(--marche)","var(--enchere)","var(--succession)","#60a5fa","#a78bfa"];
+  const statsCommunes = communes.map((c,i) => {
+    const tc = DVF_DATA.filter(t => t.commune === c);
+    const prix = tc.map(t => t.prix_m2).filter(p => p > 500);
+    return { nom: c, nb: tc.length, prix: prix.length ? Math.round(prix.reduce((a,b)=>a+b,0)/prix.length) : 0, color: colors[i % colors.length] };
+  }).filter(s => s.nb > 0).sort((a,b) => b.prix - a.prix);
+
+  const maxPrix = Math.max(...statsCommunes.map(s => s.prix));
+  const compareList = document.getElementById("compare-list");
+  compareList.innerHTML = statsCommunes.map(s => `
+    <div class="compare-row">
+      <span class="compare-commune">${s.nom}</span>
+      <div class="compare-bar-wrap"><div class="compare-bar" style="width:${Math.round(s.prix/maxPrix*100)}%;background:${s.color}"></div></div>
+      <span class="compare-price">${s.prix.toLocaleString("fr-FR")} €/m²</span>
+      <span class="compare-nb">${s.nb} ventes</span>
+    </div>`).join("");
+
+  // Chart type
+  const ctx1 = document.getElementById("typeChart").getContext("2d");
+  new Chart(ctx1, {
+    type: "doughnut",
+    data: {
+      labels: ["Maisons", "Appartements"],
+      datasets: [{ data: [maisons, apparts], backgroundColor: ["rgba(96,165,250,0.7)","rgba(52,211,153,0.7)"], borderWidth: 0 }]
+    },
+    options: { responsive: true, plugins: { legend: { labels: { color: "rgba(255,255,255,0.5)", font: { size: 12 } } }, tooltip: { backgroundColor: "#0d1c36", titleColor: "rgba(255,255,255,0.7)", bodyColor: "#E8C98A" } } }
+  });
+
+  // Chart prix par commune
+  const ctx2 = document.getElementById("prixChart").getContext("2d");
+  new Chart(ctx2, {
+    type: "bar",
+    data: {
+      labels: statsCommunes.map(s => s.nom),
+      datasets: [{ data: statsCommunes.map(s => s.prix), backgroundColor: statsCommunes.map(s => s.color + "99"), borderRadius: 6 }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false }, tooltip: { backgroundColor: "#0d1c36", titleColor: "rgba(255,255,255,0.7)", bodyColor: "#E8C98A", callbacks: { label: ctx => ctx.raw.toLocaleString("fr-FR") + " €/m²" } } },
+      scales: {
+        x: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { color: "rgba(255,255,255,0.4)", font: { size: 11 } } },
+        y: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { color: "rgba(255,255,255,0.4)", font: { size: 11 }, callback: v => v.toLocaleString("fr-FR") + "€" } }
+      }
+    }
+  });
 }
+
+function afficherTout() {
+  filteredData = [...DVF_DATA];
+  currentPage = 1;
+  afficherResultats();
+}
+
+function rechercher() {
+  const commune = document.getElementById("f-commune").value;
+  const type = document.getElementById("f-type").value;
+  const surfMin = parseFloat(document.getElementById("f-surf-min").value) || 0;
+  const surfMax = parseFloat(document.getElementById("f-surf-max").value) || Infinity;
+  const prixMin = parseFloat(document.getElementById("f-prix-min").value) || 0;
+  const prixMax = parseFloat(document.getElementById("f-prix-max").value) || Infinity;
+  const pieces = parseInt(document.getElementById("f-pieces").value) || 0;
+
+  filteredData = DVF_DATA.filter(t => {
+    if (commune && t.commune !== commune) return false;
+    if (type && t.type_local !== type) return false;
+    if (t.surface_bati < surfMin || t.surface_bati > surfMax) return false;
+    if (t.valeur_fonciere < prixMin || t.valeur_fonciere > prixMax) return false;
+    if (pieces && parseInt(t.nombre_pieces) < pieces) return false;
+    return true;
+  });
+
+  trier();
+  currentPage = 1;
+  afficherResultats();
+}
+
+function trier() {
+  const sort = document.getElementById("sort-select").value;
+  filteredData.sort((a, b) => {
+    if (sort === "date") return b.date_mutation.localeCompare(a.date_mutation);
+    if (sort === "prix-desc") return b.valeur_fonciere - a.valeur_fonciere;
+    if (sort === "prix-asc") return a.valeur_fonciere - b.valeur_fonciere;
+    if (sort === "surface-desc") return b.surface_bati - a.surface_bati;
+    if (sort === "m2-asc") return a.prix_m2 - b.prix_m2;
+    return 0;
+  });
+  afficherResultats();
+}
+
+function afficherResultats() {
+  const total = filteredData.length;
+  document.getElementById("results-count").innerHTML =
+    `<strong>${total.toLocaleString("fr-FR")}</strong> transaction${total > 1 ? "s" : ""} trouvée${total > 1 ? "s" : ""}`;
+
+  const start = (currentPage - 1) * PER_PAGE;
+  const page = filteredData.slice(start, start + PER_PAGE);
+  const body = document.getElementById("results-body");
+
+  if (page.length === 0) {
+    body.innerHTML = '<div class="no-results">🔍 Aucune transaction ne correspond à vos critères</div>';
+    document.getElementById("pagination").innerHTML = "";
+    return;
+  }
+
+  body.innerHTML = page.map(t => {
+    const typeTag = t.type_local === "Maison"
+      ? '<span class="type-tag tag-maison">🏠 Maison</span>'
+      : '<span class="type-tag tag-appart">🏢 Appart.</span>';
+    const adresse = (t.adresse || "").trim() || "Adresse non précisée";
+    const surface = t.surface_bati ? t.surface_bati + " m²" : "—";
+    const prix = t.valeur_fonciere ? t.valeur_fonciere.toLocaleString("fr-FR") + " €" : "—";
+    const prixM2 = t.prix_m2 ? t.prix_m2.toLocaleString("fr-FR") + " €" : "—";
+    return `
+      <div class="table-row">
+        <span class="addr">${adresse}</span>
+        <span>${t.commune}</span>
+        <span>${typeTag}</span>
+        <span>${surface}</span>
+        <span>${prixM2}</span>
+        <span class="price-val">${prix}</span>
+      </div>`;
+  }).join("");
+
+  // Pagination
+  const totalPages = Math.ceil(total / PER_PAGE);
+  const pag = document.getElementById("pagination");
+  if (totalPages <= 1) { pag.innerHTML = ""; return; }
+
+  let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?"disabled":""}>←</button>`;
+  for (let i = 1; i <= Math.min(totalPages, 7); i++) {
+    html += `<button class="page-btn ${i===currentPage?"active":""}" onclick="goPage(${i})">${i}</button>`;
+  }
+  if (totalPages > 7) html += `<span style="color:rgba(255,255,255,0.3);padding:0 8px">…${totalPages}</span>`;
+  html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?"disabled":""}>→</button>`;
+  pag.innerHTML = html;
+}
+
+function goPage(p) {
+  const totalPages = Math.ceil(filteredData.length / PER_PAGE);
+  if (p < 1 || p > totalPages) return;
+  currentPage = p;
+  afficherResultats();
+  document.querySelector(".table-wrap").scrollIntoView({ behavior: "smooth" });
+}
+
+function resetFiltres() {
+  document.getElementById("f-commune").value = "";
+  document.getElementById("f-type").value = "";
+  document.getElementById("f-surf-min").value = "";
+  document.getElementById("f-surf-max").value = "";
+  document.getElementById("f-prix-min").value = "";
+  document.getElementById("f-prix-max").value = "";
+  document.getElementById("f-pieces").value = "";
+  afficherTout();
+}
+
+function switchTab(tab, el) {
+  document.querySelectorAll(".page-tab").forEach(t => t.classList.remove("active"));
+  el.classList.add("active");
+  if (tab === "stats") {
+    document.getElementById("stats-section").classList.remove("hidden");
+    document.getElementById("search-section").classList.remove("visible");
+  } else {
+    document.getElementById("stats-section").classList.add("hidden");
+    document.getElementById("search-section").classList.add("visible");
+  }
+}
+
+chargerDonnees();
 </script>
 </body>
 </html>
