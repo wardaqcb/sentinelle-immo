@@ -164,24 +164,22 @@
   </div>
   <div style="padding: 8px 0;">
     <div class="sidebar-section">Navigation</div>
-    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes <span class="nav-badge">7</span></a>
+    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes <span class="nav-badge">5</span></a>
     <a class="nav-item" href="sentinelle-marche.html"><span class="icon">📊</span> Marché local</a>
     <a class="nav-item" href="sentinelle-dossiers.html"><span class="icon">🗂️</span> Mes dossiers</a>
     <a class="nav-item" href="sentinelle-zones.html"><span class="icon">⚙️</span> Mes zones</a>
   </div>
   <div class="sidebar-filters">
     <div class="filter-title">Filtrer par signal</div>
-    <div class="filter-chip active" onclick="filter('all',this)"><div class="filter-dot" style="background:var(--gold)"></div>Tous<span class="filter-count">7</span></div>
-    <div class="filter-chip" onclick="filter('vacant',this)"><div class="filter-dot" style="background:var(--vacant)"></div>Biens vacants<span class="filter-count">2</span></div>
+    <div class="filter-chip active" onclick="filter('all',this)"><div class="filter-dot" style="background:var(--gold)"></div>Tous<span class="filter-count">5</span></div>
     <div class="filter-chip" onclick="filter('succession',this)"><div class="filter-dot" style="background:var(--succession)"></div>Successions<span class="filter-count">2</span></div>
     <div class="filter-chip" onclick="filter('enchere',this)"><div class="filter-dot" style="background:var(--enchere)"></div>Enchères<span class="filter-count">1</span></div>
     <div class="filter-chip" onclick="filter('judiciaire',this)"><div class="filter-dot" style="background:var(--judiciaire)"></div>Ventes judiciaires<span class="filter-count">1</span></div>
     <div class="filter-chip" onclick="filter('bodacc',this)"><div class="filter-dot" style="background:var(--succession)"></div>BODACC<span class="filter-count">1</span></div>
     <div class="filter-title">Commune</div>
-    <div class="filter-chip active" onclick="filterCommune('all',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>Toutes<span class="filter-count">7</span></div>
+    <div class="filter-chip active" onclick="filterCommune('all',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>Toutes<span class="filter-count">5</span></div>
     <div class="filter-chip" onclick="filterCommune('Reims',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Reims<span class="filter-count">3</span></div>
     <div class="filter-chip" onclick="filterCommune('Tinqueux',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Tinqueux<span class="filter-count">1</span></div>
-    <div class="filter-chip" onclick="filterCommune('Gueux',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Gueux<span class="filter-count">2</span></div>
     <div class="filter-chip" onclick="filterCommune('Muizon',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Muizon<span class="filter-count">1</span></div>
   </div>
   <div class="sidebar-user">
@@ -197,7 +195,7 @@
   <div class="topbar">
     <div class="topbar-left">
       <h1>Alertes</h1>
-      <p id="top-date">Dimanche 17 mai 2026 · 7 nouveaux signaux détectés</p>
+      <p id="top-date">Dimanche 17 mai 2026 · 5 nouveaux signaux détectés</p>
     </div>
     <div class="topbar-right">
       <div class="pulse-live"><div class="pulse-dot"></div>Détection en temps réel</div>
@@ -211,10 +209,6 @@
     <!-- STATS DISCRÈTES -->
     <div class="stats-mini">
       <div class="stat-mini">
-        <div class="stat-mini-num" style="color:var(--vacant)">6 561</div>
-        <div class="stat-mini-label">Biens vacants · Reims</div>
-      </div>
-      <div class="stat-mini">
         <div class="stat-mini-num" style="color:var(--succession)">50</div>
         <div class="stat-mini-label">Annonces BODACC</div>
       </div>
@@ -223,61 +217,12 @@
         <div class="stat-mini-label">Enchères à venir</div>
       </div>
       <div class="stat-mini">
-        <div class="stat-mini-num" style="color:var(--marche)">7</div>
+        <div class="stat-mini-num" style="color:var(--marche)">5</div>
         <div class="stat-mini-label">Signaux aujourd'hui</div>
       </div>
     </div>
 
-    <!-- BIENS VACANTS — PRIORITÉ 1 -->
-    <div class="priority-section" data-section="vacant">
-      <div class="section-header">
-        <div class="section-title">🏚️ Biens vacants <span class="section-badge badge-exclusif">Exclusif</span></div>
-        <span class="section-voir-tout">Voir tous →</span>
-      </div>
-      <div class="signal-grid">
-        <div class="signal-card vacant" data-type="vacant" data-commune="Gueux" onclick="openDetail('vacant1')">
-          <div class="signal-card-top">
-            <span class="signal-type type-vacant">🏚️ Bien vacant</span>
-            <span class="signal-new">Nouveau</span>
-          </div>
-          <div class="signal-title">Pavillon 5 pièces — Gueux</div>
-          <div class="signal-commune">📍 Gueux · Détecté il y a 2h</div>
-          <div class="signal-details">
-            <div class="signal-detail-row"><span class="signal-detail-label">Inoccupé depuis</span><span class="signal-detail-value">26 mois</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Surface estimée</span><span class="signal-detail-value">135 m²</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Propriétaire</span><span class="signal-detail-value">Identifié ✓</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Annonce en ligne</span><span class="signal-detail-value" style="color:var(--marche)">Aucune</span></div>
-          </div>
-          <div class="signal-actions">
-            <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">📞 Contacter</button>
-            <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">🗂️ Dossier</button>
-          </div>
-        </div>
-
-        <div class="signal-card vacant" data-type="vacant" data-commune="Reims" onclick="openDetail('vacant2')">
-          <div class="signal-card-top">
-            <span class="signal-type type-vacant">🏚️ Bien vacant</span>
-            <span class="signal-new">Nouveau</span>
-          </div>
-          <div class="signal-title">Appartement T3 — Reims Nord</div>
-          <div class="signal-commune">📍 Reims · Détecté il y a 3h</div>
-          <div class="signal-details">
-            <div class="signal-detail-row"><span class="signal-detail-label">Inoccupé depuis</span><span class="signal-detail-value">14 mois</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Surface estimée</span><span class="signal-detail-value">72 m²</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Propriétaire</span><span class="signal-detail-value">Identifié ✓</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Annonce en ligne</span><span class="signal-detail-value" style="color:var(--marche)">Aucune</span></div>
-          </div>
-          <div class="signal-actions">
-            <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">📞 Contacter</button>
-            <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">🗂️ Dossier</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- SUCCESSIONS — PRIORITÉ 2 -->
+    <!-- SUCCESSIONS — PRIORITÉ 1 -->
     <div class="priority-section" data-section="succession">
       <div class="section-header">
         <div class="section-title">⚰️ Successions <span class="section-badge badge-urgent">Urgent</span></div>
@@ -399,35 +344,35 @@ const DATA = {
   succession1: {
     badge:'⚰️ Succession', badgeClass:'type-succession',
     title:'Maison 4 pièces — Tinqueux', commune:'📍 Tinqueux (51430)',
-    rows:[['Date du décès','12 mai 2026'],['Surface estimée','110 m²'],['Type','Maison individuelle'],['Acte publié','Oui — BODACC'],['Héritiers','En cours d\'identification'],['Notaire saisi','Oui'],['Annonce en ligne','Aucune'],['Estimation','185 000 – 210 000 €']],
+    rows:[['Date du décès','12 mai 2026'],['Zone PLU','UA — Centre urbain'],['Surface estimée','110 m²'],['Type','Maison individuelle'],['Acte publié','Oui — BODACC'],['Héritiers','En cours d\'identification'],['Notaire saisi','Oui'],['Annonce en ligne','Aucune'],['Estimation','185 000 – 210 000 €']],
     note:'Succession ouverte. Contacter rapidement le notaire en charge pour proposer vos services avant mise en vente.',
     action:'📞 Contacter le notaire en charge',
   },
   succession2: {
     badge:'⚰️ Succession', badgeClass:'type-succession',
     title:'Maison de ville 6 pièces — Reims Est', commune:'📍 Reims (51100)',
-    rows:[['Date du décès','08 mai 2026'],['Surface estimée','148 m²'],['Type','Maison de ville'],['Terrain','~220 m²'],['Héritiers','2 enfants identifiés'],['Annonce en ligne','Aucune'],['Estimation','260 000 – 290 000 €']],
+    rows:[['Date du décès','08 mai 2026'],['Zone PLU','UDa — Zone pavillonnaire'],['Surface estimée','148 m²'],['Type','Maison de ville'],['Terrain','~220 m²'],['Héritiers','2 enfants identifiés'],['Annonce en ligne','Aucune'],['Estimation','260 000 – 290 000 €']],
     note:'Signal détecté via INSEE décès × cadastre. Notaire non encore identifié.',
     action:'🔍 Identifier le notaire en charge',
   },
   enchere1: {
     badge:'🏛️ Enchère notariale', badgeClass:'type-enchere',
     title:'Appartement T3 — Reims centre', commune:'📍 Reims (51100)',
-    rows:[['Surface','67 m²'],['Mise à prix','85 000 €'],['Adjudication','28 mai 2026'],['Étude notariale','Reims'],['Charges copro','180 €/mois'],['DPE','D'],['Estimation marché','~130 000 €'],['Décote estimée','-35%']],
+    rows:[['Surface','67 m²'],['Zone PLU','UA — Centre urbain'],['Mise à prix','85 000 €'],['Adjudication','28 mai 2026'],['Étude notariale','Reims'],['Charges copro','180 €/mois'],['DPE','D'],['Estimation marché','~130 000 €'],['Décote estimée','-35%']],
     note:'Opportunité à fort potentiel. Mise à prix largement sous le marché. Vérifier l\'état du bien avant enchère.',
     action:'📋 Voir le cahier des charges',
   },
   judiciaire1: {
     badge:'⚖️ Vente judiciaire', badgeClass:'type-judiciaire',
     title:'Maison 5 pièces — Muizon', commune:'📍 Muizon (51140)',
-    rows:[['Surface','~120 m²'],['Terrain','~600 m²'],['Mise à prix','120 000 €'],['Audience','3 juin 2026'],['Juridiction','Tribunal judiciaire Reims'],['Motif','Saisie immobilière'],['Estimation marché','~195 000 €'],['Décote estimée','-38%']],
+    rows:[['Surface','~120 m²'],['Zone PLU','A — Zone agricole'],['Terrain','~600 m²'],['Mise à prix','120 000 €'],['Audience','3 juin 2026'],['Juridiction','Tribunal judiciaire Reims'],['Motif','Saisie immobilière'],['Estimation marché','~195 000 €'],['Décote estimée','-38%']],
     note:'Vente judiciaire avec forte décote potentielle. Audience publique au tribunal de Reims.',
     action:'⚖️ Consulter le dossier tribunal',
   },
   bodacc1: {
     badge:'📋 BODACC', badgeClass:'type-succession',
     title:'Liquidation — SCI Les Tilleuls', commune:'📍 Reims (51100)',
-    rows:[['Type d\'annonce','Liquidation judiciaire'],['Entité','SCI Les Tilleuls'],['Date de publication','15 mai 2026'],['Numéro','2026-12847'],['Tribunal','Reims'],['Mandataire','À identifier'],['Bien immobilier','Probable — SCI'],['Opportunité','Acquisition potentielle']],
+    rows:[['Type d\'annonce','Liquidation judiciaire'],['Zone PLU','UX — Zone d\'activités'],['Entité','SCI Les Tilleuls'],['Date de publication','15 mai 2026'],['Numéro','2026-12847'],['Tribunal','Reims'],['Mandataire','À identifier'],['Bien immobilier','Probable — SCI'],['Opportunité','Acquisition potentielle']],
     note:'Une SCI en liquidation détient souvent des biens immobiliers mis en vente par le mandataire judiciaire. À suivre rapidement.',
     action:'🔍 Contacter le mandataire judiciaire',
   },
