@@ -172,6 +172,7 @@
   <div class="sidebar-filters">
     <div class="filter-title">Filtrer par signal</div>
     <div class="filter-chip active" onclick="filter('all',this)"><div class="filter-dot" style="background:var(--gold)"></div>Tous<span class="filter-count">5</span></div>
+    <div class="filter-chip" onclick="filter('dpe',this)"><div class="filter-dot" style="background:var(--gold)"></div>Leads DPE<span class="filter-count" id="fc-dpe">…</span></div>
     <div class="filter-chip" onclick="filter('succession',this)"><div class="filter-dot" style="background:var(--succession)"></div>Successions<span class="filter-count">2</span></div>
     <div class="filter-chip" onclick="filter('enchere',this)"><div class="filter-dot" style="background:var(--enchere)"></div>Enchères<span class="filter-count">1</span></div>
     <div class="filter-chip" onclick="filter('judiciaire',this)"><div class="filter-dot" style="background:var(--judiciaire)"></div>Ventes judiciaires<span class="filter-count">1</span></div>
@@ -209,61 +210,32 @@
     <!-- STATS DISCRÈTES -->
     <div class="stats-mini">
       <div class="stat-mini">
-        <div class="stat-mini-num" style="color:var(--succession)">50</div>
+        <div class="stat-mini-num" id="stat-bodacc" style="color:var(--succession)">…</div>
         <div class="stat-mini-label">Annonces BODACC</div>
       </div>
       <div class="stat-mini">
-        <div class="stat-mini-num" style="color:var(--enchere)">3</div>
-        <div class="stat-mini-label">Enchères à venir</div>
+        <div class="stat-mini-num" id="stat-judiciaire" style="color:var(--enchere)">…</div>
+        <div class="stat-mini-label">Ventes judiciaires</div>
       </div>
       <div class="stat-mini">
-        <div class="stat-mini-num" style="color:var(--marche)">5</div>
-        <div class="stat-mini-label">Signaux aujourd'hui</div>
+        <div class="stat-mini-num" id="stat-signaux" style="color:var(--marche)">…</div>
+        <div class="stat-mini-label">Signaux actifs</div>
       </div>
     </div>
 
-    <!-- SUCCESSIONS — PRIORITÉ 1 -->
-    <div class="priority-section" data-section="succession">
+    <!-- LEADS DPE TRIPLE — PRIORITÉ 1 -->
+    <div class="priority-section" id="leads-section" data-section="dpe">
       <div class="section-header">
-        <div class="section-title">⚰️ Successions <span class="section-badge badge-urgent">Urgent</span></div>
-        <span class="section-voir-tout">Voir toutes →</span>
+        <div class="section-title">🔥 Leads DPE <span class="section-badge badge-exclusif">Top priorité</span></div>
+        <span class="section-voir-tout">Passoires F/G non vendues →</span>
       </div>
-      <div class="signal-grid">
-        <div class="signal-card succession" data-type="succession" data-commune="Tinqueux" onclick="openDetail('succession1')">
-          <div class="signal-card-top">
-            <span class="signal-type type-succession">⚰️ Succession</span>
-            <span class="signal-new">Nouveau</span>
-          </div>
-          <div class="signal-title">Maison 4 pièces — Tinqueux</div>
-          <div class="signal-commune">📍 Tinqueux · Détecté ce matin</div>
-          <div class="signal-details">
-            <div class="signal-detail-row"><span class="signal-detail-label">Date du décès</span><span class="signal-detail-value">12 mai 2026</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Surface estimée</span><span class="signal-detail-value">110 m²</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Annonce en ligne</span><span class="signal-detail-value" style="color:var(--marche)">Aucune</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Estimation</span><span class="signal-detail-value">185 – 210 k€</span></div>
-          </div>
-          <div class="signal-actions">
-            <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">📞 Notaire</button>
-            <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">🗂️ Dossier</button>
-          </div>
-        </div>
-
-        <div class="signal-card succession" data-type="succession" data-commune="Reims" onclick="openDetail('succession2')">
-          <div class="signal-card-top">
-            <span class="signal-type type-succession">⚰️ Succession</span>
-          </div>
-          <div class="signal-title">Maison de ville 6 pièces — Reims Est</div>
-          <div class="signal-commune">📍 Reims · Détecté hier</div>
-          <div class="signal-details">
-            <div class="signal-detail-row"><span class="signal-detail-label">Date du décès</span><span class="signal-detail-value">08 mai 2026</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Surface estimée</span><span class="signal-detail-value">148 m²</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Annonce en ligne</span><span class="signal-detail-value" style="color:var(--marche)">Aucune</span></div>
-            <div class="signal-detail-row"><span class="signal-detail-label">Estimation</span><span class="signal-detail-value">260 – 290 k€</span></div>
-          </div>
-          <div class="signal-actions">
-            <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">📞 Notaire</button>
-            <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">🗂️ Dossier</button>
-          </div>
+      <div class="signal-grid" id="leads-grid">
+        <!-- Chargé dynamiquement depuis leads_triple.json -->
+      </div>
+      <div class="stats-mini" style="margin-top:12px;margin-bottom:0">
+        <div class="stat-mini">
+          <div class="stat-mini-num" id="stat-leads" style="color:var(--gold2)">…</div>
+          <div class="stat-mini-label" id="stat-leads-label">Leads DPE total</div>
         </div>
       </div>
     </div>
@@ -276,35 +248,7 @@
     </div>
     <div class="alert-feed" id="alert-feed">
 
-      <div class="alert-item enchere" data-type="enchere" data-commune="Reims" onclick="openDetail('enchere1')">
-        <div class="alert-icon icon-enchere">🏛️</div>
-        <div class="alert-content">
-          <div class="alert-meta"><span class="alert-type-tag tag-enchere">Enchère notariale</span><span class="alert-commune-tag">📍 Reims</span></div>
-          <div class="alert-title">Appartement T3 — mise à prix 85 000 €</div>
-          <div class="alert-detail">Adjudication le 28/05 · Étude notariale Reims · Estimation marché ~130 000 €</div>
-        </div>
-        <div class="alert-right"><span class="alert-time">Aujourd'hui</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>
-      </div>
-
-      <div class="alert-item judiciaire" data-type="judiciaire" data-commune="Muizon" onclick="openDetail('judiciaire1')">
-        <div class="alert-icon icon-judiciaire">⚖️</div>
-        <div class="alert-content">
-          <div class="alert-meta"><span class="alert-type-tag tag-judiciaire">Vente judiciaire</span><span class="alert-commune-tag">📍 Muizon</span></div>
-          <div class="alert-title">Maison 5 pièces — saisie immobilière</div>
-          <div class="alert-detail">Mise à prix 120 000 € · Audience le 03/06 · Tribunal judiciaire Reims</div>
-        </div>
-        <div class="alert-right"><span class="alert-time">Aujourd'hui</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>
-      </div>
-
-      <div class="alert-item bodacc" data-type="bodacc" data-commune="Reims" onclick="openDetail('bodacc1')">
-        <div class="alert-icon icon-bodacc">📋</div>
-        <div class="alert-content">
-          <div class="alert-meta"><span class="alert-type-tag tag-bodacc">BODACC</span><span class="alert-commune-tag">📍 Reims</span></div>
-          <div class="alert-title">Liquidation judiciaire — SCI Les Tilleuls</div>
-          <div class="alert-detail">Tribunal de Reims · Publié le 15/05/2026 · N° 2026-12847 · Bien immobilier potentiel</div>
-        </div>
-        <div class="alert-right"><span class="alert-time">Hier</span><span class="alert-status status-seen">Consulté</span></div>
-      </div>
+      <!-- Chargé dynamiquement depuis bodacc.json et judiciaire.json -->
 
     </div>
   </div>
@@ -326,61 +270,200 @@
 </div>
 
 <script>
-const DATA = {
-  vacant1: {
-    badge:'🏚️ Bien vacant', badgeClass:'type-vacant',
-    title:'Pavillon 5 pièces — Gueux', commune:'📍 Gueux (51390)',
-    rows:[['Inoccupé depuis','26 mois'],['Surface estimée','135 m²'],['Type','Pavillon individuel'],['Taxe logement vacant','Active — 2023'],['Propriétaire','Identifié (personne physique)'],['Dernière transaction','Avril 2018 · 187 000 €'],['Annonce en ligne','Aucune'],['Statut','Non mis en vente']],
-    note:'Signal détecté via croisement LOVAC × cadastre. Propriétaire non contacté à ce jour.',
-    action:'📞 Préparer la prise de contact',
-  },
-  vacant2: {
-    badge:'🏚️ Bien vacant', badgeClass:'type-vacant',
-    title:'Appartement T3 — Reims Nord', commune:'📍 Reims (51100)',
-    rows:[['Inoccupé depuis','14 mois'],['Surface estimée','72 m²'],['Type','Appartement'],['Taxe logement vacant','Active'],['Propriétaire','Identifié (personne physique)'],['Annonce en ligne','Aucune'],['Statut','Non mis en vente']],
-    note:'Signal détecté via fichier LOVAC 2025. Bien non commercialisé.',
-    action:'📞 Préparer la prise de contact',
-  },
-  succession1: {
-    badge:'⚰️ Succession', badgeClass:'type-succession',
-    title:'Maison 4 pièces — Tinqueux', commune:'📍 Tinqueux (51430)',
-    rows:[['Date du décès','12 mai 2026'],['Zone PLU','UA — Centre urbain'],['Surface estimée','110 m²'],['Type','Maison individuelle'],['Acte publié','Oui — BODACC'],['Héritiers','En cours d\'identification'],['Notaire saisi','Oui'],['Annonce en ligne','Aucune'],['Estimation','185 000 – 210 000 €']],
-    note:'Succession ouverte. Contacter rapidement le notaire en charge pour proposer vos services avant mise en vente.',
-    action:'📞 Contacter le notaire en charge',
-  },
-  succession2: {
-    badge:'⚰️ Succession', badgeClass:'type-succession',
-    title:'Maison de ville 6 pièces — Reims Est', commune:'📍 Reims (51100)',
-    rows:[['Date du décès','08 mai 2026'],['Zone PLU','UDa — Zone pavillonnaire'],['Surface estimée','148 m²'],['Type','Maison de ville'],['Terrain','~220 m²'],['Héritiers','2 enfants identifiés'],['Annonce en ligne','Aucune'],['Estimation','260 000 – 290 000 €']],
-    note:'Signal détecté via INSEE décès × cadastre. Notaire non encore identifié.',
-    action:'🔍 Identifier le notaire en charge',
-  },
-  enchere1: {
-    badge:'🏛️ Enchère notariale', badgeClass:'type-enchere',
-    title:'Appartement T3 — Reims centre', commune:'📍 Reims (51100)',
-    rows:[['Surface','67 m²'],['Zone PLU','UA — Centre urbain'],['Mise à prix','85 000 €'],['Adjudication','28 mai 2026'],['Étude notariale','Reims'],['Charges copro','180 €/mois'],['DPE','D'],['Estimation marché','~130 000 €'],['Décote estimée','-35%']],
-    note:'Opportunité à fort potentiel. Mise à prix largement sous le marché. Vérifier l\'état du bien avant enchère.',
-    action:'📋 Voir le cahier des charges',
-  },
-  judiciaire1: {
-    badge:'⚖️ Vente judiciaire', badgeClass:'type-judiciaire',
-    title:'Maison 5 pièces — Muizon', commune:'📍 Muizon (51140)',
-    rows:[['Surface','~120 m²'],['Zone PLU','A — Zone agricole'],['Terrain','~600 m²'],['Mise à prix','120 000 €'],['Audience','3 juin 2026'],['Juridiction','Tribunal judiciaire Reims'],['Motif','Saisie immobilière'],['Estimation marché','~195 000 €'],['Décote estimée','-38%']],
-    note:'Vente judiciaire avec forte décote potentielle. Audience publique au tribunal de Reims.',
-    action:'⚖️ Consulter le dossier tribunal',
-  },
-  bodacc1: {
-    badge:'📋 BODACC', badgeClass:'type-succession',
-    title:'Liquidation — SCI Les Tilleuls', commune:'📍 Reims (51100)',
-    rows:[['Type d\'annonce','Liquidation judiciaire'],['Zone PLU','UX — Zone d\'activités'],['Entité','SCI Les Tilleuls'],['Date de publication','15 mai 2026'],['Numéro','2026-12847'],['Tribunal','Reims'],['Mandataire','À identifier'],['Bien immobilier','Probable — SCI'],['Opportunité','Acquisition potentielle']],
-    note:'Une SCI en liquidation détient souvent des biens immobiliers mis en vente par le mandataire judiciaire. À suivre rapidement.',
-    action:'🔍 Contacter le mandataire judiciaire',
-  },
-};
+// ============================================
+// CHARGEMENT DES VRAIES DONNÉES
+// ============================================
 
-function openDetail(id) {
-  const d = DATA[id];
-  if (!d) return;
+async function loadJSON(path) {
+  try {
+    const r = await fetch(path);
+    if (!r.ok) return [];
+    return await r.json();
+  } catch(e) { return []; }
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  // Format ISO ou dd/mm/yyyy
+  try {
+    const d = new Date(dateStr);
+    if (!isNaN(d)) return d.toLocaleDateString('fr-FR', {day:'2-digit', month:'long', year:'numeric'});
+  } catch(e) {}
+  return dateStr;
+}
+
+function tempoPrix(valeur) {
+  if (!valeur) return 'NC';
+  return new Intl.NumberFormat('fr-FR').format(Math.round(valeur)) + ' €';
+}
+
+// ---- BODACC ----
+function renderBodacc(annonces) {
+  const feed = document.getElementById('alert-feed');
+  const items = annonces.slice(0, 10);
+  items.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = 'alert-item bodacc';
+    div.dataset.type = 'bodacc';
+    div.dataset.commune = a.commune || 'Reims';
+    div.dataset.id = 'bodacc_' + i;
+    div.onclick = () => openDetailDynamic({
+      badge: '📋 BODACC',
+      badgeClass: 'type-succession',
+      title: a.description || a.commercant || 'Annonce BODACC',
+      commune: '📍 ' + (a.tribunal || 'Reims'),
+      rows: [
+        ['Type', a.type || a.familleavis_lib || ''],
+        ['Date', formatDate(a.date || a.dateparution)],
+        ['Numéro', a.numero || a.numerodannonce || ''],
+        ['Tribunal', a.tribunal || ''],
+        ['Entité', a.description || ''],
+      ].filter(r => r[1]),
+      note: 'Annonce BODACC détectée automatiquement. Vérifier si un bien immobilier est associé à cette procédure.',
+      action: '🔍 Contacter le mandataire judiciaire',
+    });
+    div.innerHTML = `
+      <div class="alert-icon icon-bodacc">📋</div>
+      <div class="alert-content">
+        <div class="alert-meta"><span class="alert-type-tag tag-bodacc">BODACC</span><span class="alert-commune-tag">📍 ${a.tribunal || 'Reims'}</span></div>
+        <div class="alert-title">${a.description || a.commercant || 'Annonce BODACC'}</div>
+        <div class="alert-detail">${a.type || ''} · Publié le ${formatDate(a.date || a.dateparution)} · N° ${a.numero || ''}</div>
+      </div>
+      <div class="alert-right"><span class="alert-time">Récent</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>`;
+    feed.appendChild(div);
+  });
+}
+
+// ---- JUDICIAIRE ----
+function renderJudiciaire(ventes) {
+  const feed = document.getElementById('alert-feed');
+  ventes.forEach((v, i) => {
+    const div = document.createElement('div');
+    div.className = 'alert-item judiciaire';
+    div.dataset.type = 'judiciaire';
+    div.dataset.commune = v.commune || 'Reims';
+    div.dataset.id = 'judiciaire_' + i;
+    div.onclick = () => openDetailDynamic({
+      badge: '⚖️ Vente judiciaire',
+      badgeClass: 'type-judiciaire',
+      title: v.titre || v.bien || 'Vente judiciaire',
+      commune: '📍 ' + (v.commune || v.tribunal || 'Reims'),
+      rows: [
+        ['Mise à prix', tempoPrix(v.mise_a_prix)],
+        ['Audience', formatDate(v.date_audience || v.date)],
+        ['Tribunal', v.tribunal || ''],
+        ['Motif', v.motif || 'Saisie immobilière'],
+      ].filter(r => r[1]),
+      note: 'Vente judiciaire détectée sur Licitor. Vérifier le cahier des charges avant l'audience.',
+      action: '⚖️ Consulter le dossier tribunal',
+    });
+    div.innerHTML = `
+      <div class="alert-icon icon-judiciaire">⚖️</div>
+      <div class="alert-content">
+        <div class="alert-meta"><span class="alert-type-tag tag-judiciaire">Vente judiciaire</span><span class="alert-commune-tag">📍 ${v.commune || v.tribunal || 'Reims'}</span></div>
+        <div class="alert-title">${v.titre || v.bien || 'Vente judiciaire'}</div>
+        <div class="alert-detail">Mise à prix ${tempoPrix(v.mise_a_prix)} · Audience le ${formatDate(v.date_audience || v.date)} · ${v.tribunal || ''}</div>
+      </div>
+      <div class="alert-right"><span class="alert-time">Récent</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>`;
+    feed.appendChild(div);
+  });
+}
+
+// ---- LEADS TRIPLE (DPE + MAJIC + DVF) ----
+function renderLeads(leads) {
+  const grid = document.getElementById('leads-grid');
+  const section = document.getElementById('leads-section');
+  if (!leads.length) { section.style.display = 'none'; return; }
+
+  // Top 6 leads classés G ou F en priorité
+  const sorted = [...leads].sort((a,b) => {
+    const score = x => (x.classe_dpe === 'G' ? 2 : x.classe_dpe === 'F' ? 1 : 0);
+    return score(b) - score(a);
+  }).slice(0, 6);
+
+  sorted.forEach((lead, i) => {
+    const dpe = lead.classe_dpe || '';
+    const dpeColor = dpe === 'G' ? 'var(--succession)' : dpe === 'F' ? 'var(--judiciaire)' : 'var(--gold)';
+    const commune = lead.commune || lead.libelle_commune || '';
+    const adresse = lead.adresse_bien || lead.adresse || '';
+    const surface = lead.surface_habitable ? lead.surface_habitable + ' m²' : '';
+    const plu = lead.zone_plu ? lead.zone_plu + (lead.zone_plu_long ? ' — ' + lead.zone_plu_long : '') : '';
+
+    const div = document.createElement('div');
+    div.className = 'signal-card succession';
+    div.dataset.type = 'dpe';
+    div.dataset.commune = commune;
+    div.onclick = () => openDetailDynamic({
+      badge: '🔥 Lead DPE · Classe ' + dpe,
+      badgeClass: 'type-succession',
+      title: (lead.type_batiment || 'Bien') + (surface ? ' · ' + surface : '') + (commune ? ' — ' + commune : ''),
+      commune: '📍 ' + adresse + (commune ? ', ' + commune : ''),
+      rows: [
+        ['Classe DPE', dpe],
+        ['Surface', surface],
+        ['Adresse', adresse],
+        ['Commune', commune],
+        ['Zone PLU', plu],
+        ['Propriétaire', lead.nom_proprietaire || lead.sci_nom || ''],
+        ['Dernière vente', lead.derniere_vente ? formatDate(lead.derniere_vente) + (lead.prix_vente ? ' · ' + tempoPrix(lead.prix_vente) : '') : ''],
+        ['Non vendu depuis', lead.annee_dpe ? 'DPE ' + lead.annee_dpe : ''],
+      ].filter(r => r[1]),
+      note: 'Lead issu du croisement DPE × MAJIC × DVF. Ce bien est classé ' + dpe + ' et n'a pas été revendu depuis son diagnostic. Propriétaire potentiellement motivé.',
+      action: '📞 Préparer la prise de contact',
+    });
+    div.innerHTML = `
+      <div class="signal-card-top">
+        <span class="signal-type type-succession" style="background:rgba(201,169,110,0.12);color:var(--gold2)">🔥 Lead DPE · ${dpe}</span>
+        ${i < 2 ? '<span class="signal-new">Top lead</span>' : ''}
+      </div>
+      <div class="signal-title">${adresse || (lead.type_batiment || 'Bien') + ' · ' + commune}</div>
+      <div class="signal-commune">📍 ${commune} · DPE classe <span style="color:${dpeColor};font-weight:600">${dpe}</span></div>
+      <div class="signal-details">
+        ${surface ? `<div class="signal-detail-row"><span class="signal-detail-label">Surface</span><span class="signal-detail-value">${surface}</span></div>` : ''}
+        ${plu ? `<div class="signal-detail-row"><span class="signal-detail-label">Zone PLU</span><span class="signal-detail-value">${lead.zone_plu}</span></div>` : ''}
+        <div class="signal-detail-row"><span class="signal-detail-label">Annonce en ligne</span><span class="signal-detail-value" style="color:var(--marche)">Aucune</span></div>
+      </div>
+      <div class="signal-actions">
+        <button class="signal-btn signal-btn-primary" onclick="event.stopPropagation()">📞 Contacter</button>
+        <button class="signal-btn signal-btn-secondary" onclick="event.stopPropagation()">🗂️ Dossier</button>
+      </div>`;
+    grid.appendChild(div);
+  });
+
+  // Mettre à jour les stats
+  const countG = leads.filter(l => l.classe_dpe === 'G').length;
+  const countF = leads.filter(l => l.classe_dpe === 'F').length;
+  document.getElementById('stat-leads').textContent = leads.length.toLocaleString('fr-FR');
+  document.getElementById('stat-leads-label').textContent = 'Leads DPE (dont ' + countG + ' classe G)';
+}
+
+// ---- MISE À JOUR SIDEBAR ----
+function updateSidebar(bodacc, judiciaire, leads) {
+  const total = Math.min(bodacc.length, 10) + judiciaire.length + Math.min(leads.length, 6);
+  document.querySelectorAll('.nav-badge').forEach(b => b.textContent = total);
+  document.querySelector('#top-date').textContent =
+    new Date().toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long', year:'numeric'}) +
+    ' · ' + total + ' signaux actifs';
+
+  // Compteurs filtres
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    const fc = chip.querySelector('.filter-count');
+    if (!fc) return;
+    const onclick = chip.getAttribute('onclick') || '';
+    if (onclick.includes("'bodacc'")) fc.textContent = Math.min(bodacc.length, 10);
+    else if (onclick.includes("'judiciaire'")) fc.textContent = judiciaire.length;
+    else if (onclick.includes("'dpe'")) fc.textContent = Math.min(leads.length, 6);
+    else if (onclick.includes("'all'")) fc.textContent = total;
+  });
+
+  // Stats mini
+  document.getElementById('stat-bodacc').textContent = bodacc.length;
+  document.getElementById('stat-judiciaire').textContent = judiciaire.length;
+  document.getElementById('stat-signaux').textContent = total;
+}
+
+// ---- PANEL DÉTAIL DYNAMIQUE ----
+function openDetailDynamic(d) {
   const badge = document.getElementById('dp-badge');
   badge.textContent = d.badge;
   badge.className = 'detail-badge alert-type-tag ' + d.badgeClass;
@@ -395,6 +478,24 @@ function openDetail(id) {
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
 }
+
+// ---- INIT ----
+async function init() {
+  const [leads, bodacc, judiciaire] = await Promise.all([
+    loadJSON('donnees/leads_triple.json'),
+    loadJSON('donnees/bodacc.json'),
+    loadJSON('donnees/judiciaire.json'),
+  ]);
+
+  renderLeads(leads);
+  renderBodacc(bodacc);
+  renderJudiciaire(judiciaire);
+  updateSidebar(bodacc, judiciaire, leads);
+}
+
+init();
+
+function openDetail(id) {}  // conservé pour compatibilité
 
 function closeDetail() {
   document.getElementById('detail-panel').classList.remove('open');
