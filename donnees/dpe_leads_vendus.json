@@ -1,0 +1,82 @@
+[
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "numero_dpe": "2551E2941419Q",
+    "adresse": "12 Grande Rue 51430 Tinqueux",
+    "etiquette_dpe": "G",
+    "etiquette_ges": "F",
+    "surface": 1147,
+    "type_batiment": "appartement",
+    "date_dpe": "2025-09-17",
+    "date_fin_validite": "2035-09-16",
+    "periode_construction": "1948-1974",
+    "total_commune": 137,
+    "statut_croisement": "vendu_apres_dpe",
+    "transaction_dvf": {
+      "adresse": "12 GRANDE RUE",
+      "date": "30/01/2023",
+      "valeur": 136500.0
+    }
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "numero_dpe": "2351E2701872F",
+    "adresse": "10 Grande Rue 51430 Tinqueux",
+    "etiquette_dpe": "G",
+    "etiquette_ges": "G",
+    "surface": "",
+    "type_batiment": "maison",
+    "date_dpe": "2023-08-10",
+    "date_fin_validite": "2033-08-09",
+    "periode_construction": "avant 1948",
+    "total_commune": 137,
+    "statut_croisement": "vendu_apres_dpe",
+    "transaction_dvf": {
+      "adresse": "10 GRANDE RUE",
+      "date": "22/11/2023",
+      "valeur": 170000.0
+    }
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "numero_dpe": "2351E0226264N",
+    "adresse": "13 Grande Rue 51430 Tinqueux",
+    "etiquette_dpe": "G",
+    "etiquette_ges": "G",
+    "surface": "",
+    "type_batiment": "maison",
+    "date_dpe": "2023-01-23",
+    "date_fin_validite": "2033-01-22",
+    "periode_construction": "avant 1948",
+    "total_commune": 137,
+    "statut_croisement": "vendu_apres_dpe",
+    "transaction_dvf": {
+      "adresse": "13 GRANDE RUE",
+      "date": "31/03/2023",
+      "valeur": 300000.0
+    }
+  },
+  {
+    "commune": "Tinqueux",
+    "code_insee": "51573",
+    "numero_dpe": "2151E0086188X",
+    "adresse": "3 Grande Rue 51430 Tinqueux",
+    "etiquette_dpe": "F",
+    "etiquette_ges": "F",
+    "surface": 105.8,
+    "type_batiment": "appartement",
+    "date_dpe": "2021-07-21",
+    "date_fin_validite": "2031-07-20",
+    "periode_construction": "1948-1974",
+    "total_commune": 137,
+    "statut_croisement": "vendu_apres_dpe",
+    "transaction_dvf": {
+      "adresse": "3 GRANDE RUE",
+      "date": "28/11/2025",
+      "valeur": 287500.0
+    }
+  }
+]
