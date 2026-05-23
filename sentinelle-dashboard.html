@@ -377,16 +377,16 @@ function renderLeads(leads) {
 
   // Top 6 leads classés G ou F en priorité
   const sorted = [...leads].sort((a,b) => {
-    const score = x => (x.classe_dpe === 'G' ? 2 : x.classe_dpe === 'F' ? 1 : 0);
+    const score = x => (x.etiquette_dpe === 'G' ? 2 : x.etiquette_dpe === 'F' ? 1 : 0);
     return score(b) - score(a);
   }).slice(0, 6);
 
   sorted.forEach((lead, i) => {
-    const dpe = lead.classe_dpe || '';
+    const dpe = lead.etiquette_dpe || '';
     const dpeColor = dpe === 'G' ? 'var(--succession)' : dpe === 'F' ? 'var(--judiciaire)' : 'var(--gold)';
     const commune = lead.commune || lead.libelle_commune || '';
     const adresse = lead.adresse_bien || lead.adresse || '';
-    const surface = lead.surface_habitable ? lead.surface_habitable + ' m²' : '';
+    const surface = lead.surface ? lead.surface + ' m²' : '';
     const plu = lead.zone_plu ? lead.zone_plu + (lead.zone_plu_long ? ' — ' + lead.zone_plu_long : '') : '';
 
     const div = document.createElement('div');
@@ -431,8 +431,8 @@ function renderLeads(leads) {
   });
 
   // Mettre à jour les stats
-  const countG = leads.filter(l => l.classe_dpe === 'G').length;
-  const countF = leads.filter(l => l.classe_dpe === 'F').length;
+  const countG = leads.filter(l => l.etiquette_dpe === 'G').length;
+  const countF = leads.filter(l => l.etiquette_dpe === 'F').length;
   document.getElementById('stat-leads').textContent = leads.length.toLocaleString('fr-FR');
   document.getElementById('stat-leads-label').textContent = 'Leads DPE (dont ' + countG + ' classe G)';
 }
