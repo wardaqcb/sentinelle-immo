@@ -245,11 +245,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
       <option value="maison">Maison</option>
       <option value="appartement">Appartement</option>
     </select>
-    <select class="filter-select" id="sci-filter" onchange="applyFilters()">
-      <option value="">SCI / Particulier</option>
-      <option value="oui">Avec SCI</option>
-      <option value="non">Sans SCI</option>
-    </select>
     <select class="filter-select" id="sort-filter" onchange="applyFilters()">
       <option value="dpe">Trier : DPE (G→F)</option>
       <option value="surface_asc">Surface : petite → grande</option>
@@ -453,15 +448,12 @@ function applyFilters(){
   const search=(document.getElementById('search').value||'').toLowerCase();
   const commune=document.getElementById('commune-filter').value;
   const type=document.getElementById('type-filter').value;
-  const sci=document.getElementById('sci-filter').value;
   SORT=document.getElementById('sort-filter').value;
 
   FILTERED=ALL.filter(l=>{
     if(DPE_F!=='all'&&l.etiquette_dpe!==DPE_F)return false;
     if(commune&&l.commune!==commune)return false;
     if(type&&(l.type_batiment||'').toLowerCase()!==type)return false;
-    if(sci==='oui'&&!l.sci_denomination)return false;
-    if(sci==='non'&&l.sci_denomination)return false;
     if(search){
       const h=((l.adresse||'')+' '+(l.commune||'')+' '+(l.sci_denomination||'')).toLowerCase();
       if(!h.includes(search))return false;
