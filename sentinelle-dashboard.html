@@ -318,7 +318,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
 
 <script>
 let ALL=[],FILTERED=[],PAGE=1,DPE_F='all',SORT='dpe';
-const PER=25;
+const PER=8;
 
 async function load(p){try{const r=await fetch(p);if(!r.ok)return[];return await r.json();}catch(e){return[];}}
 
