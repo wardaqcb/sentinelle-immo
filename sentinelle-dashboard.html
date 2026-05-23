@@ -251,6 +251,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
       <option value="surface_desc">Surface : grande → petite</option>
       <option value="date">Date détection</option>
     </select>
+    <select class="filter-select" id="date-filter" onchange="applyFilters()">
+      <option value="">Toutes dates DPE</option>
+      <option value="2024">DPE 2024</option>
+      <option value="2023">DPE 2023</option>
+      <option value="2022">DPE 2022</option>
+      <option value="2021">DPE 2021</option>
+      <option value="2020">DPE 2020 et avant</option>
+    </select>
     <span class="results-info" id="results-info"></span>
   </div>
 
@@ -454,6 +462,12 @@ function applyFilters(){
     if(DPE_F!=='all'&&l.etiquette_dpe!==DPE_F)return false;
     if(commune&&l.commune!==commune)return false;
     if(type&&(l.type_batiment||'').toLowerCase()!==type)return false;
+    if(dateF){
+      const yr=parseInt(dateF);
+      const dpeyear=parseInt((l.date_dpe||'').substring(0,4));
+      if(dateF==='2020'){if(dpeyear>2020)return false;}
+      else{if(dpeyear!==yr)return false;}
+    }
     if(search){
       const h=((l.adresse||'')+' '+(l.commune||'')+' '+(l.sci_denomination||'')).toLowerCase();
       if(!h.includes(search))return false;
