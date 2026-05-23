@@ -260,7 +260,7 @@
     <div class="priority-section" id="leads-section" data-section="dpe">
       <div class="section-header">
         <div class="section-title">🔥 Leads DPE <span class="section-badge badge-exclusif">Top priorité</span></div>
-        <a class="leads-voir-tout" href="sentinelle-leads.html">Voir tous les leads →</a>
+        <span class="leads-voir-tout" style="cursor:default;opacity:0.5">3 025 leads chargés</span>
       </div>
 
       <div class="leads-toolbar">
@@ -532,7 +532,7 @@ function renderJudiciaire(ventes) {
             ['Surface',v.surface||'NC'],['Audience',v.date_audience||'NC'],['Description',v.description||'']
            ].filter(r=>r[1]),
       note:'Vente judiciaire détectée sur Licitor.fr.',
-      action:'⚖️ Voir l'annonce sur Licitor', url:v.url||null,
+      action:'⚖️ Voir l\'annonce sur Licitor', url:v.url||null,
     });
     const prix = v.mise_a_prix?' · Mise à prix '+formatPrix(v.mise_a_prix):'';
     div.innerHTML = `
