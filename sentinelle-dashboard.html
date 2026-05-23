@@ -6,186 +6,160 @@
 <title>Sentinelle Immo — Alertes</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --navy: #0B1628; --navy2: #112040; --navy3: #0d1c36;
-    --gold: #C9A96E; --gold2: #E8C98A; --gold3: rgba(201,169,110,0.12);
-    --vacant: #a78bfa; --vacant-bg: rgba(167,139,250,0.12);
-    --succession: #f87171; --succession-bg: rgba(248,113,113,0.12);
-    --enchere: #fbbf24; --enchere-bg: rgba(251,191,36,0.12);
-    --judiciaire: #f97316; --judiciaire-bg: rgba(249,115,22,0.12);
-    --marche: #34d399; --marche-bg: rgba(52,211,153,0.12);
-    --sidebar: 260px;
-  }
-  body { font-family: 'DM Sans', sans-serif; background: var(--navy); color: #fff; display: flex; min-height: 100vh; overflow-x: hidden; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0B1628;--navy2:#112040;--navy3:#0d1c36;
+  --gold:#C9A96E;--gold2:#E8C98A;--gold3:rgba(201,169,110,0.12);
+  --red:#f87171;--orange:#fb923c;--green:#34d399;--blue:#60a5fa;
+  --sidebar:240px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:flex;min-height:100vh;overflow-x:hidden}
 
-  /* SIDEBAR */
-  .sidebar { width: var(--sidebar); flex-shrink: 0; background: var(--navy3); border-right: 1px solid rgba(201,169,110,0.1); display: flex; flex-direction: column; position: fixed; top: 0; left: 0; bottom: 0; z-index: 50; }
-  .sidebar-logo { padding: 28px 24px 24px; border-bottom: 1px solid rgba(201,169,110,0.1); }
-  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold2); letter-spacing: 0.04em; }
-  .logo span { color: rgba(255,255,255,0.5); font-weight: 300; }
-  .logo-sub { font-size: 0.7rem; color: rgba(255,255,255,0.25); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
-  .nav-item { display: flex; align-items: center; gap: 12px; padding: 11px 16px; margin: 2px 8px; border-radius: 6px; cursor: pointer; font-size: 0.875rem; color: rgba(255,255,255,0.5); transition: all 0.15s; text-decoration: none; }
-  .nav-item:hover { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.8); }
-  .nav-item.active { background: var(--gold3); color: var(--gold2); }
-  .nav-item .icon { font-size: 1rem; width: 20px; text-align: center; }
-  .nav-badge { margin-left: auto; background: var(--succession); color: white; font-size: 0.65rem; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
-  .sidebar-section { padding: 20px 16px 8px; font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; }
-  .sidebar-filters { padding: 12px 16px; flex: 1; overflow-y: auto; }
-  .filter-title { font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; margin-top: 16px; }
-  .filter-chip { display: flex; align-items: center; gap: 8px; padding: 8px 12px; margin-bottom: 4px; border-radius: 6px; cursor: pointer; font-size: 0.82rem; color: rgba(255,255,255,0.6); transition: all 0.15s; border: 1px solid transparent; }
-  .filter-chip:hover { background: rgba(255,255,255,0.05); }
-  .filter-chip.active { border-color: rgba(201,169,110,0.3); background: var(--gold3); color: var(--gold2); }
-  .filter-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .filter-count { margin-left: auto; font-size: 0.72rem; color: rgba(255,255,255,0.25); }
-  .sidebar-user { padding: 16px; border-top: 1px solid rgba(201,169,110,0.1); display: flex; align-items: center; gap: 10px; }
-  .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--gold3); border: 1px solid rgba(201,169,110,0.3); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--gold2); font-weight: 600; }
-  .user-name { font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.8); }
-  .user-plan { font-size: 0.7rem; color: var(--gold); }
+/* SIDEBAR */
+.sidebar{width:var(--sidebar);flex-shrink:0;background:var(--navy3);border-right:1px solid rgba(201,169,110,0.1);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:50}
+.sidebar-logo{padding:22px 20px 18px;border-bottom:1px solid rgba(201,169,110,0.1)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--gold2);letter-spacing:0.04em}
+.logo span{color:rgba(255,255,255,0.4);font-weight:300}
+.logo-sub{font-size:0.65rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
+.nav-section{padding:16px 12px 6px;font-size:0.6rem;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.12em}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 12px;margin:1px 6px;border-radius:6px;cursor:pointer;font-size:0.82rem;color:rgba(255,255,255,0.45);transition:all 0.15s;text-decoration:none}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.8)}
+.nav-item.active{background:var(--gold3);color:var(--gold2)}
+.nav-item .icon{font-size:0.95rem;width:18px;text-align:center}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:0.6rem;padding:1px 6px;border-radius:8px;font-weight:600}
+.sidebar-bottom{margin-top:auto;padding:14px;border-top:1px solid rgba(201,169,110,0.08);display:flex;align-items:center;gap:8px}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--gold3);border:1px solid rgba(201,169,110,0.3);display:flex;align-items:center;justify-content:center;font-size:0.72rem;color:var(--gold2);font-weight:600}
+.user-name{font-size:0.78rem;font-weight:500;color:rgba(255,255,255,0.75)}
+.user-plan{font-size:0.65rem;color:var(--gold)}
 
-  /* MAIN */
-  .main { margin-left: var(--sidebar); flex: 1; display: flex; flex-direction: column; min-height: 100vh; }
-  .topbar { background: var(--navy3); border-bottom: 1px solid rgba(201,169,110,0.1); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 40; }
-  .topbar-left h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; }
-  .topbar-left p { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-top: 2px; }
-  .topbar-right { display: flex; align-items: center; gap: 12px; }
-  .pulse-live { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--marche); }
-  .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--marche); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-  .topbar-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); padding: 8px 16px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .topbar-btn.primary { background: var(--gold3); border-color: rgba(201,169,110,0.3); color: var(--gold2); }
+/* MAIN */
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-height:100vh}
+.topbar{background:var(--navy3);border-bottom:1px solid rgba(201,169,110,0.1);padding:13px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40}
+.topbar-left h1{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600}
+.topbar-left p{font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:1px}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.pulse-live{display:flex;align-items:center;gap:5px;font-size:0.7rem;color:var(--green)}
+.pulse-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 
-  .content { padding: 28px 32px; flex: 1; }
+/* STATS */
+.stats-bar{display:flex;gap:8px;padding:14px 28px;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,0.04)}
+.stat-card{background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.06);border-radius:8px;padding:10px 16px;display:flex;align-items:center;gap:10px}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700}
+.stat-label{font-size:0.68rem;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.08em}
 
-  /* STATS — discrets, pas mis en avant */
-  .stats-mini { display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
-  .stat-mini { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 12px 18px; display: flex; align-items: center; gap: 10px; }
-  .stat-mini-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; }
-  .stat-mini-label { font-size: 0.72rem; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+/* FILTRES */
+.filters-bar{padding:10px 28px;background:var(--navy3);border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.search-input{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);color:#fff;padding:7px 12px;border-radius:6px;font-size:0.78rem;font-family:'DM Sans',sans-serif;outline:none;width:200px;transition:border-color 0.15s}
+.search-input:focus{border-color:rgba(201,169,110,0.4)}
+.search-input::placeholder{color:rgba(255,255,255,0.2)}
+.filter-select{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.65);padding:7px 10px;border-radius:6px;font-size:0.78rem;font-family:'DM Sans',sans-serif;outline:none;cursor:pointer;transition:border-color 0.15s}
+.filter-select:focus{border-color:rgba(201,169,110,0.3)}
+.filter-select option{background:var(--navy2)}
+.filter-btn{padding:7px 12px;border-radius:6px;font-size:0.75rem;cursor:pointer;border:0.5px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.45);background:transparent;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.filter-btn:hover{border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.75)}
+.filter-btn.active{background:var(--gold3);border-color:rgba(201,169,110,0.35);color:var(--gold2)}
+.filter-btn.red{color:var(--red);border-color:rgba(248,113,113,0.25)}
+.filter-btn.red.active{background:rgba(248,113,113,0.1);border-color:rgba(248,113,113,0.4);color:var(--red)}
+.filter-btn.orange{color:var(--orange);border-color:rgba(251,146,60,0.25)}
+.filter-btn.orange.active{background:rgba(251,146,60,0.1);border-color:rgba(251,146,60,0.4);color:var(--orange)}
+.results-info{margin-left:auto;font-size:0.72rem;color:rgba(255,255,255,0.2)}
+.filter-sep{width:1px;height:20px;background:rgba(255,255,255,0.08);flex-shrink:0}
 
-  /* SIGNAUX PRIORITAIRES — biens vacants + successions en avant */
-  .priority-section { margin-bottom: 32px; }
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 600; color: rgba(255,255,255,0.9); display: flex; align-items: center; gap: 8px; }
-  .section-badge { font-size: 0.68rem; padding: 3px 10px; border-radius: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
-  .badge-exclusif { background: rgba(167,139,250,0.15); color: var(--vacant); }
-  .badge-urgent { background: rgba(248,113,113,0.15); color: var(--succession); }
-  .section-voir-tout { font-size: 0.78rem; color: rgba(255,255,255,0.3); cursor: pointer; transition: color 0.15s; }
-  .section-voir-tout:hover { color: var(--gold2); }
+/* CONTENT */
+.content{padding:0 28px 40px;flex:1}
 
-  /* SIGNAL CARD PRIORITAIRE */
-  .signal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
-  .signal-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
-  .signal-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
-  .signal-card.vacant::before { background: var(--vacant); }
-  .signal-card.succession::before { background: var(--succession); }
-  .signal-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-  .signal-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
-  .signal-type { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; padding: 3px 9px; border-radius: 4px; }
-  .type-vacant { background: var(--vacant-bg); color: var(--vacant); }
-  .type-succession { background: var(--succession-bg); color: var(--succession); }
-  .signal-new { font-size: 0.65rem; background: var(--gold3); color: var(--gold2); padding: 3px 8px; border-radius: 4px; font-weight: 600; }
-  .signal-title { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.92); margin-bottom: 6px; line-height: 1.3; }
-  .signal-commune { font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
-  .signal-details { display: flex; flex-direction: column; gap: 4px; margin-bottom: 14px; }
-  .signal-detail-row { display: flex; justify-content: space-between; font-size: 0.78rem; }
-  .signal-detail-label { color: rgba(255,255,255,0.3); }
-  .signal-detail-value { color: rgba(255,255,255,0.75); font-weight: 500; }
-  .signal-actions { display: flex; gap: 8px; }
-  .signal-btn { flex: 1; padding: 8px; border-radius: 6px; font-size: 0.75rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; text-align: center; transition: all 0.15s; }
-  .signal-btn-primary { background: var(--gold); color: var(--navy); }
-  .signal-btn-primary:hover { background: var(--gold2); }
-  .signal-btn-secondary { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1); }
-  .signal-btn-secondary:hover { background: rgba(255,255,255,0.1); color: white; }
+/* SECTION */
+.section-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:rgba(255,255,255,0.7);padding:18px 0 10px;display:flex;align-items:center;gap:8px;border-bottom:0.5px solid rgba(255,255,255,0.05);margin-bottom:0}
+.section-badge{font-size:0.6rem;padding:2px 8px;border-radius:8px;font-weight:600;text-transform:uppercase}
+.badge-leads{background:rgba(201,169,110,0.12);color:var(--gold2)}
+.badge-empty{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.2)}
 
-  /* FIL D'ALERTES — autres signaux */
-  .alert-feed { display: flex; flex-direction: column; gap: 8px; }
-  .alert-item { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 16px 20px; cursor: pointer; transition: all 0.15s; display: flex; gap: 14px; align-items: flex-start; position: relative; overflow: hidden; }
-  .alert-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
-  .alert-item.enchere::before { background: var(--enchere); }
-  .alert-item.judiciaire::before { background: var(--judiciaire); }
-  .alert-item.bodacc::before { background: var(--succession); }
-  .alert-item:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); transform: translateX(2px); }
-  .alert-icon { flex-shrink: 0; width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-  .icon-enchere { background: var(--enchere-bg); }
-  .icon-judiciaire { background: var(--judiciaire-bg); }
-  .icon-bodacc { background: var(--succession-bg); }
-  .alert-content { flex: 1; min-width: 0; }
-  .alert-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
-  .alert-type-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; padding: 2px 7px; border-radius: 3px; }
-  .tag-enchere { background: var(--enchere-bg); color: var(--enchere); }
-  .tag-judiciaire { background: var(--judiciaire-bg); color: var(--judiciaire); }
-  .tag-bodacc { background: var(--succession-bg); color: var(--succession); }
-  .alert-commune-tag { font-size: 0.7rem; color: rgba(255,255,255,0.3); }
-  .alert-title { font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.85); margin-bottom: 3px; }
-  .alert-detail { font-size: 0.75rem; color: rgba(255,255,255,0.35); line-height: 1.4; }
-  .alert-right { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-  .alert-time { font-size: 0.68rem; color: rgba(255,255,255,0.2); }
-  .alert-unread { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
-  .alert-status { font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; }
-  .status-new { background: var(--gold3); color: var(--gold2); }
-  .status-seen { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.25); }
+/* TABLE */
+.leads-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.leads-table th{text-align:left;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.18);padding:9px 10px;border-bottom:0.5px solid rgba(255,255,255,0.06);font-weight:500;white-space:nowrap;cursor:pointer;user-select:none}
+.leads-table th:hover{color:rgba(255,255,255,0.4)}
+.leads-table th.sorted{color:var(--gold)}
+.leads-table td{padding:9px 10px;border-bottom:0.5px solid rgba(255,255,255,0.03);font-size:0.8rem;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.leads-table tr:hover td{background:rgba(255,255,255,0.025);cursor:pointer}
+.col-dpe{width:42px}
+.col-adresse{width:22%}
+.col-commune{width:10%}
+.col-type{width:9%}
+.col-surface{width:8%}
+.col-plu{width:9%}
+.col-sci{width:16%}
+.col-date{width:9%}
+.col-action{width:6%}
 
-  /* PANEL DÉTAIL */
-  .detail-panel { position: fixed; top: 0; right: -480px; bottom: 0; width: 460px; background: var(--navy3); border-left: 1px solid rgba(201,169,110,0.15); z-index: 100; transition: right 0.3s ease; overflow-y: auto; display: flex; flex-direction: column; }
-  .detail-panel.open { right: 0; }
-  .detail-header { padding: 22px 24px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
-  .detail-close { background: rgba(255,255,255,0.06); border: none; color: rgba(255,255,255,0.5); width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; }
-  .detail-close:hover { background: rgba(255,255,255,0.1); color: white; }
-  .detail-body { padding: 24px; flex: 1; }
-  .detail-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
-  .detail-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: white; line-height: 1.2; margin-bottom: 6px; }
-  .detail-commune { font-size: 0.8rem; color: rgba(255,255,255,0.35); margin-bottom: 22px; }
-  .detail-section-title { font-size: 0.65rem; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; margin-top: 20px; }
-  .detail-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .detail-row:last-child { border-bottom: none; }
-  .detail-row-label { font-size: 0.8rem; color: rgba(255,255,255,0.35); }
-  .detail-row-value { font-size: 0.82rem; color: rgba(255,255,255,0.82); font-weight: 500; text-align: right; max-width: 55%; }
-  .detail-note { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 12px; font-size: 0.8rem; color: rgba(255,255,255,0.4); line-height: 1.6; margin-top: 8px; }
-  .detail-actions { padding: 18px 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 10px; }
-  .detail-btn { padding: 13px; border-radius: 8px; font-size: 0.88rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; border: none; text-align: center; transition: all 0.15s; }
-  .detail-btn-primary { background: var(--gold); color: var(--navy); }
-  .detail-btn-primary:hover { background: var(--gold2); }
-  .detail-btn-secondary { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1); }
-  .detail-btn-secondary:hover { background: rgba(255,255,255,0.08); color: white; }
+.dpe-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:4px;font-weight:700;font-size:0.78rem}
+.dpe-G{background:rgba(239,68,68,0.18);color:var(--red)}
+.dpe-F{background:rgba(249,115,22,0.18);color:var(--orange)}
+.dpe-E{background:rgba(234,179,8,0.15);color:#fbbf24}
+.td-addr{color:rgba(255,255,255,0.85);font-weight:500}
+.td-muted{color:rgba(255,255,255,0.35)}
+.td-type{color:rgba(255,255,255,0.45);text-transform:capitalize}
+.td-plu{font-size:0.7rem;color:var(--gold);background:var(--gold3);padding:2px 6px;border-radius:3px;display:inline-block}
+.td-sci-yes{font-size:0.72rem;color:var(--blue);background:rgba(96,165,250,0.1);padding:2px 7px;border-radius:3px;display:inline-block}
+.td-sci-no{font-size:0.72rem;color:rgba(255,255,255,0.2)}
+.td-btn{padding:3px 9px;border-radius:4px;font-size:0.7rem;cursor:pointer;border:0.5px solid rgba(201,169,110,0.25);color:var(--gold);background:var(--gold3);font-family:'DM Sans',sans-serif;white-space:nowrap}
+.td-btn:hover{background:rgba(201,169,110,0.2)}
 
-  .overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 99; }
-  .overlay.show { display: block; }
+/* PAGINATION */
+.pagination{display:flex;align-items:center;gap:5px;padding:14px 0;justify-content:center}
+.pg-btn{width:28px;height:28px;border-radius:5px;border:0.5px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.35);background:transparent;cursor:pointer;font-size:0.75rem;font-family:'DM Sans',sans-serif;transition:all 0.15s}
+.pg-btn:hover{border-color:rgba(201,169,110,0.3);color:var(--gold2)}
+.pg-btn.active{background:var(--gold3);border-color:rgba(201,169,110,0.4);color:var(--gold2);font-weight:600}
+.pg-btn:disabled{opacity:0.25;cursor:default}
+.pg-info{font-size:0.7rem;color:rgba(255,255,255,0.18);padding:0 6px}
 
-  .divider { height: 1px; background: rgba(255,255,255,0.05); margin: 28px 0; }
+/* FIL ALERTES */
+.alert-feed{display:flex;flex-direction:column;gap:6px;padding:10px 0}
+.alert-empty{padding:20px;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.15);border:0.5px dashed rgba(255,255,255,0.07);border-radius:8px}
+.alert-item{background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.06);border-radius:8px;padding:12px 16px;cursor:pointer;transition:all 0.15s;display:flex;gap:12px;align-items:flex-start;position:relative;overflow:hidden}
+.alert-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px}
+.alert-item.judiciaire::before{background:var(--orange)}
+.alert-item.bodacc::before{background:var(--blue)}
+.alert-item:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.09)}
+.alert-icon{flex-shrink:0;width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.icon-judiciaire{background:rgba(249,115,22,0.1)}
+.icon-bodacc{background:rgba(96,165,250,0.1)}
+.alert-content{flex:1;min-width:0}
+.alert-meta{display:flex;align-items:center;gap:6px;margin-bottom:2px}
+.alert-tag{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;padding:2px 6px;border-radius:3px}
+.tag-judiciaire{background:rgba(249,115,22,0.12);color:var(--orange)}
+.tag-bodacc{background:rgba(96,165,250,0.1);color:var(--blue)}
+.alert-commune{font-size:0.65rem;color:rgba(255,255,255,0.25)}
+.alert-title{font-size:0.82rem;font-weight:500;color:rgba(255,255,255,0.8);margin-bottom:2px}
+.alert-detail{font-size:0.72rem;color:rgba(255,255,255,0.3);line-height:1.4}
+.alert-right{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.alert-time{font-size:0.65rem;color:rgba(255,255,255,0.18)}
+.alert-new{font-size:0.6rem;background:var(--gold3);color:var(--gold2);padding:2px 7px;border-radius:3px}
 
-  /* LEADS DPE — section enrichie */
-  .leads-toolbar { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
-  .leads-search { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px 14px; border-radius: 7px; font-size: 0.82rem; font-family: 'DM Sans', sans-serif; outline: none; width: 260px; transition: border-color 0.15s; }
-  .leads-search:focus { border-color: rgba(201,169,110,0.4); }
-  .leads-search::placeholder { color: rgba(255,255,255,0.2); }
-  .leads-filter-btn { padding: 7px 14px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); background: transparent; font-family: 'DM Sans', sans-serif; transition: all 0.15s; }
-  .leads-filter-btn:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); }
-  .leads-filter-btn.active { background: var(--gold3); border-color: rgba(201,169,110,0.35); color: var(--gold2); }
-  .leads-count { font-size: 0.78rem; color: rgba(255,255,255,0.25); margin-left: auto; }
-  .leads-voir-tout { font-size: 0.78rem; color: var(--gold); background: var(--gold3); border: 1px solid rgba(201,169,110,0.25); padding: 7px 14px; border-radius: 6px; cursor: pointer; font-family: 'DM Sans', sans-serif; text-decoration: none; transition: all 0.15s; }
-  .leads-voir-tout:hover { background: rgba(201,169,110,0.2); }
-
-  /* TABLE LEADS */
-  .leads-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; }
-  .leads-table th { text-align: left; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.06); font-weight: 500; }
-  .leads-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 0.82rem; vertical-align: middle; }
-  .leads-table tr:hover td { background: rgba(255,255,255,0.03); cursor: pointer; }
-  .dpe-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 4px; font-weight: 700; font-size: 0.82rem; }
-  .dpe-G { background: rgba(239,68,68,0.2); color: #f87171; }
-  .dpe-F { background: rgba(249,115,22,0.2); color: #fb923c; }
-  .td-adresse { color: rgba(255,255,255,0.88); font-weight: 500; }
-  .td-muted { color: rgba(255,255,255,0.4); font-size: 0.78rem; }
-  .td-plu { font-size: 0.72rem; color: var(--gold); background: var(--gold3); padding: 2px 7px; border-radius: 3px; white-space: nowrap; }
-  .td-sci { font-size: 0.75rem; color: rgba(255,255,255,0.35); max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .td-signal { font-size: 0.7rem; color: rgba(255,255,255,0.3); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .td-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.72rem; cursor: pointer; border: 1px solid rgba(201,169,110,0.25); color: var(--gold); background: var(--gold3); font-family: 'DM Sans', sans-serif; white-space: nowrap; }
-  .leads-pagination { display: flex; align-items: center; gap: 6px; padding: 8px 0 4px; }
-  .pg-btn { width: 30px; height: 30px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); background: transparent; cursor: pointer; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; }
-  .pg-btn:hover { border-color: rgba(201,169,110,0.3); color: var(--gold2); }
-  .pg-btn.active { background: var(--gold3); border-color: rgba(201,169,110,0.4); color: var(--gold2); font-weight: 600; }
-  .pg-btn:disabled { opacity: 0.3; cursor: default; }
-  .pg-info { font-size: 0.75rem; color: rgba(255,255,255,0.2); margin-left: 8px; }
+/* PANEL DÉTAIL */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:99}
+.overlay.show{display:block}
+.detail-panel{position:fixed;top:0;right:-480px;bottom:0;width:460px;background:var(--navy2);border-left:1px solid rgba(201,169,110,0.12);z-index:100;transition:right 0.3s ease;overflow-y:auto;display:flex;flex-direction:column}
+.detail-panel.open{right:0}
+.detail-header{padding:18px 20px;border-bottom:0.5px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between}
+.detail-close{background:rgba(255,255,255,0.05);border:none;color:rgba(255,255,255,0.4);width:28px;height:28px;border-radius:5px;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center}
+.detail-close:hover{background:rgba(255,255,255,0.1);color:#fff}
+.detail-body{padding:20px;flex:1}
+.detail-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:4px;font-size:0.68rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+.detail-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:#fff;line-height:1.2;margin-bottom:5px}
+.detail-commune{font-size:0.75rem;color:rgba(255,255,255,0.3);margin-bottom:20px}
+.detail-section{font-size:0.6rem;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.12em;margin:16px 0 8px}
+.detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid rgba(255,255,255,0.04)}
+.detail-row:last-child{border-bottom:none}
+.detail-row-label{font-size:0.76rem;color:rgba(255,255,255,0.3)}
+.detail-row-value{font-size:0.78rem;color:rgba(255,255,255,0.78);font-weight:500;text-align:right;max-width:58%}
+.detail-note{background:rgba(255,255,255,0.02);border:0.5px solid rgba(255,255,255,0.06);border-radius:7px;padding:10px;font-size:0.76rem;color:rgba(255,255,255,0.35);line-height:1.6;margin-top:6px}
+.detail-actions{padding:16px 20px;border-top:0.5px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;gap:8px}
+.detail-btn{padding:11px;border-radius:7px;font-size:0.82rem;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;border:none;text-align:center;transition:all 0.15s}
+.detail-btn-primary{background:var(--gold);color:var(--navy)}
+.detail-btn-primary:hover{background:var(--gold2)}
+.detail-btn-secondary{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);border:0.5px solid rgba(255,255,255,0.08)}
+.detail-btn-secondary:hover{background:rgba(255,255,255,0.08);color:#fff}
 </style>
 </head>
 <body>
@@ -195,28 +169,14 @@
     <div class="logo">Sentinelle<span>Immo</span></div>
     <div class="logo-sub">Veille · Temps réel</div>
   </div>
-  <div style="padding: 8px 0;">
-    <div class="sidebar-section">Navigation</div>
-    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes <span class="nav-badge">5</span></a>
+  <div style="padding:6px 0">
+    <div class="nav-section">Navigation</div>
+    <a class="nav-item active" href="#"><span class="icon">📡</span> Alertes <span class="nav-badge" id="nav-badge">…</span></a>
     <a class="nav-item" href="sentinelle-marche.html"><span class="icon">📊</span> Marché local</a>
     <a class="nav-item" href="sentinelle-dossiers.html"><span class="icon">🗂️</span> Mes dossiers</a>
     <a class="nav-item" href="sentinelle-zones.html"><span class="icon">⚙️</span> Mes zones</a>
   </div>
-  <div class="sidebar-filters">
-    <div class="filter-title">Filtrer par signal</div>
-    <div class="filter-chip active" onclick="filter('all',this)"><div class="filter-dot" style="background:var(--gold)"></div>Tous<span class="filter-count">5</span></div>
-    <div class="filter-chip" onclick="filter('dpe',this)"><div class="filter-dot" style="background:var(--gold)"></div>Leads DPE<span class="filter-count" id="fc-dpe">…</span></div>
-    <div class="filter-chip" onclick="filter('succession',this)"><div class="filter-dot" style="background:var(--succession)"></div>Successions<span class="filter-count">2</span></div>
-    <div class="filter-chip" onclick="filter('enchere',this)"><div class="filter-dot" style="background:var(--enchere)"></div>Enchères<span class="filter-count">1</span></div>
-    <div class="filter-chip" onclick="filter('judiciaire',this)"><div class="filter-dot" style="background:var(--judiciaire)"></div>Ventes judiciaires<span class="filter-count">1</span></div>
-    <div class="filter-chip" onclick="filter('bodacc',this)"><div class="filter-dot" style="background:var(--succession)"></div>BODACC<span class="filter-count">1</span></div>
-    <div class="filter-title">Commune</div>
-    <div class="filter-chip active" onclick="filterCommune('all',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.2)"></div>Toutes<span class="filter-count">5</span></div>
-    <div class="filter-chip" onclick="filterCommune('Reims',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Reims<span class="filter-count">3</span></div>
-    <div class="filter-chip" onclick="filterCommune('Tinqueux',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Tinqueux<span class="filter-count">1</span></div>
-    <div class="filter-chip" onclick="filterCommune('Muizon',this)"><div class="filter-dot" style="background:rgba(255,255,255,0.15)"></div>Muizon<span class="filter-count">1</span></div>
-  </div>
-  <div class="sidebar-user">
+  <div class="sidebar-bottom">
     <div class="avatar">JD</div>
     <div>
       <div class="user-name">Jean Dupont</div>
@@ -229,83 +189,126 @@
   <div class="topbar">
     <div class="topbar-left">
       <h1>Alertes</h1>
-      <p id="top-date">Dimanche 17 mai 2026 · 5 nouveaux signaux détectés</p>
+      <p id="top-date">Chargement...</p>
     </div>
     <div class="topbar-right">
       <div class="pulse-live"><div class="pulse-dot"></div>Détection en temps réel</div>
-      <button class="topbar-btn">⚙️ Configurer</button>
-      <button class="topbar-btn primary">🗂️ Mes dossiers</button>
     </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div>
+        <div class="stat-num" id="stat-leads" style="color:var(--gold2)">…</div>
+        <div class="stat-label">Leads DPE</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-num" id="stat-bodacc" style="color:var(--blue)">…</div>
+        <div class="stat-label">Annonces BODACC</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-num" id="stat-judiciaire" style="color:var(--orange)">…</div>
+        <div class="stat-label">Ventes judiciaires</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-num" id="stat-successions" style="color:var(--red)">0</div>
+        <div class="stat-label">Successions</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-num" id="stat-encheres" style="color:#fbbf24">0</div>
+        <div class="stat-label">Enchères</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTRES -->
+  <div class="filters-bar">
+    <input class="search-input" type="text" id="search" placeholder="🔍 Adresse, SCI..." oninput="applyFilters()">
+    <div class="filter-sep"></div>
+    <button class="filter-btn active" onclick="setDpe('all',this)">Tous</button>
+    <button class="filter-btn red" onclick="setDpe('G',this)">G</button>
+    <button class="filter-btn orange" onclick="setDpe('F',this)">F</button>
+    <div class="filter-sep"></div>
+    <select class="filter-select" id="commune-filter" onchange="applyFilters()">
+      <option value="">Toutes communes</option>
+    </select>
+    <select class="filter-select" id="type-filter" onchange="applyFilters()">
+      <option value="">Tous types</option>
+      <option value="maison">Maison</option>
+      <option value="appartement">Appartement</option>
+    </select>
+    <select class="filter-select" id="sci-filter" onchange="applyFilters()">
+      <option value="">SCI / Particulier</option>
+      <option value="oui">Avec SCI</option>
+      <option value="non">Sans SCI</option>
+    </select>
+    <select class="filter-select" id="sort-filter" onchange="applyFilters()">
+      <option value="dpe">Trier : DPE (G→F)</option>
+      <option value="surface_asc">Surface : petite → grande</option>
+      <option value="surface_desc">Surface : grande → petite</option>
+      <option value="date">Date détection</option>
+    </select>
+    <span class="results-info" id="results-info"></span>
   </div>
 
   <div class="content">
 
-    <!-- STATS DISCRÈTES -->
-    <div class="stats-mini">
-      <div class="stat-mini">
-        <div class="stat-mini-num" id="stat-bodacc" style="color:var(--succession)">…</div>
-        <div class="stat-mini-label">Annonces BODACC</div>
-      </div>
-      <div class="stat-mini">
-        <div class="stat-mini-num" id="stat-judiciaire" style="color:var(--enchere)">…</div>
-        <div class="stat-mini-label">Ventes judiciaires</div>
-      </div>
-      <div class="stat-mini">
-        <div class="stat-mini-num" id="stat-signaux" style="color:var(--marche)">…</div>
-        <div class="stat-mini-label">Signaux actifs</div>
-      </div>
+    <!-- LEADS DPE -->
+    <div class="section-title">🔥 Leads DPE <span class="section-badge badge-leads" id="leads-badge">…</span></div>
+    <table class="leads-table">
+      <thead>
+        <tr>
+          <th class="col-dpe">DPE</th>
+          <th class="col-adresse">Adresse</th>
+          <th class="col-commune">Commune</th>
+          <th class="col-type">Type</th>
+          <th class="col-surface" onclick="toggleSort('surface')" id="th-surface">Surface ↕</th>
+          <th class="col-plu">Zone PLU</th>
+          <th class="col-sci">Propriétaire / SCI</th>
+          <th class="col-date">DPE depuis</th>
+          <th class="col-action"></th>
+        </tr>
+      </thead>
+      <tbody id="leads-tbody"></tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+
+    <!-- VENTES JUDICIAIRES -->
+    <div class="section-title">⚖️ Ventes judiciaires <span class="section-badge badge-empty" id="judiciaire-badge">0</span></div>
+    <div class="alert-feed" id="feed-judiciaire">
+      <div class="alert-empty" id="empty-judiciaire">Aucune vente judiciaire active sur la zone</div>
     </div>
 
-    <!-- LEADS DPE — section complète -->
-    <div class="priority-section" id="leads-section" data-section="dpe">
-      <div class="section-header">
-        <div class="section-title">🔥 Leads DPE <span class="section-badge badge-exclusif">Top priorité</span></div>
-        <span class="leads-voir-tout" style="cursor:default;opacity:0.5">3 025 leads chargés</span>
-      </div>
-
-      <div class="leads-toolbar">
-        <input class="leads-search" type="text" id="leads-search" placeholder="🔍 Adresse, commune, SCI..." oninput="filterLeads()">
-        <button class="leads-filter-btn active" onclick="setLeadsDpe('all',this)">Tous</button>
-        <button class="leads-filter-btn" onclick="setLeadsDpe('G',this)" style="color:#f87171">Classe G</button>
-        <button class="leads-filter-btn" onclick="setLeadsDpe('F',this)" style="color:#fb923c">Classe F</button>
-        <span class="leads-count" id="leads-count"></span>
-      </div>
-
-      <table class="leads-table">
-        <thead>
-          <tr>
-            <th>DPE</th>
-            <th>Adresse</th>
-            <th>Commune</th>
-            <th>Surface</th>
-            <th>Zone PLU</th>
-            <th>Propriétaire / SCI</th>
-            <th>Signal</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody id="leads-tbody"></tbody>
-      </table>
-      <div class="leads-pagination" id="leads-pagination"></div>
+    <!-- SUCCESSIONS -->
+    <div class="section-title">⚰️ Successions <span class="section-badge badge-empty">0</span></div>
+    <div class="alert-feed">
+      <div class="alert-empty">Aucune succession détectée — données INSEE décès en cours d'intégration</div>
     </div>
 
-    <div class="divider"></div>
-
-    <!-- FIL D'ALERTES — autres signaux -->
-    <div class="section-header" style="margin-bottom:14px">
-      <div class="section-title">🔔 Autres signaux</div>
+    <!-- ENCHÈRES -->
+    <div class="section-title">🏛️ Enchères notariales <span class="section-badge badge-empty">0</span></div>
+    <div class="alert-feed">
+      <div class="alert-empty">Aucune enchère notariale active sur la zone</div>
     </div>
-    <div class="alert-feed" id="alert-feed">
 
-      <!-- Chargé dynamiquement depuis bodacc.json et judiciaire.json -->
-
+    <!-- BODACC -->
+    <div class="section-title">📋 BODACC <span class="section-badge badge-empty" id="bodacc-badge">…</span></div>
+    <div class="alert-feed" id="feed-bodacc">
+      <div class="alert-empty" id="empty-bodacc">Chargement...</div>
     </div>
+
   </div>
 </main>
 
 <div class="overlay" id="overlay" onclick="closeDetail()"></div>
-
-<!-- DETAIL PANEL -->
 <div class="detail-panel" id="detail-panel">
   <div class="detail-header">
     <div id="dp-badge" class="detail-badge"></div>
@@ -314,310 +317,288 @@
   <div class="detail-body" id="dp-body"></div>
   <div class="detail-actions">
     <button class="detail-btn detail-btn-primary" id="dp-action1"></button>
-    <button class="detail-btn detail-btn-secondary" id="dp-action2">🗂️ Ajouter à mes dossiers</button>
+    <button class="detail-btn detail-btn-secondary" onclick="closeDetail()">🗂️ Ajouter à mes dossiers</button>
   </div>
 </div>
 
 <script>
-// ============================================
-// CHARGEMENT DES VRAIES DONNÉES
-// ============================================
+let ALL=[],FILTERED=[],PAGE=1,DPE_F='all',SORT='dpe';
+const PER=25;
 
-let ALL_LEADS = [];
-let LEADS_FILTERED = [];
-let LEADS_PAGE = 1;
-const LEADS_PER_PAGE = 20;
-let LEADS_DPE_FILTER = 'all';
+async function load(p){try{const r=await fetch(p);if(!r.ok)return[];return await r.json();}catch(e){return[];}}
 
-async function loadJSON(path) {
-  try {
-    const r = await fetch(path);
-    if (!r.ok) return [];
-    return await r.json();
-  } catch(e) { return []; }
-}
+function fmt(n){if(!n)return'NC';return new Intl.NumberFormat('fr-FR').format(Math.round(n))+' €';}
+function fmtDate(d){if(!d)return'';try{return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return d;}}
 
-function formatDate(d) {
-  if (!d) return '';
-  try { return new Date(d).toLocaleDateString('fr-FR', {day:'2-digit',month:'long',year:'numeric'}); } catch(e) { return d; }
-}
+async function init(){
+  const [leads,bodacc,judiciaire]=await Promise.all([
+    load('donnees/leads_triple.json'),
+    load('donnees/bodacc.json'),
+    load('donnees/judiciaire.json'),
+  ]);
 
-function formatPrix(v) {
-  if (!v) return 'NC';
-  return new Intl.NumberFormat('fr-FR').format(Math.round(v)) + ' €';
-}
-
-// ---- LEADS DPE ----
-function initLeads(leads) {
-  // Dédoublonner
-  const seen = new Set();
-  ALL_LEADS = leads.filter(l => {
-    const k = (l.adresse||'') + '|' + (l.commune||'');
-    if (seen.has(k)) return false;
-    seen.add(k); return true;
+  // Dédoublonner leads
+  const seen=new Set();
+  ALL=leads.filter(l=>{
+    const k=(l.adresse||'')+'|'+(l.commune||'');
+    if(seen.has(k))return false;seen.add(k);return true;
   });
-  // G en premier
-  ALL_LEADS.sort((a,b) => (a.etiquette_dpe==='G'?-1:b.etiquette_dpe==='G'?1:0));
-  filterLeads();
+
+  // Stats
+  document.getElementById('stat-leads').textContent=ALL.length.toLocaleString('fr-FR');
+  document.getElementById('stat-bodacc').textContent=bodacc.length.toLocaleString('fr-FR');
+  document.getElementById('stat-judiciaire').textContent=judiciaire.length;
+  document.getElementById('nav-badge').textContent=ALL.length.toLocaleString('fr-FR');
+  document.getElementById('top-date').textContent=
+    new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+
+    ' · '+ALL.length.toLocaleString('fr-FR')+' leads actifs';
+
+  // Communes
+  const communes=[...new Set(ALL.map(l=>l.commune).filter(Boolean))].sort();
+  const sel=document.getElementById('commune-filter');
+  communes.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+
+  // Judiciaire
+  const fj=document.getElementById('feed-judiciaire');
+  const ej=document.getElementById('empty-judiciaire');
+  document.getElementById('judiciaire-badge').textContent=judiciaire.length;
+  if(judiciaire.length){
+    ej.style.display='none';
+    document.getElementById('judiciaire-badge').className='section-badge badge-leads';
+    judiciaire.forEach(v=>{
+      const info=extractUrlInfo(v.url||'');
+      const div=document.createElement('div');
+      div.className='alert-item judiciaire';
+      div.onclick=()=>openDetail({
+        badge:'⚖️ Vente judiciaire',cls:'tag-judiciaire',
+        title:(info.titre||v.titre||'Vente judiciaire')+(info.commune?' — '+info.commune:''),
+        commune:'📍 '+(info.commune||v.tribunal||'Marne'),
+        rows:[['Tribunal',v.tribunal||''],['URL',v.url?'Voir sur Licitor':'']].filter(r=>r[1]),
+        note:'Vente judiciaire détectée sur Licitor.fr.',
+        action:'⚖️ Voir sur Licitor',url:v.url||null,
+      });
+      div.innerHTML=`
+        <div class="alert-icon icon-judiciaire">⚖️</div>
+        <div class="alert-content">
+          <div class="alert-meta"><span class="alert-tag tag-judiciaire">Judiciaire</span><span class="alert-commune">📍 ${info.commune||v.tribunal||'Marne'}</span></div>
+          <div class="alert-title">${info.titre||v.titre||'Vente judiciaire'}${info.commune?' — '+info.commune:''}</div>
+          <div class="alert-detail">${v.tribunal||''} · ${v.date_detection||''}</div>
+        </div>
+        <div class="alert-right"><span class="alert-time">Récent</span><span class="alert-new">Nouveau</span></div>`;
+      fj.appendChild(div);
+    });
+  }
+
+  // BODACC
+  const fb=document.getElementById('feed-bodacc');
+  const eb=document.getElementById('empty-bodacc');
+  document.getElementById('bodacc-badge').textContent=bodacc.length.toLocaleString('fr-FR');
+  if(bodacc.length){
+    eb.style.display='none';
+    document.getElementById('bodacc-badge').className='section-badge badge-leads';
+    bodacc.slice(0,20).forEach(a=>{
+      const div=document.createElement('div');
+      div.className='alert-item bodacc';
+      div.onclick=()=>openDetail({
+        badge:'📋 BODACC',cls:'tag-bodacc',
+        title:a.description||'Annonce BODACC',
+        commune:'📍 '+(a.ville||a.tribunal||'Reims'),
+        rows:[['Type',a.type||''],['Famille',a.famille||''],['Date',fmtDate(a.date)],
+              ['Tribunal',a.tribunal||''],['Ville',a.ville||''],['Adresse',a.adresse||''],
+              ['SIREN',a.siren||''],['Prix cession',a.prix_cession?fmt(a.prix_cession):'']
+             ].filter(r=>r[1]),
+        note:'Vérifier si un bien immobilier est associé à cette procédure.',
+        action:'🔍 Voir sur BODACC',url:a.url||null,
+      });
+      div.innerHTML=`
+        <div class="alert-icon icon-bodacc">📋</div>
+        <div class="alert-content">
+          <div class="alert-meta"><span class="alert-tag tag-bodacc">BODACC · ${a.famille||a.type||''}</span><span class="alert-commune">📍 ${a.ville||a.tribunal||'Reims'}</span></div>
+          <div class="alert-title">${a.description||'Annonce BODACC'}</div>
+          <div class="alert-detail">${a.type||''} · ${fmtDate(a.date)}${a.prix_cession?' · '+fmt(a.prix_cession):''}</div>
+        </div>
+        <div class="alert-right"><span class="alert-time">Récent</span><span class="alert-new">Nouveau</span></div>`;
+      fb.appendChild(div);
+    });
+  } else { eb.textContent='Aucune annonce BODACC chargée'; }
+
+  applyFilters();
 }
 
-function setLeadsDpe(dpe, el) {
-  LEADS_DPE_FILTER = dpe;
-  document.querySelectorAll('.leads-filter-btn').forEach(b => b.classList.remove('active'));
+function extractUrlInfo(url){
+  const parts=url.split('/');
+  const idx=parts.indexOf('vente-aux-encheres');
+  if(idx<0)return{};
+  return{
+    titre:(parts[idx+1]||'').replace(/-/g,' '),
+    commune:(parts[idx+2]||'').replace(/-/g,' '),
+  };
+}
+
+function setDpe(dpe,el){
+  DPE_F=dpe;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   el.classList.add('active');
-  LEADS_PAGE = 1;
-  filterLeads();
+  PAGE=1;applyFilters();
 }
 
-function filterLeads() {
-  const search = (document.getElementById('leads-search')?.value||'').toLowerCase();
-  LEADS_FILTERED = ALL_LEADS.filter(l => {
-    if (LEADS_DPE_FILTER !== 'all' && l.etiquette_dpe !== LEADS_DPE_FILTER) return false;
-    if (search) {
-      const hay = ((l.adresse||'') + ' ' + (l.commune||'') + ' ' + (l.sci_denomination||'')).toLowerCase();
-      if (!hay.includes(search)) return false;
+function toggleSort(col){
+  const s=document.getElementById('sort-filter');
+  if(SORT===col+'_asc'){SORT=col+'_desc';s.value='surface_desc';}
+  else{SORT=col+'_asc';s.value='surface_asc';}
+  applyFilters();
+}
+
+function applyFilters(){
+  const search=(document.getElementById('search').value||'').toLowerCase();
+  const commune=document.getElementById('commune-filter').value;
+  const type=document.getElementById('type-filter').value;
+  const sci=document.getElementById('sci-filter').value;
+  SORT=document.getElementById('sort-filter').value;
+
+  FILTERED=ALL.filter(l=>{
+    if(DPE_F!=='all'&&l.etiquette_dpe!==DPE_F)return false;
+    if(commune&&l.commune!==commune)return false;
+    if(type&&(l.type_batiment||'').toLowerCase()!==type)return false;
+    if(sci==='oui'&&!l.sci_denomination)return false;
+    if(sci==='non'&&l.sci_denomination)return false;
+    if(search){
+      const h=((l.adresse||'')+' '+(l.commune||'')+' '+(l.sci_denomination||'')).toLowerCase();
+      if(!h.includes(search))return false;
     }
     return true;
   });
-  LEADS_PAGE = 1;
-  renderLeadsTable();
+
+  if(SORT==='surface_asc')FILTERED.sort((a,b)=>(a.surface||0)-(b.surface||0));
+  else if(SORT==='surface_desc')FILTERED.sort((a,b)=>(b.surface||0)-(a.surface||0));
+  else if(SORT==='date')FILTERED.sort((a,b)=>(b.date_detection||'').localeCompare(a.date_detection||''));
+  else FILTERED.sort((a,b)=>(a.etiquette_dpe==='G'?-1:b.etiquette_dpe==='G'?1:0));
+
+  PAGE=1;
+  document.getElementById('results-info').textContent=FILTERED.length.toLocaleString('fr-FR')+' résultats';
+  document.getElementById('leads-badge').textContent=FILTERED.length.toLocaleString('fr-FR');
+  render();
 }
 
-function renderLeadsTable() {
-  const tbody = document.getElementById('leads-tbody');
-  const nbG = LEADS_FILTERED.filter(l=>l.etiquette_dpe==='G').length;
-  const nbF = LEADS_FILTERED.filter(l=>l.etiquette_dpe==='F').length;
-  document.getElementById('leads-count').textContent =
-    LEADS_FILTERED.length.toLocaleString('fr-FR') + ' leads · ' + nbG + ' G · ' + nbF + ' F';
-
-  tbody.innerHTML = '';
-  const start = (LEADS_PAGE-1)*LEADS_PER_PAGE;
-  const page = LEADS_FILTERED.slice(start, start+LEADS_PER_PAGE);
-
-  page.forEach(l => {
-    const dpe = l.etiquette_dpe || '';
-    const tr = document.createElement('tr');
-    tr.onclick = () => openLeadDetail(l);
-    tr.innerHTML = `
-      <td><span class="dpe-badge dpe-${dpe}">${dpe}</span></td>
-      <td class="td-adresse">${l.adresse||'—'}</td>
-      <td class="td-muted">${l.commune||'—'}</td>
-      <td class="td-muted">${l.surface ? l.surface+' m²' : '—'}</td>
-      <td>${l.zone_plu ? '<span class="td-plu">'+l.zone_plu+'</span>' : '—'}</td>
-      <td class="td-sci" title="${l.sci_denomination||''}">${l.sci_denomination||'—'}</td>
-      <td class="td-signal" title="${l.signal||''}">${l.signal||'—'}</td>
-      <td><button class="td-btn" onclick="event.stopPropagation()">Voir →</button></td>`;
+function render(){
+  const tbody=document.getElementById('leads-tbody');
+  tbody.innerHTML='';
+  const page=FILTERED.slice((PAGE-1)*PER,PAGE*PER);
+  page.forEach(l=>{
+    const dpe=l.etiquette_dpe||'';
+    const tr=document.createElement('tr');
+    tr.onclick=()=>openLeadDetail(l);
+    tr.innerHTML=`
+      <td class="col-dpe"><span class="dpe-badge dpe-${dpe}">${dpe}</span></td>
+      <td class="col-adresse td-addr" title="${l.adresse||''}">${l.adresse||'—'}</td>
+      <td class="col-commune td-muted">${l.commune||'—'}</td>
+      <td class="col-type td-type">${l.type_batiment||'—'}</td>
+      <td class="col-surface td-muted">${l.surface?l.surface+' m²':'—'}</td>
+      <td class="col-plu">${l.zone_plu?'<span class="td-plu">'+l.zone_plu+'</span>':'<span class="td-muted">—</span>'}</td>
+      <td class="col-sci">${l.sci_denomination?'<span class="td-sci-yes">'+l.sci_denomination+'</span>':'<span class="td-sci-no">Particulier</span>'}</td>
+      <td class="col-date td-muted">${l.date_dpe||'—'}</td>
+      <td class="col-action"><button class="td-btn" onclick="event.stopPropagation()">Voir</button></td>`;
     tbody.appendChild(tr);
   });
-
-  renderLeadsPagination();
+  renderPagination();
 }
 
-function renderLeadsPagination() {
-  const total = Math.ceil(LEADS_FILTERED.length / LEADS_PER_PAGE);
-  const pag = document.getElementById('leads-pagination');
-  pag.innerHTML = '';
-  if (total <= 1) return;
-
-  const btn = (label, page, disabled, active) => {
-    const b = document.createElement('button');
-    b.className = 'pg-btn' + (active?' active':'');
-    b.textContent = label; b.disabled = disabled;
-    b.onclick = () => { LEADS_PAGE = page; renderLeadsTable(); };
+function renderPagination(){
+  const total=Math.ceil(FILTERED.length/PER);
+  const pag=document.getElementById('pagination');
+  pag.innerHTML='';
+  if(total<=1)return;
+  const btn=(label,page,disabled,active)=>{
+    const b=document.createElement('button');
+    b.className='pg-btn'+(active?' active':'');
+    b.textContent=label;b.disabled=disabled;
+    b.onclick=()=>{PAGE=page;render();window.scrollTo(0,0);};
     pag.appendChild(b);
   };
-
-  btn('←', LEADS_PAGE-1, LEADS_PAGE===1, false);
-  let pages = [];
-  if (total<=7) pages = Array.from({length:total},(_,i)=>i+1);
-  else {
+  btn('←',PAGE-1,PAGE===1,false);
+  let pages=[];
+  if(total<=7)pages=Array.from({length:total},(_,i)=>i+1);
+  else{
     pages=[1];
-    if(LEADS_PAGE>3) pages.push('…');
-    for(let i=Math.max(2,LEADS_PAGE-1);i<=Math.min(total-1,LEADS_PAGE+1);i++) pages.push(i);
-    if(LEADS_PAGE<total-2) pages.push('…');
+    if(PAGE>3)pages.push('…');
+    for(let i=Math.max(2,PAGE-1);i<=Math.min(total-1,PAGE+1);i++)pages.push(i);
+    if(PAGE<total-2)pages.push('…');
     pages.push(total);
   }
-  pages.forEach(p => {
+  pages.forEach(p=>{
     if(p==='…'){const s=document.createElement('span');s.className='pg-info';s.textContent='…';pag.appendChild(s);}
-    else btn(p,p,false,p===LEADS_PAGE);
+    else btn(p,p,false,p===PAGE);
   });
-  btn('→', LEADS_PAGE+1, LEADS_PAGE===total, false);
-  const info = document.createElement('span');
+  btn('→',PAGE+1,PAGE===total,false);
+  const info=document.createElement('span');
   info.className='pg-info';
-  info.textContent=`Page ${LEADS_PAGE}/${total} · ${LEADS_FILTERED.length.toLocaleString('fr-FR')} leads`;
+  info.textContent=`${PAGE}/${total} · ${FILTERED.length.toLocaleString('fr-FR')} leads`;
   pag.appendChild(info);
 }
 
-function openLeadDetail(l) {
-  const dpe = l.etiquette_dpe||'';
-  const badge = document.getElementById('dp-badge');
-  badge.textContent = '🔥 Lead DPE · Classe ' + dpe;
-  badge.className = 'detail-badge alert-type-tag type-succession';
+function openLeadDetail(l){
+  const dpe=l.etiquette_dpe||'';
+  const badge=document.getElementById('dp-badge');
+  badge.textContent='🔥 Lead DPE · Classe '+dpe;
+  badge.className='detail-badge tag-judiciaire';
+  badge.style.background=dpe==='G'?'rgba(239,68,68,0.15)':'rgba(249,115,22,0.15)';
+  badge.style.color=dpe==='G'?'#f87171':'#fb923c';
 
-  let html = `<div class="detail-title">${l.adresse||'Adresse inconnue'}</div>`;
-  html += `<div class="detail-commune">📍 ${l.commune||''} · ${l.type_batiment||''} · ${l.surface?l.surface+' m²':''}</div>`;
-  html += '<div class="detail-section-title">DPE & Bien</div>';
+  let html=`<div class="detail-title">${l.adresse||'Adresse inconnue'}</div>`;
+  html+=`<div class="detail-commune">📍 ${l.commune||''} · ${l.type_batiment||''} · ${l.surface?l.surface+' m²':''}</div>`;
+  html+='<div class="detail-section">DPE & Bien</div>';
   [['Classe DPE',dpe],['Surface',l.surface?l.surface+' m²':''],['Type',l.type_batiment||''],
    ['Date DPE',l.date_dpe||''],['Statut',l.statut_croisement||'']
   ].filter(r=>r[1]).forEach(([k,v])=>{
     html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
   });
-  html += '<div class="detail-section-title">Zone PLU</div>';
-  [['Code',l.zone_plu||''],['Libellé',l.zone_plu_long||''],['Type',l.zone_plu_type||'']
-  ].filter(r=>r[1]).forEach(([k,v])=>{
-    html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
-  });
-  if(l.sci_denomination){
-    html += '<div class="detail-section-title">Propriétaire / SCI</div>';
-    [['Dénomination',l.sci_denomination||''],['SIREN',l.sci_siren||'']
+  if(l.zone_plu){
+    html+='<div class="detail-section">Zone PLU</div>';
+    [['Code',l.zone_plu],['Libellé',l.zone_plu_long||''],['Type',l.zone_plu_type||'']
     ].filter(r=>r[1]).forEach(([k,v])=>{
       html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
     });
   }
-  html += '<div class="detail-section-title">Signal</div>';
-  html += `<div class="detail-note">${l.signal||''}<br><small style="opacity:0.6">Détecté le ${l.date_detection||''} · ${l.source||''}</small></div>`;
+  if(l.sci_denomination){
+    html+='<div class="detail-section">Propriétaire / SCI</div>';
+    [['Dénomination',l.sci_denomination],['SIREN',l.sci_siren||'']
+    ].filter(r=>r[1]).forEach(([k,v])=>{
+      html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
+    });
+  }
+  html+='<div class="detail-section">Source</div>';
+  html+=`<div class="detail-note">Détecté le ${l.date_detection||''} · ${l.source||''}</div>`;
 
-  document.getElementById('dp-body').innerHTML = html;
-  const btn = document.getElementById('dp-action1');
-  btn.textContent = l.pappers_url ? '🔍 Voir la SCI sur Pappers' : '📞 Préparer la prise de contact';
-  btn.onclick = l.pappers_url ? ()=>window.open(l.pappers_url,'_blank') : null;
+  document.getElementById('dp-body').innerHTML=html;
+  const btn=document.getElementById('dp-action1');
+  if(l.pappers_url){btn.textContent='🔍 Voir la SCI sur Pappers';btn.onclick=()=>window.open(l.pappers_url,'_blank');}
+  else{btn.textContent='📞 Préparer la prise de contact';btn.onclick=null;}
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
 }
 
-// ---- BODACC ----
-function renderBodacc(annonces) {
-  const feed = document.getElementById('alert-feed');
-  annonces.slice(0,15).forEach(a => {
-    const div = document.createElement('div');
-    div.className = 'alert-item bodacc';
-    div.dataset.type = 'bodacc';
-    div.dataset.commune = a.ville||'Reims';
-    div.onclick = () => openDetailDynamic({
-      badge:'📋 BODACC', badgeClass:'type-succession',
-      title: a.description||'Annonce BODACC',
-      commune: '📍 ' + (a.ville||a.tribunal||'Reims'),
-      rows:[['Type',a.type||''],['Famille',a.famille||''],['Date',formatDate(a.date)],
-            ['Tribunal',a.tribunal||''],['Ville',a.ville||''],['Adresse',a.adresse||''],
-            ['SIREN',a.siren||''],['Prix cession',a.prix_cession?formatPrix(a.prix_cession):'']
-           ].filter(r=>r[1]),
-      note:'Annonce BODACC. Vérifier si un bien immobilier est lié à cette procédure.',
-      action:'🔍 Voir sur BODACC', url: a.url||null,
-    });
-    div.innerHTML = `
-      <div class="alert-icon icon-bodacc">📋</div>
-      <div class="alert-content">
-        <div class="alert-meta"><span class="alert-type-tag tag-bodacc">BODACC · ${a.famille||a.type||''}</span><span class="alert-commune-tag">📍 ${a.ville||a.tribunal||'Reims'}</span></div>
-        <div class="alert-title">${a.description||'Annonce BODACC'}</div>
-        <div class="alert-detail">${a.type||''} · ${formatDate(a.date)}${a.prix_cession?' · '+formatPrix(a.prix_cession):''}</div>
-      </div>
-      <div class="alert-right"><span class="alert-time">Récent</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>`;
-    feed.appendChild(div);
-  });
-}
-
-// ---- JUDICIAIRE ----
-function renderJudiciaire(ventes) {
-  const feed = document.getElementById('alert-feed');
-  ventes.forEach(v => {
-    const div = document.createElement('div');
-    div.className = 'alert-item judiciaire';
-    div.dataset.type = 'judiciaire';
-    div.dataset.commune = v.commune||'Marne';
-    div.onclick = () => openDetailDynamic({
-      badge:'⚖️ Vente judiciaire', badgeClass:'type-judiciaire',
-      title:(v.titre||'Vente judiciaire')+(v.commune?' — '+v.commune:''),
-      commune:'📍 '+(v.commune||v.tribunal||'Marne'),
-      rows:[['Tribunal',v.tribunal||''],['Mise à prix',v.mise_a_prix?formatPrix(v.mise_a_prix):'NC'],
-            ['Surface',v.surface||'NC'],['Audience',v.date_audience||'NC'],['Description',v.description||'']
-           ].filter(r=>r[1]),
-      note:'Vente judiciaire détectée sur Licitor.fr.',
-      action:'⚖️ Voir l\'annonce sur Licitor', url:v.url||null,
-    });
-    const prix = v.mise_a_prix?' · Mise à prix '+formatPrix(v.mise_a_prix):'';
-    div.innerHTML = `
-      <div class="alert-icon icon-judiciaire">⚖️</div>
-      <div class="alert-content">
-        <div class="alert-meta"><span class="alert-type-tag tag-judiciaire">Vente judiciaire</span><span class="alert-commune-tag">📍 ${v.commune||v.tribunal||'Marne'}</span></div>
-        <div class="alert-title">${v.titre||'Bien immobilier'}${v.commune?' — '+v.commune:''}</div>
-        <div class="alert-detail">${v.tribunal||''}${prix}${v.surface?' · '+v.surface:''}</div>
-      </div>
-      <div class="alert-right"><span class="alert-time">Récent</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>`;
-    feed.appendChild(div);
-  });
-}
-
-// ---- DETAIL PANEL GÉNÉRIQUE ----
-function openDetailDynamic(d) {
-  const badge = document.getElementById('dp-badge');
-  badge.textContent = d.badge;
-  badge.className = 'detail-badge alert-type-tag ' + d.badgeClass;
-  let html = `<div class="detail-title">${d.title}</div><div class="detail-commune">${d.commune}</div>`;
-  html += '<div class="detail-section-title">Informations</div>';
-  d.rows.forEach(([l,v])=>{html+=`<div class="detail-row"><span class="detail-row-label">${l}</span><span class="detail-row-value">${v}</span></div>`;});
-  html += `<div class="detail-section-title">Note</div><div class="detail-note">${d.note}</div>`;
-  document.getElementById('dp-body').innerHTML = html;
-  const btn = document.getElementById('dp-action1');
-  btn.textContent = d.action;
-  btn.onclick = d.url ? ()=>window.open(d.url,'_blank') : null;
+function openDetail(d){
+  const badge=document.getElementById('dp-badge');
+  badge.textContent=d.badge;
+  badge.className='detail-badge '+d.cls;
+  let html=`<div class="detail-title">${d.title}</div><div class="detail-commune">${d.commune}</div>`;
+  html+='<div class="detail-section">Informations</div>';
+  d.rows.forEach(([k,v])=>{html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;});
+  html+=`<div class="detail-section">Note</div><div class="detail-note">${d.note}</div>`;
+  document.getElementById('dp-body').innerHTML=html;
+  const btn=document.getElementById('dp-action1');
+  btn.textContent=d.action;
+  btn.onclick=d.url?()=>window.open(d.url,'_blank'):null;
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
 }
 
-// ---- STATS SIDEBAR ----
-function updateStats(bodacc, judiciaire) {
-  document.getElementById('stat-bodacc').textContent = bodacc.length.toLocaleString('fr-FR');
-  document.getElementById('stat-judiciaire').textContent = judiciaire.length;
-  const total = ALL_LEADS.length + bodacc.length + judiciaire.length;
-  document.getElementById('stat-signaux').textContent = total.toLocaleString('fr-FR');
-  document.querySelectorAll('.nav-badge').forEach(b=>b.textContent=ALL_LEADS.length.toLocaleString('fr-FR'));
-  document.getElementById('top-date').textContent =
-    new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}) +
-    ' · ' + ALL_LEADS.length.toLocaleString('fr-FR') + ' leads · ' + bodacc.length + ' BODACC · ' + judiciaire.length + ' judiciaires';
-}
-
-// ---- INIT ----
-async function init() {
-  const [leads, bodacc, judiciaire] = await Promise.all([
-    loadJSON('donnees/leads_triple.json'),
-    loadJSON('donnees/bodacc.json'),
-    loadJSON('donnees/judiciaire.json'),
-  ]);
-  initLeads(leads);
-  renderBodacc(bodacc);
-  renderJudiciaire(judiciaire);
-  updateStats(bodacc, judiciaire);
-}
-
-init();
-
-function openDetail(id) {}
-
-function closeDetail() {
+function closeDetail(){
   document.getElementById('detail-panel').classList.remove('open');
   document.getElementById('overlay').classList.remove('show');
 }
 
-function filter(type, el) {
-  document.querySelectorAll('.filter-chip').forEach(c=>{if(c.getAttribute('onclick')?.includes('filter('))c.classList.remove('active');});
-  el.classList.add('active');
-  document.querySelectorAll('.signal-card,.alert-item').forEach(card=>{
-    card.style.display=(type==='all'||card.dataset.type===type)?'':'none';
-  });
-  document.querySelectorAll('.priority-section').forEach(sec=>{
-    sec.style.display=(type==='all'||type==='dpe')?'':'none';
-  });
-  if(type==='dpe') document.getElementById('leads-section').style.display='';
-  else if(type!=='all') document.getElementById('leads-section').style.display='none';
-}
-
-function filterCommune(commune, el) {
-  document.querySelectorAll('.filter-chip').forEach(c=>{if(c.getAttribute('onclick')?.includes('filterCommune'))c.classList.remove('active');});
-  el.classList.add('active');
-  document.querySelectorAll('.signal-card,.alert-item').forEach(card=>{
-    card.style.display=(commune==='all'||card.dataset.commune===commune)?'':'none';
-  });
-}
+init();
 </script>
 </body>
 </html>
