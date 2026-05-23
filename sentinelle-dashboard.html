@@ -342,27 +342,31 @@ function renderJudiciaire(ventes) {
     div.className = 'alert-item judiciaire';
     div.dataset.type = 'judiciaire';
     div.dataset.commune = v.commune || 'Reims';
-    div.dataset.id = 'judiciaire_' + i;
     div.onclick = () => openDetailDynamic({
       badge: '⚖️ Vente judiciaire',
       badgeClass: 'type-judiciaire',
-      title: v.titre || v.bien || 'Vente judiciaire',
-      commune: '📍 ' + (v.commune || v.tribunal || 'Reims'),
+      title: (v.titre || 'Vente judiciaire') + (v.commune ? ' — ' + v.commune : ''),
+      commune: '📍 ' + (v.commune || v.tribunal || 'Marne'),
       rows: [
-        ['Mise à prix', tempoPrix(v.mise_a_prix)],
-        ['Audience', formatDate(v.date_audience || v.date)],
         ['Tribunal', v.tribunal || ''],
-        ['Motif', v.motif || 'Saisie immobilière'],
+        ['Mise à prix', v.mise_a_prix ? tempoPrix(v.mise_a_prix) : 'NC'],
+        ['Surface', v.surface || 'NC'],
+        ['Audience', v.date_audience || 'NC'],
+        ['Description', v.description || ''],
+        ['Lien annonce', v.url ? '→ Voir sur Licitor' : ''],
       ].filter(r => r[1]),
-      note: 'Vente judiciaire détectée sur Licitor. Vérifier le cahier des charges avant l\'audience.',
-      action: '⚖️ Consulter le dossier tribunal',
+      note: 'Vente judiciaire détectée sur Licitor.fr. Cliquer sur le bouton pour accéder au dossier complet.',
+      action: '⚖️ Voir l\'annonce sur Licitor',
+      url: v.url,
     });
+    const prix = v.mise_a_prix ? ' · Mise à prix ' + tempoPrix(v.mise_a_prix) : '';
+    const surface = v.surface ? ' · ' + v.surface : '';
     div.innerHTML = `
       <div class="alert-icon icon-judiciaire">⚖️</div>
       <div class="alert-content">
-        <div class="alert-meta"><span class="alert-type-tag tag-judiciaire">Vente judiciaire</span><span class="alert-commune-tag">📍 ${v.commune || v.tribunal || 'Reims'}</span></div>
-        <div class="alert-title">${v.titre || v.bien || 'Vente judiciaire'}</div>
-        <div class="alert-detail">Mise à prix ${tempoPrix(v.mise_a_prix)} · Audience le ${formatDate(v.date_audience || v.date)} · ${v.tribunal || ''}</div>
+        <div class="alert-meta"><span class="alert-type-tag tag-judiciaire">Vente judiciaire</span><span class="alert-commune-tag">📍 ${v.commune || v.tribunal || 'Marne'}</span></div>
+        <div class="alert-title">${v.titre || 'Bien immobilier'}${v.commune ? ' — ' + v.commune : ''}</div>
+        <div class="alert-detail">${v.tribunal || ''}${prix}${surface}</div>
       </div>
       <div class="alert-right"><span class="alert-time">Récent</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>`;
     feed.appendChild(div);
@@ -474,7 +478,9 @@ function openDetailDynamic(d) {
   html += `<div class="detail-section-title">Note d'analyse</div><div class="detail-note">${d.note}</div>`;
 
   document.getElementById('dp-body').innerHTML = html;
-  document.getElementById('dp-action1').textContent = d.action;
+  const btn = document.getElementById('dp-action1');
+  btn.textContent = d.action;
+  btn.onclick = d.url ? () => window.open(d.url, '_blank') : null;
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
 }
