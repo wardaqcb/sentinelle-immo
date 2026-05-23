@@ -354,7 +354,7 @@ function renderJudiciaire(ventes) {
         ['Tribunal', v.tribunal || ''],
         ['Motif', v.motif || 'Saisie immobilière'],
       ].filter(r => r[1]),
-      note: 'Vente judiciaire détectée sur Licitor. Vérifier le cahier des charges avant l'audience.',
+      note: 'Vente judiciaire détectée sur Licitor. Vérifier le cahier des charges avant l\'audience.',
       action: '⚖️ Consulter le dossier tribunal',
     });
     div.innerHTML = `
@@ -408,7 +408,7 @@ function renderLeads(leads) {
         ['Dernière vente', lead.derniere_vente ? formatDate(lead.derniere_vente) + (lead.prix_vente ? ' · ' + tempoPrix(lead.prix_vente) : '') : ''],
         ['Non vendu depuis', lead.annee_dpe ? 'DPE ' + lead.annee_dpe : ''],
       ].filter(r => r[1]),
-      note: 'Lead issu du croisement DPE × MAJIC × DVF. Ce bien est classé ' + dpe + ' et n'a pas été revendu depuis son diagnostic. Propriétaire potentiellement motivé.',
+      note: 'Lead issu du croisement DPE × MAJIC × DVF. Ce bien est classé ' + dpe + ' et n\'a pas été revendu depuis son diagnostic. Propriétaire potentiellement motivé.',
       action: '📞 Préparer la prise de contact',
     });
     div.innerHTML = `
