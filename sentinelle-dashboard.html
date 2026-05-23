@@ -300,34 +300,37 @@ function tempoPrix(valeur) {
 // ---- BODACC ----
 function renderBodacc(annonces) {
   const feed = document.getElementById('alert-feed');
-  const items = annonces.slice(0, 10);
+  const items = annonces.slice(0, 15);
   items.forEach((a, i) => {
     const div = document.createElement('div');
     div.className = 'alert-item bodacc';
     div.dataset.type = 'bodacc';
-    div.dataset.commune = a.commune || 'Reims';
-    div.dataset.id = 'bodacc_' + i;
+    div.dataset.commune = a.ville || a.tribunal || 'Reims';
     div.onclick = () => openDetailDynamic({
       badge: '📋 BODACC',
       badgeClass: 'type-succession',
-      title: a.description || a.commercant || 'Annonce BODACC',
-      commune: '📍 ' + (a.tribunal || 'Reims'),
+      title: a.description || 'Annonce BODACC',
+      commune: '📍 ' + (a.ville || a.tribunal || 'Reims'),
       rows: [
-        ['Type', a.type || a.familleavis_lib || ''],
-        ['Date', formatDate(a.date || a.dateparution)],
-        ['Numéro', a.numero || a.numerodannonce || ''],
+        ['Type', a.type || ''],
+        ['Famille', a.famille || ''],
+        ['Date', formatDate(a.date)],
         ['Tribunal', a.tribunal || ''],
-        ['Entité', a.description || ''],
+        ['Ville', a.ville || ''],
+        ['Adresse', a.adresse || ''],
+        ['SIREN', a.siren || ''],
+        ['Prix cession', a.prix_cession ? tempoPrix(a.prix_cession) : ''],
       ].filter(r => r[1]),
       note: 'Annonce BODACC détectée automatiquement. Vérifier si un bien immobilier est associé à cette procédure.',
-      action: '🔍 Contacter le mandataire judiciaire',
+      action: '🔍 Voir sur BODACC',
+      url: a.url || null,
     });
     div.innerHTML = `
       <div class="alert-icon icon-bodacc">📋</div>
       <div class="alert-content">
-        <div class="alert-meta"><span class="alert-type-tag tag-bodacc">BODACC</span><span class="alert-commune-tag">📍 ${a.tribunal || 'Reims'}</span></div>
-        <div class="alert-title">${a.description || a.commercant || 'Annonce BODACC'}</div>
-        <div class="alert-detail">${a.type || ''} · Publié le ${formatDate(a.date || a.dateparution)} · N° ${a.numero || ''}</div>
+        <div class="alert-meta"><span class="alert-type-tag tag-bodacc">BODACC · ${a.famille || a.type || ''}</span><span class="alert-commune-tag">📍 ${a.ville || a.tribunal || 'Reims'}</span></div>
+        <div class="alert-title">${a.description || 'Annonce BODACC'}</div>
+        <div class="alert-detail">${a.type || ''} · ${formatDate(a.date)}${a.prix_cession ? ' · ' + tempoPrix(a.prix_cession) : ''}</div>
       </div>
       <div class="alert-right"><span class="alert-time">Récent</span><div class="alert-unread"></div><span class="alert-status status-new">Nouveau</span></div>`;
     feed.appendChild(div);
