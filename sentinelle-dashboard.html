@@ -304,6 +304,21 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
 
     <!-- BODACC -->
     <div class="section-title">📋 BODACC <span class="section-badge badge-empty" id="bodacc-badge">…</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0 8px">
+      <input class="search-input" type="text" id="bodacc-search" placeholder="🔍 Rechercher une SCI..." oninput="filterBodacc()" style="width:220px">
+      <select class="filter-select" id="bodacc-famille" onchange="filterBodacc()">
+        <option value="">Toutes familles</option>
+        <option value="Procédures collectives">Procédures collectives</option>
+        <option value="Ventes et cessions">Ventes et cessions</option>
+      </select>
+      <select class="filter-select" id="bodacc-type" onchange="filterBodacc()">
+        <option value="">Tous types</option>
+        <option value="Avis initial">Avis initial</option>
+        <option value="Avis rectificatif">Avis rectificatif</option>
+        <option value="Avis d'annulation">Avis d'annulation</option>
+      </select>
+      <span class="results-info" id="bodacc-count"></span>
+    </div>
     <div class="alert-feed" id="feed-bodacc">
       <div class="alert-empty" id="empty-bodacc">Chargement...</div>
     </div>
@@ -393,37 +408,25 @@ async function init(){
   }
 
   // BODACC
-  const fb=document.getElementById('feed-bodacc');
-  const eb=document.getElementById('empty-bodacc');
+  let ALL_BODACC = bodacc;
+  document.getElementById('stat-bodacc').textContent=bodacc.length.toLocaleString('fr-FR');
   document.getElementById('bodacc-badge').textContent=bodacc.length.toLocaleString('fr-FR');
-  if(bodacc.length){
-    eb.style.display='none';
-    document.getElementById('bodacc-badge').className='section-badge badge-leads';
-    bodacc.slice(0,20).forEach(a=>{
-      const div=document.createElement('div');
-      div.className='alert-item bodacc';
-      div.onclick=()=>openDetail({
-        badge:'📋 BODACC',cls:'tag-bodacc',
-        title:a.description||'Annonce BODACC',
-        commune:'📍 '+(a.ville||a.tribunal||'Reims'),
-        rows:[['Type',a.type||''],['Famille',a.famille||''],['Date',fmtDate(a.date)],
-              ['Tribunal',a.tribunal||''],['Ville',a.ville||''],['Adresse',a.adresse||''],
-              ['SIREN',a.siren||''],['Prix cession',a.prix_cession?fmt(a.prix_cession):'']
-             ].filter(r=>r[1]),
-        note:'Vérifier si un bien immobilier est associé à cette procédure.',
-        action:'🔍 Voir sur BODACC',url:a.url||null,
-      });
-      div.innerHTML=`
-        <div class="alert-icon icon-bodacc">📋</div>
-        <div class="alert-content">
-          <div class="alert-meta"><span class="alert-tag tag-bodacc">BODACC · ${a.famille||a.type||''}</span><span class="alert-commune">📍 ${a.ville||a.tribunal||'Reims'}</span></div>
-          <div class="alert-title">${a.description||'Annonce BODACC'}</div>
-          <div class="alert-detail">${a.type||''} · ${fmtDate(a.date)}${a.prix_cession?' · '+fmt(a.prix_cession):''}</div>
-        </div>
-        <div class="alert-right"><span class="alert-time">Récent</span><span class="alert-new">Nouveau</span></div>`;
-      fb.appendChild(div);
+  if(bodacc.length) document.getElementById('bodacc-badge').className='section-badge badge-leads';
+  renderBodacc(ALL_BODACC);
+
+  window.filterBodacc = function() {
+    const search=(document.getElementById('bodacc-search').value||'').toLowerCase();
+    const famille=document.getElementById('bodacc-famille').value;
+    const type=document.getElementById('bodacc-type').value;
+    const filtered=ALL_BODACC.filter(a=>{
+      if(famille && a.famille!==famille) return false;
+      if(type && a.type!==type) return false;
+      if(search && !(a.description||'').toLowerCase().includes(search)) return false;
+      return true;
     });
-  } else { eb.textContent='Aucune annonce BODACC chargée'; }
+    document.getElementById('bodacc-count').textContent=filtered.length+' résultats';
+    renderBodacc(filtered);
+  };
 
   applyFilters();
 }
@@ -598,6 +601,59 @@ function openDetail(d){
   btn.onclick=d.url?()=>window.open(d.url,'_blank'):null;
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
+}
+
+function renderBodacc(list){
+  const fb=document.getElementById('feed-bodacc');
+  const eb=document.getElementById('empty-bodacc');
+  // Nettoyer les items existants (garder empty-bodacc)
+  Array.from(fb.children).forEach(ch=>{ if(ch.id!=='empty-bodacc') ch.remove(); });
+
+  if(!list.length){ eb.style.display='block'; eb.textContent='Aucune annonce correspond à votre recherche.'; return; }
+  eb.style.display='none';
+
+  list.forEach(a=>{
+    const isVente = (a.famille||'').includes('Vente');
+    const badgeColor = isVente ? 'background:rgba(201,169,110,0.15);color:#E8C98A' : 'background:rgba(96,165,250,0.12);color:#60a5fa';
+    const borderColor = isVente ? 'rgba(201,169,110,0.3)' : 'rgba(96,165,250,0.25)';
+    const div=document.createElement('div');
+    div.className='alert-item bodacc';
+    div.style.borderLeft=`2px solid ${borderColor}`;
+    div.onclick=()=>openDetail({
+      badge:'📋 '+(a.famille||'BODACC'),
+      cls:'tag-bodacc',
+      title:a.description||'Annonce BODACC',
+      commune:'📍 '+(a.ville||a.tribunal||'Reims'),
+      rows:[
+        ['Famille', a.famille||''],
+        ['Type', a.type||''],
+        ['Date', fmtDate(a.date)],
+        ['Tribunal', a.tribunal||''],
+        ['Ville', a.ville||''],
+        ['Adresse', a.adresse||''],
+        ['Activité', a.activite||''],
+        ['SIREN', a.siren||''],
+        ['Prix cession', a.prix_cession?fmt(a.prix_cession):''],
+      ].filter(r=>r[1]),
+      note: isVente
+        ? 'Vente ou cession détectée. Vérifier si un fonds de commerce ou bien immobilier est inclus.'
+        : 'Procédure collective sur une SCI. Un bien immobilier est potentiellement disponible à la reprise.',
+      action:'🔍 Voir sur BODACC',url:a.url||null,
+    });
+    div.innerHTML=`
+      <div class="alert-icon icon-bodacc" style="${isVente?'background:rgba(201,169,110,0.1)':''}">📋</div>
+      <div class="alert-content">
+        <div class="alert-meta">
+          <span class="alert-tag tag-bodacc" style="${badgeColor}">${a.famille||''}</span>
+          <span class="alert-tag" style="background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.3);margin-left:4px">${a.type||''}</span>
+          <span class="alert-commune">📍 ${a.ville||'Reims'}</span>
+        </div>
+        <div class="alert-title" style="font-weight:600">${a.description||'Annonce BODACC'}</div>
+        <div class="alert-detail">${a.tribunal||''} · ${fmtDate(a.date)}${a.prix_cession?' · '+fmt(a.prix_cession):''}</div>
+      </div>
+      <div class="alert-right"><span class="alert-time">${fmtDate(a.date)}</span><span class="alert-new" style="${isVente?'background:rgba(201,169,110,0.12);color:#E8C98A':''}">Nouveau</span></div>`;
+    fb.appendChild(div);
+  });
 }
 
 function closeDetail(){
