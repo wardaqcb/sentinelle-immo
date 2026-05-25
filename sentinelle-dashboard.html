@@ -456,6 +456,7 @@ function applyFilters(){
   const search=(document.getElementById('search').value||'').toLowerCase();
   const commune=document.getElementById('commune-filter').value;
   const type=document.getElementById('type-filter').value;
+  const dateF=document.getElementById('date-filter').value;
   SORT=document.getElementById('sort-filter').value;
 
   FILTERED=ALL.filter(l=>{
