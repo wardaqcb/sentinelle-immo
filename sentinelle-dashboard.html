@@ -253,11 +253,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
     </select>
     <select class="filter-select" id="date-filter" onchange="applyFilters()">
       <option value="">Toutes dates DPE</option>
+      <option value="2026">DPE 2026</option>
+      <option value="2025">DPE 2025</option>
       <option value="2024">DPE 2024</option>
       <option value="2023">DPE 2023</option>
       <option value="2022">DPE 2022</option>
-      <option value="2021">DPE 2021</option>
-      <option value="2020">DPE 2020 et avant</option>
+      <option value="2021">DPE 2021 et avant</option>
     </select>
     <span class="results-info" id="results-info"></span>
   </div>
@@ -466,7 +467,7 @@ function applyFilters(){
     if(dateF){
       const yr=parseInt(dateF);
       const dpeyear=parseInt((l.date_dpe||'').substring(0,4));
-      if(dateF==='2020'){if(dpeyear>2020)return false;}
+      if(dateF==='2021'){if(dpeyear>2021)return false;}
       else{if(dpeyear!==yr)return false;}
     }
     if(search){
