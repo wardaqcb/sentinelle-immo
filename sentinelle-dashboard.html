@@ -200,7 +200,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
     <div class="stat-card">
       <div>
         <div class="stat-num" id="stat-leads" style="color:var(--gold2)">…</div>
-        <div class="stat-label">Leads DPE</div>
+        <div class="stat-label">Leads total</div>
       </div>
     </div>
     <div class="stat-card">
@@ -264,25 +264,97 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
 
   <div class="content">
 
-    <!-- LEADS DPE -->
-    <div class="section-title">🔥 Leads DPE <span class="section-badge badge-leads" id="leads-badge">…</span></div>
+    <!-- LEADS TRIPLE -->
+    <div class="section-title">🔥 Leads Triple <span class="section-badge badge-leads" id="leads-badge">…</span><span style="font-size:0.65rem;color:rgba(255,255,255,0.25);margin-left:8px">SCI · Passoire · Non vendu</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0 8px">
+      <input class="search-input" type="text" id="search" placeholder="🔍 Adresse, SCI..." oninput="applyFilters()">
+      <button class="filter-btn active" onclick="setDpe('all',this)">Tous</button>
+      <button class="filter-btn red" onclick="setDpe('G',this)">G</button>
+      <button class="filter-btn orange" onclick="setDpe('F',this)">F</button>
+      <select class="filter-select" id="commune-filter" onchange="applyFilters()"><option value="">Toutes communes</option></select>
+      <select class="filter-select" id="type-filter" onchange="applyFilters()">
+        <option value="">Tous types</option>
+        <option value="maison">Maison</option>
+        <option value="appartement">Appartement</option>
+      </select>
+      <select class="filter-select" id="sort-filter" onchange="applyFilters()">
+        <option value="dpe">Trier : DPE (G→F)</option>
+        <option value="surface_asc">Surface ↑</option>
+        <option value="surface_desc">Surface ↓</option>
+        <option value="date">Date DPE</option>
+      </select>
+      <select class="filter-select" id="date-filter" onchange="applyFilters()">
+        <option value="">Toutes dates DPE</option>
+        <option value="2026">DPE 2026</option>
+        <option value="2025">DPE 2025</option>
+        <option value="2024">DPE 2024</option>
+        <option value="2023">DPE 2023</option>
+        <option value="2022">DPE 2022</option>
+        <option value="2021">DPE 2021</option>
+      </select>
+      <span class="results-info" id="results-info"></span>
+    </div>
     <table class="leads-table">
-      <thead>
-        <tr>
-          <th class="col-dpe">DPE</th>
-          <th class="col-adresse">Adresse</th>
-          <th class="col-commune">Commune</th>
-          <th class="col-type">Type</th>
-          <th class="col-surface" onclick="toggleSort('surface')" id="th-surface">Surface ↕</th>
-          <th class="col-plu">Zone PLU</th>
-          <th class="col-sci">Propriétaire / SCI</th>
-          <th class="col-date">DPE depuis</th>
-          <th class="col-action"></th>
-        </tr>
-      </thead>
+      <thead><tr>
+        <th class="col-dpe">DPE</th>
+        <th class="col-adresse">Adresse</th>
+        <th class="col-commune">Commune</th>
+        <th class="col-type">Type</th>
+        <th class="col-surface">Surface ↕</th>
+        <th class="col-plu">Zone PLU</th>
+        <th class="col-sci">SCI</th>
+        <th class="col-date">DPE depuis</th>
+        <th class="col-action"></th>
+      </tr></thead>
       <tbody id="leads-tbody"></tbody>
     </table>
     <div class="pagination" id="pagination"></div>
+
+    <!-- LEADS DPE x DVF -->
+    <div class="section-title" style="margin-top:16px">🏠 Leads DPE × DVF <span class="section-badge badge-leads" id="dvf-badge">…</span><span style="font-size:0.65rem;color:rgba(255,255,255,0.25);margin-left:8px">Passoires sans SCI · Non vendues</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0 8px">
+      <input class="search-input" type="text" id="dvf-search" placeholder="🔍 Adresse..." oninput="applyDvfFilters()">
+      <button class="filter-btn active" onclick="setDvfDpe('all',this)">Tous</button>
+      <button class="filter-btn red" onclick="setDvfDpe('G',this)">G</button>
+      <button class="filter-btn orange" onclick="setDvfDpe('F',this)">F</button>
+      <select class="filter-select" id="dvf-commune" onchange="applyDvfFilters()"><option value="">Toutes communes</option></select>
+      <select class="filter-select" id="dvf-type" onchange="applyDvfFilters()">
+        <option value="">Tous types</option>
+        <option value="maison">Maison</option>
+        <option value="appartement">Appartement</option>
+      </select>
+      <select class="filter-select" id="dvf-periode" onchange="applyDvfFilters()">
+        <option value="">Toutes périodes</option>
+        <option value="avant 1919">Avant 1919</option>
+        <option value="1919-1945">1919-1945</option>
+        <option value="1948-1974">1948-1974</option>
+        <option value="1975-1977">1975-1977</option>
+        <option value="1978-1989">1978-1989</option>
+        <option value="1990-2000">1990-2000</option>
+        <option value="2001-2005">2001-2005</option>
+      </select>
+      <select class="filter-select" id="dvf-sort" onchange="applyDvfFilters()">
+        <option value="dpe">Trier : DPE (G→F)</option>
+        <option value="surface_asc">Surface ↑</option>
+        <option value="surface_desc">Surface ↓</option>
+      </select>
+      <span class="results-info" id="dvf-info"></span>
+    </div>
+    <table class="leads-table">
+      <thead><tr>
+        <th class="col-dpe">DPE</th>
+        <th class="col-adresse">Adresse</th>
+        <th class="col-commune">Commune</th>
+        <th class="col-type">Type</th>
+        <th class="col-surface">Surface ↕</th>
+        <th class="col-plu">GES</th>
+        <th class="col-sci">Période construction</th>
+        <th class="col-date">DPE depuis</th>
+        <th class="col-action"></th>
+      </tr></thead>
+      <tbody id="dvf-tbody"></tbody>
+    </table>
+    <div class="pagination" id="dvf-pagination"></div>
 
     <!-- VENTES JUDICIAIRES -->
     <div class="section-title">⚖️ Ventes judiciaires <span class="section-badge badge-empty" id="judiciaire-badge">0</span></div>
@@ -348,33 +420,55 @@ async function load(p){try{const r=await fetch(p);if(!r.ok)return[];return await
 function fmt(n){if(!n)return'NC';return new Intl.NumberFormat('fr-FR').format(Math.round(n))+' €';}
 function fmtDate(d){if(!d)return'';try{return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return d;}}
 
+let ALL_DVF=[],DVF_FILTERED=[],DVF_PAGE=1,DVF_DPE='all';
+
 async function init(){
-  const [leads,bodacc,judiciaire]=await Promise.all([
+  const [leads,dvfRaw,bodacc,judiciaire]=await Promise.all([
     load('donnees/leads_triple.json'),
+    load('donnees/dpe_leads_propres.json'),
     load('donnees/bodacc.json'),
     load('donnees/judiciaire.json'),
   ]);
 
-  // Dédoublonner leads
+  // Dédoublonner leads triple
   const seen=new Set();
   ALL=leads.filter(l=>{
     const k=(l.adresse||'')+'|'+(l.commune||'');
     if(seen.has(k))return false;seen.add(k);return true;
   });
 
+  // DPE x DVF : exclure les adresses déjà dans le Triple
+  const adressesTriple=new Set(ALL.map(l=>l.adresse||''));
+  const seenDvf=new Set();
+  ALL_DVF=dvfRaw.filter(l=>{
+    const k=(l.adresse||'')+'|'+(l.commune||'');
+    if(adressesTriple.has(l.adresse||''))return false;
+    if(seenDvf.has(k))return false;
+    seenDvf.add(k);return true;
+  });
+
   // Stats
-  document.getElementById('stat-leads').textContent=ALL.length.toLocaleString('fr-FR');
+  const total=ALL.length+ALL_DVF.length;
+  document.getElementById('stat-leads').textContent=total.toLocaleString('fr-FR');
   document.getElementById('stat-bodacc').textContent=bodacc.length.toLocaleString('fr-FR');
   document.getElementById('stat-judiciaire').textContent=judiciaire.length;
-  document.getElementById('nav-badge').textContent=ALL.length.toLocaleString('fr-FR');
+  document.getElementById('nav-badge').textContent=total.toLocaleString('fr-FR');
   document.getElementById('top-date').textContent=
     new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+
-    ' · '+ALL.length.toLocaleString('fr-FR')+' leads actifs';
+    ' · '+total.toLocaleString('fr-FR')+' leads actifs';
 
-  // Communes
+  // Communes Triple
   const communes=[...new Set(ALL.map(l=>l.commune).filter(Boolean))].sort();
   const sel=document.getElementById('commune-filter');
-  communes.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o);});
+  communes.forEach(com=>{const o=document.createElement('option');o.value=com;o.textContent=com;sel.appendChild(o);});
+
+  // Communes DVF
+  const communesDvf=[...new Set(ALL_DVF.map(l=>l.commune).filter(Boolean))].sort();
+  const selDvf=document.getElementById('dvf-commune');
+  communesDvf.forEach(com=>{const o=document.createElement('option');o.value=com;o.textContent=com;selDvf.appendChild(o);});
+
+  // Init DVF filters
+  applyDvfFilters();
 
   // Judiciaire
   const fj=document.getElementById('feed-judiciaire');
@@ -654,6 +748,121 @@ function renderBodacc(list){
       <div class="alert-right"><span class="alert-time">${fmtDate(a.date)}</span><span class="alert-new" style="${isVente?'background:rgba(201,169,110,0.12);color:#E8C98A':''}">Nouveau</span></div>`;
     fb.appendChild(div);
   });
+}
+
+// ---- DVF x DPE ----
+function setDvfDpe(dpe,el){
+  DVF_DPE=dpe;
+  el.closest('div').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  DVF_PAGE=1;applyDvfFilters();
+}
+
+function applyDvfFilters(){
+  const search=(document.getElementById('dvf-search').value||'').toLowerCase();
+  const commune=document.getElementById('dvf-commune').value;
+  const type=document.getElementById('dvf-type').value;
+  const periode=document.getElementById('dvf-periode').value;
+  const sort=document.getElementById('dvf-sort').value;
+
+  DVF_FILTERED=ALL_DVF.filter(l=>{
+    if(DVF_DPE!=='all'&&l.etiquette_dpe!==DVF_DPE)return false;
+    if(commune&&l.commune!==commune)return false;
+    if(type&&(l.type_batiment||'').toLowerCase()!==type)return false;
+    if(periode&&l.periode_construction!==periode)return false;
+    if(search&&!(l.adresse||'').toLowerCase().includes(search))return false;
+    return true;
+  });
+
+  if(sort==='surface_asc')DVF_FILTERED.sort((a,b)=>(a.surface||0)-(b.surface||0));
+  else if(sort==='surface_desc')DVF_FILTERED.sort((a,b)=>(b.surface||0)-(a.surface||0));
+  else DVF_FILTERED.sort((a,b)=>(a.etiquette_dpe==='G'?-1:b.etiquette_dpe==='G'?1:0));
+
+  DVF_PAGE=1;
+  document.getElementById('dvf-info').textContent=DVF_FILTERED.length.toLocaleString('fr-FR')+' résultats';
+  document.getElementById('dvf-badge').textContent=DVF_FILTERED.length.toLocaleString('fr-FR');
+  renderDvf();
+}
+
+function renderDvf(){
+  const tbody=document.getElementById('dvf-tbody');
+  tbody.innerHTML='';
+  const page=DVF_FILTERED.slice((DVF_PAGE-1)*PER,DVF_PAGE*PER);
+  page.forEach(l=>{
+    const dpe=l.etiquette_dpe||'';
+    const tr=document.createElement('tr');
+    tr.onclick=()=>openDvfDetail(l);
+    tr.innerHTML=`
+      <td class="col-dpe"><span class="dpe-badge dpe-${dpe}">${dpe}</span></td>
+      <td class="col-adresse td-addr" title="${l.adresse||''}">${l.adresse||'—'}</td>
+      <td class="col-commune td-muted">${l.commune||'—'}</td>
+      <td class="col-type td-type">${l.type_batiment||'—'}</td>
+      <td class="col-surface td-muted">${l.surface?l.surface+' m²':'—'}</td>
+      <td class="col-plu"><span class="td-plu" style="background:rgba(52,211,153,0.1);color:#34d399">${l.etiquette_ges||'—'}</span></td>
+      <td class="col-sci td-muted">${l.periode_construction||'—'}</td>
+      <td class="col-date td-muted">${l.date_dpe||'—'}</td>
+      <td class="col-action"><button class="td-btn" onclick="event.stopPropagation()">Voir</button></td>`;
+    tbody.appendChild(tr);
+  });
+  renderDvfPagination();
+}
+
+function renderDvfPagination(){
+  const total=Math.ceil(DVF_FILTERED.length/PER);
+  const pag=document.getElementById('dvf-pagination');
+  pag.innerHTML='';
+  if(total<=1)return;
+  const btn=(label,page,disabled,active)=>{
+    const b=document.createElement('button');
+    b.className='pg-btn'+(active?' active':'');
+    b.textContent=label;b.disabled=disabled;
+    b.onclick=()=>{DVF_PAGE=page;renderDvf();};
+    pag.appendChild(b);
+  };
+  btn('←',DVF_PAGE-1,DVF_PAGE===1,false);
+  let pages=[];
+  if(total<=7)pages=Array.from({length:total},(_,i)=>i+1);
+  else{
+    pages=[1];
+    if(DVF_PAGE>3)pages.push('…');
+    for(let i=Math.max(2,DVF_PAGE-1);i<=Math.min(total-1,DVF_PAGE+1);i++)pages.push(i);
+    if(DVF_PAGE<total-2)pages.push('…');
+    pages.push(total);
+  }
+  pages.forEach(p=>{
+    if(p==='…'){const s=document.createElement('span');s.className='pg-info';s.textContent='…';pag.appendChild(s);}
+    else btn(p,p,false,p===DVF_PAGE);
+  });
+  btn('→',DVF_PAGE+1,DVF_PAGE===total,false);
+  const info=document.createElement('span');
+  info.className='pg-info';
+  info.textContent=`${DVF_PAGE}/${total} · ${DVF_FILTERED.length.toLocaleString('fr-FR')} leads`;
+  pag.appendChild(info);
+}
+
+function openDvfDetail(l){
+  const dpe=l.etiquette_dpe||'';
+  const badge=document.getElementById('dp-badge');
+  badge.textContent='🏠 Lead DPE × DVF · Classe '+dpe;
+  badge.style.background=dpe==='G'?'rgba(239,68,68,0.15)':'rgba(249,115,22,0.15)';
+  badge.style.color=dpe==='G'?'#f87171':'#fb923c';
+  let html=`<div class="detail-title">${l.adresse||'Adresse inconnue'}</div>`;
+  html+=`<div class="detail-commune">📍 ${l.commune||''} · ${l.type_batiment||''} · ${l.surface?l.surface+' m²':''}</div>`;
+  html+='<div class="detail-section">DPE & Bien</div>';
+  [['Classe DPE',dpe],['GES',l.etiquette_ges||''],['Surface',l.surface?l.surface+' m²':''],
+   ['Type',l.type_batiment||''],['Date DPE',l.date_dpe||''],['Fin validité',l.date_fin_validite||''],
+   ['Période construction',l.periode_construction||''],['Statut',l.statut_croisement||'']
+  ].filter(r=>r[1]).forEach(([k,v])=>{
+    html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
+  });
+  html+='<div class="detail-section">Source</div>';
+  html+=`<div class="detail-note">Lead DPE × DVF · Passoire thermique non revendue · Numéro DPE : ${l.numero_dpe||'NC'}</div>`;
+  document.getElementById('dp-body').innerHTML=html;
+  const btn=document.getElementById('dp-action1');
+  btn.textContent='📞 Préparer la prise de contact';
+  btn.onclick=null;
+  document.getElementById('detail-panel').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
 }
 
 function closeDetail(){
