@@ -203,6 +203,16 @@
     <!-- STATS -->
     <div class="stats-section" id="stats-section">
 
+      <!-- FILTRE ANNÉE -->
+      <div style="display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;" id="annee-filters">
+        <button class="page-tab active" onclick="setAnnee(0,this)">Toutes</button>
+        <button class="page-tab" onclick="setAnnee(2021,this)">2021</button>
+        <button class="page-tab" onclick="setAnnee(2022,this)">2022</button>
+        <button class="page-tab" onclick="setAnnee(2023,this)">2023</button>
+        <button class="page-tab" onclick="setAnnee(2024,this)">2024</button>
+        <button class="page-tab" onclick="setAnnee(2025,this)">2025</button>
+      </div>
+
       <div class="kpi-row">
         <div class="kpi-card">
           <div class="kpi-label">Transactions 2025 — Toute la zone</div>
@@ -264,9 +274,14 @@
         </div>
       </div>
 
-    </div>
+      <!-- EVOLUTION PRIX PAR ANNÉE -->
+      <div class="chart-card">
+        <div class="chart-title">Évolution des prix au m²</div>
+        <div class="chart-sub">Prix moyen au m² par année · 2021–2025 · Reims + zone hors Reims</div>
+        <canvas id="evoChart" height="140"></canvas>
+      </div>
 
-    <!-- LOVAC -->
+    </div>
     <div class="search-section" id="lovac-section">
       <div class="dvf-header">
         <div class="dvf-title">Biens vacants par commune <span class="dvf-count" id="lovac-count">—</span></div>
@@ -287,6 +302,17 @@
 
       <div class="search-filters">
         <div class="filters-grid">
+          <div class="filter-group">
+            <label class="filter-label">Année</label>
+            <select class="filter-select" id="f-annee">
+              <option value="">Toutes</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+            </select>
+          </div>
           <div class="filter-group">
             <label class="filter-label">Commune</label>
             <select class="filter-select" id="f-commune">
@@ -420,6 +446,7 @@ async function chargerDonnees() {
     });
 
     chargerStats();
+    chargerEvolution();
     filteredData = [...DVF_DATA];
     currentPage = 1;
     afficherResultats();
@@ -433,25 +460,27 @@ async function chargerDonnees() {
 }
 
 function chargerStats() {
-  const total = DVF_DATA.length;
-  const maisons = DVF_DATA.filter(t => t.type_local === "Maison");
-  const apparts = DVF_DATA.filter(t => t.type_local === "Appartement");
+  const data = ANNEE_ACTIVE ? DVF_DATA.filter(t => t.annee === ANNEE_ACTIVE) : DVF_DATA;
+  const total = data.length;
+  const maisons = data.filter(t => t.type_local === "Maison");
+  const apparts = data.filter(t => t.type_local === "Appartement");
+  const labelAnnee = ANNEE_ACTIVE ? ` — ${ANNEE_ACTIVE}` : " — Toutes années";
 
   // KPIs
   document.getElementById("kpi-total").textContent = total.toLocaleString("fr-FR");
   document.getElementById("kpi-total-sub").textContent =
-    `${maisons.length.toLocaleString("fr-FR")} maisons · ${apparts.length.toLocaleString("fr-FR")} appartements`;
-  document.getElementById("kpi-communes").textContent = [...new Set(DVF_DATA.map(t => t.commune))].length;
+    `${maisons.length.toLocaleString("fr-FR")} maisons · ${apparts.length.toLocaleString("fr-FR")} appartements${labelAnnee}`;
+  document.getElementById("kpi-communes").textContent = [...new Set(data.map(t => t.commune))].length;
   document.getElementById("kpi-communes-sub").textContent = "Hors Fismes";
 
-  const reimsAll = DVF_DATA.filter(t => t.commune === "Reims");
+  const reimsAll = data.filter(t => t.commune === "Reims");
   const prix = reimsAll.map(t => t.prix_m2).filter(p => p > 500);
   const moy = prix.length ? Math.round(prix.reduce((a,b)=>a+b,0)/prix.length) : 0;
   const med = prix.length ? [...prix].sort((a,b)=>a-b)[Math.floor(prix.length/2)] : 0;
   document.getElementById("kpi-prix").textContent = moy.toLocaleString("fr-FR") + " €";
   document.getElementById("kpi-median").textContent = med.toLocaleString("fr-FR") + " €";
 
-  // Type stats (remplace camembert)
+  // Type stats
   const pMaisons = maisons.map(t => t.prix_m2).filter(p => p > 500);
   const pApparts = apparts.map(t => t.prix_m2).filter(p => p > 500);
   const moyMaisons = pMaisons.length ? Math.round(pMaisons.reduce((a,b)=>a+b,0)/pMaisons.length) : 0;
@@ -463,13 +492,13 @@ function chargerStats() {
   document.getElementById("ts-apparts-detail").textContent = `Prix moyen/m² : ${moyApparts.toLocaleString("fr-FR")} €`;
 
   const maxType = Math.max(maisons.length, apparts.length);
-  document.getElementById("ts-maisons-bar").style.width = Math.round(maisons.length/maxType*100) + "%";
-  document.getElementById("ts-apparts-bar").style.width = Math.round(apparts.length/maxType*100) + "%";
+  document.getElementById("ts-maisons-bar").style.width = maxType ? Math.round(maisons.length/maxType*100) + "%" : "0%";
+  document.getElementById("ts-apparts-bar").style.width = maxType ? Math.round(apparts.length/maxType*100) + "%" : "0%";
 
-  // Stats par commune (sans Fismes)
+  // Stats par commune
   const communes = COMMUNES_VALIDES;
   const statsCommunes = communes.map(c => {
-    const tc = DVF_DATA.filter(t => t.commune === c);
+    const tc = data.filter(t => t.commune === c);
     const p = tc.map(t => t.prix_m2).filter(x => x > 500);
     return { nom: c, nb: tc.length, prix: p.length ? Math.round(p.reduce((a,b)=>a+b,0)/p.length) : 0, color: COMMUNE_COLORS[c] || "#aaa" };
   }).filter(s => s.nb > 0).sort((a,b) => b.prix - a.prix);
@@ -484,9 +513,10 @@ function chargerStats() {
       <span class="compare-nb">${s.nb} ventes</span>
     </div>`).join("");
 
-  // Chart prix/commune
+  // Chart prix/commune — détruire l'ancien avant de recréer
+  if (prixChart) prixChart.destroy();
   const ctx = document.getElementById("prixChart").getContext("2d");
-  new Chart(ctx, {
+  prixChart = new Chart(ctx, {
     type: "bar",
     data: {
       labels: statsCommunes.map(s => s.nom),
@@ -522,6 +552,7 @@ function chargerStats() {
 function rechercher() {
   const commune = document.getElementById("f-commune").value;
   const type = document.getElementById("f-type").value;
+  const annee = parseInt(document.getElementById("f-annee").value) || 0;
   const surfMin = parseFloat(document.getElementById("f-surf-min").value) || 0;
   const surfMax = parseFloat(document.getElementById("f-surf-max").value) || Infinity;
   const prixMin = parseFloat(document.getElementById("f-prix-min").value) || 0;
@@ -529,6 +560,7 @@ function rechercher() {
   const pieces = parseInt(document.getElementById("f-pieces").value) || 0;
 
   filteredData = DVF_DATA.filter(t => {
+    if (annee && t.annee !== annee) return false;
     if (commune && t.commune !== commune) return false;
     if (type && t.type_local !== type) return false;
     if (t.surface_bati < surfMin || t.surface_bati > surfMax) return false;
@@ -616,11 +648,90 @@ function goPage(p) {
 }
 
 function resetFiltres() {
-  ["f-commune","f-type","f-pieces"].forEach(id => document.getElementById(id).value = "");
+  ["f-annee","f-commune","f-type","f-pieces"].forEach(id => document.getElementById(id).value = "");
   ["f-surf-min","f-surf-max","f-prix-min","f-prix-max"].forEach(id => document.getElementById(id).value = "");
   filteredData = [...DVF_DATA];
   currentPage = 1;
   afficherResultats();
+}
+
+// === FILTRE ANNÉE STATS ===
+let ANNEE_ACTIVE = 0;
+let prixChart = null;
+
+function setAnnee(annee, el) {
+  ANNEE_ACTIVE = annee;
+  document.querySelectorAll("#annee-filters .page-tab").forEach(b => b.classList.remove("active"));
+  el.classList.add("active");
+  chargerStats();
+}
+
+// === ÉVOLUTION PRIX PAR ANNÉE ===
+let evoChart = null;
+
+function chargerEvolution() {
+  const annees = [2021, 2022, 2023, 2024, 2025];
+  const reims = annees.map(a => {
+    const tc = DVF_DATA.filter(t => t.annee === a && t.commune === "Reims");
+    const prix = tc.map(t => t.prix_m2).filter(p => p > 500);
+    return prix.length ? Math.round(prix.reduce((a,b)=>a+b,0)/prix.length) : null;
+  });
+  const zone = annees.map(a => {
+    const tc = DVF_DATA.filter(t => t.annee === a && t.commune !== "Reims");
+    const prix = tc.map(t => t.prix_m2).filter(p => p > 500);
+    return prix.length ? Math.round(prix.reduce((a,b)=>a+b,0)/prix.length) : null;
+  });
+
+  if (evoChart) evoChart.destroy();
+  const ctx = document.getElementById("evoChart").getContext("2d");
+  evoChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: annees.map(String),
+      datasets: [
+        {
+          label: "Reims",
+          data: reims,
+          borderColor: "#C9A96E",
+          backgroundColor: "rgba(201,169,110,0.08)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: "#C9A96E",
+          tension: 0.3,
+          fill: true,
+        },
+        {
+          label: "Zone hors Reims",
+          data: zone,
+          borderColor: "#60a5fa",
+          backgroundColor: "rgba(96,165,250,0.06)",
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: "#60a5fa",
+          tension: 0.3,
+          fill: true,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { labels: { color: "rgba(255,255,255,0.5)", font: { size: 11 }, boxWidth: 12 } },
+        tooltip: {
+          backgroundColor: "#0d1c36",
+          titleColor: "rgba(255,255,255,0.6)",
+          bodyColor: "#E8C98A",
+          padding: 10,
+          callbacks: { label: ctx => ctx.dataset.label + " : " + (ctx.raw||0).toLocaleString("fr-FR") + " €/m²" }
+        }
+      },
+      scales: {
+        x: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { color: "rgba(255,255,255,0.5)", font: { size: 11 } } },
+        y: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { color: "rgba(255,255,255,0.4)", font: { size: 11 }, callback: v => v.toLocaleString("fr-FR") + " €" } }
+      }
+    }
+  });
 }
 
 function openDetail(idx) {
