@@ -1102,12 +1102,12 @@ function ajouterDossierCourant(){
     const existing=JSON.parse(localStorage.getItem('sentinelle_dossiers')||'{}');
     const titre=l.adresse||'Adresse inconnue';
     const dejaPresent=Object.values(existing).some(d=>d.titre===titre);
-    const btn=document.getElementById('btn-add-dossier');
     if(dejaPresent){
-      btn.textContent='⚠️ Déjà dans vos dossiers';
-      btn.style.background='rgba(251,191,36,0.15)';
-      btn.style.color='#fbbf24';
-      setTimeout(()=>{btn.textContent='🗂️ Ajouter à mes dossiers';btn.style.background='';btn.style.color='';},2500);
+      const btnD=document.getElementById('btn-add-dossier');
+      btnD.textContent='⚠️ Déjà dans vos dossiers';
+      btnD.style.background='rgba(251,191,36,0.15)';
+      btnD.style.color='#fbbf24';
+      setTimeout(()=>{btnD.textContent='🗂️ Ajouter à mes dossiers';btnD.style.background='';btnD.style.color='';},2500);
       return;
     }
     existing[id]=dossier;
