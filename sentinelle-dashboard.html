@@ -235,38 +235,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
     </div>
   </div>
 
-  <!-- FILTRES -->
-  <div class="filters-bar">
-    <input class="search-input" type="text" id="search" placeholder="🔍 Adresse, SCI..." oninput="applyFilters()">
-    <div class="filter-sep"></div>
-    <button class="filter-btn active" onclick="setDpe('all',this)">Tous</button>
-    <button class="filter-btn red" onclick="setDpe('G',this)">G</button>
-    <button class="filter-btn orange" onclick="setDpe('F',this)">F</button>
-    <div class="filter-sep"></div>
-    <select class="filter-select" id="commune-filter" onchange="applyFilters()">
-      <option value="">Toutes communes</option>
-    </select>
-    <select class="filter-select" id="type-filter" onchange="applyFilters()">
-      <option value="">Tous types</option>
-      <option value="maison">Maison</option>
-      <option value="appartement">Appartement</option>
-    </select>
-    <select class="filter-select" id="sort-filter" onchange="applyFilters()">
-      <option value="dpe">Trier : DPE (G→F)</option>
-      <option value="surface_asc">Surface : petite → grande</option>
-      <option value="surface_desc">Surface : grande → petite</option>
-      <option value="date">Date détection</option>
-    </select>
-    <select class="filter-select" id="date-filter" onchange="applyFilters()">
-      <option value="">Toutes dates DPE</option>
-      <option value="2026">DPE 2026</option>
-      <option value="2025">DPE 2025</option>
-      <option value="2024">DPE 2024</option>
-      <option value="2023">DPE 2023</option>
-      <option value="2022">DPE 2022</option>
-    </select>
-    <span class="results-info" id="results-info"></span>
-  </div>
 
   <div class="content">
 
