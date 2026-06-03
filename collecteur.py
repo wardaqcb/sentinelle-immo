@@ -18,17 +18,8 @@ from bs4 import BeautifulSoup
 # Croisements : DPE×DVF · MAJIC×DPE · Triple DPE×DVF×MAJIC
 # ============================================================
 
-COMMUNES = {
-    "Reims":         "51454",
-    "Tinqueux":      "51573",
-    "Gueux":         "51282",
-    "Muizon":        "51391",
-    "Hermonville":   "51291",
-    "Courcy":        "51183",
-    "Saint-Thierry": "51518",
-    "Pouillon":      "51444",
-}
-COMMUNES_upper = {v.upper() for v in COMMUNES.keys()}
+from config_communes import COMMUNES, CODE_TO_NOM, CODES_INSEE_SET, NOMS
+COMMUNES_upper = {n.upper() for n in NOMS}  # alias local pour lire_majic()
 
 OUTPUT_DIR     = "donnees"
 CACHE_DIR      = "cache"
@@ -88,7 +79,7 @@ def normaliser_adresse(adresse):
     if not adresse: return "", ""
     a = adresse.lower().strip()
     a = re.sub(r'\b5\d{4}\b', '', a)
-    for ville in ["reims","tinqueux","gueux","muizon","hermonville","courcy","saint-thierry","pouillon"]:
+    for ville in [n.lower() for n in NOMS]:
         a = re.sub(r'\b'+ville+r'\b', '', a)
     remplacements = [("\\ball\\b","allee"),("\\bav\\b","avenue"),("\\bbd\\b","boulevard"),
                      ("\\bbvd\\b","boulevard"),("\\bpl\\b","place"),("\\bimp\\b","impasse"),("\\besp\\b","esplanade")]
@@ -146,8 +137,8 @@ def telecharger_dvf(annee):
         return None
 
 def parser_dvf(cache_path, annee):
-    codes = set(COMMUNES.values())
-    noms = {v: k for k, v in COMMUNES.items()}
+    codes = CODES_INSEE_SET
+    noms  = CODE_TO_NOM
     resultats = []
     try:
         with zipfile.ZipFile(cache_path) as z:
@@ -322,7 +313,7 @@ def collecter_deces():
     if not fichiers:
         print("   ℹ️  Aucun fichier décès")
         return [], []
-    codes_cibles = set(COMMUNES.values())
+    codes_cibles = CODES_INSEE_SET
     tous = []
     for fichier in fichiers:
         nb = 0
@@ -346,7 +337,7 @@ def collecter_deces():
                                      "date_deces":formater_date(deces_raw),
                                      "date_deces_raw":deces_raw,
                                      "code_commune_deces":code_deces,
-                                     "commune":COMMUNES[code_deces],
+                                     "commune":CODE_TO_NOM[code_deces],
                                      "age_deces":age,"fichier_source":fichier})
                         nb += 1
                 except: continue
@@ -679,7 +670,7 @@ def calculer_stats(tous_dvf):
     print("\n📈 Statistiques marché (2025)...")
     dvf_2025 = [t for t in tous_dvf if t.get("annee")==2025]
     stats = {}
-    for commune in COMMUNES.keys():
+    for commune in NOMS:
         tc = [t for t in dvf_2025 if t["commune"]==commune]
         prix = [t["prix_m2"] for t in tc]
         maisons = [t for t in tc if t["type_local"]=="Maison"]
@@ -707,7 +698,7 @@ def generer_rapport(tous_dvf, bodacc, deces, judiciaire, dpe, majic,
     dvf_2025 = [t for t in tous_dvf if t.get("annee")==2025]
     rapport = {
         "date_collecte": datetime.now().strftime("%d/%m/%Y à %H:%M"),
-        "communes": list(COMMUNES.keys()),
+        "communes": NOMS,
         "stats": {
             "transactions_dvf_total": len(tous_dvf),
             "transactions_dvf_2025": len(dvf_2025),
