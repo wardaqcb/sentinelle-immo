@@ -8,16 +8,7 @@ from datetime import datetime
 # Passoires thermiques F/G — vendeurs sous pression
 # ============================================
 
-COMMUNES = {
-    "Reims":         "51454",
-    "Tinqueux":      "51573",
-    "Gueux":         "51282",
-    "Muizon":        "51391",
-    "Hermonville":   "51291",
-    "Courcy":        "51183",
-    "Saint-Thierry": "51518",
-    "Pouillon":      "51444",
-}
+from config_communes import COMMUNES
 
 OUTPUT_DIR = "donnees"
 HISTORIQUE_DIR = "historique"

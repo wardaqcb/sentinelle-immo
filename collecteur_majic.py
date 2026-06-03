@@ -9,10 +9,7 @@ from datetime import datetime
 # Extrait les SCI propriétaires avec adresses
 # ============================================
 
-COMMUNES_CIBLES = {
-    "REIMS", "TINQUEUX", "GUEUX", "MUIZON",
-    "HERMONVILLE", "COURCY", "SAINT-THIERRY", "POUILLON"
-}
+from config_communes import NOMS_UPPER as COMMUNES_CIBLES
 
 OUTPUT_DIR     = "donnees"
 CACHE_DIR      = "cache"

@@ -16,16 +16,7 @@ from datetime import datetime
 # 160+    : Numéro acte
 # ============================================
 
-COMMUNES = {
-    "51454": "Reims",
-    "51573": "Tinqueux",
-    "51282": "Gueux",
-    "51391": "Muizon",
-    "51291": "Hermonville",
-    "51183": "Courcy",
-    "51518": "Saint-Thierry",
-    "51444": "Pouillon",
-}
+from config_communes import CODE_TO_NOM as COMMUNES, CODES_INSEE_SET
 
 DECES_DIR = os.path.join("cache", "deces")
 OUTPUT_DIR = "donnees"
@@ -101,7 +92,7 @@ def collecter_deces():
     fichiers = sorted([f for f in os.listdir(DECES_DIR) if f.endswith(".txt")])
     print(f"   📁 {len(fichiers)} fichiers trouvés")
 
-    codes_cibles = set(COMMUNES.keys())
+    codes_cibles = CODES_INSEE_SET
     tous_deces = []
 
     for fichier in fichiers:

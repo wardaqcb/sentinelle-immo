@@ -9,16 +9,7 @@ from datetime import datetime
 # Sans DVF pour aller vite
 # ============================================
 
-COMMUNES = {
-    "Reims":         "51454",
-    "Tinqueux":      "51573",
-    "Gueux":         "51282",
-    "Muizon":        "51391",
-    "Hermonville":   "51291",
-    "Courcy":        "51183",
-    "Saint-Thierry": "51518",
-    "Pouillon":      "51444",
-}
+from config_communes import COMMUNES, CODES_INSEE_SET
 
 OUTPUT_DIR     = "donnees"
 CACHE_DIR      = "cache"
@@ -126,7 +117,7 @@ def tester_deces():
     fichiers = sorted([f for f in os.listdir(DECES_DIR) if f.endswith(".txt")])
     print(f"   📁 Fichiers : {fichiers}")
 
-    codes_cibles = set(COMMUNES.values())  # {"51454", "51573"...}
+    codes_cibles = CODES_INSEE_SET
     print(f"   Codes INSEE cibles : {codes_cibles}")
 
     tous_deces = []
