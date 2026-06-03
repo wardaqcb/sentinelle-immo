@@ -227,6 +227,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
         <div class="stat-label">Enchères</div>
       </div>
     </div>
+    <div class="stat-card">
+      <div>
+        <div class="stat-num" id="stat-sitadel" style="color:#a78bfa">…</div>
+        <div class="stat-label">Permis Sit@del</div>
+      </div>
+    </div>
   </div>
 
   <!-- FILTRES -->
@@ -356,6 +362,39 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
     </table>
     <div class="pagination" id="dvf-pagination"></div>
 
+    <!-- PERMIS SITADEL -->
+    <div class="section-title" style="margin-top:16px">🏗️ Permis Sit@del <span class="section-badge badge-leads" id="sitadel-badge">…</span><span style="font-size:0.65rem;color:rgba(255,255,255,0.25);margin-left:8px">Passoires avec permis actif · Sans SCI identifiée</span></div>
+    <div id="sitadel-dpe-filters" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 0 4px">
+      <input class="search-input" type="text" id="sitadel-search" placeholder="🔍 Adresse..." oninput="applySitadelFilters()">
+      <div class="filter-sep"></div>
+      <button class="filter-btn active" onclick="setSitadelDpe('all',this)">Tous</button>
+      <button class="filter-btn red" onclick="setSitadelDpe('G',this)">G</button>
+      <button class="filter-btn orange" onclick="setSitadelDpe('F',this)">F</button>
+    </div>
+    <div id="sitadel-signal-filters" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:4px 0 8px">
+      <button class="filter-btn active" onclick="setSitadelSignal('all',this)">Tous signaux</button>
+      <button class="filter-btn" style="color:var(--red);border-color:rgba(248,113,113,0.25)" onclick="setSitadelSignal('demolition',this)">🔴 Démolition</button>
+      <button class="filter-btn" style="color:var(--orange);border-color:rgba(251,146,60,0.25)" onclick="setSitadelSignal('division',this)">🟠 Division</button>
+      <button class="filter-btn" style="color:#fbbf24;border-color:rgba(251,191,36,0.25)" onclick="setSitadelSignal('renovation',this)">🟡 Rénovation</button>
+      <button class="filter-btn" style="color:var(--blue);border-color:rgba(96,165,250,0.25)" onclick="setSitadelSignal('locaux_non_resid',this)">🔵 Locaux</button>
+      <span class="results-info" id="sitadel-info"></span>
+    </div>
+    <table class="leads-table">
+      <thead><tr>
+        <th class="col-dpe">DPE</th>
+        <th class="col-adresse">Adresse</th>
+        <th class="col-commune">Commune</th>
+        <th class="col-type">Type</th>
+        <th class="col-surface">Surface</th>
+        <th class="col-plu">Signal</th>
+        <th class="col-sci">Permis</th>
+        <th class="col-date">DPE depuis</th>
+        <th class="col-action"></th>
+      </tr></thead>
+      <tbody id="sitadel-tbody"></tbody>
+    </table>
+    <div class="pagination" id="sitadel-pagination"></div>
+
     <!-- VENTES JUDICIAIRES -->
     <div class="section-title">⚖️ Ventes judiciaires <span class="section-badge badge-empty" id="judiciaire-badge">0</span></div>
     <div class="alert-feed" id="feed-judiciaire">
@@ -421,14 +460,17 @@ function fmt(n){if(!n)return'NC';return new Intl.NumberFormat('fr-FR').format(Ma
 function fmtDate(d){if(!d)return'';try{return new Date(d).toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});}catch(e){return d;}}
 
 let ALL_DVF=[],DVF_FILTERED=[],DVF_PAGE=1,DVF_DPE='all';
+let ALL_SITADEL=[],SITADEL_FILTERED=[],SITADEL_PAGE=1,SITADEL_DPE='all',SITADEL_SIGNAL='all';
 
 async function init(){
-  const [leads,dvfRaw,bodacc,judiciaire]=await Promise.all([
+  const [leads,dvfRaw,bodacc,judiciaire,sitadelRaw]=await Promise.all([
     load('donnees/leads_triple.json'),
     load('donnees/dpe_leads_propres.json'),
     load('donnees/bodacc.json'),
     load('donnees/judiciaire.json'),
+    load('donnees/leads_sitadel_dpe_hors_triple.json'),
   ]);
+  ALL_SITADEL=Array.isArray(sitadelRaw)?sitadelRaw:(sitadelRaw.leads||[]);
 
   // Dédoublonner leads triple
   const seen=new Set();
@@ -448,10 +490,11 @@ async function init(){
   });
 
   // Stats
-  const total=ALL.length+ALL_DVF.length;
+  const total=ALL.length+ALL_DVF.length+ALL_SITADEL.length;
   document.getElementById('stat-leads').textContent=total.toLocaleString('fr-FR');
   document.getElementById('stat-bodacc').textContent=bodacc.length.toLocaleString('fr-FR');
   document.getElementById('stat-judiciaire').textContent=judiciaire.length;
+  document.getElementById('stat-sitadel').textContent=ALL_SITADEL.length.toLocaleString('fr-FR');
   document.getElementById('nav-badge').textContent=total.toLocaleString('fr-FR');
   document.getElementById('top-date').textContent=
     new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+
@@ -469,6 +512,9 @@ async function init(){
 
   // Init DVF filters
   applyDvfFilters();
+
+  // Init Sit@del filters
+  applySitadelFilters();
 
   // Judiciaire
   const fj=document.getElementById('feed-judiciaire');
@@ -748,6 +794,158 @@ function renderBodacc(list){
       <div class="alert-right"><span class="alert-time">${fmtDate(a.date)}</span><span class="alert-new" style="${isVente?'background:rgba(201,169,110,0.12);color:#E8C98A':''}">Nouveau</span></div>`;
     fb.appendChild(div);
   });
+}
+
+// ---- SITADEL ----
+const SIGNAL_STYLE={
+  demolition:    {label:'🔴 Démolition',  color:'var(--red)',    bg:'rgba(248,113,113,0.12)'},
+  division:      {label:'🟠 Division',    color:'var(--orange)', bg:'rgba(251,146,60,0.12)'},
+  renovation:    {label:'🟡 Rénovation',  color:'#fbbf24',       bg:'rgba(251,191,36,0.12)'},
+  locaux_non_resid:{label:'🔵 Locaux',   color:'var(--blue)',   bg:'rgba(96,165,250,0.12)'},
+};
+
+function setSitadelDpe(dpe,el){
+  SITADEL_DPE=dpe;
+  document.querySelectorAll('#sitadel-dpe-filters .filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  SITADEL_PAGE=1;applySitadelFilters();
+}
+
+function setSitadelSignal(signal,el){
+  SITADEL_SIGNAL=signal;
+  document.querySelectorAll('#sitadel-signal-filters .filter-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  SITADEL_PAGE=1;applySitadelFilters();
+}
+
+function applySitadelFilters(){
+  const search=(document.getElementById('sitadel-search').value||'').toLowerCase();
+  SITADEL_FILTERED=ALL_SITADEL.filter(l=>{
+    if(SITADEL_DPE!=='all'&&l.etiquette_dpe!==SITADEL_DPE)return false;
+    if(SITADEL_SIGNAL!=='all'&&!((l.permis_sitadel&&l.permis_sitadel.signaux)||[]).includes(SITADEL_SIGNAL))return false;
+    if(search&&!(l.adresse||'').toLowerCase().includes(search))return false;
+    return true;
+  });
+  SITADEL_FILTERED.sort((a,b)=>(a.etiquette_dpe==='G'?-1:b.etiquette_dpe==='G'?1:0));
+  SITADEL_PAGE=1;
+  document.getElementById('sitadel-info').textContent=SITADEL_FILTERED.length.toLocaleString('fr-FR')+' résultats';
+  document.getElementById('sitadel-badge').textContent=SITADEL_FILTERED.length.toLocaleString('fr-FR');
+  renderSitadel();
+}
+
+function renderSitadel(){
+  const tbody=document.getElementById('sitadel-tbody');
+  tbody.innerHTML='';
+  const page=SITADEL_FILTERED.slice((SITADEL_PAGE-1)*PER,SITADEL_PAGE*PER);
+  page.forEach(l=>{
+    const dpe=l.etiquette_dpe||'';
+    const signaux=(l.permis_sitadel&&l.permis_sitadel.signaux)||[];
+    const signalHtml=signaux.map(s=>{
+      const st=SIGNAL_STYLE[s]||{label:s,color:'rgba(255,255,255,0.4)',bg:'rgba(255,255,255,0.06)'};
+      return`<span style="font-size:0.66rem;padding:2px 6px;border-radius:3px;background:${st.bg};color:${st.color};margin-right:2px;white-space:nowrap">${st.label}</span>`;
+    }).join('');
+    const nbPermis=(l.permis_sitadel&&l.permis_sitadel.nb_permis)||0;
+    const tr=document.createElement('tr');
+    tr.onclick=()=>openSitadelDetail(l);
+    tr.innerHTML=`
+      <td class="col-dpe"><span class="dpe-badge dpe-${dpe}">${dpe}</span></td>
+      <td class="col-adresse td-addr" title="${l.adresse||''}">${l.adresse||'—'}</td>
+      <td class="col-commune td-muted">${l.commune||l.code_insee||'—'}</td>
+      <td class="col-type td-type">${l.type_batiment||'—'}</td>
+      <td class="col-surface td-muted">${l.surface?l.surface+' m²':'—'}</td>
+      <td class="col-plu">${signalHtml||'<span class="td-muted">—</span>'}</td>
+      <td class="col-sci td-muted">${nbPermis} permis</td>
+      <td class="col-date td-muted">${l.date_dpe||'—'}</td>
+      <td class="col-action"><button class="td-btn" onclick="event.stopPropagation()">Voir</button></td>`;
+    tbody.appendChild(tr);
+  });
+  renderSitadelPagination();
+}
+
+function renderSitadelPagination(){
+  const total=Math.ceil(SITADEL_FILTERED.length/PER);
+  const pag=document.getElementById('sitadel-pagination');
+  pag.innerHTML='';
+  if(total<=1)return;
+  const btn=(label,page,disabled,active)=>{
+    const b=document.createElement('button');
+    b.className='pg-btn'+(active?' active':'');
+    b.textContent=label;b.disabled=disabled;
+    b.onclick=()=>{SITADEL_PAGE=page;renderSitadel();};
+    pag.appendChild(b);
+  };
+  btn('←',SITADEL_PAGE-1,SITADEL_PAGE===1,false);
+  let pages=[];
+  if(total<=7)pages=Array.from({length:total},(_,i)=>i+1);
+  else{
+    pages=[1];
+    if(SITADEL_PAGE>3)pages.push('…');
+    for(let i=Math.max(2,SITADEL_PAGE-1);i<=Math.min(total-1,SITADEL_PAGE+1);i++)pages.push(i);
+    if(SITADEL_PAGE<total-2)pages.push('…');
+    pages.push(total);
+  }
+  pages.forEach(p=>{
+    if(p==='…'){const s=document.createElement('span');s.className='pg-info';s.textContent='…';pag.appendChild(s);}
+    else btn(p,p,false,p===SITADEL_PAGE);
+  });
+  btn('→',SITADEL_PAGE+1,SITADEL_PAGE===total,false);
+  const info=document.createElement('span');
+  info.className='pg-info';
+  info.textContent=`${SITADEL_PAGE}/${total} · ${SITADEL_FILTERED.length.toLocaleString('fr-FR')} leads`;
+  pag.appendChild(info);
+}
+
+function openSitadelDetail(l){
+  const dpe=l.etiquette_dpe||'';
+  const badge=document.getElementById('dp-badge');
+  badge.textContent='🏗️ Permis Sit@del · Classe '+dpe;
+  badge.className='detail-badge';
+  badge.style.background='rgba(167,139,250,0.15)';
+  badge.style.color='#a78bfa';
+
+  const permis=l.permis_sitadel||{};
+  const signaux=permis.signaux||[];
+  const details=permis.details||[];
+
+  let html=`<div class="detail-title">${l.adresse||'Adresse inconnue'}</div>`;
+  html+=`<div class="detail-commune">📍 ${l.commune||l.code_insee||''} · ${l.type_batiment||''} · ${l.surface?l.surface+' m²':''}</div>`;
+
+  html+='<div class="detail-section">DPE & Bien</div>';
+  [['Classe DPE',dpe],['Surface',l.surface?l.surface+' m²':''],
+   ['Type',l.type_batiment||''],['Date DPE',l.date_dpe||''],['N° DPE',l.numero_dpe||'']
+  ].filter(r=>r[1]).forEach(([k,v])=>{
+    html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
+  });
+
+  html+='<div class="detail-section">Signaux Sit@del</div>';
+  [['Nb permis',permis.nb_permis||0],
+   ['Signaux',signaux.join(', ')||'—'],
+   ['SIREN demandeur',permis.a_siren_demandeur?'Oui':'Non'],
+   ['Demandeur hors commune',permis.demandeur_hors_commune?'Oui ⚠️':'Non'],
+  ].forEach(([k,v])=>{
+    html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
+  });
+
+  if(details.length){
+    html+='<div class="detail-section">Détail des permis</div>';
+    details.forEach(p=>{
+      const st=SIGNAL_STYLE[p.signal]||{label:p.signal||p.type_fichier,color:'rgba(255,255,255,0.5)',bg:'rgba(255,255,255,0.06)'};
+      html+=`<div class="detail-note" style="margin-bottom:6px;border-left:2px solid ${st.color};padding-left:10px">
+        <span style="font-size:0.7rem;font-weight:600;color:${st.color}">${st.label}</span>
+        ${p.date_autorisation?'<br><span style="color:rgba(255,255,255,0.35);font-size:0.72rem">Autorisé le '+p.date_autorisation+'</span>':''}
+        ${p.demandeur?'<br><span style="color:rgba(255,255,255,0.35);font-size:0.72rem">Demandeur : '+p.demandeur+(p.localite_demandeur?' ('+p.localite_demandeur+')':'')+'</span>':''}
+        ${p.siren?'<br><span style="color:rgba(255,255,255,0.25);font-size:0.7rem">SIREN : '+p.siren+'</span>':''}
+        ${p.num_dau?'<br><span style="color:rgba(255,255,255,0.2);font-size:0.68rem">N° DAU : '+p.num_dau+'</span>':''}
+      </div>`;
+    });
+  }
+
+  document.getElementById('dp-body').innerHTML=html;
+  const btn=document.getElementById('dp-action1');
+  btn.textContent='📞 Préparer la prise de contact';
+  btn.onclick=null;
+  document.getElementById('detail-panel').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
 }
 
 // ---- DVF x DPE ----
