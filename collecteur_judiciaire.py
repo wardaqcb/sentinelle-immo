@@ -7,11 +7,12 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 # ============================================
-# SENTINELLE IMMO — Collecteur Judiciaire v3
+# SENTINELLE IMMO — Collecteur Judiciaire v4
 # TJ Reims + TJ Châlons-en-Champagne
+# Nouvelle structure URL Licitor (2026)
 # ============================================
 
-OUTPUT_DIR = "donnees"
+OUTPUT_DIR     = "donnees"
 HISTORIQUE_DIR = "historique"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(HISTORIQUE_DIR, exist_ok=True)
@@ -22,116 +23,148 @@ HEADERS = {
     "Accept-Language": "fr-FR,fr;q=0.9",
 }
 
-# URLs directes des pages tribunal sur Licitor
-URLS_TRIBUNAUX = [
-    {"nom": "TJ Châlons-en-Champagne", "url": "https://www.licitor.com/ventes/10/marne/chalons-en-champagne"},
-    {"nom": "TJ Reims",                "url": "https://www.licitor.com/ventes/10/marne/reims"},
-]
+# Page France — liste tous les TJ avec leurs prochaines audiences
+URL_FRANCE = "https://www.licitor.com/ventes-aux-encheres-immobilieres/france.html"
 
-def extraire_info_url(url):
-    """Extrait titre, commune, type depuis l'URL Licitor."""
-    # Format : /annonce/10/84/13/vente-aux-encheres/une-maison-d-habitation/montmirail/marne/108413.html
-    parts = url.rstrip('/').split('/')
-    info = {"url": url}
-    try:
-        # Le type de bien est après "vente-aux-encheres"
-        idx = parts.index("vente-aux-encheres")
-        type_bien = parts[idx + 1].replace("-", " ").capitalize() if idx + 1 < len(parts) else ""
-        commune   = parts[idx + 2].replace("-", " ").capitalize() if idx + 2 < len(parts) else ""
-        info["titre"]   = type_bien
-        info["commune"] = commune
-    except (ValueError, IndexError):
-        pass
-    return info
+# Slugs des TJ ciblés (tels qu'ils apparaissent dans les URLs Licitor)
+CIBLES_TJ = [
+    {"slug": "tj-reims",                  "nom": "TJ Reims"},
+    {"slug": "tj-chalons-en-champagne",   "nom": "TJ Châlons-en-Champagne"},
+]
 
 def get_page(url):
     try:
-        r = requests.get(url, headers=HEADERS, timeout=15)
+        r = requests.get(url, headers=HEADERS, timeout=20)
         r.encoding = "utf-8"
         if r.status_code == 200:
             return BeautifulSoup(r.text, "html.parser")
     except Exception as e:
-        print(f"   ❌ Erreur {url} : {e}")
+        print(f"   ❌ Erreur GET {url} : {e}")
     return None
 
-def parser_detail(url):
-    """Parse le détail d'une annonce Licitor pour récupérer mise à prix, surface, date audience."""
+def extraire_info_url(url):
+    """
+    Extrait commune, type de bien et ID depuis une URL annonce Licitor.
+    Format : /annonce/10/84/13/vente-aux-encheres/une-maison-d-habitation/montmirail/marne/108413.html
+    """
+    info = {"url": url}
+    try:
+        parts = url.rstrip("/").split("/")
+        idx = parts.index("vente-aux-encheres")
+        info["type_bien"] = parts[idx + 1].replace("-", " ").capitalize()
+        info["commune"]   = parts[idx + 2].replace("-", " ").capitalize()
+        info["dept"]      = parts[idx + 3] if idx + 3 < len(parts) else ""
+        id_part = parts[-1].replace(".html", "")
+        info["id"]        = id_part if id_part.isdigit() else ""
+    except (ValueError, IndexError):
+        pass
+    return info
+
+def parser_detail_annonce(url):
+    """Parse le détail d'une page annonce pour récupérer mise à prix, surface, description."""
     soup = get_page(url)
     if not soup:
         return {}
-
     detail = {}
     texte = soup.get_text(" ", strip=True)
 
     # Mise à prix
-    prix = re.findall(r'([0-9][0-9\s\.]+)\s*€', texte)
-    for p in prix:
-        val = int(p.replace(" ", "").replace(".", ""))
-        if 5000 < val < 2000000:
+    for m in re.finditer(r'([0-9][\d\s]+)\s*€', texte):
+        val = int(m.group(1).replace(" ", ""))
+        if 5_000 < val < 5_000_000:
             detail["mise_a_prix"] = val
             break
 
     # Surface
-    surfaces = re.findall(r'(\d+[\.,]?\d*)\s*m[²2]', texte)
-    if surfaces:
-        detail["surface"] = surfaces[0].replace(",", ".") + " m²"
+    m = re.search(r'(\d+[\.,]?\d*)\s*m[²2]', texte)
+    if m:
+        detail["surface"] = m.group(1).replace(",", ".") + " m²"
 
-    # Date audience
-    dates = re.findall(r'(\d{1,2}[/\-\.]\d{1,2}[/\-\.]\d{2,4})', texte)
-    if dates:
-        detail["date_audience"] = dates[0]
-
-    # Description courte
-    for tag in soup.find_all(["p", "td", "div"]):
+    # Description courte (premier bloc de texte pertinent)
+    for tag in soup.find_all(["p", "li", "div"]):
         t = tag.get_text(strip=True)
-        if len(t) > 60 and any(m in t.lower() for m in ["maison", "appartement", "local", "terrain", "habitation", "bien"]):
-            detail["description"] = t[:250]
+        if len(t) > 80 and any(w in t.lower() for w in ["maison", "appartement", "terrain", "local", "immeuble", "habitation"]):
+            detail["description"] = t[:300]
             break
 
     return detail
 
 def collecter_licitor():
-    print("\n🏛️  Collecteur Judiciaire v3 — TJ Reims & Châlons...")
+    print("\n🏛️  Collecteur Judiciaire v4 — TJ Reims & Châlons...")
     resultats = []
 
-    for tj in URLS_TRIBUNAUX:
-        print(f"\n   📋 {tj['nom']}...")
+    # Étape 1 : page France → trouver les liens d'audience pour nos TJs
+    print(f"\n   📡 Lecture de la page France Licitor...")
+    soup_france = get_page(URL_FRANCE)
+    if not soup_france:
+        print("   ❌ Impossible d'atteindre la page France")
+        return [], []
+
+    # Cherche les liens href contenant nos slugs
+    urls_tj = {}
+    for lien in soup_france.find_all("a", href=True):
+        href = lien.get("href", "")
+        for cible in CIBLES_TJ:
+            if cible["slug"] in href and "ventes-judiciaires-immobilieres" in href:
+                url_complet = "https://www.licitor.com" + href if href.startswith("/") else href
+                if cible["slug"] not in urls_tj:
+                    urls_tj[cible["slug"]] = {"nom": cible["nom"], "url": url_complet}
+                    print(f"   ✅ {cible['nom']} trouvé → {url_complet}")
+
+    for cible in CIBLES_TJ:
+        if cible["slug"] not in urls_tj:
+            print(f"   ℹ️  {cible['nom']} : aucune audience programmée en ce moment")
+
+    if not urls_tj:
+        print("   ℹ️  Aucune vente active sur les TJ ciblés")
+        # Sauvegarde quand même un fichier vide propre
+        sauver_resultats(resultats)
+        return resultats, []
+
+    # Étape 2 : pour chaque TJ trouvé, récupérer les annonces
+    for slug, info in urls_tj.items():
+        print(f"\n   📋 {info['nom']} → {info['url']}")
         time.sleep(1)
 
-        soup = get_page(tj["url"])
-        if not soup:
+        soup_tj = get_page(info["url"])
+        if not soup_tj:
             print(f"   ⚠️  Page inaccessible")
             continue
 
-        # Cherche tous les liens /annonce/
-        liens = soup.find_all("a", href=True)
-        urls_annonces = set()
-        for lien in liens:
+        # Récupère tous les liens /annonce/
+        urls_annonces = []
+        for lien in soup_tj.find_all("a", href=True):
             href = lien.get("href", "")
-            if "/annonce/" in href:
+            if "/annonce/" in href and "vente-aux-encheres" in href:
                 url_complet = "https://www.licitor.com" + href if href.startswith("/") else href
-                urls_annonces.add(url_complet)
+                if url_complet not in urls_annonces:
+                    urls_annonces.append(url_complet)
 
         print(f"   → {len(urls_annonces)} annonces trouvées")
 
         for url_annonce in urls_annonces:
             time.sleep(0.8)
-            info = extraire_info_url(url_annonce)
-            detail = parser_detail(url_annonce)
+            meta  = extraire_info_url(url_annonce)
+            detail = parser_detail_annonce(url_annonce)
 
-            resultats.append({
-                "tribunal": tj["nom"],
-                "titre": info.get("titre", "Bien immobilier"),
-                "commune": info.get("commune", ""),
-                "url": url_annonce,
-                "mise_a_prix": detail.get("mise_a_prix", 0),
-                "surface": detail.get("surface", ""),
-                "date_audience": detail.get("date_audience", ""),
-                "description": detail.get("description", ""),
-                "date_detection": datetime.now().strftime("%d/%m/%Y à %H:%M"),
-            })
-            print(f"   ✅ {info.get('titre','?')} — {info.get('commune','?')} · {detail.get('mise_a_prix','?')} €")
+            annonce = {
+                "id":              meta.get("id", ""),
+                "tribunal":        info["nom"],
+                "type_bien":       meta.get("type_bien", "Bien immobilier"),
+                "commune":         meta.get("commune", ""),
+                "url":             url_annonce,
+                "mise_a_prix":     detail.get("mise_a_prix", 0),
+                "surface":         detail.get("surface", ""),
+                "description":     detail.get("description", ""),
+                "date_detection":  datetime.now().strftime("%d/%m/%Y à %H:%M"),
+            }
+            resultats.append(annonce)
+            prix_str = f"{annonce['mise_a_prix']:,} €".replace(",", " ") if annonce["mise_a_prix"] else "NC"
+            print(f"   ✅ {annonce['type_bien']} — {annonce['commune']} · {prix_str}")
 
+    return sauver_resultats(resultats)
+
+def sauver_resultats(resultats):
     # Détection nouveautés
     hist_path = os.path.join(HISTORIQUE_DIR, "licitor_vus.json")
     historique = {}
@@ -141,8 +174,8 @@ def collecter_licitor():
 
     nouveaux = []
     for item in resultats:
-        cle = item["url"]
-        if cle not in historique:
+        cle = item.get("url", "")
+        if cle and cle not in historique:
             nouveaux.append(item)
             historique[cle] = {"date_detection": item["date_detection"]}
 
@@ -159,9 +192,9 @@ def collecter_licitor():
 
 
 if __name__ == "__main__":
-    print("="*52)
-    print("🏛️  SENTINELLE IMMO — Collecteur Judiciaire v3")
+    print("=" * 52)
+    print("🏛️  SENTINELLE IMMO — Collecteur Judiciaire v4")
     print(f"   Tribunaux : Reims + Châlons-en-Champagne")
     print(f"   Date : {datetime.now().strftime('%d/%m/%Y à %H:%M')}")
-    print("="*52)
+    print("=" * 52)
     collecter_licitor()
