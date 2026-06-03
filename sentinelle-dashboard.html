@@ -688,6 +688,7 @@ function renderPagination(){
 }
 
 function openLeadDetail(l){
+  currentLead=l;currentLeadSource='Triple';
   const dpe=l.etiquette_dpe||'';
   const badge=document.getElementById('dp-badge');
   badge.textContent='🔥 Lead DPE · Classe '+dpe;
