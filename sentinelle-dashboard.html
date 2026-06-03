@@ -446,7 +446,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:#fff;display:
   <div class="detail-body" id="dp-body"></div>
   <div class="detail-actions">
     <button class="detail-btn detail-btn-primary" id="dp-action1"></button>
-    <button class="detail-btn detail-btn-secondary" onclick="closeDetail()">🗂️ Ajouter à mes dossiers</button>
+    <button class="detail-btn detail-btn-secondary" id="btn-add-dossier" onclick="ajouterDossierCourant()">🗂️ Ajouter à mes dossiers</button>
   </div>
 </div>
 
@@ -461,6 +461,7 @@ function fmtDate(d){if(!d)return'';try{return new Date(d).toLocaleDateString('fr
 
 let ALL_DVF=[],DVF_FILTERED=[],DVF_PAGE=1,DVF_DPE='all';
 let ALL_SITADEL=[],SITADEL_FILTERED=[],SITADEL_PAGE=1,SITADEL_DPE='all',SITADEL_SIGNAL='all';
+let currentLead=null,currentLeadSource='';
 
 async function init(){
   const [leads,dvfRaw,bodacc,judiciaire,sitadelRaw]=await Promise.all([
@@ -728,6 +729,7 @@ function openLeadDetail(l){
 }
 
 function openDetail(d){
+  currentLead=d;currentLeadSource='Triple';
   const badge=document.getElementById('dp-badge');
   badge.textContent=d.badge;
   badge.className='detail-badge '+d.cls;
@@ -896,6 +898,7 @@ function renderSitadelPagination(){
 }
 
 function openSitadelDetail(l){
+  currentLead=l;currentLeadSource='Sitadel';
   const dpe=l.etiquette_dpe||'';
   const badge=document.getElementById('dp-badge');
   badge.textContent='🏗️ Permis Sit@del · Classe '+dpe;
@@ -1039,6 +1042,7 @@ function renderDvfPagination(){
 }
 
 function openDvfDetail(l){
+  currentLead=l;currentLeadSource='DVF';
   const dpe=l.etiquette_dpe||'';
   const badge=document.getElementById('dp-badge');
   badge.textContent='🏠 Lead DPE × DVF · Classe '+dpe;
@@ -1061,6 +1065,49 @@ function openDvfDetail(l){
   btn.onclick=null;
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
+}
+
+function ajouterDossierCourant(){
+  if(!currentLead){closeDetail();return;}
+  const l=currentLead, source=currentLeadSource;
+  const n=new Date();
+  const dateStr=n.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit'})+' · '+n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+  const id='dossier_'+Date.now();
+  const rows=[];
+  if(l.etiquette_dpe)rows.push(['Classe DPE',l.etiquette_dpe]);
+  if(l.surface)rows.push(['Surface',l.surface+' m²']);
+  if(l.type_batiment)rows.push(['Type',l.type_batiment]);
+  if(l.sci_denomination)rows.push(['SCI',l.sci_denomination]);
+  if(l.siren||l.sci_siren)rows.push(['SIREN',(l.siren||l.sci_siren)]);
+  if(l.zone_plu)rows.push(['Zone PLU',l.zone_plu_long||l.zone_plu]);
+  const dossier={
+    id,
+    titre:l.adresse||'Adresse inconnue',
+    commune:l.commune||l.code_insee||'',
+    source,
+    statut:'contact',
+    notes:'',
+    prix_estime:'',
+    dpe:l.etiquette_dpe||'',
+    signaux:(l.permis_sitadel&&l.permis_sitadel.signaux)||[],
+    rows,
+    date_ajout:n.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'}),
+    timeline:[
+      {icon:'🔔',bg:'rgba(201,169,110,0.12)',action:'Lead détecté — source '+source,date:dateStr},
+      {icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier ajouté depuis le dashboard',date:dateStr}
+    ]
+  };
+  try{
+    const existing=JSON.parse(localStorage.getItem('sentinelle_dossiers')||'{}');
+    existing[id]=dossier;
+    localStorage.setItem('sentinelle_dossiers',JSON.stringify(existing));
+    // Feedback visuel
+    const btn=document.getElementById('btn-add-dossier');
+    btn.textContent='✅ Dossier créé !';
+    btn.style.background='rgba(52,211,153,0.15)';
+    btn.style.color='#34d399';
+    setTimeout(()=>{btn.textContent='🗂️ Ajouter à mes dossiers';btn.style.background='';btn.style.color='';},2000);
+  }catch(e){console.error('Erreur dossier:',e);}
 }
 
 function closeDetail(){

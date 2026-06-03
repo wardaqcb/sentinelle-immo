@@ -181,7 +181,7 @@
     </div>
     <div class="topbar-right">
       <button class="btn btn-ghost">📥 Exporter</button>
-      <button class="btn btn-gold">+ Nouveau dossier</button>
+      <button class="btn btn-gold" onclick="ouvrirModale('contact')">+ Nouveau dossier</button>
     </div>
   </div>
 
@@ -189,11 +189,11 @@
 
     <!-- STATS -->
     <div class="kanban-stats">
-      <div class="kstat"><div class="kstat-label">Total dossiers</div><div class="kstat-num" style="color:var(--gold2)">9</div><div class="kstat-sub">Actifs ce mois</div></div>
-      <div class="kstat"><div class="kstat-label">À contacter</div><div class="kstat-num" style="color:var(--s-contact)">3</div><div class="kstat-sub">En attente</div></div>
-      <div class="kstat"><div class="kstat-label">En négociation</div><div class="kstat-num" style="color:var(--s-negocia)">3</div><div class="kstat-sub">En cours</div></div>
-      <div class="kstat"><div class="kstat-label">Mandats signés</div><div class="kstat-num" style="color:var(--s-mandat)">2</div><div class="kstat-sub">Ce mois</div></div>
-      <div class="kstat"><div class="kstat-label">Valeur pipeline</div><div class="kstat-num" style="color:var(--vacant)">1,2 M€</div><div class="kstat-sub">Estimation cumulée</div></div>
+      <div class="kstat"><div class="kstat-label">Total dossiers</div><div class="kstat-num" style="color:var(--gold2)" id="kstat-total">0</div><div class="kstat-sub">Actifs ce mois</div></div>
+      <div class="kstat"><div class="kstat-label">À contacter</div><div class="kstat-num" style="color:var(--s-contact)" id="kstat-contact">0</div><div class="kstat-sub">En attente</div></div>
+      <div class="kstat"><div class="kstat-label">En négociation</div><div class="kstat-num" style="color:var(--s-negocia)" id="kstat-nego">0</div><div class="kstat-sub">En cours</div></div>
+      <div class="kstat"><div class="kstat-label">Mandats signés</div><div class="kstat-num" style="color:var(--s-mandat)" id="kstat-mandat">0</div><div class="kstat-sub">Ce mois</div></div>
+      <div class="kstat"><div class="kstat-label">Valeur pipeline</div><div class="kstat-num" style="color:var(--vacant)" id="kstat-pipeline">—</div><div class="kstat-sub">Estimation cumulée</div></div>
     </div>
 
     <!-- TOOLBAR -->
@@ -210,7 +210,7 @@
     </div>
 
     <!-- KANBAN -->
-    <div class="kanban">
+    <div class="kanban" id="kanban-board">
 
       <!-- À CONTACTER -->
       <div class="kanban-col">
@@ -381,113 +381,213 @@
     </div>
   </div>
   <div class="detail-actions">
-    <button class="detail-btn detail-btn-primary">💾 Sauvegarder</button>
-    <button class="detail-btn detail-btn-danger">🗑️ Archiver</button>
+    <button class="detail-btn detail-btn-primary" id="btn-sauver" onclick="sauverDossier()">💾 Sauvegarder</button>
+    <button class="detail-btn detail-btn-danger" id="btn-archiver" onclick="archiverDossier()">🗑️ Archiver</button>
   </div>
 </div>
 
+
+</body>
+</html>
+
 <script>
-const dossiers = {
-  vacant1: {
-    badge:'🏚️ Bien vacant', badgeClass:'dtype-vacant', title:'Pavillon 5 pièces — Gueux', commune:'📍 Gueux (51390) · Inoccupé depuis 26 mois',
-    status:'contact', notes:'Propriétaire identifié. Pas encore contacté.',
-    rows:[['Surface estimée','135 m²'],['Inoccupé depuis','26 mois'],['Taxe vacance','Active'],['Propriétaire','Personne physique identifiée'],['Estimation valeur','~187 000 €'],['Annonce en ligne','Aucune']],
-    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal détecté par Sentinelle Immo',date:'Aujourd\'hui · 08h02'},{icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier créé',date:'Aujourd\'hui · 09h15'}]
-  },
-  succession1: {
-    badge:'⚰️ Succession', badgeClass:'dtype-succession', title:'Maison 4 pièces — Tinqueux', commune:'📍 Tinqueux (51430) · Décès le 12/05/2025',
-    status:'contact', notes:'',
-    rows:[['Surface estimée','110 m²'],['Date du décès','12 mai 2025'],['Notaire saisi','Oui'],['Héritiers','En cours d\'identification'],['Estimation valeur','185 000 – 210 000 €'],['Annonce en ligne','Aucune']],
-    timeline:[{icon:'🔔',bg:'rgba(248,113,113,0.15)',action:'Signal succession détecté',date:'Aujourd\'hui · 08h02'},{icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier créé',date:'Aujourd\'hui · 09h30'}]
-  },
-  succession2: {
-    badge:'⚰️ Succession', badgeClass:'dtype-succession', title:'Maison 6 pièces — Reims Est', commune:'📍 Reims (51100) · Héritiers contactés',
-    status:'nego', notes:'RDV avec notaire le 22/05. Les 3 héritiers sont favorables à une vente rapide. Prix souhaité ~260k.',
-    rows:[['Surface','148 m²'],['Terrain','380 m²'],['Notaire en charge','Maître Martin, Reims'],['Héritiers','3 — tous contactés'],['Estimation valeur','~265 000 €'],['Délai souhaité','Avant fin juin']],
-    timeline:[{icon:'🔔',bg:'rgba(248,113,113,0.15)',action:'Signal succession détecté',date:'02/05 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Premier contact avec héritier principal',date:'04/05 · 14h30'},{icon:'🤝',bg:'rgba(251,191,36,0.15)',action:'RDV famille organisé',date:'10/05 · 11h00'},{icon:'⚖️',bg:'rgba(52,211,153,0.15)',action:'Notaire contacté — RDV le 22/05',date:'15/05 · 09h00'}]
-  },
-  enchere1: {
-    badge:'🏛️ Enchère notariale', badgeClass:'dtype-enchere', title:'Appartement T3 — Reims centre', commune:'📍 Reims (51100) · Adjudication le 28/05/2025',
-    status:'nego', notes:'Cahier des charges reçu et analysé. Budget client : 95k max frais inclus. OK pour enchérir.',
-    rows:[['Surface','67 m²'],['Mise à prix','85 000 €'],['Adjudication','28 mai 2025'],['Étude notariale','Reims'],['Estimation marché','~130 000 €'],['DPE','D']],
-    timeline:[{icon:'🔔',bg:'rgba(251,191,36,0.15)',action:'Enchère détectée par Sentinelle Immo',date:'12/05 · 08h02'},{icon:'📋',bg:'rgba(201,169,110,0.12)',action:'Cahier des charges téléchargé',date:'13/05 · 10h00'},{icon:'✅',bg:'rgba(52,211,153,0.15)',action:'Budget validé avec le client',date:'14/05 · 16h30'}]
-  },
-  succes_gagne: {
-    badge:'✅ Mandat signé', badgeClass:'dtype-succession', title:'Pavillon 4 pièces — Tinqueux', commune:'📍 Tinqueux (51430) · Mandat exclusif signé',
-    status:'mandat', notes:'Mise en vente semaine du 20/05. Prix affiché : 178 000 €. Photos prévues le 19/05.',
-    rows:[['Surface','98 m²'],['Terrain','250 m²'],['Type de mandat','Exclusif — 3 mois'],['Prix de vente','178 000 €'],['Photos','19 mai 2025'],['Publication','Semaine du 20/05']],
-    timeline:[{icon:'🔔',bg:'rgba(248,113,113,0.15)',action:'Signal succession détecté',date:'25/04 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Contact héritière principale',date:'26/04 · 15h00'},{icon:'🤝',bg:'rgba(251,191,36,0.15)',action:'Visite du bien réalisée',date:'02/05 · 10h30'},{icon:'✅',bg:'rgba(52,211,153,0.15)',action:'Mandat exclusif signé 🎉',date:'08/05 · 14h00'}]
-  },
-  judiciaire1: {
-    badge:'⚖️ Vente judiciaire', badgeClass:'dtype-judiciaire', title:'Maison 5 pièces — Muizon', commune:'📍 Muizon (51140) · Audience le 03/06/2025',
-    status:'contact', notes:'',
-    rows:[['Surface','~120 m²'],['Terrain','~600 m²'],['Mise à prix','120 000 €'],['Date audience','3 juin 2025'],['Juridiction','Tribunal judiciaire Reims'],['Estimation marché','~195 000 €']],
-    timeline:[{icon:'🔔',bg:'rgba(249,115,22,0.15)',action:'Vente judiciaire détectée',date:'Aujourd\'hui · 08h02'},{icon:'🗂️',bg:'rgba(201,169,110,0.12)',action:'Dossier créé',date:'Aujourd\'hui · 09h45'}]
-  },
-  vacant2: {
-    badge:'🏚️ Bien vacant', badgeClass:'dtype-vacant', title:'Appartement T2 — Reims Nord', commune:'📍 Reims (51100) · Inoccupé depuis 14 mois',
-    status:'contacte', notes:'Propriétaire intéressé par une mise en vente. Rappel prévu lundi 19/05.',
-    rows:[['Surface estimée','48 m²'],['Inoccupé depuis','14 mois'],['Propriétaire','Contacté le 10/05'],['Intérêt','Oui — à confirmer'],['Estimation valeur','~95 000 €'],['Prochain contact','Lundi 19/05']],
-    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal vacant détecté',date:'08/05 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Premier appel — propriétaire intéressé',date:'10/05 · 11h30'}]
-  },
-  vacant3: {
-    badge:'🏚️ Bien vacant', badgeClass:'dtype-vacant', title:'Fermette — Vrigny', commune:'📍 Vrigny (51390) · Inoccupée depuis 38 mois',
-    status:'nego', notes:'Propriétaire âgé en maison de retraite. Famille souhaite vendre. Estimation à faire.',
-    rows:[['Surface habitable','~80 m²'],['Terrain','~1 200 m²'],['Inoccupé depuis','38 mois'],['Situation','Propriétaire en EHPAD'],['Estimation valeur','~148 000 €'],['Décideurs','2 enfants mandataires']],
-    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal vacant détecté',date:'06/05 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Contact avec le fils du propriétaire',date:'08/05 · 14h00'},{icon:'🤝',bg:'rgba(251,191,36,0.15)',action:'Visite de la fermette avec la famille',date:'12/05 · 10h00'}]
-  },
-  vacant_gagne: {
-    badge:'✅ Mandat signé', badgeClass:'dtype-vacant', title:'Maison de village — Muizon', commune:'📍 Muizon (51140) · Mandat simple signé',
-    status:'mandat', notes:'Bien en cours de mise en marché. Prix : 142 000 €.',
-    rows:[['Surface','76 m²'],['Terrain','180 m²'],['Type de mandat','Simple — 3 mois'],['Prix de vente','142 000 €'],['Inoccupé depuis','19 mois'],['Publication','En cours']],
-    timeline:[{icon:'🔔',bg:'rgba(167,139,250,0.15)',action:'Signal vacant détecté',date:'25/04 · 08h00'},{icon:'📞',bg:'rgba(96,165,250,0.15)',action:'Contact propriétaire',date:'27/04 · 10h00'},{icon:'✅',bg:'rgba(52,211,153,0.15)',action:'Mandat simple signé',date:'03/05 · 15h30'}]
-  },
-  perdu1: {
-    badge:'❌ Archivé', badgeClass:'dtype-enchere', title:'Appartement T2 — Reims', commune:'📍 Reims (51100) · Surenchéri le 30/04',
-    status:'perdu', notes:'Adjugé à un autre acheteur. Budget dépassé de 12 000 €. À surveiller en cas de désistement.',
-    rows:[['Surface','41 m²'],['Mise à prix','58 000 €'],['Prix final','~74 000 €'],['Notre plafond','62 000 €'],['Résultat','Surenchéri'],['Date','30 avril 2025']],
-    timeline:[{icon:'🔔',bg:'rgba(251,191,36,0.15)',action:'Enchère détectée',date:'15/04 · 08h00'},{icon:'📋',bg:'rgba(201,169,110,0.12)',action:'Dossier analysé',date:'16/04 · 09h00'},{icon:'❌',bg:'rgba(248,113,113,0.15)',action:'Surenchéri lors de l\'adjudication',date:'30/04 · 14h30'}]
-  }
-};
+const STORE_KEY = 'sentinelle_dossiers';
+
+// ============================================================
+// STORAGE
+// ============================================================
+function charger() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch(e) { return {}; }
+}
+function sauver(data) { localStorage.setItem(STORE_KEY, JSON.stringify(data)); }
+
+// ============================================================
+// CONFIG COLONNES
+// ============================================================
+const COLS = [
+  { id:'contact',  label:'À contacter',   color:'var(--s-contact)',  dot:'var(--s-contact)' },
+  { id:'contacte', label:'Contacté',       color:'#94a3b8',           dot:'#94a3b8' },
+  { id:'nego',     label:'En négociation', color:'var(--s-negocia)',   dot:'var(--s-negocia)' },
+  { id:'mandat',   label:'Mandat signé',   color:'var(--s-mandat)',    dot:'var(--s-mandat)' },
+  { id:'perdu',    label:'Archivé',        color:'var(--s-perdu)',     dot:'var(--s-perdu)' },
+];
+
+function sourceInfo(source) {
+  return {
+    Triple:     { icon:'🏠', label:'SCI · Passoire',  cls:'dtype-vacant',    cardCls:'type-vacant' },
+    Sitadel:    { icon:'🏗️', label:'Permis Sit@del', cls:'dtype-enchere',   cardCls:'type-enchere' },
+    DVF:        { icon:'💰', label:'DVF',              cls:'dtype-enchere',   cardCls:'type-enchere' },
+    Judiciaire: { icon:'⚖️', label:'Judiciaire',       cls:'dtype-judiciaire',cardCls:'type-judiciaire' },
+    BODACC:     { icon:'📋', label:'BODACC',           cls:'dtype-enchere',   cardCls:'type-enchere' },
+    Manuel:     { icon:'✏️', label:'Manuel',           cls:'dtype-vacant',    cardCls:'type-vacant' },
+  }[source] || { icon:'📌', label:source, cls:'dtype-vacant', cardCls:'type-vacant' };
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+function renderCard(d) {
+  const si = sourceInfo(d.source);
+  const opac = d.statut === 'perdu' ? 'opacity:0.5;' : '';
+  const note = d.notes ? `<div class="dossier-note">${d.notes.substring(0,80)}${d.notes.length>80?'…':''}</div>` : '';
+  const prix = d.prix_estime || '—';
+  const signalBadges = (d.signaux||[]).length ? `<div style="margin-top:6px;display:flex;gap:4px;flex-wrap:wrap">` +
+    d.signaux.map(s=>`<span style="font-size:0.62rem;padding:1px 6px;border-radius:3px;background:rgba(167,139,250,0.12);color:#a78bfa">${s}</span>`).join('') + `</div>` : '';
+  return `
+    <div class="dossier-card ${si.cardCls}" style="${opac}"
+         draggable="true" ondragstart="dragStart(event,'${d.id}')"
+         onclick="openDossier('${d.id}')">
+      <div class="dossier-type ${si.cls}">${si.icon} ${si.label}${d.dpe?' · DPE '+d.dpe:''}</div>
+      <div class="dossier-title">${d.titre}</div>
+      <div class="dossier-commune">📍 ${d.commune}</div>
+      <div class="dossier-footer">
+        <span class="dossier-date">${d.date_ajout||''}</span>
+        <span class="dossier-price">${prix}</span>
+      </div>
+      ${signalBadges}${note}
+    </div>`;
+}
+
+function renderKanban() {
+  const data = charger();
+  const board = document.getElementById('kanban-board');
+  if (!board) return;
+  const dossiers = Object.values(data);
+
+  board.innerHTML = COLS.map(col => {
+    const cards = dossiers.filter(d => d.statut === col.id);
+    return `
+      <div class="kanban-col"
+           ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="drop(event,'${col.id}')">
+        <div class="col-header">
+          <div class="col-title">
+            <div class="col-dot" style="background:${col.dot}"></div>
+            <span class="col-name" style="color:${col.color}">${col.label}</span>
+          </div>
+          <span class="col-count" id="count-${col.id}">${cards.length}</span>
+        </div>
+        ${cards.map(renderCard).join('')}
+        <div class="add-card" onclick="ouvrirModale('${col.id}')">+ Ajouter un dossier</div>
+      </div>`;
+  }).join('');
+
+  updateStats(dossiers);
+}
+
+function updateStats(dossiers) {
+  if (!dossiers) dossiers = Object.values(charger());
+  const actifs = dossiers.filter(d => d.statut !== 'perdu');
+  document.getElementById('kstat-total').textContent = actifs.length;
+  document.getElementById('kstat-contact').textContent = dossiers.filter(d => d.statut === 'contact').length;
+  document.getElementById('kstat-nego').textContent = dossiers.filter(d => d.statut === 'nego').length;
+  document.getElementById('kstat-mandat').textContent = dossiers.filter(d => d.statut === 'mandat').length;
+}
+
+// ============================================================
+// DRAG & DROP
+// ============================================================
+let dragId = null;
+
+function dragStart(e, id) {
+  dragId = id;
+  e.dataTransfer.effectAllowed = 'move';
+}
+function dragOver(e) {
+  e.preventDefault();
+  e.currentTarget.style.background = 'rgba(201,169,110,0.06)';
+  e.currentTarget.style.borderColor = 'rgba(201,169,110,0.25)';
+}
+function dragLeave(e) {
+  e.currentTarget.style.background = '';
+  e.currentTarget.style.borderColor = '';
+}
+function drop(e, statut) {
+  e.preventDefault();
+  e.currentTarget.style.background = '';
+  e.currentTarget.style.borderColor = '';
+  if (!dragId) return;
+  const data = charger();
+  if (!data[dragId]) return;
+  const ancien = data[dragId].statut;
+  if (ancien === statut) { dragId = null; return; }
+  data[dragId].statut = statut;
+  const labelMap = { contact:'À contacter', contacte:'Contacté', nego:'En négociation', mandat:'Mandat signé', perdu:'Archivé' };
+  data[dragId].timeline.push({
+    icon:'↗️', bg:'rgba(201,169,110,0.12)',
+    action:`Déplacé → "${labelMap[statut]}"`,
+    date: now()
+  });
+  sauver(data);
+  renderKanban();
+  dragId = null;
+}
+
+// ============================================================
+// DETAIL PANEL
+// ============================================================
+let currentDossierId = null;
+let modeCreation = false;
 
 function openDossier(id) {
-  const d = dossiers[id];
+  const data = charger();
+  const d = data[id];
   if (!d) return;
+  currentDossierId = id;
+  modeCreation = false;
+
+  const si = sourceInfo(d.source);
   const badge = document.getElementById('dp-badge');
-  badge.textContent = d.badge;
-  badge.className = d.badgeClass;
-  badge.style.display = 'inline-block';
-  badge.style.padding = '5px 12px';
-  badge.style.borderRadius = '4px';
-  document.getElementById('dp-title').textContent = d.title;
-  document.getElementById('dp-commune').textContent = d.commune;
-  document.getElementById('dp-notes').value = d.notes;
+  badge.textContent = si.icon + ' ' + si.label;
+  badge.className = si.cls;
+  badge.style.cssText = 'display:inline-block;font-size:0.72rem;padding:5px 12px;border-radius:4px;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:8px;';
 
-  // Status
-  document.querySelectorAll('.status-opt').forEach(b => b.className = 'status-opt');
-  const statusMap = { contact: [0,'active-contact'], contacte:[1,'active-contact'], nego:[2,'active-nego'], mandat:[3,'active-mandat'], perdu:[4,'active-perdu'] };
-  if (statusMap[d.status]) {
-    const [idx, cls] = statusMap[d.status];
-    document.querySelectorAll('.status-opt')[idx].classList.add(cls);
-  }
+  document.getElementById('dp-title').textContent = d.titre;
+  document.getElementById('dp-commune').textContent = '📍 ' + d.commune + (d.dpe ? ' · DPE ' + d.dpe : '');
+  document.getElementById('dp-notes').value = d.notes || '';
 
-  // Rows
+  setStatusUI(d.statut);
+
   let html = '';
-  d.rows.forEach(([l,v]) => { html += `<div class="detail-row"><span class="detail-row-label">${l}</span><span class="detail-row-value">${v}</span></div>`; });
+  (d.rows||[]).forEach(([l,v]) => { html += `<div class="detail-row"><span class="detail-row-label">${l}</span><span class="detail-row-value">${v}</span></div>`; });
+  if ((d.signaux||[]).length) html += `<div class="detail-row"><span class="detail-row-label">Signaux</span><span class="detail-row-value">${d.signaux.join(', ')}</span></div>`;
   document.getElementById('dp-rows').innerHTML = html;
 
-  // Timeline
   let thtml = '';
-  d.timeline.forEach(t => { thtml += `<div class="timeline-item"><div class="timeline-dot" style="background:${t.bg}">${t.icon}</div><div class="timeline-content"><div class="timeline-action">${t.action}</div><div class="timeline-date">${t.date}</div></div></div>`; });
+  (d.timeline||[]).forEach(t => {
+    thtml += `<div class="timeline-item"><div class="timeline-dot" style="background:${t.bg}">${t.icon}</div><div class="timeline-content"><div class="timeline-action">${t.action}</div><div class="timeline-date">${t.date}</div></div></div>`;
+  });
   document.getElementById('dp-timeline').innerHTML = thtml;
 
+  document.getElementById('btn-sauver').textContent = '💾 Sauvegarder';
+  document.getElementById('btn-sauver').onclick = sauverDossier;
+  document.getElementById('btn-archiver').style.display = '';
   document.getElementById('detail-panel').classList.add('open');
   document.getElementById('overlay').classList.add('show');
 }
 
-function closeDetail() {
-  document.getElementById('detail-panel').classList.remove('open');
-  document.getElementById('overlay').classList.remove('show');
+function sauverDossier() {
+  if (!currentDossierId) return;
+  const data = charger();
+  if (!data[currentDossierId]) return;
+  data[currentDossierId].notes = document.getElementById('dp-notes').value;
+  data[currentDossierId].statut = getStatusUI();
+  data[currentDossierId].timeline.push({
+    icon:'💾', bg:'rgba(201,169,110,0.12)',
+    action:'Notes mises à jour', date: now()
+  });
+  sauver(data);
+  renderKanban();
+  closeDetail();
+}
+
+function archiverDossier() {
+  if (!currentDossierId) return;
+  if (!confirm('Supprimer définitivement ce dossier ?')) return;
+  const data = charger();
+  delete data[currentDossierId];
+  sauver(data);
+  renderKanban();
+  closeDetail();
 }
 
 function setStatus(s, el) {
@@ -495,6 +595,142 @@ function setStatus(s, el) {
   const cls = { contact:'active-contact', contacte:'active-contact', nego:'active-nego', mandat:'active-mandat', perdu:'active-perdu' };
   el.classList.add(cls[s] || '');
 }
+
+function setStatusUI(statut) {
+  document.querySelectorAll('.status-opt').forEach(b => b.className = 'status-opt');
+  const idx = ['contact','contacte','nego','mandat','perdu'].indexOf(statut);
+  const cls = ['active-contact','active-contact','active-nego','active-mandat','active-perdu'];
+  if (idx >= 0) document.querySelectorAll('.status-opt')[idx].classList.add(cls[idx]);
+}
+
+function getStatusUI() {
+  const vals = ['contact','contacte','nego','mandat','perdu'];
+  let s = 'contact';
+  document.querySelectorAll('.status-opt').forEach((b,i) => { if (b.classList.length > 1) s = vals[i]; });
+  return s;
+}
+
+function closeDetail() {
+  document.getElementById('detail-panel').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  currentDossierId = null;
+}
+
+// ============================================================
+// CREATION MANUELLE (via panel)
+// ============================================================
+function ouvrirModale(statutDefaut) {
+  currentDossierId = null;
+  modeCreation = true;
+
+  const badge = document.getElementById('dp-badge');
+  badge.textContent = '✏️ Nouveau dossier';
+  badge.className = '';
+  badge.style.cssText = 'display:inline-block;font-size:0.72rem;padding:5px 12px;border-radius:4px;background:var(--gold3);color:var(--gold2);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-bottom:8px;';
+
+  document.getElementById('dp-title').textContent = 'Créer un nouveau dossier';
+  document.getElementById('dp-commune').textContent = '';
+  document.getElementById('dp-notes').value = '';
+  setStatusUI(statutDefaut || 'contact');
+  document.getElementById('dp-timeline').innerHTML = '';
+
+  document.getElementById('dp-rows').innerHTML = `
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px">
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label style="font-size:0.68rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em">Titre / Adresse *</label>
+        <input id="new-titre" type="text" placeholder="Ex: Maison 4p — Reims"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:9px 12px;border-radius:6px;font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;width:100%">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label style="font-size:0.68rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em">Commune *</label>
+        <input id="new-commune" type="text" placeholder="Ex: Reims"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:9px 12px;border-radius:6px;font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;width:100%">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label style="font-size:0.68rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em">Source</label>
+        <select id="new-source"
+          style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:white;padding:9px 12px;border-radius:6px;font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;width:100%">
+          <option value="Manuel">✏️ Manuel</option>
+          <option value="Triple">🏠 Triple (SCI · Passoire)</option>
+          <option value="Sitadel">🏗️ Sit@del</option>
+          <option value="Judiciaire">⚖️ Judiciaire</option>
+          <option value="BODACC">📋 BODACC</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <label style="font-size:0.68rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.08em">Prix estimé</label>
+        <input id="new-prix" type="text" placeholder="Ex: 185 000 €"
+          style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:white;padding:9px 12px;border-radius:6px;font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;width:100%">
+      </div>
+    </div>`;
+
+  document.getElementById('btn-sauver').textContent = '✅ Créer le dossier';
+  document.getElementById('btn-sauver').onclick = creerDossier;
+  document.getElementById('btn-archiver').style.display = 'none';
+  document.getElementById('detail-panel').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+}
+
+function creerDossier() {
+  const titre = (document.getElementById('new-titre')?.value || '').trim();
+  const commune = (document.getElementById('new-commune')?.value || '').trim();
+  if (!titre || !commune) { alert('Titre et commune sont requis.'); return; }
+
+  const source = document.getElementById('new-source')?.value || 'Manuel';
+  const prix = (document.getElementById('new-prix')?.value || '').trim();
+  const statut = getStatusUI();
+  const n = now();
+  const id = 'dossier_' + Date.now();
+
+  const dossier = {
+    id, titre, commune, source, statut,
+    notes: (document.getElementById('dp-notes')?.value || '').trim(),
+    prix_estime: prix,
+    dpe: '', signaux: [],
+    rows: prix ? [['Prix estimé', prix]] : [],
+    date_ajout: new Date().toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit',year:'numeric'}),
+    timeline: [{ icon:'🗂️', bg:'rgba(201,169,110,0.12)', action:'Dossier créé manuellement', date: n }]
+  };
+
+  const data = charger();
+  data[id] = dossier;
+  sauver(data);
+  renderKanban();
+  closeDetail();
+  document.getElementById('btn-sauver').onclick = sauverDossier;
+}
+
+// ============================================================
+// AJOUT DEPUIS LE DASHBOARD (écrit dans localStorage, puis rerender)
+// ============================================================
+function chargerNouveauDepuisStorage() {
+  try {
+    const pending = localStorage.getItem('sentinelle_dossier_pending');
+    if (!pending) return;
+    localStorage.removeItem('sentinelle_dossier_pending');
+    const dossier = JSON.parse(pending);
+    const data = charger();
+    data[dossier.id] = dossier;
+    sauver(data);
+    renderKanban();
+    setTimeout(() => openDossier(dossier.id), 400);
+  } catch(e) {}
+}
+
+// ============================================================
+// UTILS
+// ============================================================
+function now() {
+  const d = new Date();
+  return d.toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit'}) + ' · ' +
+         d.toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'});
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderKanban();
+chargerNouveauDepuisStorage();
 </script>
 </body>
 </html>
