@@ -433,7 +433,7 @@ let currentLead=null,currentLeadSource='';
 
 async function init(){
   const [leads,dvfRaw,bodacc,judiciaire,sitadelRaw]=await Promise.all([
-    load('donnees/leads_triple.json'),
+    load('donnees/leads_triple_enrichi.json'),
     load('donnees/dpe_leads_propres.json'),
     load('donnees/bodacc.json'),
     load('donnees/judiciaire.json'),
@@ -605,11 +605,13 @@ function render(){
   const page=FILTERED.slice((PAGE-1)*PER,PAGE*PER);
   page.forEach(l=>{
     const dpe=l.etiquette_dpe||'';
+    const sitSignaux=(l.permis_sitadel&&l.permis_sitadel.signaux)||[];
+    const sitMarker=sitSignaux.length?` <span style="cursor:help" title="Permis Sit@del : ${sitSignaux.map(s=>(SIGNAL_STYLE[s]||{label:s}).label.replace(/^\S+\s/,'')).join(', ')}">🏗️</span>`:'';
     const tr=document.createElement('tr');
     tr.onclick=()=>openLeadDetail(l);
     tr.innerHTML=`
       <td class="col-dpe"><span class="dpe-badge dpe-${dpe}">${dpe}</span></td>
-      <td class="col-adresse td-addr" title="${l.adresse||''}">${l.adresse||'—'}</td>
+      <td class="col-adresse td-addr" title="${l.adresse||''}">${l.adresse||'—'}${sitMarker}</td>
       <td class="col-commune td-muted">${l.commune||'—'}</td>
       <td class="col-type td-type">${l.type_batiment||'—'}</td>
       <td class="col-surface td-muted">${l.surface?l.surface+' m²':'—'}</td>
@@ -685,6 +687,33 @@ function openLeadDetail(l){
     ].filter(r=>r[1]).forEach(([k,v])=>{
       html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
     });
+  }
+  if(l.permis_sitadel&&(l.permis_sitadel.signaux||[]).length){
+    const permis=l.permis_sitadel;
+    const signaux=permis.signaux||[];
+    const details=permis.details||[];
+    html+='<div class="detail-section">🏗️ Signaux Sit@del</div>';
+    [['Nb permis',permis.nb_permis||0],
+     ['Signaux',signaux.map(s=>(SIGNAL_STYLE[s]||{label:s}).label).join(', ')||'—'],
+     ['SIREN demandeur',permis.a_siren_demandeur?'Oui':'Non'],
+     ['Demandeur hors commune',permis.demandeur_hors_commune?'Oui ⚠️':'Non'],
+    ].forEach(([k,v])=>{
+      html+=`<div class="detail-row"><span class="detail-row-label">${k}</span><span class="detail-row-value">${v}</span></div>`;
+    });
+    if(details.length){
+      const seen=new Set();
+      const uniq=details.filter(p=>{const key=(p.num_dau||'')+'|'+(p.signal||'')+'|'+(p.date_autorisation||'');if(seen.has(key))return false;seen.add(key);return true;});
+      uniq.forEach(p=>{
+        const st=SIGNAL_STYLE[p.signal]||{label:p.signal||p.type_fichier,color:'rgba(255,255,255,0.5)'};
+        html+=`<div class="detail-note" style="margin-bottom:6px;border-left:2px solid ${st.color};padding-left:10px">
+          <span style="font-size:0.7rem;font-weight:600;color:${st.color}">${st.label}</span>
+          ${p.date_autorisation?'<br><span style="color:rgba(255,255,255,0.35);font-size:0.72rem">Autorisé le '+p.date_autorisation+'</span>':''}
+          ${p.demandeur?'<br><span style="color:rgba(255,255,255,0.35);font-size:0.72rem">Demandeur : '+p.demandeur+(p.localite_demandeur?' ('+p.localite_demandeur+')':'')+'</span>':''}
+          ${p.siren?'<br><span style="color:rgba(255,255,255,0.25);font-size:0.7rem">SIREN : '+p.siren+'</span>':''}
+          ${p.num_dau?'<br><span style="color:rgba(255,255,255,0.2);font-size:0.68rem">N° DAU : '+p.num_dau+'</span>':''}
+        </div>`;
+      });
+    }
   }
   html+='<div class="detail-section">Source</div>';
   html+=`<div class="detail-note">Détecté le ${l.date_detection||''} · ${l.source||''}</div>`;
