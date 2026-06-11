@@ -2,3 +2,4 @@ cache/
 __pycache__/
 files.zip
 *.pyc
+sentinelle-immo-context.skill
