@@ -1,1 +1,4 @@
-cache/ 
+cache/
+__pycache__/
+files.zip
+*.pyc
